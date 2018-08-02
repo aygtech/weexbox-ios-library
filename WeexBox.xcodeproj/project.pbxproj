@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		7DE379A080755753A50842F4 /* libPods-WeexBox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7182C444A15678ADCEA3DFB7 /* libPods-WeexBox.a */; };
 		AC54342A2111B5A3005B7056 /* WeexBox.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5434282111B5A3005B7056 /* WeexBox.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC5434312111BBCC005B7056 /* WeexBoxEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5434302111BBCC005B7056 /* WeexBoxEngine.swift */; };
+		AC5434352111C1D4005B7056 /* ImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5434332111C1D4005B7056 /* ImageLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC5434362111C1D4005B7056 /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5434342111C1D4005B7056 /* ImageLoader.m */; };
+		AC54343D2111D2DD005B7056 /* WeexBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54343C2111D2DD005B7056 /* WeexBaseViewController.swift */; };
+		AC5434412112DAD6005B7056 /* Log.h in Headers */ = {isa = PBXBuildFile; fileRef = AC54343F2112DAD6005B7056 /* Log.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC5434422112DAD6005B7056 /* Log.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5434402112DAD6005B7056 /* Log.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +24,12 @@
 		AC5434252111B5A3005B7056 /* WeexBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeexBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC5434282111B5A3005B7056 /* WeexBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeexBox.h; sourceTree = "<group>"; };
 		AC5434292111B5A3005B7056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC5434302111BBCC005B7056 /* WeexBoxEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeexBoxEngine.swift; sourceTree = "<group>"; };
+		AC5434332111C1D4005B7056 /* ImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLoader.h; sourceTree = "<group>"; };
+		AC5434342111C1D4005B7056 /* ImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLoader.m; sourceTree = "<group>"; };
+		AC54343C2111D2DD005B7056 /* WeexBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeexBaseViewController.swift; sourceTree = "<group>"; };
+		AC54343F2112DAD6005B7056 /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
+		AC5434402112DAD6005B7056 /* Log.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Log.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,10 +65,40 @@
 		AC5434272111B5A3005B7056 /* WeexBox */ = {
 			isa = PBXGroup;
 			children = (
+				AC54343E2112DAAB005B7056 /* Util */,
+				AC54343B2111D23F005B7056 /* Controller */,
+				AC5434322111C0D6005B7056 /* Handler */,
 				AC5434282111B5A3005B7056 /* WeexBox.h */,
+				AC5434302111BBCC005B7056 /* WeexBoxEngine.swift */,
 				AC5434292111B5A3005B7056 /* Info.plist */,
 			);
 			path = WeexBox;
+			sourceTree = "<group>";
+		};
+		AC5434322111C0D6005B7056 /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				AC5434332111C1D4005B7056 /* ImageLoader.h */,
+				AC5434342111C1D4005B7056 /* ImageLoader.m */,
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
+		AC54343B2111D23F005B7056 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AC54343C2111D2DD005B7056 /* WeexBaseViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AC54343E2112DAAB005B7056 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				AC54343F2112DAD6005B7056 /* Log.h */,
+				AC5434402112DAD6005B7056 /* Log.m */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		E7C79831F702D9C370077FAA /* Pods */ = {
@@ -83,6 +125,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC5434412112DAD6005B7056 /* Log.h in Headers */,
+				AC5434352111C1D4005B7056 /* ImageLoader.h in Headers */,
 				AC54342A2111B5A3005B7056 /* WeexBox.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,6 +165,7 @@
 				TargetAttributes = {
 					AC5434242111B5A3005B7056 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -197,6 +242,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC5434312111BBCC005B7056 /* WeexBoxEngine.swift in Sources */,
+				AC5434362111C1D4005B7056 /* ImageLoader.m in Sources */,
+				AC5434422112DAD6005B7056 /* Log.m in Sources */,
+				AC54343D2111D2DD005B7056 /* WeexBaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +376,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1557BC57E5295E8A7176AE33 /* Pods-WeexBox.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -343,6 +393,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Ayg.WeexBox;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -352,6 +403,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 470306F86FB9853839FE2D19 /* Pods-WeexBox.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;

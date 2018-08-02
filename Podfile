@@ -37,4 +37,12 @@ pod 'SDWebImage'
 # Asynchronous image downloader with cache support as a UIImageView category
 # https://github.com/rs/SDWebImage
 
+pod 'SocketRocket'
+# A conforming Objective-C WebSocket client library.
+# https://github.com/facebook/SocketRocket
+
+pod 'AsyncSwift'
+# Syntactic sugar in Swift for asynchronous dispatches in Grand Central Dispatch
+# https://github.com/duemunk/Async
+
 end
