@@ -1,5 +1,5 @@
 //
-//  WeexBaseViewController.swift
+//  WBWeexViewController.swift
 //  WeexBox
 //
 //  Created by Mario on 2018/8/1.
@@ -11,13 +11,14 @@ import SocketRocket
 import Async
 import WeexSDK
 
-open class WeexBaseViewController: UIViewController, SRWebSocketDelegate {
+@objcMembers open class WBWeexViewController: UIViewController, SRWebSocketDelegate {
     
     var weexHeight: CGFloat!
     var hotReloadSocket: SRWebSocket?
     var instance: WXSDKInstance?
     var weexView: UIView?
-    var url: URL?
+    public var url: URL?
+    public var routerModel: RouterModel?
     
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +87,7 @@ open class WeexBaseViewController: UIViewController, SRWebSocketDelegate {
         }
     }
     
-    func refreshWeex() {
+    public func refreshWeex() {
         render()
     }
     

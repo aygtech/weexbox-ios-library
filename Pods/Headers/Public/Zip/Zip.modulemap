@@ -1,0 +1,6 @@
+module Zip {
+  umbrella header "Zip-umbrella.h"
+
+  export *
+  module * { export * }
+}
