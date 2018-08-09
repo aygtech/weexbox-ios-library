@@ -10,8 +10,6 @@
 		7DE379A080755753A50842F4 /* libPods-WeexBox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7182C444A15678ADCEA3DFB7 /* libPods-WeexBox.a */; };
 		AC54342A2111B5A3005B7056 /* WeexBox.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5434282111B5A3005B7056 /* WeexBox.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC5434312111BBCC005B7056 /* WeexBoxEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5434302111BBCC005B7056 /* WeexBoxEngine.swift */; };
-		AC5434352111C1D4005B7056 /* ImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5434332111C1D4005B7056 /* ImageLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC5434362111C1D4005B7056 /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5434342111C1D4005B7056 /* ImageLoader.m */; };
 		AC54343D2111D2DD005B7056 /* WeexBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54343C2111D2DD005B7056 /* WeexBaseViewController.swift */; };
 		AC5434412112DAD6005B7056 /* Log.h in Headers */ = {isa = PBXBuildFile; fileRef = AC54343F2112DAD6005B7056 /* Log.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC5434422112DAD6005B7056 /* Log.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5434402112DAD6005B7056 /* Log.m */; };
@@ -25,8 +23,6 @@
 		AC5434282111B5A3005B7056 /* WeexBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeexBox.h; sourceTree = "<group>"; };
 		AC5434292111B5A3005B7056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC5434302111BBCC005B7056 /* WeexBoxEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeexBoxEngine.swift; sourceTree = "<group>"; };
-		AC5434332111C1D4005B7056 /* ImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLoader.h; sourceTree = "<group>"; };
-		AC5434342111C1D4005B7056 /* ImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLoader.m; sourceTree = "<group>"; };
 		AC54343C2111D2DD005B7056 /* WeexBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeexBaseViewController.swift; sourceTree = "<group>"; };
 		AC54343F2112DAD6005B7056 /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
 		AC5434402112DAD6005B7056 /* Log.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Log.m; sourceTree = "<group>"; };
@@ -67,21 +63,11 @@
 			children = (
 				AC54343E2112DAAB005B7056 /* Util */,
 				AC54343B2111D23F005B7056 /* Controller */,
-				AC5434322111C0D6005B7056 /* Handler */,
 				AC5434282111B5A3005B7056 /* WeexBox.h */,
 				AC5434302111BBCC005B7056 /* WeexBoxEngine.swift */,
 				AC5434292111B5A3005B7056 /* Info.plist */,
 			);
 			path = WeexBox;
-			sourceTree = "<group>";
-		};
-		AC5434322111C0D6005B7056 /* Handler */ = {
-			isa = PBXGroup;
-			children = (
-				AC5434332111C1D4005B7056 /* ImageLoader.h */,
-				AC5434342111C1D4005B7056 /* ImageLoader.m */,
-			);
-			path = Handler;
 			sourceTree = "<group>";
 		};
 		AC54343B2111D23F005B7056 /* Controller */ = {
@@ -126,7 +112,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC5434412112DAD6005B7056 /* Log.h in Headers */,
-				AC5434352111C1D4005B7056 /* ImageLoader.h in Headers */,
 				AC54342A2111B5A3005B7056 /* WeexBox.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,7 +128,7 @@
 				AC5434212111B5A3005B7056 /* Frameworks */,
 				AC5434222111B5A3005B7056 /* Headers */,
 				AC5434232111B5A3005B7056 /* Resources */,
-				17AA269C55F1DEB0F4CA92DD /* [CP] Copy Pods Resources */,
+				06543CC13CC82EC22B029010 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -197,18 +182,42 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		17AA269C55F1DEB0F4CA92DD /* [CP] Copy Pods Resources */ = {
+		06543CC13CC82EC22B029010 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WeexBox/Pods-WeexBox-resources.sh",
+				"${PODS_ROOT}/ATSDK-Weex/ATSDK.framework/Versions/A/Resources/ATSDK.bundle",
+				"${PODS_ROOT}/ATSDK-Weex/ATSDK.framework/Versions/A/Resources/en.lproj",
+				"${PODS_ROOT}/ATSDK-Weex/ATSDK.framework/Versions/A/Resources/zh-Hans.lproj",
+				"${PODS_ROOT}/BMBaseLibrary/Source/BMComponent/Calendar/Resources/CalendarLeftArrows@2x.png",
+				"${PODS_ROOT}/BMBaseLibrary/Source/BMComponent/Calendar/Resources/CalendarLeftArrows@3x.png",
+				"${PODS_ROOT}/BMBaseLibrary/Source/BMComponent/Calendar/Resources/CalendarReightArrows@2x.png",
+				"${PODS_ROOT}/BMBaseLibrary/Source/BMComponent/Calendar/Resources/CalendarReightArrows@3x.png",
+				"${PODS_ROOT}/BMBaseLibrary/Source/BMComponent/Chart/Resources/bm-chart.html",
+				"${PODS_ROOT}/BMBaseLibrary/Source/BMComponent/Chart/Resources/echarts.min.js",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
 				"${PODS_ROOT}/WeexSDK/pre-build/native-bundle-main.js",
 				"${PODS_ROOT}/WeexSDK/ios/sdk/WeexSDK/Resources/wx_load_error@3x.png",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ATSDK.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh-Hans.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CalendarLeftArrows@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CalendarLeftArrows@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CalendarReightArrows@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CalendarReightArrows@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/bm-chart.html",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/echarts.min.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/native-bundle-main.js",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/wx_load_error@3x.png",
 			);
@@ -243,7 +252,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC5434312111BBCC005B7056 /* WeexBoxEngine.swift in Sources */,
-				AC5434362111C1D4005B7056 /* ImageLoader.m in Sources */,
 				AC5434422112DAD6005B7056 /* Log.m in Sources */,
 				AC54343D2111D2DD005B7056 /* WeexBaseViewController.swift in Sources */,
 			);
@@ -376,6 +384,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1557BC57E5295E8A7176AE33 /* Pods-WeexBox.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -403,6 +412,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 470306F86FB9853839FE2D19 /* Pods-WeexBox.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;

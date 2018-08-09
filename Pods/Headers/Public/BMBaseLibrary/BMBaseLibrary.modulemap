@@ -1,0 +1,6 @@
+module BMBaseLibrary {
+  umbrella header "BMBaseLibrary-umbrella.h"
+
+  export *
+  module * { export * }
+}

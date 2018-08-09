@@ -8,6 +8,8 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "10.0"
   s.source       = { :git => "https://github.com/WeexBox/ios-library.git", :tag => "#{s.version}" }
   s.source_files = 'WeexBox/**/*.{swift,h,m}'
+  s.swift_version = '4.1'
+  s.static_framework = true
   s.dependency "Alamofire-Synchronous"
   s.dependency 'SwiftyJSON'
   s.dependency 'WeexSDK', '~> 0.18.0'

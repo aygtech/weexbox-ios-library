@@ -1,0 +1,1 @@
+../../../BMBaseLibrary/Source/BMComponent/Text/BMTextComponent.h

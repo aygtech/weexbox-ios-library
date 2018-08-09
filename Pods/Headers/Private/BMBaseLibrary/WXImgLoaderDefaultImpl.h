@@ -1,0 +1,1 @@
+../../../BMBaseLibrary/Source/BMHandler/WXImgLoaderDefaultImpl.h

@@ -16,5 +16,4 @@ FOUNDATION_EXPORT const unsigned char WeexBoxVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <WeexBox/PublicHeader.h>
 
-#import <WeexBox/ImageLoader.h>
 #import <WeexBox/Log.h>

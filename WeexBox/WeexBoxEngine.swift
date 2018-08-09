@@ -8,6 +8,7 @@
 
 import Foundation
 import WeexSDK
+import BMBaseLibrary
 
 public class WeexBoxEngine {
     
@@ -17,10 +18,9 @@ public class WeexBoxEngine {
     }
     
     private static func initWeex() {
-        WXSDKEngine.initSDKEnvironment()
-        WXSDKEngine.registerHandler(ImageLoader(), with: WXImgLoaderProtocol.self)
-        #if DEBUG
-        WXLog.setLogLevel(.all)
-        #endif
+        BMConfigManager.configDefaultData()
     }
+    
+    
+    
 }

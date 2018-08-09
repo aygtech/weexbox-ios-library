@@ -1,0 +1,6 @@
+module FSCalendar {
+  umbrella header "FSCalendar-umbrella.h"
+
+  export *
+  module * { export * }
+}

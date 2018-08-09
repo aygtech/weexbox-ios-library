@@ -1,0 +1,1 @@
+../../../BMBaseLibrary/Source/BMModule/Camera/BMUploadImageModel.h
