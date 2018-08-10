@@ -60,12 +60,15 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.3.4):
     - PromiseKit/CorePromise
-  - Realm (3.7.5):
-    - Realm/Headers (= 3.7.5)
-  - Realm/Headers (3.7.5)
-  - RealmSwift (3.7.5):
-    - Realm (= 3.7.5)
+  - Realm (3.7.6):
+    - Realm/Headers (= 3.7.6)
+  - Realm/Headers (3.7.6)
+  - RealmSwift (3.7.6):
+    - Realm (= 3.7.6)
   - Result (3.2.4)
+  - RTRootNavigationController (0.6.7):
+    - RTRootNavigationController/Core (= 0.6.7)
+  - RTRootNavigationController/Core (0.6.7)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
@@ -93,6 +96,7 @@ DEPENDENCIES:
   - Moya
   - PromiseKit
   - RealmSwift
+  - RTRootNavigationController
   - SwiftyJSON
   - SwiftyVersion
   - Zip
@@ -116,6 +120,7 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - Result
+    - RTRootNavigationController
     - SDWebImage
     - SFHFKeychainUtils
     - SocketRocket
@@ -136,7 +141,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   BMBaseLibrary:
-    :commit: 27e771cd19cc01d800f50a8ac2d55b9147629087
+    :commit: cd91c2b212379744acea7a144a43764256b7b4e4
     :git: https://github.com/WeexBox/Benmu-iOS-Library
 
 SPEC CHECKSUMS:
@@ -155,9 +160,10 @@ SPEC CHECKSUMS:
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   PhotoBrowser: afab1abad5dfc58609460d66fb27a166cafadf0d
   PromiseKit: e1425568123ec844a944c93f2bcb29d511d39cf5
-  Realm: c286caf4dbf346ce24aad49ca76c7ce622d4a082
-  RealmSwift: 2a9281e37d6de55f66f76254d49d28aeb1b729e4
+  Realm: 9eaecad54712d6246d08ba34c10f354e4715d7d3
+  RealmSwift: 1fe08b4ebaeeaacf17f9ba0343f7b25c9fc31fa6
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  RTRootNavigationController: d6aa6cbb78a3eaecea4f6e4df63f15dd887836b8
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SFHFKeychainUtils: a4e064aedb7a5ada3d5219152d45f53cebc16507
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
@@ -172,6 +178,6 @@ SPEC CHECKSUMS:
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 31cc04dd41abd33b9cefb9e12d401b93b9446f94
+PODFILE CHECKSUM: a78d6ab837b64b71bd43f80a4815ea56aeb59175
 
 COCOAPODS: 1.5.3

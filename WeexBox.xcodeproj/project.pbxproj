@@ -16,7 +16,7 @@
 		AC5CBBCB211C355B00A4FBCD /* RouterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBC7211C355B00A4FBCD /* RouterModel.m */; };
 		AC5CBBCC211C355B00A4FBCD /* RouterModule.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBC8211C355B00A4FBCD /* RouterModule.m */; };
 		AC5CBBCD211C355B00A4FBCD /* RouterModel.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBBC9211C355B00A4FBCD /* RouterModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC5CBBCE211C355B00A4FBCD /* RouterModule.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBBCA211C355B00A4FBCD /* RouterModule.h */; };
+		AC5CBBCE211C355B00A4FBCD /* RouterModule.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBBCA211C355B00A4FBCD /* RouterModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC5CBBD3211C3BF400A4FBCD /* UpdateMd5.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBD0211C3BF400A4FBCD /* UpdateMd5.swift */; };
 		AC5CBBD4211C3BF400A4FBCD /* UpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBD1211C3BF400A4FBCD /* UpdateManager.swift */; };
 		AC5CBBD5211C3BF400A4FBCD /* UpdateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBD2211C3BF400A4FBCD /* UpdateConfig.swift */; };
@@ -77,13 +77,13 @@
 		AC5434272111B5A3005B7056 /* WeexBox */ = {
 			isa = PBXGroup;
 			children = (
+				AC54343B2111D23F005B7056 /* Controller */,
+				AC5434292111B5A3005B7056 /* Info.plist */,
 				AC5CBBC5211C355B00A4FBCD /* Module */,
 				AC5CBBCF211C3BF400A4FBCD /* Update */,
 				AC54343E2112DAAB005B7056 /* Util */,
-				AC54343B2111D23F005B7056 /* Controller */,
 				AC5434282111B5A3005B7056 /* WeexBox.h */,
 				AC5434302111BBCC005B7056 /* WeexBoxEngine.swift */,
-				AC5434292111B5A3005B7056 /* Info.plist */,
 			);
 			path = WeexBox;
 			sourceTree = "<group>";

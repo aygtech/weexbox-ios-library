@@ -30,7 +30,6 @@
 #import "BMModalModule.h"
 #import "BMCameraModule.h"
 #import "BMStorageModule.h"
-#import "BMAppConfigModule.h"
 #import "BMToolsModule.h"
 #import "BMNavigatorModule.h"
 #import "BMAuthorLoginModule.h"
@@ -110,13 +109,13 @@
 {
     
     NSDictionary *components = @{
-                                @"wb-mask":          NSStringFromClass([BMMaskComponent class]),
-                                @"wb-pop":           NSStringFromClass([BMPopupComponent class]),
-                                @"wb-text":          NSStringFromClass([BMTextComponent class]),
-                                @"wb-richtext":      NSStringFromClass([BMRichTextComponent class]),
-                                @"wb-calendar":      NSStringFromClass([BMCalendarComponent class]),
-                                @"wb-span":          NSStringFromClass([BMSpanComponent class]),
-                                @"wb-chart":         NSStringFromClass([BMChartComponent class])
+                                @"wbc-mask":          NSStringFromClass([BMMaskComponent class]),
+                                @"wbc-pop":           NSStringFromClass([BMPopupComponent class]),
+                                @"wbc-text":          NSStringFromClass([BMTextComponent class]),
+                                @"wbc-richtext":      NSStringFromClass([BMRichTextComponent class]),
+                                @"wbc-calendar":      NSStringFromClass([BMCalendarComponent class]),
+                                @"wbc-span":          NSStringFromClass([BMSpanComponent class]),
+                                @"wbc-chart":         NSStringFromClass([BMChartComponent class])
                                 };
     for (NSString *componentName in components) {
         [WXSDKEngine registerComponent:componentName withClass:NSClassFromString([components valueForKey:componentName])];
@@ -126,20 +125,19 @@
 + (void)registerBmModules
 {
     NSDictionary *modules = @{
-                              @"wb-Axios":           NSStringFromClass([BMAxiosNetworkModule class]),
-                              @"wb-Geolocation":     NSStringFromClass([BMGeolocationModule class]),
-                              @"wb-Modal":           NSStringFromClass([BMModalModule class]),
-                              @"wb-Camera":          NSStringFromClass([BMCameraModule class]),
-                              @"wb-Storage":         NSStringFromClass([BMStorageModule class]),
-                              @"wb-Font":            NSStringFromClass([BMAppConfigModule class]),
-                              @"wb-Events":          NSStringFromClass([BMEventsModule class]),
-                              @"wb-BrowserImg":      NSStringFromClass([BMBrowserImgModule class]),
-                              @"wb-Tool":            NSStringFromClass([BMToolsModule class]),
-                              @"wb-Auth":            NSStringFromClass([BMAuthorLoginModule class]),
-                              @"wb-Navigator":       NSStringFromClass([BMNavigatorModule class]),
-                              @"wb-Communication":   NSStringFromClass([BMCommunicationModule class]),
-                              @"wb-Image":           NSStringFromClass([BMImageModule class]),
-                              @"wb-WebSocket":       NSStringFromClass([BMWebSocketModule class])
+                              @"wbm-axios":           NSStringFromClass([BMAxiosNetworkModule class]),
+                              @"wbm-geolocation":     NSStringFromClass([BMGeolocationModule class]),
+                              @"wbm-modal":           NSStringFromClass([BMModalModule class]),
+                              @"wbm-camera":          NSStringFromClass([BMCameraModule class]),
+                              @"wbm-storage":         NSStringFromClass([BMStorageModule class]),
+                              @"wbm-events":          NSStringFromClass([BMEventsModule class]),
+                              @"wbm-browserImg":      NSStringFromClass([BMBrowserImgModule class]),
+                              @"wbm-tool":            NSStringFromClass([BMToolsModule class]),
+                              @"wbm-auth":            NSStringFromClass([BMAuthorLoginModule class]),
+                              @"wbm-navigator":       NSStringFromClass([BMNavigatorModule class]),
+                              @"wbm-communication":   NSStringFromClass([BMCommunicationModule class]),
+                              @"wbm-image":           NSStringFromClass([BMImageModule class]),
+                              @"wbm-webSocket":       NSStringFromClass([BMWebSocketModule class])
                               };
     
     for (NSString *moduleName in modules.allKeys) {

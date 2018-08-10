@@ -7,7 +7,8 @@
 //
 
 import Foundation
+import RTRootNavigationController
 
-open class WBNavigationController: UINavigationController {
+open class WBNavigationController: RTRootNavigationController {
     
 }

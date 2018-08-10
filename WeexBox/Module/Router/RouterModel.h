@@ -12,7 +12,6 @@
 
 #define K_ANIMATE_PRESENT @"PRESENT"
 #define K_ANIMATE_PUSH @"PUSH"
-#define K_ANIMATE_TRANSLATION @"TRANSLATION"
 
 @interface RouterModel : NSObject
 

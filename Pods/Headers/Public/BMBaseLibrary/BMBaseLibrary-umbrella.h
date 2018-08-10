@@ -68,7 +68,6 @@
 #import "TransformCLLocation.h"
 #import "BMConfigManager.h"
 #import "BMStoreManager.h"
-#import "BMAppConfigModule.h"
 #import "BMAuthorLoginModule.h"
 #import "BMAxiosNetworkModule.h"
 #import "BMAxiosRequestModel.h"
