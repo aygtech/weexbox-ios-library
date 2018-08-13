@@ -21,6 +21,8 @@
 		AC5CBBD4211C3BF400A4FBCD /* UpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBD1211C3BF400A4FBCD /* UpdateManager.swift */; };
 		AC5CBBD5211C3BF400A4FBCD /* UpdateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBD2211C3BF400A4FBCD /* UpdateConfig.swift */; };
 		AC5CBBD7211C485000A4FBCD /* WBNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBD6211C485000A4FBCD /* WBNavigationController.swift */; };
+		AC5CBBDC211D677C00A4FBCD /* NavigatorModule.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBBD9211D677C00A4FBCD /* NavigatorModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC5CBBDD211D677C00A4FBCD /* NavigatorModule.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBDA211D677C00A4FBCD /* NavigatorModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		AC5CBBD1211C3BF400A4FBCD /* UpdateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateManager.swift; sourceTree = "<group>"; };
 		AC5CBBD2211C3BF400A4FBCD /* UpdateConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateConfig.swift; sourceTree = "<group>"; };
 		AC5CBBD6211C485000A4FBCD /* WBNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBNavigationController.swift; sourceTree = "<group>"; };
+		AC5CBBD9211D677C00A4FBCD /* NavigatorModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigatorModule.h; sourceTree = "<group>"; };
+		AC5CBBDA211D677C00A4FBCD /* NavigatorModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigatorModule.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 		AC5CBBC5211C355B00A4FBCD /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				AC5CBBD8211D65E300A4FBCD /* Navigator */,
 				AC5CBBC6211C355B00A4FBCD /* Router */,
 			);
 			path = Module;
@@ -133,6 +138,15 @@
 				AC5CBBD2211C3BF400A4FBCD /* UpdateConfig.swift */,
 			);
 			path = Update;
+			sourceTree = "<group>";
+		};
+		AC5CBBD8211D65E300A4FBCD /* Navigator */ = {
+			isa = PBXGroup;
+			children = (
+				AC5CBBD9211D677C00A4FBCD /* NavigatorModule.h */,
+				AC5CBBDA211D677C00A4FBCD /* NavigatorModule.m */,
+			);
+			path = Navigator;
 			sourceTree = "<group>";
 		};
 		E7C79831F702D9C370077FAA /* Pods */ = {
@@ -160,6 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC5CBBCE211C355B00A4FBCD /* RouterModule.h in Headers */,
+				AC5CBBDC211D677C00A4FBCD /* NavigatorModule.h in Headers */,
 				AC5434412112DAD6005B7056 /* Log.h in Headers */,
 				AC5CBBCD211C355B00A4FBCD /* RouterModel.h in Headers */,
 				AC54342A2111B5A3005B7056 /* WeexBox.h in Headers */,
@@ -302,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC5434312111BBCC005B7056 /* WeexBoxEngine.swift in Sources */,
+				AC5CBBDD211D677C00A4FBCD /* NavigatorModule.m in Sources */,
 				AC5CBBD4211C3BF400A4FBCD /* UpdateManager.swift in Sources */,
 				AC5CBBD7211C485000A4FBCD /* WBNavigationController.swift in Sources */,
 				AC5CBBD3211C3BF400A4FBCD /* UpdateMd5.swift in Sources */,

@@ -19,4 +19,5 @@ FOUNDATION_EXPORT const unsigned char WeexBoxVersionString[];
 #import <WeexBox/Log.h>
 #import <WeexBox/RouterModel.h>
 #import <WeexBox/RouterModule.h>
+#import <WeexBox/NavigatorModule.h>
 
