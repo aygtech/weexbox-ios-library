@@ -11,14 +11,13 @@ import SocketRocket
 import Async
 import WeexSDK
 
-@objcMembers open class WBWeexViewController: UIViewController, SRWebSocketDelegate {
+@objcMembers open class WBWeexViewController: WBBaseViewController, SRWebSocketDelegate {
     
-    var weexHeight: CGFloat!
-    var hotReloadSocket: SRWebSocket?
-    var instance: WXSDKInstance?
-    var weexView: UIView?
+    private var weexHeight: CGFloat!
+    private var hotReloadSocket: SRWebSocket?
+    private var instance: WXSDKInstance?
+    private var weexView: UIView?
     public var url: URL?
-    public var routerModel: RouterModel?
     
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +28,13 @@ import WeexSDK
         
         let navBarHeight: CGFloat = navigationController?.navigationBar.frame.maxY ?? 0
         weexHeight = view.frame.size.height - navBarHeight - UIApplication.shared.statusBarFrame.size.height
+        if let u = router?.url {
+            url = URL(string: u)
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(notificationRefreshInstance(_:)), name: NSNotification.Name("RefreshInstance"), object: nil)
+        
+        render()
     }
     
     open override func viewDidAppear(_ animated: Bool) {
