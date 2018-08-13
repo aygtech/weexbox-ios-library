@@ -17,7 +17,7 @@ import WeexSDK
     private var hotReloadSocket: SRWebSocket?
     private var instance: WXSDKInstance?
     private var weexView: UIView?
-    public var url: URL?
+    public var url: URL!
     
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,11 @@ import WeexSDK
         let navBarHeight: CGFloat = navigationController?.navigationBar.frame.maxY ?? 0
         weexHeight = view.frame.size.height - navBarHeight - UIApplication.shared.statusBarFrame.size.height
         if let u = router?.url {
-            url = URL(string: u)
+            if u.hasPrefix("http") {
+                url = URL(string: u)
+            } else {
+                url = UpdateManager.getFullUrl(file: u)
+            }
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(notificationRefreshInstance(_:)), name: NSNotification.Name("RefreshInstance"), object: nil)
@@ -84,11 +88,7 @@ import WeexSDK
             Log.debug("Update Finish...")
         }
         
-        if (url == nil) {
-            Log.error("error: render url is nil")
-        } else {
-            instance?.render(with: url, options: ["bundleUrl": url!.absoluteString], data: nil)
-        }
+        instance?.render(with: url, options: ["bundleUrl": url!.absoluteString], data: nil)
     }
     
     public func refreshWeex() {
