@@ -33,7 +33,7 @@ WX_EXPORT_METHOD(@selector(barHidden:))
 WX_EXPORT_METHOD(@selector(setRightItems:callback:))
 WX_EXPORT_METHOD(@selector(setLeftItems:callback:))
 WX_EXPORT_METHOD(@selector(setCenterItem:callback:))
-WX_EXPORT_METHOD(@selector(statusBarHidden:))
+//WX_EXPORT_METHOD(@selector(statusBarHidden:))
 
 #pragma mark - Public Method
 

@@ -10,7 +10,7 @@
 
 @interface Log : NSObject
 
-+ (void)debug:(NSString *)message;
-+ (void)error:(NSString *)message;
++ (void)d:(NSString *)message;
++ (void)e:(NSString *)message;
 
 @end

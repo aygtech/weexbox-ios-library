@@ -34,11 +34,12 @@ import WeexSDK
             } else {
                 url = UpdateManager.getFullUrl(file: u)
             }
+            NotificationCenter.default.addObserver(self, selector: #selector(notificationRefreshInstance(_:)), name: NSNotification.Name("RefreshInstance"), object: nil)
+            
+            render()
+        } else {
+            Log.e("url不能为空")
         }
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(notificationRefreshInstance(_:)), name: NSNotification.Name("RefreshInstance"), object: nil)
-        
-        render()
     }
     
     open override func viewDidAppear(_ animated: Bool) {
@@ -81,11 +82,11 @@ import WeexSDK
         }
         
         instance?.renderFinish = { (view) in
-            Log.debug("Render Finish...")
+            Log.d("Render Finish...")
         }
         
         instance?.updateFinish = { (view) in
-            Log.debug("Update Finish...")
+            Log.d("Update Finish...")
         }
         
         instance?.render(with: url, options: ["bundleUrl": url!.absoluteString], data: nil)

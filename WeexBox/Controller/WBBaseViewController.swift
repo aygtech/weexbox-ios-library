@@ -11,4 +11,11 @@ import Foundation
 open class WBBaseViewController: UIViewController {
     
     public var router: Router?
+    
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        if let hidden = router?.navBarHidden {
+            navigationController?.isNavigationBarHidden = hidden;
+        }
+    }
 }

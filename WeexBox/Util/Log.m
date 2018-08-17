@@ -11,11 +11,11 @@
 
 @implementation Log
 
-+ (void)debug:(NSString *)message {
++ (void)d:(NSString *)message {
     WXLogDebug(@"%@", message);
 }
 
-+ (void)error:(NSString *)message {
++ (void)e:(NSString *)message {
     WXLogError(@"%@", message);
 }
 

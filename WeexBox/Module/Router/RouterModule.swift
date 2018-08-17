@@ -8,88 +8,46 @@
 
 import Foundation
 import HandyJSON
-import RTRootNavigationController
-import Async
 
 extension RouterModule {
     
-    func open(_ info: Dictionary<String, Any>) {
-        let router = Router.deserialize(from: info)
-        var vc: WBBaseViewController
-        if router?.url != nil {
-            vc = WBWeexViewController()
-        } else {
-            Log.error("Error：url和nativePage不能都为空")
-            return
-        }
-        openVC(vc, router: router)
+    func openWeex(_ info: Dictionary<String, Any>) {
+        getRouter(info: info).openWeex(from: getVC())
+    }
+    
+    func openWeb(_ info: Dictionary<String, Any>) {
+        getRouter(info: info).openWeb(from: getVC())
+    }
+    
+    func openNative(_ info: Dictionary<String, Any>) {
+        getRouter(info: info).openNative(from: getVC())
+    }
+    
+    func openBrowser(_ info: Dictionary<String, Any>) {
+        getRouter(info: info).openBrowser()
+    }
+    
+    func openPhone(_ info: Dictionary<String, Any>) {
+        getRouter(info: info).openPhone()
     }
     
     func getParams() -> Dictionary<String, Any>? {
-        return (weexInstance.viewController as? WBBaseViewController)?.router?.params
+        return getVC().router!.params
     }
     
-    func back(_ levels: Int?) {
-        let type = getParams()?["type"] as? String
-        if type == K_ANIMATE_PRESENT {
-            weexInstance?.viewController?.dismiss(animated: true, completion: nil)
-        } else {
-            if let l = levels, l > 1 {
-                if let nav = weexInstance?.viewController?.navigationController {
-                    let index = nav.viewControllers.count - 1 - l
-                    if index <= 0 {
-                        nav.popViewController(animated: true)
-                    } else {
-                        let vc = nav.viewControllers[index]
-                        nav.popToViewController(vc, animated: true)
-                    }
-                }
-            } else {
-                weexInstance?.viewController?.navigationController?.popViewController(animated: true)
-            }
-        }
+    func close(_ levels: Int?) {
+        getVC().router!.close(from: getVC(), levels: levels)
     }
     
-    func refreshWeex() {
-        if let vc = weexInstance?.viewController as? WBWeexViewController {
-            vc.refreshWeex()
-        } else {
-            Log.error("Error：当前页面不是WBWeexViewController")
-        }
+    func refresh() {
+        getVC().refreshWeex()
     }
     
-    func toWebView(_ info: Dictionary<String, Any>) {
-        let vc = WBWebViewController()
-        let router = Router.deserialize(from: info)
-        openVC(vc, router: router)
+    func getRouter(info: Dictionary<String, Any>) -> Router {
+        return Router.deserialize(from: info)!
     }
     
-    func openBrowser(_ url: String) {
-        let u = URL(string: url)
-        if u != nil {
-            UIApplication.shared.open(u!, options: [:], completionHandler: nil)
-        } else {
-            Log.error("无效的url")
-        }
+    func getVC() -> WBWeexViewController {
+        return weexInstance.viewController as! WBWeexViewController
     }
-    
-    func callPhone(_ info: Dictionary<String, Any>) {
-        if let phone = info["phone"] as? String {
-            let tel = URL(string: "tel://" + phone)!
-            UIApplication.shared.open(tel, options: [:], completionHandler: nil)
-        } else {
-            Log.error("电话号码错误")
-        }
-    }
-    
-    func openVC(_ vc: WBBaseViewController, router: Router?) {
-        vc.router = router
-        vc.hidesBottomBarWhenPushed = true
-        if router?.type == K_ANIMATE_PRESENT {
-            weexInstance?.viewController?.present(RTRootNavigationController.init(rootViewController: vc), animated: true, completion: nil)
-        } else {
-            weexInstance?.viewController?.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
 }

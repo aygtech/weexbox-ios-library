@@ -130,8 +130,8 @@
 			children = (
 				AC5CBBCA211C355B00A4FBCD /* RouterModule.h */,
 				AC5CBBC8211C355B00A4FBCD /* RouterModule.m */,
-				AC5CBBE12121345400A4FBCD /* Router.swift */,
 				AC5CBBE32121363500A4FBCD /* RouterModule.swift */,
+				AC5CBBE12121345400A4FBCD /* Router.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
