@@ -12,7 +12,7 @@ import RTRootNavigationController
 
 public struct Router: HandyJSON {
     
-    static var routes = Dictionary<String, WBBaseViewController>()
+    static var routes = Dictionary<String, WBBaseViewController.Type>()
     static let typePush = "push"
     static let typePresent = "present"
     
@@ -20,8 +20,6 @@ public struct Router: HandyJSON {
     
     // 下一个weex页面路径
     var url: String?
-    // 下一个原生页面的名字
-    var nativeName: String?
     // 页面出现方式：push, present
     var type: String = Router.typePush
     // 是否隐藏导航栏
@@ -39,7 +37,7 @@ public struct Router: HandyJSON {
     
     func openNative(from: WBBaseViewController) {
         if let to = Router.routes[url!] {
-            open(from: from, to: to)
+            open(from: from, to: to.init())
         } else {
             Log.e("该路由名未注册")
         }

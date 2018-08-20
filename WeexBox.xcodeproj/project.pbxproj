@@ -25,6 +25,12 @@
 		AC5CBBE22121345400A4FBCD /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBE12121345400A4FBCD /* Router.swift */; };
 		AC5CBBE42121363500A4FBCD /* RouterModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBE32121363500A4FBCD /* RouterModule.swift */; };
 		AC5CBBE621218B3200A4FBCD /* WBWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBE521218B3200A4FBCD /* WBWebViewController.swift */; };
+		AC5CBBEA2127C40F00A4FBCD /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBE92127C40F00A4FBCD /* Result.swift */; };
+		AC5CBBED2127D0EB00A4FBCD /* AxiosModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBEC2127D0EB00A4FBCD /* AxiosModule.swift */; };
+		AC5CBBF02127D10F00A4FBCD /* AxiosModule.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBBEE2127D10F00A4FBCD /* AxiosModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC5CBBF12127D10F00A4FBCD /* AxiosModule.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBEF2127D10F00A4FBCD /* AxiosModule.m */; };
+		AC5CBBF42127D87500A4FBCD /* Axios.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBF32127D87500A4FBCD /* Axios.swift */; };
+		AC5CBBF6212A932B00A4FBCD /* UploadFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBF5212A932B00A4FBCD /* UploadFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +56,12 @@
 		AC5CBBE12121345400A4FBCD /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		AC5CBBE32121363500A4FBCD /* RouterModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterModule.swift; sourceTree = "<group>"; };
 		AC5CBBE521218B3200A4FBCD /* WBWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBWebViewController.swift; sourceTree = "<group>"; };
+		AC5CBBE92127C40F00A4FBCD /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		AC5CBBEC2127D0EB00A4FBCD /* AxiosModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxiosModule.swift; sourceTree = "<group>"; };
+		AC5CBBEE2127D10F00A4FBCD /* AxiosModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AxiosModule.h; sourceTree = "<group>"; };
+		AC5CBBEF2127D10F00A4FBCD /* AxiosModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AxiosModule.m; sourceTree = "<group>"; };
+		AC5CBBF32127D87500A4FBCD /* Axios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axios.swift; sourceTree = "<group>"; };
+		AC5CBBF5212A932B00A4FBCD /* UploadFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +97,7 @@
 		AC5434272111B5A3005B7056 /* WeexBox */ = {
 			isa = PBXGroup;
 			children = (
+				AC5CBBF22127D80D00A4FBCD /* Axios */,
 				AC54343B2111D23F005B7056 /* Controller */,
 				AC5434292111B5A3005B7056 /* Info.plist */,
 				AC5CBBC5211C355B00A4FBCD /* Module */,
@@ -112,6 +125,7 @@
 			children = (
 				AC54343F2112DAD6005B7056 /* Log.h */,
 				AC5434402112DAD6005B7056 /* Log.m */,
+				AC5CBBE92127C40F00A4FBCD /* Result.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -119,6 +133,7 @@
 		AC5CBBC5211C355B00A4FBCD /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				AC5CBBEB2127D0D900A4FBCD /* Axios */,
 				AC5CBBD8211D65E300A4FBCD /* Navigator */,
 				AC5CBBC6211C355B00A4FBCD /* Router */,
 			);
@@ -155,6 +170,25 @@
 			path = Navigator;
 			sourceTree = "<group>";
 		};
+		AC5CBBEB2127D0D900A4FBCD /* Axios */ = {
+			isa = PBXGroup;
+			children = (
+				AC5CBBEC2127D0EB00A4FBCD /* AxiosModule.swift */,
+				AC5CBBEE2127D10F00A4FBCD /* AxiosModule.h */,
+				AC5CBBEF2127D10F00A4FBCD /* AxiosModule.m */,
+			);
+			path = Axios;
+			sourceTree = "<group>";
+		};
+		AC5CBBF22127D80D00A4FBCD /* Axios */ = {
+			isa = PBXGroup;
+			children = (
+				AC5CBBF32127D87500A4FBCD /* Axios.swift */,
+				AC5CBBF5212A932B00A4FBCD /* UploadFile.swift */,
+			);
+			path = Axios;
+			sourceTree = "<group>";
+		};
 		E7C79831F702D9C370077FAA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +213,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC5CBBF02127D10F00A4FBCD /* AxiosModule.h in Headers */,
 				AC5CBBCE211C355B00A4FBCD /* RouterModule.h in Headers */,
 				AC5CBBDC211D677C00A4FBCD /* NavigatorModule.h in Headers */,
 				AC5434412112DAD6005B7056 /* Log.h in Headers */,
@@ -323,17 +358,22 @@
 			files = (
 				AC5CBBE42121363500A4FBCD /* RouterModule.swift in Sources */,
 				AC5CBBE22121345400A4FBCD /* Router.swift in Sources */,
+				AC5CBBF12127D10F00A4FBCD /* AxiosModule.m in Sources */,
 				AC5434312111BBCC005B7056 /* WeexBoxEngine.swift in Sources */,
 				AC5CBBDD211D677C00A4FBCD /* NavigatorModule.m in Sources */,
+				AC5CBBEA2127C40F00A4FBCD /* Result.swift in Sources */,
 				AC5CBBD4211C3BF400A4FBCD /* UpdateManager.swift in Sources */,
 				AC5CBBE02121320400A4FBCD /* WBBaseViewController.swift in Sources */,
 				AC5CBBD7211C485000A4FBCD /* WBNavigationController.swift in Sources */,
 				AC5CBBE621218B3200A4FBCD /* WBWebViewController.swift in Sources */,
 				AC5CBBD3211C3BF400A4FBCD /* UpdateMd5.swift in Sources */,
 				AC5434422112DAD6005B7056 /* Log.m in Sources */,
+				AC5CBBF6212A932B00A4FBCD /* UploadFile.swift in Sources */,
 				AC54343D2111D2DD005B7056 /* WBWeexViewController.swift in Sources */,
+				AC5CBBF42127D87500A4FBCD /* Axios.swift in Sources */,
 				AC5CBBCC211C355B00A4FBCD /* RouterModule.m in Sources */,
 				AC5CBBD5211C3BF400A4FBCD /* UpdateConfig.swift in Sources */,
+				AC5CBBED2127D0EB00A4FBCD /* AxiosModule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

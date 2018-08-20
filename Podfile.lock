@@ -55,6 +55,9 @@ PODS:
     - PromiseKit/CorePromise (= 6.3.4)
     - PromiseKit/Foundation (= 6.3.4)
     - PromiseKit/UIKit (= 6.3.4)
+  - PromiseKit/Alamofire (6.3.4):
+    - Alamofire (~> 4.0)
+    - PromiseKit/CorePromise
   - PromiseKit/CorePromise (6.3.4)
   - PromiseKit/Foundation (6.3.4):
     - PromiseKit/CorePromise
@@ -95,6 +98,7 @@ DEPENDENCIES:
   - HandyJSON
   - Moya
   - PromiseKit
+  - PromiseKit/Alamofire
   - RealmSwift
   - RTRootNavigationController
   - SwiftyJSON
@@ -178,6 +182,6 @@ SPEC CHECKSUMS:
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: a78d6ab837b64b71bd43f80a4815ea56aeb59175
+PODFILE CHECKSUM: 244eb92b74d5143b85fb5730526d878f522e99a5
 
 COCOAPODS: 1.5.3

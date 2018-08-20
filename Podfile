@@ -33,6 +33,8 @@ pod 'PromiseKit'
 # Promises for Swift & ObjC
 # https://github.com/mxcl/PromiseKit
 
+pod 'PromiseKit/Alamofire'
+
 pod 'AsyncSwift'
 # Syntactic sugar in Swift for asynchronous dispatches in Grand Central Dispatch
 # https://github.com/duemunk/Async

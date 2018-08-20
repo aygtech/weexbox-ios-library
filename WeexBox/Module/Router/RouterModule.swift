@@ -31,8 +31,8 @@ extension RouterModule {
         getRouter(info: info).openPhone()
     }
     
-    func getParams() -> Dictionary<String, Any>? {
-        return getVC().router!.params
+    func getParams() -> Result.JsResult {
+        return Result(data: getVC().router!.params).toJsResult()
     }
     
     func close(_ levels: Int?) {
