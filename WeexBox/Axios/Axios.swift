@@ -43,12 +43,20 @@ struct Axios {
         }, to: to) { encodingResult in
             switch encodingResult {
             case .success(let upload, _, _):
-                
+                var result = Result()
+                result.uploadProgress = upload.uploadProgress.fractionCompleted
+                callback(result)
                 upload.responseJSON { response in
-                    debugPrint(response)
+                    result.code = response.response?.statusCode ?? Result.error
+                    result.data = response.value
+                    result.error = response.error?.localizedDescription
+                    callback(result)
                 }
             case .failure(let encodingError):
-                print(encodingError)
+                var result = Result()
+                result.code = Result.error
+                result.error = encodingError.localizedDescription
+                callback(result)
             }
         }
     }

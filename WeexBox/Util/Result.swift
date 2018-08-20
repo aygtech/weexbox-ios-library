@@ -20,8 +20,8 @@ struct Result: HandyJSON {
     var code: Int = Result.success
     var data: Any?
     var error: String?
-    var uploadProgress: Int?
-    var downloadProgress: Int?
+    var uploadProgress: Double?
+    var downloadProgress: Double?
     
     typealias JsResult = Dictionary<String, Any>?
     

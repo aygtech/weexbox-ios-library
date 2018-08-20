@@ -25,17 +25,6 @@ extension AxiosModule {
      params: {
      ID: 12345
      },
-     
-     // `onUploadProgress` 允许为上传处理进度事件
-     onUploadProgress: function (progressEvent) {
-     // 对原生进度事件的处理
-     },
-     
-     // `onDownloadProgress` 允许为下载处理进度事件
-     onDownloadProgress: function (progressEvent) {
-     // 对原生进度事件的处理
-     },
-     
      }
      */
     func request(_ config: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
