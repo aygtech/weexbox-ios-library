@@ -1,5 +1,5 @@
 //
-//  JsInfo.swift
+//  JsParameters.swift
 //  WeexBox
 //
 //  Created by Mario on 2018/8/20.
@@ -9,7 +9,7 @@
 import Foundation
 import HandyJSON
 
-struct JsInfo: HandyJSON {
+struct JsParameters: HandyJSON {
     
     var url: String?
     var method: String?
