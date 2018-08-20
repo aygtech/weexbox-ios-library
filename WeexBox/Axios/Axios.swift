@@ -20,12 +20,11 @@ struct Axios {
     
     static func request(url: URLConvertible, method: HTTPMethod = .get, parameters: Parameters? = nil, headers: HTTPHeaders? = nil, callback: @escaping (Result) -> Void) {
         sessionManager.request(url, method: method, parameters: parameters, headers: headers).validate().responseJSON() { response in
-            switch response.result {
-            case .success:
-                callback(Result(code: response.response!.statusCode, data: response.result.value))
-            case .failure(let error):
-                callback(Result(code: response.response!.statusCode, data: response.result.value, error: error.localizedDescription))
-            }
+            var result = Result()
+            result.code = response.response?.statusCode ?? Result.error
+            result.data = response.value
+            result.error = response.error?.localizedDescription
+            callback(result)
         }
     }
     
@@ -36,7 +35,7 @@ struct Axios {
 //        sessionManager.download(url, method: method, parameters: parameters, headers: headers, to: destination).validate().responseData(completionHandler: callback)
 //    }
     
-    static func upload(files: Array<UploadFile>, to: URLConvertible) {
+    static func upload(files: Array<UploadFile>, to: URLConvertible, callback: @escaping (Result) -> Void) {
         sessionManager.upload(multipartFormData: { (multipartFormData) in
             for file in files {
                 multipartFormData.append(file.url, withName: file.name)
@@ -44,6 +43,7 @@ struct Axios {
         }, to: to) { encodingResult in
             switch encodingResult {
             case .success(let upload, _, _):
+                
                 upload.responseJSON { response in
                     debugPrint(response)
                 }

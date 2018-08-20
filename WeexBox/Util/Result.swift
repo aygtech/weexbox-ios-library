@@ -17,20 +17,16 @@ struct Result: HandyJSON {
     
     
     
-    var code: Int!
+    var code: Int = Result.success
     var data: Any?
     var error: String?
+    var uploadProgress: Int?
+    var downloadProgress: Int?
     
     typealias JsResult = Dictionary<String, Any>?
     
     
     init() {}
-    init(code: Int = Result.success, data: Any? = nil, error: String? = nil) {
-        self.code = code
-        self.data = data
-        self.error = error
-    }
-    
     
     func toJsResult() -> JsResult {
         return toJSON()

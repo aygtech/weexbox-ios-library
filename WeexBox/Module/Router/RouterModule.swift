@@ -32,7 +32,9 @@ extension RouterModule {
     }
     
     func getParams() -> Result.JsResult {
-        return Result(data: getVC().router!.params).toJsResult()
+        var result = Result()
+        result.data = getVC().router!.params
+        return result.toJsResult()
     }
     
     func close(_ levels: Int?) {
