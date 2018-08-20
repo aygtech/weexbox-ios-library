@@ -13,6 +13,10 @@ import RTRootNavigationController
 public struct Router: HandyJSON {
     
     static var routes = Dictionary<String, WBBaseViewController.Type>()
+    static func register(url: String, controller: WBBaseViewController.Type) {
+        routes[url] = controller
+    }
+    
     static let typePush = "push"
     static let typePresent = "present"
     

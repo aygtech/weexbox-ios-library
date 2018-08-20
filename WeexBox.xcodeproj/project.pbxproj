@@ -32,6 +32,9 @@
 		AC5CBBF42127D87500A4FBCD /* Axios.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBF32127D87500A4FBCD /* Axios.swift */; };
 		AC5CBBF6212A932B00A4FBCD /* UploadFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBF5212A932B00A4FBCD /* UploadFile.swift */; };
 		AC5CBBF8212AAE5900A4FBCD /* JsParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBF7212AAE5900A4FBCD /* JsParameters.swift */; };
+		AC5CBBFD212AB6EE00A4FBCD /* ModalModule.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBBFA212AB6EE00A4FBCD /* ModalModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC5CBBFE212AB6EE00A4FBCD /* ModalModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBFB212AB6EE00A4FBCD /* ModalModule.swift */; };
+		AC5CBBFF212AB6EE00A4FBCD /* ModalModule.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBFC212AB6EE00A4FBCD /* ModalModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +67,9 @@
 		AC5CBBF32127D87500A4FBCD /* Axios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axios.swift; sourceTree = "<group>"; };
 		AC5CBBF5212A932B00A4FBCD /* UploadFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFile.swift; sourceTree = "<group>"; };
 		AC5CBBF7212AAE5900A4FBCD /* JsParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsParameters.swift; sourceTree = "<group>"; };
+		AC5CBBFA212AB6EE00A4FBCD /* ModalModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalModule.h; sourceTree = "<group>"; };
+		AC5CBBFB212AB6EE00A4FBCD /* ModalModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalModule.swift; sourceTree = "<group>"; };
+		AC5CBBFC212AB6EE00A4FBCD /* ModalModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalModule.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +142,7 @@
 		AC5CBBC5211C355B00A4FBCD /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				AC5CBBF9212AB6BE00A4FBCD /* Modal */,
 				AC5CBBEB2127D0D900A4FBCD /* Axios */,
 				AC5CBBD8211D65E300A4FBCD /* Navigator */,
 				AC5CBBC6211C355B00A4FBCD /* Router */,
@@ -192,6 +199,16 @@
 			path = Axios;
 			sourceTree = "<group>";
 		};
+		AC5CBBF9212AB6BE00A4FBCD /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				AC5CBBFA212AB6EE00A4FBCD /* ModalModule.h */,
+				AC5CBBFC212AB6EE00A4FBCD /* ModalModule.m */,
+				AC5CBBFB212AB6EE00A4FBCD /* ModalModule.swift */,
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
 		E7C79831F702D9C370077FAA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +235,7 @@
 			files = (
 				AC5CBBF02127D10F00A4FBCD /* AxiosModule.h in Headers */,
 				AC5CBBCE211C355B00A4FBCD /* RouterModule.h in Headers */,
+				AC5CBBFD212AB6EE00A4FBCD /* ModalModule.h in Headers */,
 				AC5CBBDC211D677C00A4FBCD /* NavigatorModule.h in Headers */,
 				AC5434412112DAD6005B7056 /* Log.h in Headers */,
 				AC54342A2111B5A3005B7056 /* WeexBox.h in Headers */,
@@ -374,10 +392,12 @@
 				AC5CBBF6212A932B00A4FBCD /* UploadFile.swift in Sources */,
 				AC54343D2111D2DD005B7056 /* WBWeexViewController.swift in Sources */,
 				AC5CBBF42127D87500A4FBCD /* Axios.swift in Sources */,
+				AC5CBBFE212AB6EE00A4FBCD /* ModalModule.swift in Sources */,
 				AC5CBBCC211C355B00A4FBCD /* RouterModule.m in Sources */,
 				AC5CBBF8212AAE5900A4FBCD /* JsParameters.swift in Sources */,
 				AC5CBBD5211C3BF400A4FBCD /* UpdateConfig.swift in Sources */,
 				AC5CBBED2127D0EB00A4FBCD /* AxiosModule.swift in Sources */,
+				AC5CBBFF212AB6EE00A4FBCD /* ModalModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

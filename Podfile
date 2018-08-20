@@ -29,11 +29,9 @@ pod 'Moya'
 # Network abstraction layer written in Swift
 # https://github.com/Moya/Moya
 
-pod 'PromiseKit'
-# Promises for Swift & ObjC
-# https://github.com/mxcl/PromiseKit
-
-pod 'PromiseKit/Alamofire'
+pod 'MBProgressHUD'
+# A clean and lightweight progress HUD for your iOS and tvOS app.
+# https://github.com/jdg/MBProgressHUD
 
 pod 'AsyncSwift'
 # Syntactic sugar in Swift for asynchronous dispatches in Grand Central Dispatch
@@ -54,5 +52,9 @@ pod 'Zip'
 pod 'RTRootNavigationController'
 # Transparently make every view controller has its own navigation bar
 # https://github.com/rickytan/RTRootNavigationController
+
+pod 'SnapKit'
+# A Swift Autolayout DSL for iOS & OS X
+# https://github.com/SnapKit/SnapKit
 
 end

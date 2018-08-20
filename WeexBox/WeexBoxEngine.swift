@@ -20,6 +20,8 @@ public class WeexBoxEngine {
     private static func initWeex() {
         BMConfigManager.configDefaultData()
         WXSDKEngine.registerModule("wb-router", with: RouterModule.self)
+        Router.register(url: "weex", controller: WBWeexViewController.self)
+        Router.register(url: "web", controller: WBWebViewController.self)
     }
     
     
