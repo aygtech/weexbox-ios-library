@@ -35,28 +35,27 @@ struct Axios {
 //        sessionManager.download(url, method: method, parameters: parameters, headers: headers, to: destination).validate().responseData(completionHandler: callback)
 //    }
     
-    static func upload(files: Array<UploadFile>, to: URLConvertible, callback: @escaping (Result) -> Void) {
+    static func upload(files: Array<UploadFile>, to: URLConvertible, completionCallback: @escaping (Result) -> Void, progressCallback: @escaping (Result) -> Void) {
         sessionManager.upload(multipartFormData: { (multipartFormData) in
             for file in files {
                 multipartFormData.append(file.url, withName: file.name)
             }
         }, to: to) { encodingResult in
+            var result = Result()
             switch encodingResult {
             case .success(let upload, _, _):
-                var result = Result()
                 result.uploadProgress = upload.uploadProgress.fractionCompleted
-                callback(result)
+                progressCallback(result)
                 upload.responseJSON { response in
                     result.code = response.response?.statusCode ?? Result.error
                     result.data = response.value
                     result.error = response.error?.localizedDescription
-                    callback(result)
+                    completionCallback(result)
                 }
             case .failure(let encodingError):
-                var result = Result()
                 result.code = Result.error
                 result.error = encodingError.localizedDescription
-                callback(result)
+                completionCallback(result)
             }
         }
     }

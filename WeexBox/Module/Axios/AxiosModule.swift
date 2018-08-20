@@ -43,10 +43,12 @@ extension AxiosModule {
      to: 'https://some-domain.com/api/user',
      }
      */
-    func upload(_ config: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
+    func upload(_ config: Dictionary<String, Any>, completionCallback: @escaping WXModuleKeepAliveCallback, progressCallback: @escaping WXModuleKeepAliveCallback) {
         let info = JsParameters.deserialize(from: config)!
-        Axios.upload(files: info.files!, to: info.url!) { (result) in
-            callback(result.toJsResult(), true)
-        }
+        Axios.upload(files: info.files!, to: info.url!, completionCallback: { (result) in
+            completionCallback(result.toJsResult(), false)
+        }, progressCallback: { (result) in
+            progressCallback(result.toJsResult(), true)
+        })
     }
 }
