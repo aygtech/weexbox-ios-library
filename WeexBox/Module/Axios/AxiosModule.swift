@@ -28,12 +28,25 @@ extension AxiosModule {
      }
      */
     func request(_ config: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
-        let url = config["url"] as! String
-        let method = config["method"] as! String
-        let headers = config["headers"] as? HTTPHeaders
-        let params = config["params"] as? Parameters
-        Axios.request(url: url, method: HTTPMethod(rawValue: method.uppercased())!, parameters: params, headers: headers) { result in
+        let info = JsInfo.deserialize(from: config)!
+        Axios.request(url: info.url!, method: HTTPMethod(rawValue: info.method!.uppercased())!, parameters: info.params, headers: info.headers) { result in
             callback(result.toJsResult(), false)
+        }
+    }
+    
+    /*
+     {
+     // `files` 是本地文件路径数组
+     files: [[file: 'file://image.png', name: 'icon']]
+     
+     // `to` 是上传地址
+     to: 'https://some-domain.com/api/user',
+     }
+     */
+    func upload(_ config: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
+        let info = JsInfo.deserialize(from: config)!
+        Axios.upload(files: info.files!, to: info.url!) { (result) in
+            callback(result.toJsResult(), true)
         }
     }
 }

@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import HandyJSON
 
-struct UploadFile {
+struct UploadFile: HandyJSON {
     
-    let url: URL
-    let name: String
+    var url: URL!
+    var name: String!
     
 }

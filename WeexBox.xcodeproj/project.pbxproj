@@ -31,6 +31,7 @@
 		AC5CBBF12127D10F00A4FBCD /* AxiosModule.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBEF2127D10F00A4FBCD /* AxiosModule.m */; };
 		AC5CBBF42127D87500A4FBCD /* Axios.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBF32127D87500A4FBCD /* Axios.swift */; };
 		AC5CBBF6212A932B00A4FBCD /* UploadFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBF5212A932B00A4FBCD /* UploadFile.swift */; };
+		AC5CBBF8212AAE5900A4FBCD /* JsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBF7212AAE5900A4FBCD /* JsInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		AC5CBBEF2127D10F00A4FBCD /* AxiosModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AxiosModule.m; sourceTree = "<group>"; };
 		AC5CBBF32127D87500A4FBCD /* Axios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axios.swift; sourceTree = "<group>"; };
 		AC5CBBF5212A932B00A4FBCD /* UploadFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFile.swift; sourceTree = "<group>"; };
+		AC5CBBF7212AAE5900A4FBCD /* JsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				AC54343F2112DAD6005B7056 /* Log.h */,
 				AC5434402112DAD6005B7056 /* Log.m */,
 				AC5CBBE92127C40F00A4FBCD /* Result.swift */,
+				AC5CBBF7212AAE5900A4FBCD /* JsInfo.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				AC54343D2111D2DD005B7056 /* WBWeexViewController.swift in Sources */,
 				AC5CBBF42127D87500A4FBCD /* Axios.swift in Sources */,
 				AC5CBBCC211C355B00A4FBCD /* RouterModule.m in Sources */,
+				AC5CBBF8212AAE5900A4FBCD /* JsInfo.swift in Sources */,
 				AC5CBBD5211C3BF400A4FBCD /* UpdateConfig.swift in Sources */,
 				AC5CBBED2127D0EB00A4FBCD /* AxiosModule.swift in Sources */,
 			);
