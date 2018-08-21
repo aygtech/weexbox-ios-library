@@ -10,8 +10,6 @@
 
 @implementation RouterModule
 
-@synthesize weexInstance;
-
 WX_EXPORT_METHOD(@selector(open:))
 WX_EXPORT_METHOD_SYNC(@selector(getParams))
 WX_EXPORT_METHOD(@selector(back:))

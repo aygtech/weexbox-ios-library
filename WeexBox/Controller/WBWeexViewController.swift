@@ -76,7 +76,7 @@ import WeexSDK
                     ErrorCode:\(ocError.code)
                     ErrorInfo:\(ocError.userInfo)
                     """
-                    self?.show(UIAlertController(title: "render failed", message: errMsg, preferredStyle: .alert), sender: nil)
+                    self?.present(UIAlertController(title: "render failed", message: errMsg, preferredStyle: .alert), animated: true, completion: nil)
                 }
             }
             #endif

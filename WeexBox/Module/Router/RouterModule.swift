@@ -12,28 +12,32 @@ import HandyJSON
 extension RouterModule {
     
     // 打开weex
-    func openWeex(_ info: Dictionary<String, Any>) {
-        getRouter(info: info).openWeex(from: getVC())
+    func openWeex(_ options: Dictionary<String, Any>) {
+        getRouter(options: options).openWeex(from: getVC())
     }
     
     // 打开web
-    func openWeb(_ info: Dictionary<String, Any>) {
-        getRouter(info: info).openWeb(from: getVC())
+    func openWeb(_ options: Dictionary<String, Any>) {
+        getRouter(options: options).openWeb(from: getVC())
     }
     
     // 打开原生
-    func openNative(_ info: Dictionary<String, Any>) {
-        getRouter(info: info).openNative(from: getVC())
+    func openNative(_ options: Dictionary<String, Any>) {
+        getRouter(options: options).openNative(from: getVC())
     }
     
     // 打开浏览器
-    func openBrowser(_ info: Dictionary<String, Any>) {
-        getRouter(info: info).openBrowser()
+    func openBrowser(_ url: String) {
+        var router = Router()
+        router.url = url
+        router.openBrowser()
     }
     
     // 打电话
-    func openPhone(_ info: Dictionary<String, Any>) {
-        getRouter(info: info).openPhone()
+    func openPhone(_ phone: String) {
+        var router = Router()
+        router.url = phone
+        router.openPhone()
     }
     
     // 获取router的params参数
@@ -53,11 +57,8 @@ extension RouterModule {
         getVC().refreshWeex()
     }
     
-    func getRouter(info: Dictionary<String, Any>) -> Router {
-        return Router.deserialize(from: info)!
+    func getRouter(options: Dictionary<String, Any>) -> Router {
+        return Router.deserialize(from: options)!
     }
     
-    func getVC() -> WBWeexViewController {
-        return weexInstance.viewController as! WBWeexViewController
-    }
 }

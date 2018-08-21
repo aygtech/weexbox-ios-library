@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <WeexSDK/WXModuleProtocol.h>
+#import "BaseModule.h"
 
-@interface AxiosModule : NSObject<WXModuleProtocol>
+@interface AxiosModule : BaseModule
 
 @end

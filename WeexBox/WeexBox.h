@@ -21,5 +21,6 @@ FOUNDATION_EXPORT const unsigned char WeexBoxVersionString[];
 #import <WeexBox/NavigatorModule.h>
 #import <WeexBox/AxiosModule.h>
 #import <WeexBox/ModalModule.h>
+#import <WeexBox/BaseModule.h>
 
 

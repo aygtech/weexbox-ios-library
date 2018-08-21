@@ -27,8 +27,8 @@ extension AxiosModule {
      },
      }
      */
-    func request(_ config: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
-        let info = JsParameters.deserialize(from: config)!
+    func request(_ options: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
+        let info = JsOptions.deserialize(from: options)!
         Axios.request(url: info.url!, method: HTTPMethod(rawValue: info.method!.uppercased())!, parameters: info.params, headers: info.headers) { result in
             callback(result.toJsResult(), false)
         }
@@ -43,8 +43,8 @@ extension AxiosModule {
      to: 'https://some-domain.com/api/user',
      }
      */
-    func upload(_ config: Dictionary<String, Any>, completionCallback: @escaping WXModuleKeepAliveCallback, progressCallback: @escaping WXModuleKeepAliveCallback) {
-        let info = JsParameters.deserialize(from: config)!
+    func upload(_ options: Dictionary<String, Any>, completionCallback: @escaping WXModuleKeepAliveCallback, progressCallback: @escaping WXModuleKeepAliveCallback) {
+        let info = JsOptions.deserialize(from: options)!
         Axios.upload(files: info.files!, to: info.url!, completionCallback: { (result) in
             completionCallback(result.toJsResult(), false)
         }, progressCallback: { (result) in
