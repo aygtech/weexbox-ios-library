@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ 日志
+ */
 @interface Log : NSObject
 
 + (void)d:(NSString *)message;

@@ -15,7 +15,7 @@ import HandyJSON
 import SwiftyVersion
 import Zip
 
-
+/// 热更新
 @objcMembers public class UpdateManager: NSObject {
     
     @objc public enum UpdateState: Int {

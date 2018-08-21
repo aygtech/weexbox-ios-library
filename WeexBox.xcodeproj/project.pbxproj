@@ -105,6 +105,7 @@
 		AC5434272111B5A3005B7056 /* WeexBox */ = {
 			isa = PBXGroup;
 			children = (
+				AC5CBC00212BB6DF00A4FBCD /* Model */,
 				AC5CBBF22127D80D00A4FBCD /* Axios */,
 				AC54343B2111D23F005B7056 /* Controller */,
 				AC5434292111B5A3005B7056 /* Info.plist */,
@@ -133,8 +134,6 @@
 			children = (
 				AC54343F2112DAD6005B7056 /* Log.h */,
 				AC5434402112DAD6005B7056 /* Log.m */,
-				AC5CBBE92127C40F00A4FBCD /* Result.swift */,
-				AC5CBBF7212AAE5900A4FBCD /* JsParameters.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -156,7 +155,6 @@
 				AC5CBBCA211C355B00A4FBCD /* RouterModule.h */,
 				AC5CBBC8211C355B00A4FBCD /* RouterModule.m */,
 				AC5CBBE32121363500A4FBCD /* RouterModule.swift */,
-				AC5CBBE12121345400A4FBCD /* Router.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -164,9 +162,7 @@
 		AC5CBBCF211C3BF400A4FBCD /* Update */ = {
 			isa = PBXGroup;
 			children = (
-				AC5CBBD0211C3BF400A4FBCD /* UpdateMd5.swift */,
 				AC5CBBD1211C3BF400A4FBCD /* UpdateManager.swift */,
-				AC5CBBD2211C3BF400A4FBCD /* UpdateConfig.swift */,
 			);
 			path = Update;
 			sourceTree = "<group>";
@@ -194,7 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				AC5CBBF32127D87500A4FBCD /* Axios.swift */,
-				AC5CBBF5212A932B00A4FBCD /* UploadFile.swift */,
 			);
 			path = Axios;
 			sourceTree = "<group>";
@@ -207,6 +202,19 @@
 				AC5CBBFB212AB6EE00A4FBCD /* ModalModule.swift */,
 			);
 			path = Modal;
+			sourceTree = "<group>";
+		};
+		AC5CBC00212BB6DF00A4FBCD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC5CBBF7212AAE5900A4FBCD /* JsParameters.swift */,
+				AC5CBBE92127C40F00A4FBCD /* Result.swift */,
+				AC5CBBD2211C3BF400A4FBCD /* UpdateConfig.swift */,
+				AC5CBBD0211C3BF400A4FBCD /* UpdateMd5.swift */,
+				AC5CBBE12121345400A4FBCD /* Router.swift */,
+				AC5CBBF5212A932B00A4FBCD /* UploadFile.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E7C79831F702D9C370077FAA /* Pods */ = {

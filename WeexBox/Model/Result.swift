@@ -9,6 +9,7 @@
 import Foundation
 import HandyJSON
 
+/// 结果
 struct Result: HandyJSON {
     
     

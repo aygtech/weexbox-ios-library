@@ -9,6 +9,7 @@
 import Foundation
 import RTRootNavigationController
 
+/// 导航基类
 open class WBNavigationController: RTRootNavigationController {
     
 }

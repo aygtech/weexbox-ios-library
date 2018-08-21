@@ -9,6 +9,7 @@
 import Foundation
 import HandyJSON
 
+/// 热更新配置
 struct UpdateConfig: HandyJSON {
     
     var name: String!

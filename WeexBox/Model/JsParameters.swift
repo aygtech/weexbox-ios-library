@@ -9,6 +9,7 @@
 import Foundation
 import HandyJSON
 
+/// js的网络请求参数
 struct JsParameters: HandyJSON {
     
     var url: String?

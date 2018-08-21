@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 import HandyJSON
 
+/// 热更新md5
 class Md5Realm: Object {
     
     @objc dynamic var path = ""

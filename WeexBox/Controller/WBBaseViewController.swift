@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// vc基类
 open class WBBaseViewController: UIViewController {
     
     public var router: Router?

@@ -11,6 +11,7 @@ import SocketRocket
 import Async
 import WeexSDK
 
+/// Weex基类
 @objcMembers open class WBWeexViewController: WBBaseViewController, SRWebSocketDelegate {
     
     private var weexHeight: CGFloat!

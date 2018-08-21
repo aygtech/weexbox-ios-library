@@ -18,6 +18,14 @@ struct Axios {
         return SessionManager(configuration: configuration)
     }()
     
+    /// 请求接口
+    ///
+    /// - Parameters:
+    ///   - url: 接口地址
+    ///   - method: HTTP方法. 默认`.get`
+    ///   - parameters: HTTP参数. 默认`nil`.
+    ///   - headers: HTTP头. 默认`nil`.
+    ///   - callback: 请求回调
     static func request(url: URLConvertible, method: HTTPMethod = .get, parameters: Parameters? = nil, headers: HTTPHeaders? = nil, callback: @escaping (Result) -> Void) {
         sessionManager.request(url, method: method, parameters: parameters, headers: headers).validate().responseJSON() { response in
             var result = Result()
@@ -35,6 +43,13 @@ struct Axios {
 //        sessionManager.download(url, method: method, parameters: parameters, headers: headers, to: destination).validate().responseData(completionHandler: callback)
 //    }
     
+    /// 上传
+    ///
+    /// - Parameters:
+    ///   - files: 文件数组
+    ///   - to: 地址
+    ///   - completionCallback: 上传完成回调
+    ///   - progressCallback: 进度回调
     static func upload(files: Array<UploadFile>, to: URLConvertible, completionCallback: @escaping (Result) -> Void, progressCallback: @escaping (Result) -> Void) {
         sessionManager.upload(multipartFormData: { (multipartFormData) in
             for file in files {

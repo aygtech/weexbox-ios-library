@@ -9,6 +9,7 @@
 import Foundation
 import SnapKit
 
+/// web基类
 open class WBWebViewController: WBBaseViewController {
     
     var url: URL!

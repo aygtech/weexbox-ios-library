@@ -10,6 +10,7 @@ import Foundation
 import HandyJSON
 import RTRootNavigationController
 
+/// 路由
 public struct Router: HandyJSON {
     
     static var routes = Dictionary<String, WBBaseViewController.Type>()
@@ -31,14 +32,17 @@ public struct Router: HandyJSON {
     // 需要传到下一个页面的数据
     var params: Dictionary<String, Any>?
     
+    // 打开weex页面
     func openWeex(from: WBBaseViewController) {
         open(from: from, to: WBWeexViewController())
     }
     
+    // 打开内部web页面
     func openWeb(from: WBBaseViewController) {
         open(from: from, to: WBWebViewController())
     }
     
+    // 打开原生页面
     func openNative(from: WBBaseViewController) {
         if let to = Router.routes[url!] {
             open(from: from, to: to.init())
@@ -47,10 +51,12 @@ public struct Router: HandyJSON {
         }
     }
     
+    // 打开外部浏览器
     func openBrowser() {
         UIApplication.shared.open(URL(string: url!)!, options: [:], completionHandler: nil)
     }
     
+    // 打电话
     func openPhone() {
         UIApplication.shared.open(URL(string: "tel://" + url!)!, options: [:], completionHandler: nil)
     }
@@ -65,6 +71,7 @@ public struct Router: HandyJSON {
         }
     }
     
+    // 关闭页面
     func close(from: WBBaseViewController, levels: Int? = nil) {
         if type == Router.typePresent {
             from.dismiss(animated: true, completion: nil)

@@ -10,6 +10,7 @@ import Foundation
 import WeexSDK
 import BMBaseLibrary
 
+/// 初始化SDK
 public class WeexBoxEngine {
     
     public static func initialize() {
