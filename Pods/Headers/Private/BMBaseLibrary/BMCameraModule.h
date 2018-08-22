@@ -1,1 +1,0 @@
-../../../BMBaseLibrary/Source/BMModule/Camera/BMCameraModule.h

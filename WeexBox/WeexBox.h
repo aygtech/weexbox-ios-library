@@ -19,8 +19,9 @@ FOUNDATION_EXPORT const unsigned char WeexBoxVersionString[];
 #import <WeexBox/Log.h>
 #import <WeexBox/RouterModule.h>
 #import <WeexBox/NavigatorModule.h>
-#import <WeexBox/AxiosModule.h>
+#import <WeexBox/NetworkModule.h>
 #import <WeexBox/ModalModule.h>
 #import <WeexBox/BaseModule.h>
+#import <WeexBox/ExternalModule.h>
 
 

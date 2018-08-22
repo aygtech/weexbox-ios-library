@@ -49,7 +49,7 @@ extension ModalModule {
     // 输入框
     func prompt(_ options: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
         let info = JsOptions.deserialize(from: options)!
-        let alertController = getAlertController(info, okCallback: callback)
+        let alertController = getAlertController(info, okCallback: callback, cancelCallback: callback)
         alertController.addTextField { textField in
             textField.placeholder = info.placeholder
             textField.isSecureTextEntry = info.isSecure ?? false
@@ -84,11 +84,9 @@ extension ModalModule {
         func getAlertController(_ info: JsOptions, okCallback: WXModuleKeepAliveCallback?) -> UIAlertController {
             let alertController = UIAlertController(title: info.title, message: info.message, preferredStyle: .alert)
             let okAction = UIAlertAction(title: info.okTitle, style: .default) { action in
-                if okCallback != nil {
-                    var result = Result()
-                    result.data = alertController.textFields?.first?.text
-                    okCallback!(result.toJsResult(), false)
-                }
+                var result = Result()
+                result.data = alertController.textFields?.first?.text
+                okCallback?(result.toJsResult(), false)
             }
             alertController.addAction(okAction)
             return alertController
@@ -97,11 +95,9 @@ extension ModalModule {
         func getAlertController(_ info: JsOptions, okCallback: WXModuleKeepAliveCallback?, cancelCallback: WXModuleKeepAliveCallback?) -> UIAlertController {
             let alertController = getAlertController(info, okCallback: okCallback)
             let cancelAction = UIAlertAction(title: info.cancelTitle, style: .default) { action in
-                if cancelCallback != nil {
-                    var result = Result()
-                    result.code = Result.error
-                    cancelCallback!(result, false)
-                }
+                var result = Result()
+                result.code = Result.error
+                cancelCallback?(result, false)
             }
             alertController.addAction(cancelAction)
             return alertController

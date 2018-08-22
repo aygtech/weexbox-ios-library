@@ -1,0 +1,6 @@
+framework module SwiftyVersion {
+  umbrella header "SwiftyVersion-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,6 +1,0 @@
-module PhotoBrowser {
-  umbrella header "PhotoBrowser-umbrella.h"
-
-  export *
-  module * { export * }
-}

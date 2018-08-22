@@ -68,8 +68,7 @@ WX_EXPORT_METHOD_SYNC(@selector(getComputedStyle:))
         return;
     }
     
-    WXExpressionType exprType = [EBExpressionHandler stringToExprType:eventType];
-    if (exprType == WXExpressionTypeUndefined) {
+    if (![EBEventHandlerFactory containsEvent:eventType]) {
         WX_LOG(WXLogFlagWarning, @"enableBinding params error");
         return;
     }
@@ -85,11 +84,11 @@ WX_EXPORT_METHOD_SYNC(@selector(getComputedStyle:))
         
         pthread_mutex_lock(&mutex);
         
-        EBExpressionHandler *handler = [welf.bindData handlerForToken:sourceRef expressionType:exprType];
+        EBExpressionHandler *handler = [welf.bindData handlerForToken:sourceRef eventType:eventType];
         if (!handler) {
             // create handler for key
-            handler = [EBExpressionHandler handlerWithExpressionType:exprType source:sourceComponent];
-            [welf.bindData putHandler:handler forToken:sourceRef expressionType:exprType];
+            handler = [EBEventHandlerFactory createHandlerWithEvent:eventType source:sourceComponent];
+            [welf.bindData putHandler:handler forToken:sourceRef eventType:eventType];
         }
         
         pthread_mutex_unlock(&mutex);
@@ -107,8 +106,7 @@ WX_EXPORT_METHOD_SYNC(@selector(getComputedStyle:))
         return;
     }
     
-    WXExpressionType exprType = [EBExpressionHandler stringToExprType:eventType];
-    if (exprType == WXExpressionTypeUndefined) {
+    if (![EBEventHandlerFactory containsEvent:eventType]) {
         WX_LOG(WXLogFlagWarning, @"createBinding params handler error");
         callback(@{@"state":@"error",@"msg":@"createBinding params handler error"}, NO);
         return;
@@ -123,9 +121,8 @@ WX_EXPORT_METHOD_SYNC(@selector(getComputedStyle:))
             callback(@{@"state":@"error",@"msg":@"createBinding can't find source component"}, NO);
             return;
         }
-        
-        NSMapTable<NSString *, id> *targetMap = [NSMapTable strongToWeakObjectsMapTable];
-        NSMutableDictionary<NSString *, NSDictionary *> *expressionDict = [NSMutableDictionary dictionary];
+
+        NSMapTable<id, NSDictionary *> *targetExpressionMap = [NSMapTable weakToStrongObjectsMapTable];
         for (NSDictionary *targetDic in targetExpression) {
             NSString *targetRef = targetDic[@"element"];
             NSString *property = targetDic[@"property"];
@@ -139,8 +136,8 @@ WX_EXPORT_METHOD_SYNC(@selector(getComputedStyle:))
                         [targetComponent.view.layer removeAllAnimations];
                     });
                 }
-                
-                NSMutableDictionary *propertyDic = [[expressionDict objectForKey:targetRef] mutableCopy];
+
+                NSMutableDictionary *propertyDic = [[targetExpressionMap objectForKey:targetComponent] mutableCopy];
                 if (!propertyDic) {
                     propertyDic = [NSMutableDictionary dictionary];
                 }
@@ -152,29 +149,27 @@ WX_EXPORT_METHOD_SYNC(@selector(getComputedStyle:))
                     expDict[@"config"] = targetDic[@"config"];
                 }
                 propertyDic[property] = expDict;
-                [targetMap setObject:targetComponent forKey:targetRef];
-                [expressionDict setObject:propertyDic forKey:targetRef];
+                [targetExpressionMap setObject:propertyDic forKey:targetComponent];
             }
         }
         
         // find handler for key
         pthread_mutex_lock(&mutex);
         
-        EBExpressionHandler *handler = [welf.bindData handlerForToken:sourceRef expressionType:exprType];
+        EBExpressionHandler *handler = [welf.bindData handlerForToken:sourceRef eventType:eventType];
         if (!handler) {
             // create handler for key
-            handler = [EBExpressionHandler handlerWithExpressionType:exprType source:sourceComponent];
-            [welf.bindData putHandler:handler forToken:sourceRef expressionType:exprType];
+            handler = [EBEventHandlerFactory createHandlerWithEvent:eventType source:sourceComponent];
+            [welf.bindData putHandler:handler forToken:sourceRef eventType:eventType];
         }
-        
-        [handler updateTargetMap:targetMap
-                  expressionDict:expressionDict
-                         options:nil
-                  exitExpression:[EBBindData parseExpression:exitExpression]
-                        callback:^(id  _Nonnull source, id  _Nonnull result, BOOL keepAlive) {
-                            callback(result,keepAlive);
-                        }];
-        
+
+        [handler updateTargetExpression:targetExpressionMap
+                                options:nil
+                         exitExpression:[EBBindData parseExpression:exitExpression]
+                               callback:^(id  _Nonnull source, id  _Nonnull result, BOOL keepAlive) {
+                                   callback(result,keepAlive);
+                               }];
+
         pthread_mutex_unlock(&mutex);
     });
 }
@@ -186,15 +181,14 @@ WX_EXPORT_METHOD_SYNC(@selector(getComputedStyle:))
         return;
     }
     
-    WXExpressionType exprType = [EBExpressionHandler stringToExprType:eventType];
-    if (exprType == WXExpressionTypeUndefined) {
+    if (![EBEventHandlerFactory containsEvent:eventType]) {
         WX_LOG(WXLogFlagWarning, @"disableBinding params handler error");
         return;
     }
     
     pthread_mutex_lock(&mutex);
     
-    EBExpressionHandler *handler = [self.bindData handlerForToken:sourceRef expressionType:exprType];
+    EBExpressionHandler *handler = [self.bindData handlerForToken:sourceRef eventType:eventType];
     if (!handler) {
         WX_LOG(WXLogFlagWarning, @"disableBinding can't find handler handler");
         pthread_mutex_unlock(&mutex);
@@ -202,7 +196,7 @@ WX_EXPORT_METHOD_SYNC(@selector(getComputedStyle:))
     }
     
     [handler removeExpressionBinding];
-    [self.bindData removeHandler:handler forToken:sourceRef expressionType:exprType];
+    [self.bindData removeHandler:handler forToken:sourceRef eventType:eventType];
     
     pthread_mutex_unlock(&mutex);
 }

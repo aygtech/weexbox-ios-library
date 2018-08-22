@@ -25,7 +25,7 @@ struct Result: HandyJSON {
     var downloadProgress: Double?
     
     typealias JsResult = Dictionary<String, Any>?
-    
+    typealias Callback = (Result) -> Void
     
     init() {}
     

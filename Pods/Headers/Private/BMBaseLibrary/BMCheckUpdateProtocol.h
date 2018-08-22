@@ -1,1 +1,0 @@
-../../../BMBaseLibrary/Source/BMManager/Handler/BMCheckUpdateProtocol.h

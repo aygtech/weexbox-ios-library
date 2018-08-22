@@ -51,16 +51,6 @@ public struct Router: HandyJSON {
         }
     }
     
-    // 打开外部浏览器
-    func openBrowser() {
-        UIApplication.shared.open(URL(string: url!)!, options: [:], completionHandler: nil)
-    }
-    
-    // 打电话
-    func openPhone() {
-        UIApplication.shared.open(URL(string: "tel://" + url!)!, options: [:], completionHandler: nil)
-    }
-    
     func open(from: WBBaseViewController, to: WBBaseViewController) {
         to.router = self
         to.hidesBottomBarWhenPushed = true

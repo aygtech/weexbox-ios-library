@@ -8,7 +8,6 @@
 
 import Foundation
 import WeexSDK
-import BMBaseLibrary
 
 /// 初始化SDK
 public class WeexBoxEngine {
@@ -19,8 +18,8 @@ public class WeexBoxEngine {
     }
     
     private static func initWeex() {
-        BMConfigManager.configDefaultData()
         WXSDKEngine.registerModule("wb-router", with: RouterModule.self)
+        WXSDKEngine.registerModule("wb-modal", with: ModalModule.self)
     }
     
     

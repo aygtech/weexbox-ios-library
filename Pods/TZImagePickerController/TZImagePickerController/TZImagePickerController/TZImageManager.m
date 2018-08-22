@@ -420,7 +420,7 @@ static dispatch_once_t onceToken;
             PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
             options.resizeMode = PHImageRequestOptionsResizeModeFast;
             options.networkAccessAllowed = YES;
-            if ([[model.asset valueForKey:@"filename"] hasSuffix:@"GIF"]) {
+            if (model.type == TZAssetModelMediaTypePhotoGif) {
                 options.version = PHImageRequestOptionsVersionOriginal;
             }
             [[PHImageManager defaultManager] requestImageDataForAsset:model.asset options:options resultHandler:^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info) {
@@ -888,12 +888,14 @@ static dispatch_once_t onceToken;
             [[NSFileManager defaultManager] createDirectoryAtPath:[NSHomeDirectory() stringByAppendingFormat:@"/tmp"] withIntermediateDirectories:YES attributes:nil error:nil];
         }
         
-        AVMutableVideoComposition *videoComposition = [self fixedCompositionWithAsset:videoAsset];
-        if (videoComposition.renderSize.width) {
-            // 修正视频转向
-            session.videoComposition = videoComposition;
+        if ([TZImagePickerConfig sharedInstance].needFixComposition) {
+            AVMutableVideoComposition *videoComposition = [self fixedCompositionWithAsset:videoAsset];
+            if (videoComposition.renderSize.width) {
+                // 修正视频转向
+                session.videoComposition = videoComposition;
+            }
         }
-        
+
         // Begin to export video to the output path asynchronously.
         [session exportAsynchronouslyWithCompletionHandler:^(void) {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -1044,6 +1046,18 @@ static dispatch_once_t onceToken;
          */
     } else {
         return image;
+    }
+}
+
+/// 判断asset是否是视频
+- (BOOL)isVideo:(id)asset {
+    if (iOS8Later) {
+        PHAsset *phAsset = asset;
+        return phAsset.mediaType == PHAssetMediaTypeVideo;
+    } else {
+        ALAsset *alAsset = asset;
+        NSString *alAssetType = [[alAsset valueForProperty:ALAssetPropertyType] stringValue];
+        return [alAssetType isEqualToString:ALAssetTypeVideo];
     }
 }
 

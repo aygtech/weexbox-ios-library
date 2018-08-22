@@ -4,7 +4,7 @@
 //
 //  Created by 谭真 on 15/12/24.
 //  Copyright © 2015年 谭真. All rights reserved.
-//  version 2.2.4 - 2018.08.03
+//  version 2.2.6 - 2018.08.21
 //  更多信息，请前往项目的github地址：https://github.com/banchichen/TZImagePickerController
 
 /*
@@ -75,7 +75,7 @@
 /// Default is YES, if set NO, user can't picking video.
 /// 默认为YES，如果设置为NO,用户将不能选择视频
 @property (nonatomic, assign) BOOL allowPickingVideo;
-/// Default is NO / 默认为NO，为YES时可以多选视频/gif图片，和照片共享最大可选张数maxImagesCount的限制
+/// Default is NO / 默认为NO，为YES时可以多选视频/gif/图片，和照片共享最大可选张数maxImagesCount的限制
 @property (nonatomic, assign) BOOL allowPickingMultipleVideo;
 
 /// Default is NO, if set YES, user can picking gif image.
@@ -132,6 +132,9 @@
 /// Default is No, if set YES, the result photo will not be scaled to photoWidth pixel width. The photoWidth default is 828px
 /// 默认是NO，如果设置为YES，内部不会缩放图片到photoWidth像素宽
 @property (assign, nonatomic) BOOL notScaleImage;
+
+/// 默认是NO，如果设置为YES，导出视频时会修正转向（慎重设为YES，可能导致部分安卓下拍的视频导出失败）
+@property (assign, nonatomic) BOOL needFixComposition;
 
 /// The photos user have selected
 /// 用户选中过的图片数组
@@ -332,4 +335,5 @@
 @property (assign, nonatomic) BOOL showSelectedIndex;
 @property (assign, nonatomic) BOOL showPhotoCannotSelectLayer;
 @property (assign, nonatomic) BOOL notScaleImage;
+@property (assign, nonatomic) BOOL needFixComposition;
 @end

@@ -1,1 +1,0 @@
-../../../BMBaseLibrary/Source/BMController/ScanQR/QRShaowView.h

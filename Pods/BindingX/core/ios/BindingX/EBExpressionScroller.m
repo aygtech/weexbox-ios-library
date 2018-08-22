@@ -31,24 +31,14 @@
 
 @implementation EBExpressionScroller
 
-- (instancetype)initWithExpressionType:(WXExpressionType)exprType
-                                source:(id)source {
-    if (self = [super initWithExpressionType:exprType source:source]) {
-        [self initScroller];
-    }
-    return self;
-}
-
-- (void)updateTargetMap:(NSMapTable<NSString *,id> *)targetMap
-         expressionDict:(NSDictionary *)expressionDict
-                options:(NSDictionary *)options
-         exitExpression:(NSDictionary *)exitExpression
-               callback:(EBKeepAliveCallback)callback {
-    [super updateTargetMap:targetMap
-            expressionDict:expressionDict
-                   options:options
-            exitExpression:exitExpression
-                  callback:callback];
+- (void)updateTargetExpression:(NSMapTable<id,NSDictionary *> *)expressionMap
+                       options:(NSDictionary *)options
+                exitExpression:(NSDictionary *)exitExpression
+                      callback:(EBKeepAliveCallback)callback {
+    [super updateTargetExpression:expressionMap
+                          options:options
+                   exitExpression:exitExpression
+                         callback:callback];
     
     [self initScroller];
 }
@@ -58,6 +48,8 @@
 }
 
 - (void)removeExpressionBinding {
+    [super removeExpressionBinding];
+    
     [EBUtility removeScrollDelegate:self source:self.source];
     
     if ([NSThread isMainThread]) {
@@ -71,17 +63,14 @@
         _turnChange = false;
         NSDictionary *scope = [self setUpScope:scrollView];
         
-        __block __weak typeof(self) welf = self;
-        [EBUtility performBlockOnBridgeThread:^{
-            if (self.turnChange) {
-                [welf fireTurnEvent:scope];
-            }
-            BOOL exit = ![welf executeExpression:scope];
-            if (exit) {
-                [welf fireStateChangedEvent:@"exit"];
-                return;
-            }
-        }];
+        if (self.turnChange) {
+            [self fireTurnEvent:scope];
+        }
+        BOOL exit = ![self executeExpression:scope];
+        if (exit) {
+            [self fireStateChangedEvent:@"exit"];
+            return;
+        }
     } @catch (NSException *exception) {
         NSLog(@"%@",exception);
     }

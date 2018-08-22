@@ -26,20 +26,6 @@ extension RouterModule {
         getRouter(options: options).openNative(from: getVC())
     }
     
-    // 打开浏览器
-    func openBrowser(_ url: String) {
-        var router = Router()
-        router.url = url
-        router.openBrowser()
-    }
-    
-    // 打电话
-    func openPhone(_ phone: String) {
-        var router = Router()
-        router.url = phone
-        router.openPhone()
-    }
-    
     // 获取router的params参数
     func getParams() -> Result.JsResult {
         var result = Result()

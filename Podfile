@@ -1,13 +1,9 @@
-source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/cocoapods/specs.git'
 platform :ios, '10.0'
 inhibit_all_warnings!
 use_modular_headers!
 
 target 'WeexBox' do
-
-pod 'BMBaseLibrary', :git => 'https://github.com/WeexBox/Benmu-iOS-Library'
-# eros ios sdk.
-# https://github.com/WeexBox/Benmu-iOS-Library
 
 pod 'Alamofire'
 # Elegant HTTP Networking in Swift
@@ -56,5 +52,27 @@ pod 'RTRootNavigationController'
 pod 'SnapKit'
 # A Swift Autolayout DSL for iOS & OS X
 # https://github.com/SnapKit/SnapKit
+
+#pod 'arek'
+# AREK is a clean and easy way to request any kind of iOS permission
+# https://github.com/ennioma/arek
+
+pod 'ATSDK-Weex'
+
+pod 'SocketRocket'
+# A conforming Objective-C WebSocket client library
+# https://github.com/facebook/SocketRocket
+
+pod 'SDWebImage'
+# Asynchronous image downloader with cache support as a UIImageView category
+# https://github.com/rs/SDWebImage
+
+pod 'BindingX'
+# Bind actions to effects.
+# https://github.com/alibaba/bindingx
+
+pod 'WeexSDK'
+# Apache Weex
+# https://github.com/apache/incubator-weex/
 
 end
