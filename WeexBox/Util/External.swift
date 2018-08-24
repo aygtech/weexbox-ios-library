@@ -49,6 +49,11 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
         
     }
     
+    // 打开相机拍照
+    func openCamera() {
+        
+    }
+    
     // MARK: - MFMessageComposeViewControllerDelegate
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         var callbackResult = Result()

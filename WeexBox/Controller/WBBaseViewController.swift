@@ -22,6 +22,8 @@ open class WBBaseViewController: UIViewController {
         }
     }
     
+   
+    
     func showLoading(text: String?) {
         initHUD()
         setLoading(text: text, progress: nil)

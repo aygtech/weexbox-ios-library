@@ -29,7 +29,7 @@
 		AC5CBBED2127D0EB00A4FBCD /* NetworkModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBEC2127D0EB00A4FBCD /* NetworkModule.swift */; };
 		AC5CBBF02127D10F00A4FBCD /* NetworkModule.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBBEE2127D10F00A4FBCD /* NetworkModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC5CBBF12127D10F00A4FBCD /* NetworkModule.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBEF2127D10F00A4FBCD /* NetworkModule.m */; };
-		AC5CBBF42127D87500A4FBCD /* Axios.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBF32127D87500A4FBCD /* Axios.swift */; };
+		AC5CBBF42127D87500A4FBCD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBF32127D87500A4FBCD /* Network.swift */; };
 		AC5CBBF6212A932B00A4FBCD /* UploadFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBF5212A932B00A4FBCD /* UploadFile.swift */; };
 		AC5CBBF8212AAE5900A4FBCD /* JsOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBF7212AAE5900A4FBCD /* JsOptions.swift */; };
 		AC5CBBFD212AB6EE00A4FBCD /* ModalModule.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBBFA212AB6EE00A4FBCD /* ModalModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -43,6 +43,15 @@
 		AC5CBC16212D1D2A00A4FBCD /* ExternalModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC13212D1D2A00A4FBCD /* ExternalModule.swift */; };
 		AC5CBC18212D1EC100A4FBCD /* External.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC17212D1EC100A4FBCD /* External.swift */; };
 		AC5CBC1A212D601500A4FBCD /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AC5CBC19212D601500A4FBCD /* libsqlite3.tbd */; };
+		AC5CBC1E212D616800A4FBCD /* WXImgLoaderDefaultImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBC1C212D616800A4FBCD /* WXImgLoaderDefaultImpl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC5CBC1F212D616800A4FBCD /* WXImgLoaderDefaultImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC1D212D616800A4FBCD /* WXImgLoaderDefaultImpl.m */; };
+		AC5CBC22212D650000A4FBCD /* ATSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBC20212D650000A4FBCD /* ATSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC5CBC23212D650000A4FBCD /* ATSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC21212D650000A4FBCD /* ATSDK.m */; };
+		AC5CBC25212D67C300A4FBCD /* NavigatorModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC24212D67C300A4FBCD /* NavigatorModule.swift */; };
+		AC5CBC28212FEA5F00A4FBCD /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC27212FEA5F00A4FBCD /* Event.swift */; };
+		AC5CBC2D212FF49500A4FBCD /* EventModule.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBC2A212FF49500A4FBCD /* EventModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC5CBC2E212FF49500A4FBCD /* EventModule.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC2B212FF49500A4FBCD /* EventModule.m */; };
+		AC5CBC2F212FF49500A4FBCD /* EventModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC2C212FF49500A4FBCD /* EventModule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,7 +81,7 @@
 		AC5CBBEC2127D0EB00A4FBCD /* NetworkModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModule.swift; sourceTree = "<group>"; };
 		AC5CBBEE2127D10F00A4FBCD /* NetworkModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkModule.h; sourceTree = "<group>"; };
 		AC5CBBEF2127D10F00A4FBCD /* NetworkModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkModule.m; sourceTree = "<group>"; };
-		AC5CBBF32127D87500A4FBCD /* Axios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axios.swift; sourceTree = "<group>"; };
+		AC5CBBF32127D87500A4FBCD /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		AC5CBBF5212A932B00A4FBCD /* UploadFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFile.swift; sourceTree = "<group>"; };
 		AC5CBBF7212AAE5900A4FBCD /* JsOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsOptions.swift; sourceTree = "<group>"; };
 		AC5CBBFA212AB6EE00A4FBCD /* ModalModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalModule.h; sourceTree = "<group>"; };
@@ -86,6 +95,15 @@
 		AC5CBC13212D1D2A00A4FBCD /* ExternalModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalModule.swift; sourceTree = "<group>"; };
 		AC5CBC17212D1EC100A4FBCD /* External.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = External.swift; sourceTree = "<group>"; };
 		AC5CBC19212D601500A4FBCD /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		AC5CBC1C212D616800A4FBCD /* WXImgLoaderDefaultImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXImgLoaderDefaultImpl.h; sourceTree = "<group>"; };
+		AC5CBC1D212D616800A4FBCD /* WXImgLoaderDefaultImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXImgLoaderDefaultImpl.m; sourceTree = "<group>"; };
+		AC5CBC20212D650000A4FBCD /* ATSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATSDK.h; sourceTree = "<group>"; };
+		AC5CBC21212D650000A4FBCD /* ATSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATSDK.m; sourceTree = "<group>"; };
+		AC5CBC24212D67C300A4FBCD /* NavigatorModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorModule.swift; sourceTree = "<group>"; };
+		AC5CBC27212FEA5F00A4FBCD /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		AC5CBC2A212FF49500A4FBCD /* EventModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventModule.h; sourceTree = "<group>"; };
+		AC5CBC2B212FF49500A4FBCD /* EventModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventModule.m; sourceTree = "<group>"; };
+		AC5CBC2C212FF49500A4FBCD /* EventModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,13 +140,15 @@
 		AC5434272111B5A3005B7056 /* WeexBox */ = {
 			isa = PBXGroup;
 			children = (
+				AC5CBC26212FEA4500A4FBCD /* Event */,
 				AC5434282111B5A3005B7056 /* WeexBox.h */,
 				AC5434292111B5A3005B7056 /* Info.plist */,
 				AC5434302111BBCC005B7056 /* WeexBoxEngine.swift */,
-				AC5CBBF22127D80D00A4FBCD /* Axios */,
 				AC54343B2111D23F005B7056 /* Controller */,
+				AC5CBC1B212D616800A4FBCD /* Handler */,
 				AC5CBC00212BB6DF00A4FBCD /* Model */,
 				AC5CBBC5211C355B00A4FBCD /* Module */,
+				AC5CBBF22127D80D00A4FBCD /* Network */,
 				AC5CBBCF211C3BF400A4FBCD /* Update */,
 				AC54343E2112DAAB005B7056 /* Util */,
 			);
@@ -152,6 +172,8 @@
 				AC54343F2112DAD6005B7056 /* Log.h */,
 				AC5434402112DAD6005B7056 /* Log.m */,
 				AC5CBC17212D1EC100A4FBCD /* External.swift */,
+				AC5CBC20212D650000A4FBCD /* ATSDK.h */,
+				AC5CBC21212D650000A4FBCD /* ATSDK.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -162,6 +184,7 @@
 				AC5CBC04212BCBC400A4FBCD /* BaseModule.h */,
 				AC5CBC05212BCBC400A4FBCD /* BaseModule.m */,
 				AC5CBC08212BCC1800A4FBCD /* BaseModule.swift */,
+				AC5CBC29212FF49500A4FBCD /* Event */,
 				AC5CBC0A212D1B7700A4FBCD /* External */,
 				AC5CBBF9212AB6BE00A4FBCD /* Modal */,
 				AC5CBBD8211D65E300A4FBCD /* Navigator */,
@@ -194,6 +217,7 @@
 			children = (
 				AC5CBBD9211D677C00A4FBCD /* NavigatorModule.h */,
 				AC5CBBDA211D677C00A4FBCD /* NavigatorModule.m */,
+				AC5CBC24212D67C300A4FBCD /* NavigatorModule.swift */,
 			);
 			path = Navigator;
 			sourceTree = "<group>";
@@ -208,12 +232,12 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		AC5CBBF22127D80D00A4FBCD /* Axios */ = {
+		AC5CBBF22127D80D00A4FBCD /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				AC5CBBF32127D87500A4FBCD /* Axios.swift */,
+				AC5CBBF32127D87500A4FBCD /* Network.swift */,
 			);
-			path = Axios;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		AC5CBBF9212AB6BE00A4FBCD /* Modal */ = {
@@ -249,6 +273,33 @@
 			path = External;
 			sourceTree = "<group>";
 		};
+		AC5CBC1B212D616800A4FBCD /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				AC5CBC1C212D616800A4FBCD /* WXImgLoaderDefaultImpl.h */,
+				AC5CBC1D212D616800A4FBCD /* WXImgLoaderDefaultImpl.m */,
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
+		AC5CBC26212FEA4500A4FBCD /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				AC5CBC27212FEA5F00A4FBCD /* Event.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		AC5CBC29212FF49500A4FBCD /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				AC5CBC2A212FF49500A4FBCD /* EventModule.h */,
+				AC5CBC2B212FF49500A4FBCD /* EventModule.m */,
+				AC5CBC2C212FF49500A4FBCD /* EventModule.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
 		E7C79831F702D9C370077FAA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,11 +327,14 @@
 			files = (
 				AC5CBBF02127D10F00A4FBCD /* NetworkModule.h in Headers */,
 				AC5CBBCE211C355B00A4FBCD /* RouterModule.h in Headers */,
+				AC5CBC2D212FF49500A4FBCD /* EventModule.h in Headers */,
 				AC5CBBFD212AB6EE00A4FBCD /* ModalModule.h in Headers */,
 				AC5CBBDC211D677C00A4FBCD /* NavigatorModule.h in Headers */,
+				AC5CBC22212D650000A4FBCD /* ATSDK.h in Headers */,
 				AC5CBC06212BCBC400A4FBCD /* BaseModule.h in Headers */,
 				AC5434412112DAD6005B7056 /* Log.h in Headers */,
 				AC54342A2111B5A3005B7056 /* WeexBox.h in Headers */,
+				AC5CBC1E212D616800A4FBCD /* WXImgLoaderDefaultImpl.h in Headers */,
 				AC5CBC15212D1D2A00A4FBCD /* ExternalModule.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,10 +460,14 @@
 				AC5CBBE22121345400A4FBCD /* Router.swift in Sources */,
 				AC5CBBF12127D10F00A4FBCD /* NetworkModule.m in Sources */,
 				AC5434312111BBCC005B7056 /* WeexBoxEngine.swift in Sources */,
+				AC5CBC28212FEA5F00A4FBCD /* Event.swift in Sources */,
 				AC5CBBDD211D677C00A4FBCD /* NavigatorModule.m in Sources */,
+				AC5CBC23212D650000A4FBCD /* ATSDK.m in Sources */,
+				AC5CBC2E212FF49500A4FBCD /* EventModule.m in Sources */,
 				AC5CBBEA2127C40F00A4FBCD /* Result.swift in Sources */,
 				AC5CBBD4211C3BF400A4FBCD /* UpdateManager.swift in Sources */,
 				AC5CBBE02121320400A4FBCD /* WBBaseViewController.swift in Sources */,
+				AC5CBC1F212D616800A4FBCD /* WXImgLoaderDefaultImpl.m in Sources */,
 				AC5CBC16212D1D2A00A4FBCD /* ExternalModule.swift in Sources */,
 				AC5CBC09212BCC1800A4FBCD /* BaseModule.swift in Sources */,
 				AC5CBBD7211C485000A4FBCD /* WBNavigationController.swift in Sources */,
@@ -418,9 +476,11 @@
 				AC5CBC14212D1D2A00A4FBCD /* ExternalModule.m in Sources */,
 				AC5434422112DAD6005B7056 /* Log.m in Sources */,
 				AC5CBC07212BCBC400A4FBCD /* BaseModule.m in Sources */,
+				AC5CBC2F212FF49500A4FBCD /* EventModule.swift in Sources */,
 				AC5CBBF6212A932B00A4FBCD /* UploadFile.swift in Sources */,
 				AC54343D2111D2DD005B7056 /* WBWeexViewController.swift in Sources */,
-				AC5CBBF42127D87500A4FBCD /* Axios.swift in Sources */,
+				AC5CBC25212D67C300A4FBCD /* NavigatorModule.swift in Sources */,
+				AC5CBBF42127D87500A4FBCD /* Network.swift in Sources */,
 				AC5CBBFE212AB6EE00A4FBCD /* ModalModule.swift in Sources */,
 				AC5CBBCC211C355B00A4FBCD /* RouterModule.m in Sources */,
 				AC5CBBF8212AAE5900A4FBCD /* JsOptions.swift in Sources */,

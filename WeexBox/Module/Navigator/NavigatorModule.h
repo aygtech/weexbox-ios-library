@@ -7,9 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <WeexSDK/WeexSDK.h>
+#import "BaseModule.h"
 
-@interface NavigatorModule: NSObject <WXModuleProtocol>
+@interface NavigatorModule: BaseModule
+
+// 右边按钮点击回调
+@property (nonatomic, strong) WXModuleKeepAliveCallback rightItemsCallback;
+// 左边按钮点击回调
+@property (nonatomic, strong) WXModuleKeepAliveCallback leftItemsCallback;
+// 中间按钮点击回调
+@property (nonatomic, strong) WXModuleKeepAliveCallback centerItemCallback;
 
 @end
 

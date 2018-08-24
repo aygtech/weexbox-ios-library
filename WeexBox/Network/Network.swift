@@ -1,0 +1,96 @@
+//
+//  Network.swift
+//  WeexBox
+//
+//  Created by Mario on 2018/8/18.
+//  Copyright © 2018年 Ayg. All rights reserved.
+//
+
+import Foundation
+import Alamofire
+//import JWT
+
+struct Network {
+    
+//    enum SecurityType {
+//        case None
+//        case JWT(token: String)
+//    }
+    
+//    static var jwtAlgorithm: Algorithm!
+    
+    static let sessionManager: SessionManager = {
+        let configuration = URLSessionConfiguration.default
+        configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
+        configuration.timeoutIntervalForRequest = 15
+        return SessionManager(configuration: configuration)
+    }()
+    
+    /// 请求接口
+    ///
+    /// - Parameters:
+    ///   - url: 接口地址
+    ///   - method: HTTP方法. 默认`.get`
+    ///   - parameters: HTTP参数. 默认`nil`.
+    ///   - headers: HTTP头. 默认`nil`.
+    ///   - callback: 请求回调
+    static func request(url: URLConvertible, method: HTTPMethod = .get, parameters: Parameters? = nil, headers: HTTPHeaders? = nil, callback: @escaping (Result) -> Void) {
+//        var sendParameters = parameters
+//        switch security {
+//        case .JWT(token):
+//            if sendParameters != nil {
+//                
+//            }
+//            JWT.encode(claims: parameters, algorithm: jwtAlgorithm)
+//        default:
+//        }
+//        
+        sessionManager.request(url, method: method, parameters: parameters, headers: headers).validate().responseJSON() { response in
+            var result = Result()
+            result.code = response.response?.statusCode ?? Result.error
+            result.data = response.value
+            result.error = response.error?.localizedDescription
+            callback(result)
+        }
+    }
+    
+//    static func download(url: String, to: URL, method: HTTPMethod = .get, parameters: Parameters? = nil, headers: HTTPHeaders? = nil, callback: @escaping (DownloadResponse<Data>) -> Void) {
+//        let destination: DownloadRequest.DownloadFileDestination = { _, _ in
+//            return (to, [.removePreviousFile, .createIntermediateDirectories])
+//        }
+//        sessionManager.download(url, method: method, parameters: parameters, headers: headers, to: destination).validate().responseData(completionHandler: callback)
+//    }
+    
+    /// 上传
+    ///
+    /// - Parameters:
+    ///   - files: 文件数组
+    ///   - to: 地址
+    ///   - completionCallback: 上传完成回调
+    ///   - progressCallback: 进度回调
+    static func upload(files: Array<UploadFile>, to: URLConvertible, completionCallback: @escaping (Result) -> Void, progressCallback: @escaping (Result) -> Void) {
+        sessionManager.upload(multipartFormData: { (multipartFormData) in
+            for file in files {
+                multipartFormData.append(file.url, withName: file.name)
+            }
+        }, to: to) { encodingResult in
+            var result = Result()
+            switch encodingResult {
+            case .success(let upload, _, _):
+                result.uploadProgress = upload.uploadProgress.fractionCompleted
+                progressCallback(result)
+                upload.responseJSON { response in
+                    result.code = response.response?.statusCode ?? Result.error
+                    result.data = response.value
+                    result.error = response.error?.localizedDescription
+                    completionCallback(result)
+                }
+            case .failure(let encodingError):
+                result.code = Result.error
+                result.error = encodingError.localizedDescription
+                completionCallback(result)
+            }
+        }
+    }
+   
+}
