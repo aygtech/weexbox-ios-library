@@ -32,6 +32,7 @@ PODS:
   - SwiftEventBus (2.1.2)
   - SwiftyJSON (4.1.0)
   - SwiftyVersion (0.2.1)
+  - TZImagePickerController (2.2.6)
   - WeexPluginLoader (0.0.1.9.1):
     - WeexSDK
   - WeexSDK (0.18.0.2)
@@ -55,6 +56,7 @@ DEPENDENCIES:
   - SwiftEventBus
   - SwiftyJSON
   - SwiftyVersion
+  - TZImagePickerController
   - WeexSDK
   - Zip
 
@@ -79,6 +81,7 @@ SPEC REPOS:
     - SwiftEventBus
     - SwiftyJSON
     - SwiftyVersion
+    - TZImagePickerController
     - WeexPluginLoader
     - WeexSDK
     - Zip
@@ -103,10 +106,11 @@ SPEC CHECKSUMS:
   SwiftEventBus: 9e8f6d8cff2826d66536ec367d17a47299478aa0
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   SwiftyVersion: 79f589a2f9d252c6493f9d2e0a0296d5008f04ff
+  TZImagePickerController: 3b25b39ba2e28984fb51bbf3ca5187ffccebb239
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
   WeexSDK: bc48cc6fab6f0ad2ec87d1e1c1330e097d2ad0f3
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: f21b296c21dfc63da910c68754ed5eaad8f8430e
+PODFILE CHECKSUM: 792632f60763a040f82220124f6b0f0f6d079e80
 
 COCOAPODS: 1.5.3

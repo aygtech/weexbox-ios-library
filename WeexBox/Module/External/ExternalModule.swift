@@ -22,11 +22,12 @@ extension ExternalModule {
     
     // 拍照
     func openCamera(_ info: Dictionary<String, String>, callback: WXModuleKeepAliveCallback) {
-        
+        External().openCamera()
     }
     
     // 打开相册
     func openPhoto(_ info: Dictionary<String, String>, callback: WXModuleKeepAliveCallback) {
-        
+        External().openPhoto(from: getVC())
     }
+    
 }

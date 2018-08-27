@@ -5,6 +5,14 @@ use_modular_headers!
 
 target 'WeexBox' do
 
+pod 'WeexSDK'
+# Apache Weex
+# https://github.com/apache/incubator-weex
+
+pod 'WXDevtool'
+# Remote debug for your native iOS app using Chrome Developer Tools
+# https://github.com/weexteam/weex-devtool-iOS
+
 pod 'Alamofire'
 # Elegant HTTP Networking in Swift
 # https://github.com/Alamofire/Alamofire
@@ -21,7 +29,7 @@ pod 'HandyJSON'
 # A handy swift json-object serialization/deserialization library
 # https://github.com/alibaba/HandyJSON
 
-pod 'Moya'
+#pod 'Moya'
 # Network abstraction layer written in Swift
 # https://github.com/Moya/Moya
 
@@ -71,10 +79,6 @@ pod 'BindingX'
 # Bind actions to effects.
 # https://github.com/alibaba/bindingx
 
-pod 'WeexSDK'
-# Apache Weex
-# https://github.com/apache/incubator-weex
-
 pod 'Hue'
 # Hue is the all-in-one coloring utility that you'll ever need
 # https://github.com/hyperoslo/Hue
@@ -87,7 +91,9 @@ pod 'SwiftEventBus'
 # A publish/subscribe EventBus optimized for iOS
 # https://github.com/cesarferreira/SwiftEventBus
 
-
+pod 'TZImagePickerController'
+# 一个支持多选、选原图和视频的图片选择器，同时有预览、裁剪功能
+# https://github.com/banchichen/TZImagePickerController
 
 
 end

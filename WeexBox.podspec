@@ -1,19 +1,37 @@
 Pod::Spec.new do |s|
   s.name         = "WeexBox"
-  s.version      = "1.0.0"
+  s.version      = "0.0.1"
   s.summary      = "WeexBox."
   s.homepage     = "https://github.com/WeexBox/ios-library"
   s.license      = "MIT"
   s.author       = { "Mario" => "myeveryheart@qq.com" }
   s.platform     = :ios, "10.0"
   s.source       = { :git => "https://github.com/WeexBox/ios-library.git", :tag => "#{s.version}" }
-  s.source_files = 'WeexBox/**/*.{swift,h,m}'
+  s.source_files = 'WeexBox/**/**/*.{swift,h,m}'
   s.swift_version = '4.1'
-  s.static_framework = true
+  s.requires_arc = true
+  s.frameworks = 'Foundation', 'UIKit'
+  s.libraries = 'sqlite3'
+
+  s.dependency 'WeexSDK', '~> 0.18.0'
+  s.dependency 'WXDevtool', '~> 0.16.0'
+  s.dependency 'Alamofire'
   s.dependency "Alamofire-Synchronous"
   s.dependency 'SwiftyJSON'
-  s.dependency 'WeexSDK', '~> 0.18.0'
   s.dependency 'HandyJSON'
-  s.requires_arc = true
+  s.dependency 'SVProgressHUD'
+  s.dependency 'AsyncSwift'
+  s.dependency 'RealmSwift'
+  s.dependency 'SwiftyVersion'
+  s.dependency 'Zip'
+  s.dependency 'RTRootNavigationController'
+  s.dependency 'SnapKit'
+  s.dependency 'ATSDK-Weex'
+  s.dependency 'SocketRocket'
+  s.dependency 'SDWebImage'
+  s.dependency 'BindingX'
+  s.dependency 'Hue'
+  s.dependency 'SwiftEventBus'
+  s.dependency 'TZImagePickerController'
   
 end
