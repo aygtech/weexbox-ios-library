@@ -10,8 +10,12 @@ import Foundation
 
 @objc public extension WXDevPlugin {
     
-    public func pluginWillOpenInContainerWithContainer(_ container: UIViewController, arg: Array<Any>) {
-        Log.d("aaaaaaa")
-        
+    func pluginWillOpen(inContainer: UIViewController, withArg: Array<Any>) {
+        let scannerViewController = WBScannerViewController()
+        scannerViewController.scanResultBlock = { (obtain, result) in
+            
+        }
+        let topViewController = WBBaseViewController.topViewController()
+        topViewController?.navigationController?.pushViewController(scannerViewController, animated: true)
     }
 }

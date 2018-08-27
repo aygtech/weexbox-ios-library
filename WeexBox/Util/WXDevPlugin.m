@@ -16,7 +16,7 @@
 @implementation WXDevPlugin
 
 - (void)pluginDidLoadWithArgs:(NSArray *)args {
-    NSLog(@"pluginDidLoadWithArgs");
+    
 }
 
 - (void)pluginDidUnload {
