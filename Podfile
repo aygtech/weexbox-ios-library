@@ -25,9 +25,9 @@ pod 'Moya'
 # Network abstraction layer written in Swift
 # https://github.com/Moya/Moya
 
-pod 'MBProgressHUD'
-# A clean and lightweight progress HUD for your iOS and tvOS app.
-# https://github.com/jdg/MBProgressHUD
+pod 'SVProgressHUD'
+# A clean and lightweight progress HUD for your iOS and tvOS app
+# https://github.com/SVProgressHUD/SVProgressHUD
 
 pod 'AsyncSwift'
 # Syntactic sugar in Swift for asynchronous dispatches in Grand Central Dispatch

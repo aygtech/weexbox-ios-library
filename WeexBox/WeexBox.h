@@ -26,6 +26,8 @@ FOUNDATION_EXPORT const unsigned char WeexBoxVersionString[];
 #import <WeexBox/ATSDK.h>
 #import <WeexBox/WXImgLoaderDefaultImpl.h>
 #import <WeexBox/EventModule.h>
+#import <WeexBox/LocationModule.h>
+
 
 
 

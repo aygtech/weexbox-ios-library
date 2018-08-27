@@ -7,29 +7,28 @@
 //
 
 import Foundation
-import MBProgressHUD
+import SVProgressHUD
 
 extension ModalModule {
     
     // 显示菊花
-    func showLoading(_ text: String?) {
-        getVC().showLoading(text: text)
+    func showLoading(_ message: String?) {
+        SVProgressHUD.show(withStatus: message)
     }
     
-    // 设置菊花
-    func setLoading(_ options: Dictionary<String, Any>) {
-        let info = JsOptions.deserialize(from: options)!
-        getVC().setLoading(text: info.text, progress: info.progress)
+    // 显示进度
+    func showProgress(_ progress: Float, message: String?) {
+        SVProgressHUD.showProgress(progress, status: message)
     }
     
     // 关闭菊花
-    func hideLoading() {
-        getVC().hideLoading()
+    func dismiss() {
+        SVProgressHUD.dismiss()
     }
     
     // 吐司
-    func showToast(_ text: String) {
-        getVC().showToast(text: text)
+    func showToast(_ message: String) {
+        SVProgressHUD.show(UIImage(), status: message)
     }
     
     // 提示框

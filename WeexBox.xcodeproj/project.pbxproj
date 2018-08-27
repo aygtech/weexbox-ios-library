@@ -52,6 +52,9 @@
 		AC5CBC2D212FF49500A4FBCD /* EventModule.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBC2A212FF49500A4FBCD /* EventModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC5CBC2E212FF49500A4FBCD /* EventModule.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC2B212FF49500A4FBCD /* EventModule.m */; };
 		AC5CBC2F212FF49500A4FBCD /* EventModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC2C212FF49500A4FBCD /* EventModule.swift */; };
+		AC5CBC342133957F00A4FBCD /* LocationModule.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBC312133957F00A4FBCD /* LocationModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC5CBC352133957F00A4FBCD /* LocationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC322133957F00A4FBCD /* LocationModule.m */; };
+		AC5CBC362133957F00A4FBCD /* LocationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC332133957F00A4FBCD /* LocationModule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +107,9 @@
 		AC5CBC2A212FF49500A4FBCD /* EventModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventModule.h; sourceTree = "<group>"; };
 		AC5CBC2B212FF49500A4FBCD /* EventModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventModule.m; sourceTree = "<group>"; };
 		AC5CBC2C212FF49500A4FBCD /* EventModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModule.swift; sourceTree = "<group>"; };
+		AC5CBC312133957F00A4FBCD /* LocationModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModule.h; sourceTree = "<group>"; };
+		AC5CBC322133957F00A4FBCD /* LocationModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModule.m; sourceTree = "<group>"; };
+		AC5CBC332133957F00A4FBCD /* LocationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +192,7 @@
 				AC5CBC08212BCC1800A4FBCD /* BaseModule.swift */,
 				AC5CBC29212FF49500A4FBCD /* Event */,
 				AC5CBC0A212D1B7700A4FBCD /* External */,
+				AC5CBC302133957F00A4FBCD /* Location */,
 				AC5CBBF9212AB6BE00A4FBCD /* Modal */,
 				AC5CBBD8211D65E300A4FBCD /* Navigator */,
 				AC5CBBEB2127D0D900A4FBCD /* Network */,
@@ -300,6 +307,16 @@
 			path = Event;
 			sourceTree = "<group>";
 		};
+		AC5CBC302133957F00A4FBCD /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				AC5CBC312133957F00A4FBCD /* LocationModule.h */,
+				AC5CBC322133957F00A4FBCD /* LocationModule.m */,
+				AC5CBC332133957F00A4FBCD /* LocationModule.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		E7C79831F702D9C370077FAA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +347,7 @@
 				AC5CBC2D212FF49500A4FBCD /* EventModule.h in Headers */,
 				AC5CBBFD212AB6EE00A4FBCD /* ModalModule.h in Headers */,
 				AC5CBBDC211D677C00A4FBCD /* NavigatorModule.h in Headers */,
+				AC5CBC342133957F00A4FBCD /* LocationModule.h in Headers */,
 				AC5CBC22212D650000A4FBCD /* ATSDK.h in Headers */,
 				AC5CBC06212BCBC400A4FBCD /* BaseModule.h in Headers */,
 				AC5434412112DAD6005B7056 /* Log.h in Headers */,
@@ -415,6 +433,7 @@
 				"${PODS_ROOT}/ATSDK-Weex/ATSDK.framework/Versions/A/Resources/ATSDK.bundle",
 				"${PODS_ROOT}/ATSDK-Weex/ATSDK.framework/Versions/A/Resources/en.lproj",
 				"${PODS_ROOT}/ATSDK-Weex/ATSDK.framework/Versions/A/Resources/zh-Hans.lproj",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 				"${PODS_ROOT}/WeexSDK/pre-build/native-bundle-main.js",
 				"${PODS_ROOT}/WeexSDK/ios/sdk/WeexSDK/Resources/wx_load_error@3x.png",
 			);
@@ -423,6 +442,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ATSDK.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh-Hans.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/native-bundle-main.js",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/wx_load_error@3x.png",
 			);
@@ -483,8 +503,10 @@
 				AC5CBBF42127D87500A4FBCD /* Network.swift in Sources */,
 				AC5CBBFE212AB6EE00A4FBCD /* ModalModule.swift in Sources */,
 				AC5CBBCC211C355B00A4FBCD /* RouterModule.m in Sources */,
+				AC5CBC352133957F00A4FBCD /* LocationModule.m in Sources */,
 				AC5CBBF8212AAE5900A4FBCD /* JsOptions.swift in Sources */,
 				AC5CBC18212D1EC100A4FBCD /* External.swift in Sources */,
+				AC5CBC362133957F00A4FBCD /* LocationModule.swift in Sources */,
 				AC5CBBD5211C3BF400A4FBCD /* UpdateConfig.swift in Sources */,
 				AC5CBBED2127D0EB00A4FBCD /* NetworkModule.swift in Sources */,
 				AC5CBBFF212AB6EE00A4FBCD /* ModalModule.m in Sources */,
