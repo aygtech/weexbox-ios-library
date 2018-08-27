@@ -12,11 +12,10 @@
 @implementation ATSDK
 
 + (void)atAddPlugin {
-    [[ATManager shareInstance] addPluginWithId:@"weex" andName:@"weex" andIconName:@"../weex" andEntry:@"" andArgs:@[@""]];
-    [[ATManager shareInstance] addSubPluginWithParentId:@"weex" andSubId:@"logger" andName:@"logger" andIconName:@"log" andEntry:@"WXATLoggerPlugin" andArgs:@[@""]];
+    [[ATManager shareInstance] addPluginWithId:@"dev" andName:@"调试" andIconName:@"at_plugin_file" andEntry:@"" andArgs:@[@""]];
+    [[ATManager shareInstance] addSubPluginWithParentId:@"dev" andSubId:@"scan" andName:@"扫码" andIconName:@"vision" andEntry:@"WXDevPlugin" andArgs:@[@""]];
     //    [[ATManager shareInstance] addSubPluginWithParentId:@"weex" andSubId:@"viewHierarchy" andName:@"hierarchy" andIconName:@"log" andEntry:@"WXATViewHierarchyPlugin" andArgs:@[@""]];
-    [[ATManager shareInstance] addSubPluginWithParentId:@"weex" andSubId:@"test2" andName:@"test" andIconName:@"at_arr_refresh" andEntry:@"" andArgs:@[]];
-    [[ATManager shareInstance] addSubPluginWithParentId:@"weex" andSubId:@"test3" andName:@"test" andIconName:@"at_arr_refresh" andEntry:@"" andArgs:@[]];
+    [[ATManager shareInstance] addSubPluginWithParentId:@"dev" andSubId:@"refresh" andName:@"刷新" andIconName:@"at_arr_refresh" andEntry:@"" andArgs:@[]];
     [[ATManager shareInstance] show];
 }
 

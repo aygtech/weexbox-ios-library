@@ -1,0 +1,6 @@
+module SwiftEventBus {
+  umbrella header "SwiftEventBus-umbrella.h"
+
+  export *
+  module * { export * }
+}

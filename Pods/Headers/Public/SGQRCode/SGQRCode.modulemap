@@ -1,0 +1,6 @@
+module SGQRCode {
+  umbrella header "SGQRCode-umbrella.h"
+
+  export *
+  module * { export * }
+}

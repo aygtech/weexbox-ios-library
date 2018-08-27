@@ -1,0 +1,90 @@
+{
+  "name": "WeexBox",
+  "version": "0.0.1",
+  "summary": "WeexBox.",
+  "homepage": "https://github.com/WeexBox/ios-library",
+  "license": "MIT",
+  "authors": {
+    "Mario": "myeveryheart@qq.com"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source": {
+    "git": "https://github.com/WeexBox/ios-library.git",
+    "tag": "0.0.1"
+  },
+  "source_files": "WeexBox/**/**/*.{swift,h,m}",
+  "swift_version": "4.1",
+  "requires_arc": true,
+  "frameworks": [
+    "Foundation",
+    "UIKit"
+  ],
+  "libraries": "sqlite3",
+  "dependencies": {
+    "WeexSDK": [
+      "~> 0.18.0"
+    ],
+    "WXDevtool": [
+      "~> 0.16.0"
+    ],
+    "Alamofire": [
+
+    ],
+    "Alamofire-Synchronous": [
+
+    ],
+    "SwiftyJSON": [
+
+    ],
+    "HandyJSON": [
+
+    ],
+    "SVProgressHUD": [
+
+    ],
+    "AsyncSwift": [
+
+    ],
+    "RealmSwift": [
+
+    ],
+    "SwiftyVersion": [
+
+    ],
+    "Zip": [
+
+    ],
+    "RTRootNavigationController": [
+
+    ],
+    "SnapKit": [
+
+    ],
+    "ATSDK-Weex": [
+
+    ],
+    "SocketRocket": [
+
+    ],
+    "SDWebImage": [
+
+    ],
+    "BindingX": [
+
+    ],
+    "Hue": [
+
+    ],
+    "SwiftEventBus": [
+
+    ],
+    "TZImagePickerController": [
+
+    ],
+    "SGQRCode": [
+
+    ]
+  }
+}

@@ -95,5 +95,8 @@ pod 'TZImagePickerController'
 # 一个支持多选、选原图和视频的图片选择器，同时有预览、裁剪功能
 # https://github.com/banchichen/TZImagePickerController
 
+pod 'SGQRCode'
+# iOS 原生二维码扫描 -> 高仿微信
+# https://github.com/kingsic/SGQRCode
 
 end

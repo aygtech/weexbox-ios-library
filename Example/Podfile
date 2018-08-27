@@ -1,0 +1,8 @@
+source 'https://github.com/cocoapods/specs.git'
+platform :ios, '10.0'
+inhibit_all_warnings!
+use_modular_headers!
+
+target 'WeexBoxExample' do
+    pod 'WeexBox', :path => '..'
+end

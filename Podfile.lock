@@ -9,23 +9,18 @@ PODS:
     - WeexSDK
   - HandyJSON (4.1.3)
   - Hue (3.0.1)
-  - Moya (11.0.2):
-    - Moya/Core (= 11.0.2)
-  - Moya/Core (11.0.2):
-    - Alamofire (~> 4.1)
-    - Result (~> 3.0)
   - Realm (3.7.6):
     - Realm/Headers (= 3.7.6)
   - Realm/Headers (3.7.6)
   - RealmSwift (3.7.6):
     - Realm (= 3.7.6)
-  - Result (3.2.4)
   - RTRootNavigationController (0.6.7):
     - RTRootNavigationController/Core (= 0.6.7)
   - RTRootNavigationController/Core (0.6.7)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
+  - SGQRCode (2.5.3)
   - SnapKit (4.0.0)
   - SocketRocket (0.5.1)
   - SVProgressHUD (2.2.5)
@@ -36,6 +31,9 @@ PODS:
   - WeexPluginLoader (0.0.1.9.1):
     - WeexSDK
   - WeexSDK (0.18.0.2)
+  - WXDevtool (0.16.3):
+    - SocketRocket
+    - WeexSDK
   - Zip (1.1.0)
 
 DEPENDENCIES:
@@ -46,10 +44,10 @@ DEPENDENCIES:
   - BindingX
   - HandyJSON
   - Hue
-  - Moya
   - RealmSwift
   - RTRootNavigationController
   - SDWebImage
+  - SGQRCode
   - SnapKit
   - SocketRocket
   - SVProgressHUD
@@ -58,6 +56,7 @@ DEPENDENCIES:
   - SwiftyVersion
   - TZImagePickerController
   - WeexSDK
+  - WXDevtool
   - Zip
 
 SPEC REPOS:
@@ -69,12 +68,11 @@ SPEC REPOS:
     - BindingX
     - HandyJSON
     - Hue
-    - Moya
     - Realm
     - RealmSwift
-    - Result
     - RTRootNavigationController
     - SDWebImage
+    - SGQRCode
     - SnapKit
     - SocketRocket
     - SVProgressHUD
@@ -84,6 +82,7 @@ SPEC REPOS:
     - TZImagePickerController
     - WeexPluginLoader
     - WeexSDK
+    - WXDevtool
     - Zip
 
 SPEC CHECKSUMS:
@@ -94,12 +93,11 @@ SPEC CHECKSUMS:
   BindingX: b3c6c1c5dcd8e50277cfc5daad09d7010c227524
   HandyJSON: bc81fbeb62d65ae5d5942ed29bc4a8265d18c1e8
   Hue: 93e852fa6211ab35922ad8c293f51c43d6c79eb2
-  Moya: a725035953bc1c0eb1be505ab903984501d82440
   Realm: 9eaecad54712d6246d08ba34c10f354e4715d7d3
   RealmSwift: 1fe08b4ebaeeaacf17f9ba0343f7b25c9fc31fa6
-  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RTRootNavigationController: d6aa6cbb78a3eaecea4f6e4df63f15dd887836b8
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  SGQRCode: 3ee00e1c325408aa8f165b0ef791cd511876a527
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
@@ -109,8 +107,9 @@ SPEC CHECKSUMS:
   TZImagePickerController: 3b25b39ba2e28984fb51bbf3ca5187ffccebb239
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
   WeexSDK: bc48cc6fab6f0ad2ec87d1e1c1330e097d2ad0f3
+  WXDevtool: c028138b4e3a8856758acfea2328f708d3adbedd
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 792632f60763a040f82220124f6b0f0f6d079e80
+PODFILE CHECKSUM: a4402772a7eef901ff012fade2570bebf760e504
 
 COCOAPODS: 1.5.3

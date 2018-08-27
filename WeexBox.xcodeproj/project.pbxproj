@@ -55,6 +55,11 @@
 		AC5CBC342133957F00A4FBCD /* LocationModule.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBC312133957F00A4FBCD /* LocationModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC5CBC352133957F00A4FBCD /* LocationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC322133957F00A4FBCD /* LocationModule.m */; };
 		AC5CBC362133957F00A4FBCD /* LocationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC332133957F00A4FBCD /* LocationModule.swift */; };
+		AC9CE8682133E8E0007EF7F2 /* WXDevPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = AC9CE8662133E8E0007EF7F2 /* WXDevPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC9CE8692133E8E0007EF7F2 /* WXDevPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE8672133E8E0007EF7F2 /* WXDevPlugin.m */; };
+		AC9CE86E2133F2D5007EF7F2 /* WBScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE86D2133F2D5007EF7F2 /* WBScannerViewController.swift */; };
+		AC9CE87221340867007EF7F2 /* WXDev.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE87121340867007EF7F2 /* WXDev.swift */; };
+		AC9CE87421340A59007EF7F2 /* WXDevPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE87321340A59007EF7F2 /* WXDevPlugin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +115,11 @@
 		AC5CBC312133957F00A4FBCD /* LocationModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModule.h; sourceTree = "<group>"; };
 		AC5CBC322133957F00A4FBCD /* LocationModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModule.m; sourceTree = "<group>"; };
 		AC5CBC332133957F00A4FBCD /* LocationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModule.swift; sourceTree = "<group>"; };
+		AC9CE8662133E8E0007EF7F2 /* WXDevPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXDevPlugin.h; sourceTree = "<group>"; };
+		AC9CE8672133E8E0007EF7F2 /* WXDevPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXDevPlugin.m; sourceTree = "<group>"; };
+		AC9CE86D2133F2D5007EF7F2 /* WBScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBScannerViewController.swift; sourceTree = "<group>"; };
+		AC9CE87121340867007EF7F2 /* WXDev.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXDev.swift; sourceTree = "<group>"; };
+		AC9CE87321340A59007EF7F2 /* WXDevPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXDevPlugin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +156,7 @@
 		AC5434272111B5A3005B7056 /* WeexBox */ = {
 			isa = PBXGroup;
 			children = (
+				AC9CE86A2133EFC4007EF7F2 /* Extension */,
 				AC5CBC26212FEA4500A4FBCD /* Event */,
 				AC5434282111B5A3005B7056 /* WeexBox.h */,
 				AC5434292111B5A3005B7056 /* Info.plist */,
@@ -168,6 +179,7 @@
 				AC5CBBDF2121320400A4FBCD /* WBBaseViewController.swift */,
 				AC5CBBD6211C485000A4FBCD /* WBNavigationController.swift */,
 				AC5CBBE521218B3200A4FBCD /* WBWebViewController.swift */,
+				AC9CE86D2133F2D5007EF7F2 /* WBScannerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -180,6 +192,10 @@
 				AC5CBC17212D1EC100A4FBCD /* External.swift */,
 				AC5CBC20212D650000A4FBCD /* ATSDK.h */,
 				AC5CBC21212D650000A4FBCD /* ATSDK.m */,
+				AC9CE8662133E8E0007EF7F2 /* WXDevPlugin.h */,
+				AC9CE8672133E8E0007EF7F2 /* WXDevPlugin.m */,
+				AC9CE87321340A59007EF7F2 /* WXDevPlugin.swift */,
+				AC9CE87121340867007EF7F2 /* WXDev.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -317,6 +333,13 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
+		AC9CE86A2133EFC4007EF7F2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		E7C79831F702D9C370077FAA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +371,7 @@
 				AC5CBBFD212AB6EE00A4FBCD /* ModalModule.h in Headers */,
 				AC5CBBDC211D677C00A4FBCD /* NavigatorModule.h in Headers */,
 				AC5CBC342133957F00A4FBCD /* LocationModule.h in Headers */,
+				AC9CE8682133E8E0007EF7F2 /* WXDevPlugin.h in Headers */,
 				AC5CBC22212D650000A4FBCD /* ATSDK.h in Headers */,
 				AC5CBC06212BCBC400A4FBCD /* BaseModule.h in Headers */,
 				AC5434412112DAD6005B7056 /* Log.h in Headers */,
@@ -433,6 +457,7 @@
 				"${PODS_ROOT}/ATSDK-Weex/ATSDK.framework/Versions/A/Resources/ATSDK.bundle",
 				"${PODS_ROOT}/ATSDK-Weex/ATSDK.framework/Versions/A/Resources/en.lproj",
 				"${PODS_ROOT}/ATSDK-Weex/ATSDK.framework/Versions/A/Resources/zh-Hans.lproj",
+				"${PODS_ROOT}/SGQRCode/SGQRCode/SGQRCode.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
 				"${PODS_ROOT}/WeexSDK/pre-build/native-bundle-main.js",
@@ -443,6 +468,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ATSDK.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh-Hans.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SGQRCode.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/native-bundle-main.js",
@@ -483,6 +509,7 @@
 				AC5CBBF12127D10F00A4FBCD /* NetworkModule.m in Sources */,
 				AC5434312111BBCC005B7056 /* WeexBoxEngine.swift in Sources */,
 				AC5CBC28212FEA5F00A4FBCD /* Event.swift in Sources */,
+				AC9CE8692133E8E0007EF7F2 /* WXDevPlugin.m in Sources */,
 				AC5CBBDD211D677C00A4FBCD /* NavigatorModule.m in Sources */,
 				AC5CBC23212D650000A4FBCD /* ATSDK.m in Sources */,
 				AC5CBC2E212FF49500A4FBCD /* EventModule.m in Sources */,
@@ -490,12 +517,14 @@
 				AC5CBBD4211C3BF400A4FBCD /* UpdateManager.swift in Sources */,
 				AC5CBBE02121320400A4FBCD /* WBBaseViewController.swift in Sources */,
 				AC5CBC1F212D616800A4FBCD /* WXImgLoaderDefaultImpl.m in Sources */,
+				AC9CE87421340A59007EF7F2 /* WXDevPlugin.swift in Sources */,
 				AC5CBC16212D1D2A00A4FBCD /* ExternalModule.swift in Sources */,
 				AC5CBC09212BCC1800A4FBCD /* BaseModule.swift in Sources */,
 				AC5CBBD7211C485000A4FBCD /* WBNavigationController.swift in Sources */,
 				AC5CBBE621218B3200A4FBCD /* WBWebViewController.swift in Sources */,
 				AC5CBBD3211C3BF400A4FBCD /* UpdateMd5.swift in Sources */,
 				AC5CBC14212D1D2A00A4FBCD /* ExternalModule.m in Sources */,
+				AC9CE86E2133F2D5007EF7F2 /* WBScannerViewController.swift in Sources */,
 				AC5434422112DAD6005B7056 /* Log.m in Sources */,
 				AC5CBC07212BCBC400A4FBCD /* BaseModule.m in Sources */,
 				AC5CBC2F212FF49500A4FBCD /* EventModule.swift in Sources */,
@@ -505,6 +534,7 @@
 				AC5CBBF42127D87500A4FBCD /* Network.swift in Sources */,
 				AC5CBBFE212AB6EE00A4FBCD /* ModalModule.swift in Sources */,
 				AC5CBBCC211C355B00A4FBCD /* RouterModule.m in Sources */,
+				AC9CE87221340867007EF7F2 /* WXDev.swift in Sources */,
 				AC5CBC352133957F00A4FBCD /* LocationModule.m in Sources */,
 				AC5CBBF8212AAE5900A4FBCD /* JsOptions.swift in Sources */,
 				AC5CBC18212D1EC100A4FBCD /* External.swift in Sources */,
