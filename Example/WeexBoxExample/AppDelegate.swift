@@ -19,6 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         WeexBoxEngine.initialize()
         
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.backgroundColor = .white
+        window?.rootViewController = WBNavigationController(rootViewController: ViewController())
+        window?.makeKeyAndVisible()
+        
         return true
     }
 

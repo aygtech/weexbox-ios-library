@@ -1,1 +1,0 @@
-../../../SGQRCode/SGQRCode/SGQRCodeObtainConfigure.h

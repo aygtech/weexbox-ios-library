@@ -20,11 +20,11 @@ PODS:
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
-  - SGQRCode (2.5.3)
   - SnapKit (4.0.0)
   - SocketRocket (0.5.1)
   - SVProgressHUD (2.2.5)
   - SwiftEventBus (2.1.2)
+  - swiftScan (1.1.3)
   - SwiftyJSON (4.1.0)
   - SwiftyVersion (0.2.1)
   - TZImagePickerController (2.2.6)
@@ -47,11 +47,11 @@ DEPENDENCIES:
   - RealmSwift
   - RTRootNavigationController
   - SDWebImage
-  - SGQRCode
   - SnapKit
   - SocketRocket
   - SVProgressHUD
   - SwiftEventBus
+  - swiftScan
   - SwiftyJSON
   - SwiftyVersion
   - TZImagePickerController
@@ -72,11 +72,11 @@ SPEC REPOS:
     - RealmSwift
     - RTRootNavigationController
     - SDWebImage
-    - SGQRCode
     - SnapKit
     - SocketRocket
     - SVProgressHUD
     - SwiftEventBus
+    - swiftScan
     - SwiftyJSON
     - SwiftyVersion
     - TZImagePickerController
@@ -97,11 +97,11 @@ SPEC CHECKSUMS:
   RealmSwift: 1fe08b4ebaeeaacf17f9ba0343f7b25c9fc31fa6
   RTRootNavigationController: d6aa6cbb78a3eaecea4f6e4df63f15dd887836b8
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
-  SGQRCode: 3ee00e1c325408aa8f165b0ef791cd511876a527
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftEventBus: 9e8f6d8cff2826d66536ec367d17a47299478aa0
+  swiftScan: ad753846f4292c19a376dd159db035d62b689458
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   SwiftyVersion: 79f589a2f9d252c6493f9d2e0a0296d5008f04ff
   TZImagePickerController: 3b25b39ba2e28984fb51bbf3ca5187ffccebb239
@@ -110,6 +110,6 @@ SPEC CHECKSUMS:
   WXDevtool: c028138b4e3a8856758acfea2328f708d3adbedd
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: a4402772a7eef901ff012fade2570bebf760e504
+PODFILE CHECKSUM: 9877c75d47caa7670a64cab7a589d5a1a58bb53d
 
 COCOAPODS: 1.5.3

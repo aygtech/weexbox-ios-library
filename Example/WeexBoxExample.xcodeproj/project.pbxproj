@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		AC9CE8512133DF76007EF7F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE8502133DF76007EF7F2 /* AppDelegate.swift */; };
 		AC9CE8532133DF76007EF7F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE8522133DF76007EF7F2 /* ViewController.swift */; };
-		AC9CE8562133DF76007EF7F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9CE8542133DF76007EF7F2 /* Main.storyboard */; };
 		AC9CE8582133DF78007EF7F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC9CE8572133DF78007EF7F2 /* Assets.xcassets */; };
 		AC9CE85B2133DF78007EF7F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9CE8592133DF78007EF7F2 /* LaunchScreen.storyboard */; };
 		EF33C1CE2E38C1F85EE2A13C /* libPods-WeexBoxExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8366C6BCB7071E15F022D80 /* libPods-WeexBoxExample.a */; };
@@ -22,7 +21,6 @@
 		AC9CE84D2133DF76007EF7F2 /* WeexBoxExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeexBoxExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9CE8502133DF76007EF7F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC9CE8522133DF76007EF7F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AC9CE8552133DF76007EF7F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC9CE8572133DF78007EF7F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC9CE85A2133DF78007EF7F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC9CE85C2133DF78007EF7F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -72,7 +70,6 @@
 			children = (
 				AC9CE8502133DF76007EF7F2 /* AppDelegate.swift */,
 				AC9CE8522133DF76007EF7F2 /* ViewController.swift */,
-				AC9CE8542133DF76007EF7F2 /* Main.storyboard */,
 				AC9CE8572133DF78007EF7F2 /* Assets.xcassets */,
 				AC9CE8592133DF78007EF7F2 /* LaunchScreen.storyboard */,
 				AC9CE85C2133DF78007EF7F2 /* Info.plist */,
@@ -150,7 +147,6 @@
 			files = (
 				AC9CE85B2133DF78007EF7F2 /* LaunchScreen.storyboard in Resources */,
 				AC9CE8582133DF78007EF7F2 /* Assets.xcassets in Resources */,
-				AC9CE8562133DF76007EF7F2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,7 +181,6 @@
 				"${PODS_ROOT}/ATSDK-Weex/ATSDK.framework/Versions/A/Resources/ATSDK.bundle",
 				"${PODS_ROOT}/ATSDK-Weex/ATSDK.framework/Versions/A/Resources/en.lproj",
 				"${PODS_ROOT}/ATSDK-Weex/ATSDK.framework/Versions/A/Resources/zh-Hans.lproj",
-				"${PODS_ROOT}/SGQRCode/SGQRCode/SGQRCode.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
 				"${PODS_ROOT}/WeexSDK/pre-build/native-bundle-main.js",
@@ -196,7 +191,6 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ATSDK.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh-Hans.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SGQRCode.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/native-bundle-main.js",
@@ -222,14 +216,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		AC9CE8542133DF76007EF7F2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AC9CE8552133DF76007EF7F2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AC9CE8592133DF78007EF7F2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

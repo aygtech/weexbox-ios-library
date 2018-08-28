@@ -15,13 +15,15 @@ import WeexSDK
 @objcMembers open class WBWeexViewController: WBBaseViewController, SRWebSocketDelegate {
     
     private var weexHeight: CGFloat!
-    private var hotReloadSocket: SRWebSocket?
+    public var hotReloadSocket: SRWebSocket?
     private var instance: WXSDKInstance?
     private var weexView: UIView?
     public var url: URL!
     
     open override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationRefreshInstance), name: NSNotification.Name("RefreshInstance"), object: nil)
         
         view.backgroundColor = .white
         view.clipsToBounds = true
@@ -35,12 +37,8 @@ import WeexSDK
             } else {
                 url = UpdateManager.getFullUrl(file: u)
             }
-            NotificationCenter.default.addObserver(self, selector: #selector(notificationRefreshInstance(_:)), name: NSNotification.Name("RefreshInstance"), object: nil)
-            
-            render()
-        } else {
-            Log.e("url不能为空")
         }
+        render()
     }
     
     open override func viewDidAppear(_ animated: Bool) {
@@ -117,12 +115,14 @@ import WeexSDK
     
     // MARK: - 调试
     func setHotReloadURL(_ url: URL) {
+        hotReloadSocket?.close()
         hotReloadSocket = SRWebSocket(url: url)
+//        hotReloadSocket = SRWebSocket(url: url, protocols: ["echo-protocol"], allowsUntrustedSSLCertificates: true)
         hotReloadSocket?.delegate = self
         hotReloadSocket?.open()
     }
     
-    @objc func notificationRefreshInstance(_ notification: Notification) {
+    @objc func notificationRefreshInstance() {
         refreshWeex()
     }
     
@@ -144,4 +144,18 @@ import WeexSDK
             }
         }
     }
+    
+    public func webSocket(_ webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
+        
+    }
+    
+    public func webSocket(_ webSocket: SRWebSocket!, didFailWithError error: Error!) {
+        print((error as! NSError))
+    }
+    
+    public func webSocket(_ webSocket: SRWebSocket!, didReceivePong pongPayload: Data!) {
+        
+    }
+    
+    
 }

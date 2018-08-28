@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import WeexBox
 
-class ViewController: UIViewController {
+class ViewController: WBBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -13,6 +13,7 @@ import Foundation
     
     public var router: Router?
     
+    // 获取最顶层VC, 根视图必须是nav或者tab
     public static func topViewController(_ controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
         if let navigationController = controller as? UINavigationController {
             return topViewController(navigationController.visibleViewController)
@@ -30,6 +31,7 @@ import Foundation
     
     open override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         if let hidden = router?.navBarHidden {
             navigationController?.isNavigationBarHidden = hidden;
         }

@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.libraries = 'sqlite3'
 
   s.dependency 'WeexSDK', '~> 0.18.0'
-  s.dependency 'WXDevtool', '~> 0.16.0'
+  s.dependency 'WXDevtool'
   s.dependency 'Alamofire'
   s.dependency "Alamofire-Synchronous"
   s.dependency 'SwiftyJSON'
@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
   s.dependency 'Hue'
   s.dependency 'SwiftEventBus'
   s.dependency 'TZImagePickerController'
-  s.dependency 'SGQRCode'
+  s.dependency 'swiftScan'
   
   
 end

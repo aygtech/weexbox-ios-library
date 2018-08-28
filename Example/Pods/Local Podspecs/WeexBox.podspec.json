@@ -27,7 +27,7 @@
       "~> 0.18.0"
     ],
     "WXDevtool": [
-      "~> 0.16.0"
+
     ],
     "Alamofire": [
 
@@ -83,7 +83,7 @@
     "TZImagePickerController": [
 
     ],
-    "SGQRCode": [
+    "swiftScan": [
 
     ]
   }
