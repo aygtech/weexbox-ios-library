@@ -35,8 +35,7 @@ import SocketRocket
             let vc = WBWeexViewController()
             let url = URL(string: tplUrl)!
             vc.url = url
-            let socketURL = URL(string: "ws://\(url.host!):\(url.port!)")!
-            vc.setHotReloadURL(socketURL)
+            vc.isDebug = true
             top?.navigationController?.pushViewController(vc, animated: true)
         }
     }

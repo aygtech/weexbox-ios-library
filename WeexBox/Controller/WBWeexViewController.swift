@@ -7,23 +7,28 @@
 //
 
 import Foundation
-import SocketRocket
 import Async
 import WeexSDK
 
 /// Weex基类
-@objcMembers open class WBWeexViewController: WBBaseViewController, SRWebSocketDelegate {
+@objcMembers open class WBWeexViewController: WBBaseViewController {
     
     private var weexHeight: CGFloat!
-    public var hotReloadSocket: SRWebSocket?
     private var instance: WXSDKInstance?
     private var weexView: UIView?
     public var url: URL!
+    public var isDebug = false
     
     open override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(notificationRefreshInstance), name: NSNotification.Name("RefreshInstance"), object: nil)
+        Event.register(target: self, name: "RefreshInstance") { [weak self] _ in
+            if let weakSelf = self {
+                if weakSelf.isDebug {
+                    weakSelf.refreshWeex()
+                }
+            }
+        }
         
         view.backgroundColor = .white
         view.clipsToBounds = true
@@ -107,55 +112,8 @@ import WeexSDK
     }
     
     deinit {
-        hotReloadSocket?.close()
         instance?.destroy()
         NotificationCenter.default.removeObserver(self)
-        hotReloadSocket = nil
     }
-    
-    // MARK: - 调试
-    func setHotReloadURL(_ url: URL) {
-        hotReloadSocket?.close()
-        hotReloadSocket = SRWebSocket(url: url)
-//        hotReloadSocket = SRWebSocket(url: url, protocols: ["echo-protocol"], allowsUntrustedSSLCertificates: true)
-        hotReloadSocket?.delegate = self
-        hotReloadSocket?.open()
-    }
-    
-    @objc func notificationRefreshInstance() {
-        refreshWeex()
-    }
-    
-    // MARK: - SRWebSocketDelegate
-    public func webSocket(_ webSocket: SRWebSocket!, didReceiveMessage message: Any!) {
-        if let message = message as? String {
-            if message == "refresh" {
-                refreshWeex()
-            }
-            let jsonObj = WXUtility.object(fromJSON: message)
-            if let messageDic = jsonObj as? Dictionary<String, String> {
-                let method = messageDic["method"]
-                if method?.hasPrefix("WXReload") == true {
-                    if method == "WXReloadBundle", messageDic["params"] != nil {
-                        url = URL(string: messageDic["params"]!)
-                    }
-                    refreshWeex()
-                }
-            }
-        }
-    }
-    
-    public func webSocket(_ webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
-        
-    }
-    
-    public func webSocket(_ webSocket: SRWebSocket!, didFailWithError error: Error!) {
-        print((error as! NSError))
-    }
-    
-    public func webSocket(_ webSocket: SRWebSocket!, didReceivePong pongPayload: Data!) {
-        
-    }
-    
     
 }
