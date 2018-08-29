@@ -100,7 +100,6 @@ import swiftScan
     }
     
     public func scanFinished(scanResult: LBXScanResult, error: String?) {
-        navigationController?.popViewController(animated: true)
         scanResultBlock(scanResult, error)
     }
     

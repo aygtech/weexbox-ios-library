@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		07478FBA71C49DEDA2111614 /* libPods-WeexBox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F2EEC147C70428EA946A86 /* libPods-WeexBox.a */; };
+		AC070F9821354D8900D4E314 /* UIApplication+WeexBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC070F9721354D8900D4E314 /* UIApplication+WeexBox.swift */; };
+		AC070F9C21354E2F00D4E314 /* WXRefreshPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = AC070F9921354E2F00D4E314 /* WXRefreshPlugin.m */; };
+		AC070F9D21354E2F00D4E314 /* WXRefreshPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = AC070F9A21354E2F00D4E314 /* WXRefreshPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC070F9E21354E2F00D4E314 /* WXRefreshPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC070F9B21354E2F00D4E314 /* WXRefreshPlugin.swift */; };
 		AC54342A2111B5A3005B7056 /* WeexBox.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5434282111B5A3005B7056 /* WeexBox.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC5434312111BBCC005B7056 /* WeexBoxEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5434302111BBCC005B7056 /* WeexBoxEngine.swift */; };
 		AC54343D2111D2DD005B7056 /* WBWeexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54343C2111D2DD005B7056 /* WBWeexViewController.swift */; };
@@ -55,10 +59,10 @@
 		AC5CBC342133957F00A4FBCD /* LocationModule.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBC312133957F00A4FBCD /* LocationModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC5CBC352133957F00A4FBCD /* LocationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC322133957F00A4FBCD /* LocationModule.m */; };
 		AC5CBC362133957F00A4FBCD /* LocationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC332133957F00A4FBCD /* LocationModule.swift */; };
-		AC9CE8682133E8E0007EF7F2 /* WXDevPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = AC9CE8662133E8E0007EF7F2 /* WXDevPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC9CE8692133E8E0007EF7F2 /* WXDevPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE8672133E8E0007EF7F2 /* WXDevPlugin.m */; };
+		AC9CE8682133E8E0007EF7F2 /* WXScanPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = AC9CE8662133E8E0007EF7F2 /* WXScanPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC9CE8692133E8E0007EF7F2 /* WXScanPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE8672133E8E0007EF7F2 /* WXScanPlugin.m */; };
 		AC9CE86E2133F2D5007EF7F2 /* WBScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE86D2133F2D5007EF7F2 /* WBScannerViewController.swift */; };
-		AC9CE87421340A59007EF7F2 /* WXDevPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE87321340A59007EF7F2 /* WXDevPlugin.swift */; };
+		AC9CE87421340A59007EF7F2 /* WXScanPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE87321340A59007EF7F2 /* WXScanPlugin.swift */; };
 		AC9CE89A2134F91E007EF7F2 /* String+WeexBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE8992134F91E007EF7F2 /* String+WeexBox.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +70,10 @@
 		1557BC57E5295E8A7176AE33 /* Pods-WeexBox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexBox.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeexBox/Pods-WeexBox.debug.xcconfig"; sourceTree = "<group>"; };
 		30F2EEC147C70428EA946A86 /* libPods-WeexBox.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeexBox.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		470306F86FB9853839FE2D19 /* Pods-WeexBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexBox.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeexBox/Pods-WeexBox.release.xcconfig"; sourceTree = "<group>"; };
+		AC070F9721354D8900D4E314 /* UIApplication+WeexBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+WeexBox.swift"; sourceTree = "<group>"; };
+		AC070F9921354E2F00D4E314 /* WXRefreshPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXRefreshPlugin.m; sourceTree = "<group>"; };
+		AC070F9A21354E2F00D4E314 /* WXRefreshPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXRefreshPlugin.h; sourceTree = "<group>"; };
+		AC070F9B21354E2F00D4E314 /* WXRefreshPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXRefreshPlugin.swift; sourceTree = "<group>"; };
 		AC5434252111B5A3005B7056 /* WeexBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeexBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC5434282111B5A3005B7056 /* WeexBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeexBox.h; sourceTree = "<group>"; };
 		AC5434292111B5A3005B7056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -115,10 +123,10 @@
 		AC5CBC312133957F00A4FBCD /* LocationModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModule.h; sourceTree = "<group>"; };
 		AC5CBC322133957F00A4FBCD /* LocationModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModule.m; sourceTree = "<group>"; };
 		AC5CBC332133957F00A4FBCD /* LocationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModule.swift; sourceTree = "<group>"; };
-		AC9CE8662133E8E0007EF7F2 /* WXDevPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXDevPlugin.h; sourceTree = "<group>"; };
-		AC9CE8672133E8E0007EF7F2 /* WXDevPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXDevPlugin.m; sourceTree = "<group>"; };
+		AC9CE8662133E8E0007EF7F2 /* WXScanPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXScanPlugin.h; sourceTree = "<group>"; };
+		AC9CE8672133E8E0007EF7F2 /* WXScanPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXScanPlugin.m; sourceTree = "<group>"; };
 		AC9CE86D2133F2D5007EF7F2 /* WBScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBScannerViewController.swift; sourceTree = "<group>"; };
-		AC9CE87321340A59007EF7F2 /* WXDevPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXDevPlugin.swift; sourceTree = "<group>"; };
+		AC9CE87321340A59007EF7F2 /* WXScanPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXScanPlugin.swift; sourceTree = "<group>"; };
 		AC9CE8992134F91E007EF7F2 /* String+WeexBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+WeexBox.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,9 +200,12 @@
 				AC5CBC17212D1EC100A4FBCD /* External.swift */,
 				AC5CBC20212D650000A4FBCD /* ATSDK.h */,
 				AC5CBC21212D650000A4FBCD /* ATSDK.m */,
-				AC9CE8662133E8E0007EF7F2 /* WXDevPlugin.h */,
-				AC9CE8672133E8E0007EF7F2 /* WXDevPlugin.m */,
-				AC9CE87321340A59007EF7F2 /* WXDevPlugin.swift */,
+				AC9CE8662133E8E0007EF7F2 /* WXScanPlugin.h */,
+				AC9CE8672133E8E0007EF7F2 /* WXScanPlugin.m */,
+				AC9CE87321340A59007EF7F2 /* WXScanPlugin.swift */,
+				AC070F9A21354E2F00D4E314 /* WXRefreshPlugin.h */,
+				AC070F9921354E2F00D4E314 /* WXRefreshPlugin.m */,
+				AC070F9B21354E2F00D4E314 /* WXRefreshPlugin.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -336,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				AC9CE8992134F91E007EF7F2 /* String+WeexBox.swift */,
+				AC070F9721354D8900D4E314 /* UIApplication+WeexBox.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -371,7 +383,8 @@
 				AC5CBBFD212AB6EE00A4FBCD /* ModalModule.h in Headers */,
 				AC5CBBDC211D677C00A4FBCD /* NavigatorModule.h in Headers */,
 				AC5CBC342133957F00A4FBCD /* LocationModule.h in Headers */,
-				AC9CE8682133E8E0007EF7F2 /* WXDevPlugin.h in Headers */,
+				AC070F9D21354E2F00D4E314 /* WXRefreshPlugin.h in Headers */,
+				AC9CE8682133E8E0007EF7F2 /* WXScanPlugin.h in Headers */,
 				AC5CBC22212D650000A4FBCD /* ATSDK.h in Headers */,
 				AC5CBC06212BCBC400A4FBCD /* BaseModule.h in Headers */,
 				AC5434412112DAD6005B7056 /* Log.h in Headers */,
@@ -507,15 +520,16 @@
 				AC5CBBF12127D10F00A4FBCD /* NetworkModule.m in Sources */,
 				AC5434312111BBCC005B7056 /* WeexBoxEngine.swift in Sources */,
 				AC5CBC28212FEA5F00A4FBCD /* Event.swift in Sources */,
-				AC9CE8692133E8E0007EF7F2 /* WXDevPlugin.m in Sources */,
+				AC9CE8692133E8E0007EF7F2 /* WXScanPlugin.m in Sources */,
 				AC5CBBDD211D677C00A4FBCD /* NavigatorModule.m in Sources */,
 				AC5CBC23212D650000A4FBCD /* ATSDK.m in Sources */,
 				AC5CBC2E212FF49500A4FBCD /* EventModule.m in Sources */,
 				AC5CBBEA2127C40F00A4FBCD /* Result.swift in Sources */,
+				AC070F9821354D8900D4E314 /* UIApplication+WeexBox.swift in Sources */,
 				AC5CBBD4211C3BF400A4FBCD /* UpdateManager.swift in Sources */,
 				AC5CBBE02121320400A4FBCD /* WBBaseViewController.swift in Sources */,
 				AC5CBC1F212D616800A4FBCD /* WXImgLoaderDefaultImpl.m in Sources */,
-				AC9CE87421340A59007EF7F2 /* WXDevPlugin.swift in Sources */,
+				AC9CE87421340A59007EF7F2 /* WXScanPlugin.swift in Sources */,
 				AC5CBC16212D1D2A00A4FBCD /* ExternalModule.swift in Sources */,
 				AC5CBC09212BCC1800A4FBCD /* BaseModule.swift in Sources */,
 				AC5CBBD7211C485000A4FBCD /* WBNavigationController.swift in Sources */,
@@ -526,6 +540,7 @@
 				AC9CE89A2134F91E007EF7F2 /* String+WeexBox.swift in Sources */,
 				AC5434422112DAD6005B7056 /* Log.m in Sources */,
 				AC5CBC07212BCBC400A4FBCD /* BaseModule.m in Sources */,
+				AC070F9C21354E2F00D4E314 /* WXRefreshPlugin.m in Sources */,
 				AC5CBC2F212FF49500A4FBCD /* EventModule.swift in Sources */,
 				AC5CBBF6212A932B00A4FBCD /* UploadFile.swift in Sources */,
 				AC54343D2111D2DD005B7056 /* WBWeexViewController.swift in Sources */,
@@ -539,6 +554,7 @@
 				AC5CBC362133957F00A4FBCD /* LocationModule.swift in Sources */,
 				AC5CBBD5211C3BF400A4FBCD /* UpdateConfig.swift in Sources */,
 				AC5CBBED2127D0EB00A4FBCD /* NetworkModule.swift in Sources */,
+				AC070F9E21354E2F00D4E314 /* WXRefreshPlugin.swift in Sources */,
 				AC5CBBFF212AB6EE00A4FBCD /* ModalModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

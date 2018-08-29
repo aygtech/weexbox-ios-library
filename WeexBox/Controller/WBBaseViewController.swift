@@ -13,21 +13,7 @@ import Foundation
     
     public var router: Router?
     
-    // 获取最顶层VC, 根视图必须是nav或者tab
-    public static func topViewController(_ controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
-        if let navigationController = controller as? UINavigationController {
-            return topViewController(navigationController.visibleViewController)
-        }
-        if let tabController = controller as? UITabBarController {
-            if let selected = tabController.selectedViewController {
-                return topViewController(selected)
-            }
-        }
-        if let presented = controller?.presentedViewController {
-            return topViewController(presented)
-        }
-        return controller
-    }
+    
     
     open override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,5 +1,5 @@
 //
-//  WXDevPlugin.h
+//  WXScanPlugin.h
 //  WeexBox
 //
 //  Created by Mario on 2018/8/27.
@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface WXDevPlugin : NSObject
+@interface WXScanPlugin : NSObject
 
 @end

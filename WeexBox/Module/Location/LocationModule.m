@@ -10,4 +10,6 @@
 
 @implementation LocationModule
 
+WX_EXPORT_METHOD(@selector(getLocation:))
+
 @end

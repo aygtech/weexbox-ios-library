@@ -8,14 +8,14 @@
 
 import Foundation
 import WXDevtool
-import SocketRocket
 
-@objc public extension WXDevPlugin {
+@objc public extension WXScanPlugin {
     
     func pluginWillOpen(inContainer: UIViewController, withArg: Array<Any>) {
-        let topViewController = WBBaseViewController.topViewController()
+        let topViewController = UIApplication.topViewController()
         let scannerViewController = WBScannerViewController()
         scannerViewController.scanResultBlock = { [weak self] (scanResult, error) in
+            scannerViewController.navigationController?.popViewController(animated: false)
             if error != nil {
                 Log.e(error!)
             } else {
@@ -32,11 +32,17 @@ import SocketRocket
             WXDevTool.launchDebug(withUrl: devtoolUrl)
         } else if let tplUrl = params["_wx_tpl"] {
             // 连页面
-            let vc = WBWeexViewController()
             let url = URL(string: tplUrl)!
-            vc.url = url
-            vc.isDebug = true
-            top?.navigationController?.pushViewController(vc, animated: true)
+            if let weexViewController = top as? WBWeexViewController {
+                weexViewController.url = url
+                weexViewController.isDebug = true
+                weexViewController.refreshWeex()
+            } else {
+                let vc = WBWeexViewController()
+                vc.url = url
+                vc.isDebug = true
+                top?.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
     

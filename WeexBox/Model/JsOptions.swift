@@ -35,4 +35,6 @@ struct JsOptions: HandyJSON {
         var title: String?
         var type: String? // destructive;cancel;normal
     }
+    
+    var name: String?
 }

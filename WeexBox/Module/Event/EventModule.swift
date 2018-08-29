@@ -18,8 +18,9 @@ extension EventModule {
     }
     
     // 发送事件
-    func emit(_ name: String, info: Dictionary<String, Any>?) {
-        Event.emit(name: name, info: info)
+    func emit(_ params: Dictionary<String, Any>) {
+        let options = JsOptions.deserialize(from: params)!
+        Event.emit(name: options.name!, info: options.params)
     }
     
     // 注销事件

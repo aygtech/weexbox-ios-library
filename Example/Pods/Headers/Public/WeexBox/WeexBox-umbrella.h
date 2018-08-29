@@ -21,7 +21,8 @@
 #import "RouterModule.h"
 #import "ATSDK.h"
 #import "Log.h"
-#import "WXDevPlugin.h"
+#import "WXRefreshPlugin.h"
+#import "WXScanPlugin.h"
 #import "WeexBox.h"
 
 FOUNDATION_EXPORT double WeexBoxVersionNumber;

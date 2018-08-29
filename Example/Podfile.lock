@@ -40,7 +40,6 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - SnapKit
-    - SocketRocket
     - SVProgressHUD
     - SwiftEventBus
     - swiftScan
@@ -111,7 +110,7 @@ SPEC CHECKSUMS:
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   SwiftyVersion: 79f589a2f9d252c6493f9d2e0a0296d5008f04ff
   TZImagePickerController: bcec66c93c3e519dafab72e989c641b64bbd2df5
-  WeexBox: 6b6b4effb3f74892c625de9581a1a50037e33f68
+  WeexBox: 7aedf227dedde0b925d545cf2fc26ecd0367d67e
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
   WeexSDK: bc48cc6fab6f0ad2ec87d1e1c1330e097d2ad0f3
   WXDevtool: c028138b4e3a8856758acfea2328f708d3adbedd

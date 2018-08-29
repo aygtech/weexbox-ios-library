@@ -67,10 +67,6 @@ pod 'SnapKit'
 
 pod 'ATSDK-Weex'
 
-pod 'SocketRocket'
-# A conforming Objective-C WebSocket client library
-# https://github.com/facebook/SocketRocket
-
 pod 'SDWebImage'
 # Asynchronous image downloader with cache support as a UIImageView category
 # https://github.com/rs/SDWebImage
