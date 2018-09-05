@@ -10,7 +10,7 @@ import Foundation
 import HandyJSON
 
 /// 结果
-struct Result: HandyJSON {
+public struct Result: HandyJSON {
     
     
     static let success = 0
@@ -27,7 +27,7 @@ struct Result: HandyJSON {
     typealias JsResult = Dictionary<String, Any>?
     typealias Callback = (Result) -> Void
     
-    init() {}
+    public init() {}
     
     func toJsResult() -> JsResult {
         return toJSON()

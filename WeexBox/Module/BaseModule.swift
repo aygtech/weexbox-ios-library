@@ -13,4 +13,5 @@ extension BaseModule {
     func getVC() -> WBWeexViewController {
         return weexInstance.viewController as! WBWeexViewController
     }
+    
 }

@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 //import JWT
 
-struct Network {
+public struct Network {
     
 //    enum SecurityType {
 //        case None
@@ -34,7 +34,7 @@ struct Network {
     ///   - parameters: HTTP参数. 默认`nil`.
     ///   - headers: HTTP头. 默认`nil`.
     ///   - callback: 请求回调
-    static func request(url: URLConvertible, method: HTTPMethod = .get, parameters: Parameters? = nil, headers: HTTPHeaders? = nil, callback: @escaping (Result) -> Void) {
+    public static func request(url: URLConvertible, method: HTTPMethod = .get, parameters: Parameters? = nil, headers: HTTPHeaders? = nil, callback: @escaping (Result) -> Void) {
 //        var sendParameters = parameters
 //        switch security {
 //        case .JWT(token):
@@ -68,7 +68,7 @@ struct Network {
     ///   - to: 地址
     ///   - completionCallback: 上传完成回调
     ///   - progressCallback: 进度回调
-    static func upload(files: Array<UploadFile>, to: URLConvertible, completionCallback: @escaping (Result) -> Void, progressCallback: @escaping (Result) -> Void) {
+    public static func upload(files: Array<UploadFile>, to: URLConvertible, completionCallback: @escaping (Result) -> Void, progressCallback: @escaping (Result) -> Void) {
         sessionManager.upload(multipartFormData: { (multipartFormData) in
             for file in files {
                 multipartFormData.append(file.url, withName: file.name)

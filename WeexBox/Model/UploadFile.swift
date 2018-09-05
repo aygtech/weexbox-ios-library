@@ -10,7 +10,9 @@ import Foundation
 import HandyJSON
 
 /// 上传文件信息
-struct UploadFile: HandyJSON {
+public struct UploadFile: HandyJSON {
+    
+    public init(){}
     
     var url: URL!
     var name: String!
