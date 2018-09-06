@@ -10,13 +10,11 @@
 
 @implementation RouterModule
 
-WX_EXPORT_METHOD(@selector(open:))
+WX_EXPORT_METHOD(@selector(openWeex:))
+WX_EXPORT_METHOD(@selector(openWeb:))
+WX_EXPORT_METHOD(@selector(openNative:))
 WX_EXPORT_METHOD_SYNC(@selector(getParams))
-WX_EXPORT_METHOD(@selector(back:))
+WX_EXPORT_METHOD(@selector(close:))
 WX_EXPORT_METHOD(@selector(refresh))
-WX_EXPORT_METHOD(@selector(toWebView:))
-WX_EXPORT_METHOD(@selector(callPhone:))
-WX_EXPORT_METHOD(@selector(openBrowser:))
-
 
 @end

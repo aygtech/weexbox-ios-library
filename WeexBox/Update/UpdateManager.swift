@@ -236,7 +236,7 @@ import Zip
                 try Zip.unzipFile(resourceZipUrl, destination: to, overwrite: true, password: nil, progress: { (unzipProgress) in
                     Async.main {
                         if to == workingUrl {
-                            complete(.Unzip, Int(unzipProgress) * 100)
+                            complete(.Unzip, Int(unzipProgress * 100))
                         }
                     }
                 })
