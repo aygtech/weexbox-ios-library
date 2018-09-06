@@ -40,9 +40,9 @@ import Zip
     public typealias Completion = (UpdateState, Double, Error?, URL?) -> Void
     
     private static let resourceName = "www"
-    private static let oneName = "weexbox-update-one"
-    private static let twoName = "weexbox-update-two"
-    private static let workingNameKey = "weexbox-update-working-key"
+    private static let oneName = "update-one"
+    private static let twoName = "update-two"
+    private static let workingNameKey = "update-working-key"
     private static let workingName = UserDefaults.standard.string(forKey: workingNameKey) ?? oneName
     private static let cacheName: String = {
         if workingName == oneName {
@@ -52,8 +52,8 @@ import Zip
     }()
     
     private static let zipName = "www.zip"
-    private static let md5Name = "weexbox-md5.json"
-    private static let configName = "weexbox-config.json"
+    private static let md5Name = "update-md5.json"
+    private static let configName = "update-config.json"
     
     private static let resourceUrl = Bundle.main.bundleURL.appendingPathComponent(resourceName)
     private static let resourceConfigUrl = resourceUrl.appendingPathComponent(configName)
