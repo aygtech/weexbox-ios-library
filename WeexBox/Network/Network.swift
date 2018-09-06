@@ -8,16 +8,8 @@
 
 import Foundation
 import Alamofire
-//import JWT
 
 public struct Network {
-    
-//    enum SecurityType {
-//        case None
-//        case JWT(token: String)
-//    }
-    
-//    static var jwtAlgorithm: Algorithm!
     
     static let sessionManager: SessionManager = {
         let configuration = URLSessionConfiguration.default
@@ -35,16 +27,6 @@ public struct Network {
     ///   - headers: HTTP头. 默认`nil`.
     ///   - callback: 请求回调
     public static func request(url: URLConvertible, method: HTTPMethod = .get, parameters: Parameters? = nil, headers: HTTPHeaders? = nil, callback: @escaping (Result) -> Void) {
-//        var sendParameters = parameters
-//        switch security {
-//        case .JWT(token):
-//            if sendParameters != nil {
-//                
-//            }
-//            JWT.encode(claims: parameters, algorithm: jwtAlgorithm)
-//        default:
-//        }
-//        
         sessionManager.request(url, method: method, parameters: parameters, headers: headers).validate().responseJSON() { response in
             var result = Result()
             result.code = response.response?.statusCode ?? Result.error

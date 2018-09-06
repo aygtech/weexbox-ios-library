@@ -10,4 +10,7 @@
 
 @implementation NetworkModule
 
+WX_EXPORT_METHOD(@selector(request:callback:))
+WX_EXPORT_METHOD(@selector(upload:callback:))
+
 @end
