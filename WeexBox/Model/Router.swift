@@ -24,26 +24,26 @@ public struct Router: HandyJSON {
     public init() {}
     
     // 下一个weex/web/Browser/Phone的路径；Native注册的路径
-    var url: String?
+    public var url: String?
     // 页面出现方式：push, present
-    var type: String = Router.typePush
+    public var type: String = Router.typePush
     // 是否隐藏导航栏
-    var navBarHidden: Bool = false
+    public var navBarHidden: Bool = false
     // 需要传到下一个页面的数据
-    var params: Dictionary<String, Any>?
+    public var params: Dictionary<String, Any>?
     
     // 打开weex页面
-    func openWeex(from: WBBaseViewController) {
+    public func openWeex(from: WBBaseViewController) {
         open(from: from, to: WBWeexViewController())
     }
     
     // 打开内部web页面
-    func openWeb(from: WBBaseViewController) {
+    public func openWeb(from: WBBaseViewController) {
         open(from: from, to: WBWebViewController())
     }
     
     // 打开原生页面
-    func openNative(from: WBBaseViewController) {
+    public func openNative(from: WBBaseViewController) {
         if let to = Router.routes[url!] {
             open(from: from, to: to.init())
         } else {
@@ -62,7 +62,7 @@ public struct Router: HandyJSON {
     }
     
     // 关闭页面
-    func close(from: WBBaseViewController, levels: Int? = nil) {
+    public func close(from: WBBaseViewController, levels: Int? = nil) {
         if type == Router.typePresent {
             from.dismiss(animated: true, completion: nil)
         } else {
