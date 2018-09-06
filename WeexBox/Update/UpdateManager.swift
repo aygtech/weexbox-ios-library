@@ -37,7 +37,7 @@ import Zip
         case CanEnterApp // "可以进入App"
     }
     
-    public typealias Completion = (UpdateState, Double, Error?, URL?) -> Void
+    public typealias Completion = (UpdateState, Int, Error?, URL?) -> Void
     
     private static let resourceName = "www"
     private static let oneName = "update-one"
@@ -236,7 +236,7 @@ import Zip
                 try Zip.unzipFile(resourceZipUrl, destination: to, overwrite: true, password: nil, progress: { (unzipProgress) in
                     Async.main {
                         if to == workingUrl {
-                            complete(.Unzip, unzipProgress)
+                            complete(.Unzip, Int(unzipProgress) * 100)
                         }
                     }
                 })
@@ -315,7 +315,7 @@ import Zip
     }
     
     private static func download(files: [UpdateMd5?], index: Int = 0, retry: Int = 5) {
-        let progress = Double(index) / Double(files.count)
+        let progress = index * 100 / files.count
         complete(.DownloadFile, progress)
         if index == files.count {
             downloadSuccess(files: files)
@@ -358,7 +358,7 @@ import Zip
         complete(.UpdateSuccess, 0, nil, cacheUrl)
     }
     
-    private static func complete(_ state: UpdateState, _ progress: Double = 0, _ error: Error? = nil, _ url: URL? = nil) {
+    private static func complete(_ state: UpdateState, _ progress: Int = 0, _ error: Error? = nil, _ url: URL? = nil) {
         completion(state, progress, error, url)
     }
     
