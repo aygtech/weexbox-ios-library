@@ -95,4 +95,8 @@ pod 'swiftScan'
 # 二维码 各种码识别，生成，界面效果
 # https://github.com/MxABC/swiftScan
 
+pod 'Charts'
+# Beautiful charts for iOS/tvOS/OSX! The Apple side of the crossplatform MPAndroidChart.
+# https://github.com/danielgindi/Charts
+
 end
