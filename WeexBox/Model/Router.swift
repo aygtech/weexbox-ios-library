@@ -14,14 +14,14 @@ import RTRootNavigationController
 public struct Router: HandyJSON {
     
     static var routes = Dictionary<String, WBBaseViewController.Type>()
-    static func register(name: String, controller: WBBaseViewController.Type) {
+    public static func register(name: String, controller: WBBaseViewController.Type) {
         routes[name] = controller
     }
     
-    static let typePush = "push"
-    static let typePresent = "present"
-    static let weex = "weex"
-    static let web = "web"
+    public static let typePush = "push"
+    public static let typePresent = "present"
+    public static let weex = "weex"
+    public static let web = "web"
     
     public init() {}
     
