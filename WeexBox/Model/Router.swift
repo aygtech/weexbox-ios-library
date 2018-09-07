@@ -14,15 +14,18 @@ import RTRootNavigationController
 public struct Router: HandyJSON {
     
     static var routes = Dictionary<String, WBBaseViewController.Type>()
-    static func register(url: String, controller: WBBaseViewController.Type) {
-        routes[url] = controller
+    static func register(name: String, controller: WBBaseViewController.Type) {
+        routes[name] = controller
     }
     
     static let typePush = "push"
     static let typePresent = "present"
+    static let weex = "weex"
+    static let web = "web"
     
     public init() {}
     
+    public var name: String = ""
     // 下一个weex/web/Browser/Phone的路径；Native注册的路径
     public var url: String?
     // 页面出现方式：push, present
@@ -32,32 +35,19 @@ public struct Router: HandyJSON {
     // 需要传到下一个页面的数据
     public var params: Dictionary<String, Any>?
     
-    // 打开weex页面
-    public func openWeex(from: WBBaseViewController) {
-        open(from: from, to: WBWeexViewController())
-    }
-    
-    // 打开内部web页面
-    public func openWeb(from: WBBaseViewController) {
-        open(from: from, to: WBWebViewController())
-    }
-    
     // 打开原生页面
-    public func openNative(from: WBBaseViewController) {
-        if let to = Router.routes[url!] {
-            open(from: from, to: to.init())
+    public func open(from: WBBaseViewController) {
+        if let toType = Router.routes[name] {
+            let to = toType.init()
+            to.router = self
+            to.hidesBottomBarWhenPushed = true
+            if type == Router.typePresent {
+                from.present(RTRootNavigationController.init(rootViewController: to), animated: true, completion: nil)
+            } else {
+                from.navigationController!.pushViewController(to, animated: true)
+            }
         } else {
             Log.e("该路由名未注册")
-        }
-    }
-    
-    func open(from: WBBaseViewController, to: WBBaseViewController) {
-        to.router = self
-        to.hidesBottomBarWhenPushed = true
-        if type == Router.typePresent {
-            from.present(RTRootNavigationController.init(rootViewController: to), animated: true, completion: nil)
-        } else {
-            from.navigationController!.pushViewController(to, animated: true)
         }
     }
     

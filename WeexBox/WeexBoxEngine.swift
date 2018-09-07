@@ -26,6 +26,7 @@ public class WeexBoxEngine {
         registerHandler()
         registerComponent()
         registerModule()
+        registerRouter()
         #if DEBUG
         WXDebugTool.setDebug(true)
         WXLog.setLogLevel(.all)
@@ -53,5 +54,9 @@ public class WeexBoxEngine {
  
     }
     
+    private static func registerRouter() {
+        Router.register(name: Router.weex, controller: WBWeexViewController.self)
+        Router.register(name: Router.web, controller: WBWebViewController.self)
+    }
     
 }

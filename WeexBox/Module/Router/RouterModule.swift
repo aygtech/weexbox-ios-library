@@ -8,22 +8,15 @@
 
 import Foundation
 import HandyJSON
+import Async
 
 extension RouterModule {
     
-    // 打开weex
-    func openWeex(_ options: Dictionary<String, Any>) {
-        getRouter(options: options).openWeex(from: getVC())
-    }
-    
-    // 打开web
-    func openWeb(_ options: Dictionary<String, Any>) {
-        getRouter(options: options).openWeb(from: getVC())
-    }
-    
-    // 打开原生
-    func openNative(_ options: Dictionary<String, Any>) {
-        getRouter(options: options).openNative(from: getVC())
+    // 打开页面
+    func open(_ options: Dictionary<String, Any>) {
+        Async.main {
+            self.getRouter(options: options).open(from: self.getVC())
+        }
     }
     
     // 获取router的params参数
@@ -35,12 +28,16 @@ extension RouterModule {
     
     // 关闭
     func close(_ levels: Int?) {
-        getVC().router!.close(from: getVC(), levels: levels)
+        Async.main {
+            self.getVC().router!.close(from: self.getVC(), levels: levels)
+        }
     }
     
     // 刷新
     func refresh() {
-        getVC().refreshWeex()
+        Async.main {
+            self.getVC().refreshWeex()
+        }
     }
     
     func getRouter(options: Dictionary<String, Any>) -> Router {
