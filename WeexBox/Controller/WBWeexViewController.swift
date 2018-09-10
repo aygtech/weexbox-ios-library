@@ -72,16 +72,12 @@ import WeexSDK
         instance?.onFailed = { [weak self] (error) in
             #if DEBUG
             let ocError = error! as NSError
-            if ocError.domain == "1" {
-                Async.main {
-                    let errMsg = """
-                    ErrorType:\(ocError.domain)
-                    ErrorCode:\(ocError.code)
-                    ErrorInfo:\(ocError.userInfo)
-                    """
-                    self?.present(UIAlertController(title: "render failed", message: errMsg, preferredStyle: .alert), animated: true, completion: nil)
-                }
-            }
+            let errMsg = """
+            ErrorType:\(ocError.domain)
+            ErrorCode:\(ocError.code)
+            ErrorInfo:\(ocError.userInfo)
+            """
+            self?.present(UIAlertController(title: "render failed", message: errMsg, preferredStyle: .alert), animated: true, completion: nil)
             #endif
         }
         

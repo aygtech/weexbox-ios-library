@@ -21,7 +21,7 @@ extension ExternalModule {
     }
     
     // 拍照
-    func openCamera(_ info: Dictionary<String, String>, callback: WXModuleKeepAliveCallback) {
+    func openCamera(callback: WXModuleKeepAliveCallback) {
         External().openCamera()
     }
     

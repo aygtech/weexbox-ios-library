@@ -26,7 +26,8 @@ import WXDevtool
     }
     
     func openUrl(_ urlString: String, top: UIViewController?) {
-        let params = urlString.getParameters()
+        // 处理windows上的dev路径带有"\\"
+        let params = urlString.replacingOccurrences(of: "\\", with: "/").getParameters()
         if let devtoolUrl = params["_wx_devtool"] {
             // 连服务
             WXDevTool.launchDebug(withUrl: devtoolUrl)
