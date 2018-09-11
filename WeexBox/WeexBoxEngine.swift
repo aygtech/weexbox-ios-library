@@ -51,7 +51,8 @@ public class WeexBoxEngine {
         WXSDKEngine.registerModule("wb-navigator", with: NavigatorModule.self)
         WXSDKEngine.registerModule("wb-network", with: NetworkModule.self)
         WXSDKEngine.registerModule("wb-router", with: RouterModule.self)
- 
+        WXSDKEngine.registerModule("wb-event", with: EventModule.self)
+        WXSDKEngine.registerModule("wb-location", with: LocationModule.self)
     }
     
     private static func registerRouter() {
