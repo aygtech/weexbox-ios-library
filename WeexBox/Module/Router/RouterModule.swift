@@ -22,7 +22,9 @@ extension RouterModule {
     // 获取router的params参数
     func getParams() -> Result.JsResult {
         var result = Result()
-        result.data = getVC().router!.params
+        if let params = getVC().router!.params {
+            result.data = params
+        }
         return result.toJsResult()
     }
     

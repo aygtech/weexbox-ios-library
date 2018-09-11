@@ -30,7 +30,7 @@ public struct Network {
         sessionManager.request(url, method: method, parameters: parameters, headers: headers).validate().responseJSON() { response in
             var result = Result()
             result.code = response.response?.statusCode ?? Result.error
-            result.data = response.value
+            result.data = response.value as! [String : Any]
             result.error = response.error?.localizedDescription
             callback(result)
         }
@@ -59,11 +59,11 @@ public struct Network {
             var result = Result()
             switch encodingResult {
             case .success(let upload, _, _):
-                result.uploadProgress = upload.uploadProgress.fractionCompleted
+                result.progress = Int(upload.uploadProgress.fractionCompleted * 100)
                 progressCallback(result)
                 upload.responseJSON { response in
                     result.code = response.response?.statusCode ?? Result.error
-                    result.data = response.value
+                    result.data = response.value as! [String : Any]
                     result.error = response.error?.localizedDescription
                     completionCallback(result)
                 }

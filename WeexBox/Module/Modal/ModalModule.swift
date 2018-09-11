@@ -17,8 +17,9 @@ extension ModalModule {
     }
     
     // 显示进度
-    func showProgress(_ progress: Float, message: String?) {
-        SVProgressHUD.showProgress(progress, status: message)
+    func showProgress(_ options: Dictionary<String, Any>) {
+        let info = JsOptions.deserialize(from: options)!
+        SVProgressHUD.showProgress(Float(info.progress!) / 100, status: info.text)
     }
     
     // 关闭菊花
@@ -27,8 +28,10 @@ extension ModalModule {
     }
     
     // 吐司
-    func showToast(_ message: String) {
-        SVProgressHUD.show(UIImage(), status: message)
+    func showToast(_ options: Dictionary<String, String>) {
+        let info = JsOptions.deserialize(from: options)!
+        SVProgressHUD.show(UIImage(), status: info.text)
+        SVProgressHUD.dismiss(withDelay: info.duration ?? 3)
     }
     
     // 提示框
@@ -60,7 +63,7 @@ extension ModalModule {
     func actionSheet(_ options: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
         let info = JsOptions.deserialize(from: options)!
         let alertController = UIAlertController(title: info.title, message: info.message, preferredStyle: .actionSheet)
-        for action in info.actions! {
+        for (i, action) in info.actions!.enumerated() {
             var type: UIAlertActionStyle
             switch action.type {
             case "danger":
@@ -72,9 +75,10 @@ extension ModalModule {
             }
             let alertAction = UIAlertAction(title: info.title, style: type) { alert in
                 var result = Result()
-                result.data = alert.title
+                result.data = ["index": alert.value(forKey: "index") as! Int]
                 callback(result, false)
             }
+            alertAction.setValue(i, forKey: "index")
             alertController.addAction(alertAction)
         }
         getVC().present(alertController, animated: true, completion: nil)
@@ -84,7 +88,7 @@ extension ModalModule {
             let alertController = UIAlertController(title: info.title, message: info.message, preferredStyle: .alert)
             let okAction = UIAlertAction(title: info.okTitle, style: .default) { action in
                 var result = Result()
-                result.data = alertController.textFields?.first?.text
+                result.data = ["text": alertController.textFields?.first?.text ?? ""]
                 okCallback?(result.toJsResult(), false)
             }
             alertController.addAction(okAction)

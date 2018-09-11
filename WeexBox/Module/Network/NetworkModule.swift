@@ -39,8 +39,8 @@ extension NetworkModule {
      // `files` 是本地文件路径数组
      files: [[file: 'file://image.png', name: 'icon']]
      
-     // `to` 是上传地址
-     to: 'https://some-domain.com/api/user',
+     // `url` 是上传地址
+     url: 'https://some-domain.com/api/user',
      }
      */
     func upload(_ options: Dictionary<String, Any>, completionCallback: @escaping WXModuleKeepAliveCallback, progressCallback: @escaping WXModuleKeepAliveCallback) {

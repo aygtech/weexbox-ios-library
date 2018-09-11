@@ -21,7 +21,7 @@ struct JsOptions: HandyJSON {
     
     // modal
     var text: String?
-    var progress: Float?
+    var progress: Int?
     var title: String?
     var message: String?
     var okTitle: String?
@@ -29,6 +29,7 @@ struct JsOptions: HandyJSON {
     var placeholder: String?
     var isSecure: Bool?
     var actions: Array<ActionSheet>?
+    var duration: Double?
     
     struct ActionSheet: HandyJSON {
         

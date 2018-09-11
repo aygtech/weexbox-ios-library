@@ -25,8 +25,9 @@ public struct Router: HandyJSON {
     
     public init() {}
     
+    // 页面名称
     public var name: String = ""
-    // 下一个weex/web/Browser/Phone的路径；Native注册的路径
+    // 下一个weex/web的路径
     public var url: String?
     // 页面出现方式：push, present
     public var type: String = Router.typePush

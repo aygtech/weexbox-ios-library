@@ -23,10 +23,10 @@ extension NavigatorModule {
         getVC().rt_disableInteractivePop = disable
     }
     
-    // 隐藏导航栏
-    func barHidden(_ hidden: Bool) {
-        getVC().navigationController!.isNavigationBarHidden = hidden
-    }
+//    // 隐藏导航栏
+//    func barHidden(_ hidden: Bool) {
+//        getVC().navigationController!.isNavigationBarHidden = hidden
+//    }
     
     // 设置导航栏右边按钮
     func setRightItems(_ items: Array<Dictionary<String, String>>, callback: WXModuleKeepAliveCallback?) {
@@ -92,21 +92,21 @@ extension NavigatorModule {
     // 右侧itme响应事件
     @objc func onClickRightBarButton(_ button: UIButton) {
         var result = Result()
-        result.data = button.tag
+        result.data = ["index": button.tag]
         rightItemsCallback?(result, true)
     }
     
     // 左侧item响应事件
     @objc func onClickLeftBarButton(_ button: UIButton) {
         var result = Result()
-        result.data = button.tag
+        result.data = ["index": button.tag]
         leftItemsCallback?(result, true)
     }
 
     // 中间item响应事件
     @objc func onClickCenterBarButtion(_ button: UIButton) {
-        var result = Result()
-        result.data = button.tag
+        let result = Result()
+//        result.data = ["index": button.tag]
         centerItemCallback?(result, true)
     }
    
