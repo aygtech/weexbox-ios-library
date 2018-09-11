@@ -10,6 +10,7 @@ PODS:
   - Charts (3.1.1):
     - Charts/Core (= 3.1.1)
   - Charts/Core (3.1.1)
+  - GPUImage (0.1.7)
   - HandyJSON (4.1.3)
   - Hue (3.0.1)
   - Realm (3.7.6):
@@ -30,7 +31,6 @@ PODS:
   - swiftScan (1.1.3)
   - SwiftyJSON (4.1.0)
   - SwiftyVersion (0.2.1)
-  - TZImagePickerController (2.2.6)
   - WeexPluginLoader (0.0.1.9.1):
     - WeexSDK
   - WeexSDK (0.18.0.2)
@@ -38,6 +38,9 @@ PODS:
     - SocketRocket
     - WeexSDK
   - Zip (1.1.0)
+  - ZLPhotoBrowser (2.7.4):
+    - GPUImage
+    - SDWebImage
 
 DEPENDENCIES:
   - Alamofire
@@ -57,10 +60,10 @@ DEPENDENCIES:
   - swiftScan
   - SwiftyJSON
   - SwiftyVersion
-  - TZImagePickerController
   - WeexSDK
   - WXDevtool
   - Zip
+  - ZLPhotoBrowser
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -70,6 +73,7 @@ SPEC REPOS:
     - ATSDK-Weex
     - BindingX
     - Charts
+    - GPUImage
     - HandyJSON
     - Hue
     - Realm
@@ -83,11 +87,11 @@ SPEC REPOS:
     - swiftScan
     - SwiftyJSON
     - SwiftyVersion
-    - TZImagePickerController
     - WeexPluginLoader
     - WeexSDK
     - WXDevtool
     - Zip
+    - ZLPhotoBrowser
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
@@ -96,6 +100,7 @@ SPEC CHECKSUMS:
   ATSDK-Weex: 1b27558f4336d77fb97704d34fc6ad1fd468592c
   BindingX: b3c6c1c5dcd8e50277cfc5daad09d7010c227524
   Charts: 90a4d61da0f6e06684c591e3bcab11940fe61736
+  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   HandyJSON: bc81fbeb62d65ae5d5942ed29bc4a8265d18c1e8
   Hue: 93e852fa6211ab35922ad8c293f51c43d6c79eb2
   Realm: 9eaecad54712d6246d08ba34c10f354e4715d7d3
@@ -109,12 +114,12 @@ SPEC CHECKSUMS:
   swiftScan: ad753846f4292c19a376dd159db035d62b689458
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   SwiftyVersion: 79f589a2f9d252c6493f9d2e0a0296d5008f04ff
-  TZImagePickerController: 3b25b39ba2e28984fb51bbf3ca5187ffccebb239
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
   WeexSDK: bc48cc6fab6f0ad2ec87d1e1c1330e097d2ad0f3
   WXDevtool: c028138b4e3a8856758acfea2328f708d3adbedd
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
+  ZLPhotoBrowser: b666fe8f68edc63dc5c4edccca071885b87553f5
 
-PODFILE CHECKSUM: cd34758d19cfa1530947d54db2e13433209ee47b
+PODFILE CHECKSUM: e00aa32c7bc5256099e779cd3c1f9e776ab047aa
 
 COCOAPODS: 1.5.3

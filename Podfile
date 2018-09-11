@@ -89,7 +89,7 @@ pod 'SwiftEventBus'
 
 pod 'ZLPhotoBrowser'
 # 一个支持多选、选原图和视频的图片选择器，同时有预览、裁剪功能
-# https://github.com/banchichen/TZImagePickerController
+# https://github.com/banchichen/ZLPhotoBrowser
 
 pod 'swiftScan'
 # 二维码 各种码识别，生成，界面效果

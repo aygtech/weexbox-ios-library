@@ -9,9 +9,9 @@
 import Foundation
 import MessageUI
 import ContactsUI
-import TZImagePickerController
+//import TZImagePickerController
 
-class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPickerDelegate, TZImagePickerControllerDelegate {
+class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPickerDelegate {
     
     var sendSMSCallback: Result.Callback!
     var pickContactCallback: Result.Callback!
@@ -60,11 +60,11 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
     // 选择图片
     func openPhoto(from: UIViewController, maxImagesCount: Int, callback: @escaping Result.Callback) {
         openPhotoCallback = callback
-        let imagePickerVc = TZImagePickerController(maxImagesCount: maxImagesCount, columnNumber: 4, delegate: self)!
-        imagePickerVc.didFinishPickingPhotosWithInfosHandle = { photos, assets, isSelectOriginalPhoto, infos in
-            
-        }
-        from.present(imagePickerVc, animated: true, completion: nil)
+//        let imagePickerVc = TZImagePickerController(maxImagesCount: maxImagesCount, columnNumber: 4, delegate: self)!
+//        imagePickerVc.didFinishPickingPhotosWithInfosHandle = { photos, assets, isSelectOriginalPhoto, infos in
+//
+//        }
+//        from.present(imagePickerVc, animated: true, completion: nil)
     }
     
     // MARK: - MFMessageComposeViewControllerDelegate
