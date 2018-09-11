@@ -12,11 +12,11 @@
 @interface NavigatorModule: BaseModule
 
 // 右边按钮点击回调
-@property (nonatomic, strong) WXModuleKeepAliveCallback rightItemsCallback;
+@property (nonatomic, strong, nonnull) WXModuleKeepAliveCallback rightItemsCallback;
 // 左边按钮点击回调
-@property (nonatomic, strong) WXModuleKeepAliveCallback leftItemsCallback;
+@property (nonatomic, strong, nonnull) WXModuleKeepAliveCallback leftItemsCallback;
 // 中间按钮点击回调
-@property (nonatomic, strong) WXModuleKeepAliveCallback centerItemCallback;
+@property (nonatomic, strong, nonnull) WXModuleKeepAliveCallback centerItemCallback;
 
 @end
 

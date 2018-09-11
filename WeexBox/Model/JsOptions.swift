@@ -38,4 +38,5 @@ struct JsOptions: HandyJSON {
     }
     
     var name: String?
+    var count: Int?
 }

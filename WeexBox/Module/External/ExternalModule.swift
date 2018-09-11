@@ -7,27 +7,41 @@
 //
 
 import Foundation
+import Async
 
 extension ExternalModule {
     
     // 打开浏览器
     func openBrowser(_ url: String) {
-        External.openBrowser(url)
+        Async.main {
+            External.openBrowser(url)
+        }
     }
     
     // 打电话
     func callPhone(_ phone: String) {
-        External.callPhone(phone)
+        Async.main {
+            External.callPhone(phone)
+        }
     }
     
     // 拍照
-    func openCamera(callback: WXModuleKeepAliveCallback) {
-        External().openCamera()
+    func openCamera(callback: @escaping WXModuleKeepAliveCallback) {
+        Async.main {
+            External().openCamera(callback: { (result) in
+                callback(result.toJsResult(), false)
+            })
+        }
     }
     
     // 打开相册
-    func openPhoto(_ info: Dictionary<String, String>, callback: WXModuleKeepAliveCallback) {
-        External().openPhoto(from: getVC())
+    func openPhoto(_ options: Dictionary<String, String>, callback: @escaping WXModuleKeepAliveCallback) {
+        Async.main {
+            let info = JsOptions.deserialize(from: options)!
+            External().openPhoto(from: self.getVC(), maxImagesCount: info.count!, callback: { (result) in
+                callback(result.toJsResult(), false)
+            })
+        }
     }
     
 }

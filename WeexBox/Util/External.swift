@@ -13,9 +13,11 @@ import TZImagePickerController
 
 class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPickerDelegate, TZImagePickerControllerDelegate {
     
-    var sendSMSCallback: Result.Callback?
-    var pickContactCallback: Result.Callback?
-    var getContactsCallback: Result.Callback?
+    var sendSMSCallback: Result.Callback!
+    var pickContactCallback: Result.Callback!
+    var getContactsCallback: Result.Callback!
+    var openCameraCallback: Result.Callback!
+    var openPhotoCallback: Result.Callback!
     
     // 打开外部浏览器
     static func openBrowser(_ url: String) {
@@ -28,7 +30,7 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
     }
     
     // 发短信
-    func sendSMS(from: UIViewController, recipients: Array<String>, content: String, callback: Result.Callback? = nil) {
+    func sendSMS(from: UIViewController, recipients: Array<String>, content: String, callback: @escaping Result.Callback) {
         sendSMSCallback = callback
         let messageController = MFMessageComposeViewController()
         messageController.messageComposeDelegate = self
@@ -38,7 +40,7 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
     }
     
     // 打开通讯录选择联系人
-    func pickContact(from: UIViewController, callback: Result.Callback? = nil) {
+    func pickContact(from: UIViewController, callback: @escaping Result.Callback) {
         pickContactCallback = callback
         let pickerController = CNContactPickerViewController()
         pickerController.delegate = self
@@ -51,12 +53,13 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
     }
     
     // 拍照
-    func openCamera() {
-        
+    func openCamera(callback: @escaping Result.Callback) {
+        openCameraCallback = callback
     }
     
     // 选择图片
-    func openPhoto(from: UIViewController, maxImagesCount: Int = 9) {
+    func openPhoto(from: UIViewController, maxImagesCount: Int, callback: @escaping Result.Callback) {
+        openPhotoCallback = callback
         let imagePickerVc = TZImagePickerController(maxImagesCount: maxImagesCount, columnNumber: 4, delegate: self)!
         imagePickerVc.didFinishPickingPhotosWithInfosHandle = { photos, assets, isSelectOriginalPhoto, infos in
             

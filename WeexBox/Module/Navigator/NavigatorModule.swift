@@ -9,6 +9,7 @@
 import Foundation
 import Hue
 import SDWebImage
+import Async
 
 extension NavigatorModule {
     
@@ -20,7 +21,9 @@ extension NavigatorModule {
     
     // 禁用返回手势
     func disableGestureBack(_ disable: Bool)  {
-        getVC().rt_disableInteractivePop = disable
+        Async.main {
+            self.getVC().rt_disableInteractivePop = disable
+        }
     }
     
 //    // 隐藏导航栏
@@ -29,27 +32,29 @@ extension NavigatorModule {
 //    }
     
     // 设置导航栏右边按钮
-    func setRightItems(_ items: Array<Dictionary<String, String>>, callback: WXModuleKeepAliveCallback?) {
-        rightItemsCallback = callback
-        let barButtonItems = createBarButtons(items, position: .Right)
-        getVC().navigationItem.rightBarButtonItems = barButtonItems
+    func setRightItems(_ items: Array<Dictionary<String, String>>, callback: @escaping WXModuleKeepAliveCallback) {
+        Async.main {
+            self.rightItemsCallback = callback
+            let barButtonItems = self.createBarButtons(items, position: .Right)
+            self.getVC().navigationItem.rightBarButtonItems = barButtonItems
+        }
     }
     
     // 设置导航栏左边按钮
-    func setLeftItems(_ items: Array<Dictionary<String, String>>, callback: WXModuleKeepAliveCallback?) {
-        leftItemsCallback = callback
-        let barButtonItems = createBarButtons(items, position: .Left)
-        getVC().navigationItem.leftBarButtonItems = barButtonItems
+    func setLeftItems(_ items: Array<Dictionary<String, String>>, callback: @escaping WXModuleKeepAliveCallback) {
+        Async.main {
+            self.leftItemsCallback = callback
+            let barButtonItems = self.createBarButtons(items, position: .Left)
+            self.getVC().navigationItem.leftBarButtonItems = barButtonItems
+        }
     }
 
     // 设置导航栏中间按钮
-    func setCenterItem(_ item: Dictionary<String, String>, callback: WXModuleKeepAliveCallback?) {
-        centerItemCallback = callback
-        if callback != nil {
-            let barButtonItem = createBarButton(item, position: .Center)
-            getVC().navigationItem.titleView = barButtonItem.customView
-        } else {
-            getVC().navigationItem.title = item["text"]
+    func setCenterItem(_ item: Dictionary<String, String>, callback: @escaping WXModuleKeepAliveCallback) {
+        Async.main {
+            self.centerItemCallback = callback
+            let barButtonItem = self.createBarButton(item, position: .Center)
+            self.getVC().navigationItem.titleView = barButtonItem.customView
         }
     }
     
@@ -93,21 +98,21 @@ extension NavigatorModule {
     @objc func onClickRightBarButton(_ button: UIButton) {
         var result = Result()
         result.data = ["index": button.tag]
-        rightItemsCallback?(result, true)
+        rightItemsCallback(result, true)
     }
     
     // 左侧item响应事件
     @objc func onClickLeftBarButton(_ button: UIButton) {
         var result = Result()
         result.data = ["index": button.tag]
-        leftItemsCallback?(result, true)
+        leftItemsCallback(result, true)
     }
 
     // 中间item响应事件
     @objc func onClickCenterBarButtion(_ button: UIButton) {
         let result = Result()
 //        result.data = ["index": button.tag]
-        centerItemCallback?(result, true)
+        centerItemCallback(result, true)
     }
    
 }
