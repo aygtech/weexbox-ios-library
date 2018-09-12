@@ -13,14 +13,14 @@ import Async
 extension RouterModule {
     
     // 打开页面
-    func open(_ options: Dictionary<String, Any>) {
+   @objc func open(_ options: Dictionary<String, Any>) {
         Async.main {
             self.getRouter(options: options).open(from: self.getVC())
         }
     }
     
     // 获取router的params参数
-    func getParams() -> Result.JsResult {
+   @objc func getParams() -> Result.JsResult {
         var result = Result()
         if let params = getVC().router!.params {
             result.data = params
@@ -29,20 +29,20 @@ extension RouterModule {
     }
     
     // 关闭
-    func close(_ levels: Int?) {
+   @objc func close(_ levels: Int?) {
         Async.main {
             self.getVC().router!.close(from: self.getVC(), levels: levels)
         }
     }
     
     // 刷新
-    func refresh() {
+   @objc func refresh() {
         Async.main {
             self.getVC().refreshWeex()
         }
     }
     
-    func getRouter(options: Dictionary<String, Any>) -> Router {
+   @objc func getRouter(options: Dictionary<String, Any>) -> Router {
         return Router.deserialize(from: options)!
     }
     

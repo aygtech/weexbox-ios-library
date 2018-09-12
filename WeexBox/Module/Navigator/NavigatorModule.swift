@@ -20,7 +20,7 @@ extension NavigatorModule {
     }
     
     // 禁用返回手势
-    func disableGestureBack(_ disable: Bool)  {
+   @objc func disableGestureBack(_ disable: Bool)  {
         Async.main {
             self.getVC().rt_disableInteractivePop = disable
         }
@@ -32,7 +32,7 @@ extension NavigatorModule {
 //    }
     
     // 设置导航栏右边按钮
-    func setRightItems(_ items: Array<Dictionary<String, String>>, callback: @escaping WXModuleKeepAliveCallback) {
+   @objc func setRightItems(_ items: Array<Dictionary<String, String>>, callback: @escaping WXModuleKeepAliveCallback) {
         Async.main {
             self.rightItemsCallback = callback
             let barButtonItems = self.createBarButtons(items, position: .Right)
@@ -41,7 +41,7 @@ extension NavigatorModule {
     }
     
     // 设置导航栏左边按钮
-    func setLeftItems(_ items: Array<Dictionary<String, String>>, callback: @escaping WXModuleKeepAliveCallback) {
+   @objc func setLeftItems(_ items: Array<Dictionary<String, String>>, callback: @escaping WXModuleKeepAliveCallback) {
         Async.main {
             self.leftItemsCallback = callback
             let barButtonItems = self.createBarButtons(items, position: .Left)
@@ -50,7 +50,7 @@ extension NavigatorModule {
     }
 
     // 设置导航栏中间按钮
-    func setCenterItem(_ item: Dictionary<String, String>, callback: @escaping WXModuleKeepAliveCallback) {
+  @objc  func setCenterItem(_ item: Dictionary<String, String>, callback: @escaping WXModuleKeepAliveCallback) {
         Async.main {
             self.centerItemCallback = callback
             let barButtonItem = self.createBarButton(item, position: .Center)
@@ -58,7 +58,7 @@ extension NavigatorModule {
         }
     }
     
-    func createBarButtons(_ items: Array<Dictionary<String, String>>, position: ItemPosition) -> Array<UIBarButtonItem> {
+  @objc  func createBarButtons(_ items: Array<Dictionary<String, String>>, position: ItemPosition) -> Array<UIBarButtonItem> {
         var barButtonItems = Array<UIBarButtonItem>()
         for (i, item) in items.enumerated() {
             barButtonItems.append(createBarButton(item, position: position, tag: i))
@@ -66,7 +66,7 @@ extension NavigatorModule {
         return barButtonItems
     }
     
-    func createBarButton(_ item: Dictionary<String, String>, position: ItemPosition, tag: Int = 0) -> UIBarButtonItem {
+   @objc func createBarButton(_ item: Dictionary<String, String>, position: ItemPosition, tag: Int = 0) -> UIBarButtonItem {
         let button = UIButton(type: .custom)
         button.tag = tag
         var selector: Selector

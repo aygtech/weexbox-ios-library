@@ -12,21 +12,21 @@ import Async
 extension ExternalModule {
     
     // 打开浏览器
-    func openBrowser(_ url: String) {
+   @objc func openBrowser(_ url: String) {
         Async.main {
             External.openBrowser(url)
         }
     }
     
     // 打电话
-    func callPhone(_ phone: String) {
+   @objc func callPhone(_ phone: String) {
         Async.main {
             External.callPhone(phone)
         }
     }
     
     // 拍照
-    func openCamera(callback: @escaping WXModuleKeepAliveCallback) {
+   @objc func openCamera(callback: @escaping WXModuleKeepAliveCallback) {
         Async.main {
             External().openCamera(callback: { (result) in
                 callback(result.toJsResult(), false)
@@ -35,7 +35,7 @@ extension ExternalModule {
     }
     
     // 打开相册
-    func openPhoto(_ options: Dictionary<String, String>, callback: @escaping WXModuleKeepAliveCallback) {
+   @objc func openPhoto(_ options: Dictionary<String, String>, callback: @escaping WXModuleKeepAliveCallback) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             External().openPhoto(from: self.getVC(), maxImagesCount: info.count!, callback: { (result) in

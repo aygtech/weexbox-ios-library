@@ -11,9 +11,7 @@ import Foundation
 extension LocationModule {
     
     // 获取定位
-    func getLocation(_ callback: @escaping WXModuleKeepAliveCallback) {
+    @objc func getLocation(_ callback: @escaping WXModuleKeepAliveCallback) {
         
     }
-    
-    
 }

@@ -10,7 +10,7 @@ import Foundation
 
 extension BaseModule {
     
-    func getVC() -> WBWeexViewController {
+   @objc func getVC() -> WBWeexViewController {
         return weexInstance.viewController as! WBWeexViewController
     }
     

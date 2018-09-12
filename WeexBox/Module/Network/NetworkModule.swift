@@ -27,7 +27,7 @@ extension NetworkModule {
      },
      }
      */
-    func request(_ options: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
+    @objc func request(_ options: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
         let info = JsOptions.deserialize(from: options)!
         Network.request(url: info.url!, method: HTTPMethod(rawValue: info.method!.uppercased())!, parameters: info.params, headers: info.headers) { result in
             callback(result.toJsResult(), false)
@@ -43,7 +43,7 @@ extension NetworkModule {
      url: 'https://some-domain.com/api/user',
      }
      */
-    func upload(_ options: Dictionary<String, Any>, completionCallback: @escaping WXModuleKeepAliveCallback, progressCallback: @escaping WXModuleKeepAliveCallback) {
+    @objc func upload(_ options: Dictionary<String, Any>, completionCallback: @escaping WXModuleKeepAliveCallback, progressCallback: @escaping WXModuleKeepAliveCallback) {
         let info = JsOptions.deserialize(from: options)!
         Network.upload(files: info.files!, to: info.url!, completionCallback: { (result) in
             completionCallback(result.toJsResult(), false)

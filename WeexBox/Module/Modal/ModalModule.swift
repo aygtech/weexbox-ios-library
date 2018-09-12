@@ -13,14 +13,14 @@ import Async
 extension ModalModule {
     
     // 显示菊花
-    func showLoading(_ message: String?) {
+   @objc func showLoading(_ message: String?) {
         Async.main {
             SVProgressHUD.show(withStatus: message)
         }
     }
     
     // 显示进度
-    func showProgress(_ options: Dictionary<String, Any>) {
+   @objc func showProgress(_ options: Dictionary<String, Any>) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             SVProgressHUD.showProgress(Float(info.progress!) / 100, status: info.text)
@@ -28,14 +28,14 @@ extension ModalModule {
     }
     
     // 关闭菊花
-    func dismiss() {
+   @objc func dismiss() {
         Async.main {
             SVProgressHUD.dismiss()
         }
     }
     
     // 吐司
-    func showToast(_ options: Dictionary<String, String>) {
+   @objc func showToast(_ options: Dictionary<String, String>) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             SVProgressHUD.show(UIImage(), status: info.text)
@@ -44,7 +44,7 @@ extension ModalModule {
     }
     
     // 提示框
-    func alert(_ options: Dictionary<String, String>, callback: @escaping WXModuleKeepAliveCallback) {
+   @objc func alert(_ options: Dictionary<String, String>, callback: @escaping WXModuleKeepAliveCallback) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             let alertController = self.getAlertController(info, okCallback: callback)
@@ -53,7 +53,7 @@ extension ModalModule {
     }
     
     // 确认框
-    func confirm(_ options: Dictionary<String, String>, callback: @escaping WXModuleKeepAliveCallback) {
+   @objc func confirm(_ options: Dictionary<String, String>, callback: @escaping WXModuleKeepAliveCallback) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             let alertController = self.getAlertController(info, okCallback: callback, cancelCallback: callback)
@@ -62,7 +62,7 @@ extension ModalModule {
     }
     
     // 输入框
-    func prompt(_ options: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
+   @objc func prompt(_ options: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             let alertController = self.getAlertController(info, okCallback: callback, cancelCallback: callback)
@@ -75,7 +75,7 @@ extension ModalModule {
     }
     
     // 操作表
-    func actionSheet(_ options: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
+   @objc func actionSheet(_ options: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             let alertController = UIAlertController(title: info.title, message: info.message, preferredStyle: .actionSheet)
@@ -101,7 +101,7 @@ extension ModalModule {
         }
     }
     
-    func getAlertController(_ info: JsOptions, okCallback: @escaping WXModuleKeepAliveCallback) -> UIAlertController {
+   @objc func getAlertController(_ info: JsOptions, okCallback: @escaping WXModuleKeepAliveCallback) -> UIAlertController {
         let alertController = UIAlertController(title: info.title, message: info.message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: info.okTitle, style: .default) { action in
             var result = Result()
@@ -112,7 +112,7 @@ extension ModalModule {
         return alertController
     }
     
-    func getAlertController(_ info: JsOptions, okCallback: @escaping WXModuleKeepAliveCallback, cancelCallback: @escaping WXModuleKeepAliveCallback) -> UIAlertController {
+   @objc func getAlertController(_ info: JsOptions, okCallback: @escaping WXModuleKeepAliveCallback, cancelCallback: @escaping WXModuleKeepAliveCallback) -> UIAlertController {
         let alertController = getAlertController(info, okCallback: okCallback)
         let cancelAction = UIAlertAction(title: info.cancelTitle, style: .default) { action in
             var result = Result()
