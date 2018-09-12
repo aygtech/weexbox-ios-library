@@ -29,7 +29,7 @@ extension RouterModule {
     }
     
     // 关闭
-   @objc func close(_ levels: Int?) {
+    func close(_ levels: Int?) {
         Async.main {
             self.getVC().router!.close(from: self.getVC(), levels: levels)
         }
@@ -42,7 +42,7 @@ extension RouterModule {
         }
     }
     
-   @objc func getRouter(options: Dictionary<String, Any>) -> Router {
+   func getRouter(options: Dictionary<String, Any>) -> Router {
         return Router.deserialize(from: options)!
     }
     

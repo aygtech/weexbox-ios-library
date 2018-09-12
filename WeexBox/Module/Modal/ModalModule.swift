@@ -101,7 +101,7 @@ extension ModalModule {
         }
     }
     
-   @objc func getAlertController(_ info: JsOptions, okCallback: @escaping WXModuleKeepAliveCallback) -> UIAlertController {
+    func getAlertController(_ info: JsOptions, okCallback: @escaping WXModuleKeepAliveCallback) -> UIAlertController {
         let alertController = UIAlertController(title: info.title, message: info.message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: info.okTitle, style: .default) { action in
             var result = Result()
@@ -112,7 +112,7 @@ extension ModalModule {
         return alertController
     }
     
-   @objc func getAlertController(_ info: JsOptions, okCallback: @escaping WXModuleKeepAliveCallback, cancelCallback: @escaping WXModuleKeepAliveCallback) -> UIAlertController {
+    func getAlertController(_ info: JsOptions, okCallback: @escaping WXModuleKeepAliveCallback, cancelCallback: @escaping WXModuleKeepAliveCallback) -> UIAlertController {
         let alertController = getAlertController(info, okCallback: okCallback)
         let cancelAction = UIAlertAction(title: info.cancelTitle, style: .default) { action in
             var result = Result()

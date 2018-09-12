@@ -58,7 +58,7 @@ extension NavigatorModule {
         }
     }
     
-  @objc  func createBarButtons(_ items: Array<Dictionary<String, String>>, position: ItemPosition) -> Array<UIBarButtonItem> {
+  func createBarButtons(_ items: Array<Dictionary<String, String>>, position: ItemPosition) -> Array<UIBarButtonItem> {
         var barButtonItems = Array<UIBarButtonItem>()
         for (i, item) in items.enumerated() {
             barButtonItems.append(createBarButton(item, position: position, tag: i))
@@ -66,7 +66,7 @@ extension NavigatorModule {
         return barButtonItems
     }
     
-   @objc func createBarButton(_ item: Dictionary<String, String>, position: ItemPosition, tag: Int = 0) -> UIBarButtonItem {
+    func createBarButton(_ item: Dictionary<String, String>, position: ItemPosition, tag: Int = 0) -> UIBarButtonItem {
         let button = UIButton(type: .custom)
         button.tag = tag
         var selector: Selector
