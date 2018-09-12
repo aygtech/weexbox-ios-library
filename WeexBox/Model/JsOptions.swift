@@ -12,7 +12,7 @@ import HandyJSON
 /// js传来的参数
 struct JsOptions: HandyJSON {
 
-    // axios
+    // network
     var url: String?
     var method: String?
     var headers: Dictionary<String, String>?

@@ -22,7 +22,8 @@
 ## 一. Installation 安装
 
 #### CocoaPods
-> pod 'TZImagePickerController'
+> pod 'TZImagePickerController'   #iOS8 and later        
+> pod 'TZImagePickerController', '2.2.6'   #iOS6、iOS7        
 
 #### Carthage
 > github "banchichen/TZImagePickerController"
@@ -49,6 +50,13 @@
    When system version is iOS8 or later, Using PhotoKit.  
    如果运行在iOS6或7系统上，用的是AssetsLibrary库获取照片资源。  
    如果运行在iOS8及以上系统上，用的是PhotoKit库获取照片资源。
+   
+   TZImagePickerController uses Camera、Location、Microphone、Photo Library，you need add these properties to info.plist like Demo：       
+   TZImagePickerController使用了相机、定位、麦克风、相册，请参考Demo添加下列属性到info.plist文件：        
+   	`Privacy - Camera Usage Description`     
+	`Privacy - Location When In Use Usage Description`    
+ 	`Privacy - Microphone Usage Description`   
+ 	`Privacy - Photo Library Usage Description`   
    
 ## 四. More 更多 
 
@@ -120,7 +128,8 @@ A：视频导出分两步，第一步是通过PHAsset获取AVURLAsset，如是iC
 
 ## 六. Release Notes 最近更新     
 
-3.0.1 新增对[TZImagePreviewController](https://github.com/banchichen/TZImagePreviewController)库的支持，允许预览UIImage、NSURL、PHAsset对象。       
+3.0.6 优化保存照片、视频的方法        
+3.0.1 新增对[TZImagePreviewController](https://github.com/banchichen/TZImagePreviewController)库的支持，允许预览UIImage、NSURL、PHAsset对象       
 **3.0.0 去除iOS6和7的适配代码，更轻量，最低支持iOS8**      
 2.2.6 新增needFixComposition属性，默认为NO，不再主动修正视频转向，防止部分安卓拍的视频导出失败（**最后一个支持iOS6和7的版本**）          
 2.1.5 修复开启showSelectedIndex后照片列表页iCloud图片进度条紊乱的bug              

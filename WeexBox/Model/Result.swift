@@ -18,10 +18,10 @@ public struct Result: HandyJSON {
     
     
     
-   public var code: Int = Result.success
-   public var data = Dictionary<String, Any>()
-   public var error: String?
-   public var progress: Int?
+    public var code: Int = Result.success
+    public var data = Dictionary<String, Any>()
+    public var error: String?
+    public var progress: Int?
     
     typealias JsResult = Dictionary<String, Any>?
     typealias Callback = (Result) -> Void
