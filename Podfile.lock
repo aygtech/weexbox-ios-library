@@ -33,7 +33,7 @@ PODS:
   - TZImagePickerController (3.0.6)
   - WeexPluginLoader (0.0.1.9.1):
     - WeexSDK
-  - WeexSDK (0.18.0.2)
+  - WeexSDK (0.18.0.3)
   - WXDevtool (0.16.3):
     - SocketRocket
     - WeexSDK
@@ -58,7 +58,6 @@ DEPENDENCIES:
   - SwiftyJSON
   - SwiftyVersion
   - TZImagePickerController
-  - WeexSDK
   - WXDevtool
   - Zip
 
@@ -111,10 +110,10 @@ SPEC CHECKSUMS:
   SwiftyVersion: 79f589a2f9d252c6493f9d2e0a0296d5008f04ff
   TZImagePickerController: f1cc4b5720f6d01c9804ad136c28bb8a986388d7
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
-  WeexSDK: bc48cc6fab6f0ad2ec87d1e1c1330e097d2ad0f3
+  WeexSDK: 173541f2d0042664168b305952398145c0c6039c
   WXDevtool: c028138b4e3a8856758acfea2328f708d3adbedd
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 961ca9a50c05ed3fd08f15bcaae991d7653a8e5b
+PODFILE CHECKSUM: 74f86cb7ef91d3b943218ad6e73bc40e9c3315cc
 
 COCOAPODS: 1.5.3
