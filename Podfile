@@ -5,7 +5,7 @@ use_modular_headers!
 
 target 'WeexBox' do
 
-pod 'WeexSDK'
+pod 'WeexSDK',:modular_headers => false
 # Apache Weex
 # https://github.com/apache/incubator-weex
 
