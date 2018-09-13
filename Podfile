@@ -9,7 +9,7 @@ pod 'WeexSDK',:modular_headers => false
 # Apache Weex
 # https://github.com/apache/incubator-weex
 
-pod 'WXDevtool'
+pod 'WXDevtool',:modular_headers => false
 # Remote debug for your native iOS app using Chrome Developer Tools
 # https://github.com/weexteam/weex-devtool-iOS
 
@@ -65,7 +65,7 @@ pod 'SnapKit'
 # AREK is a clean and easy way to request any kind of iOS permission
 # https://github.com/ennioma/arek
 
-pod 'ATSDK-Weex'
+pod 'ATSDK-Weex',:modular_headers => false
 
 pod 'SDWebImage'
 # Asynchronous image downloader with cache support as a UIImageView category
