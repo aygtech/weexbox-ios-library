@@ -46,7 +46,7 @@ public class WeexBoxEngine {
     }
     
     private static func registerModule() {
-        WXSDKEngine.registerModule("wb-external", with: External.self)
+        WXSDKEngine.registerModule("wb-external", with: ExternalModule.self)
         WXSDKEngine.registerModule("wb-modal", with: ModalModule.self)
         WXSDKEngine.registerModule("wb-navigator", with: NavigatorModule.self)
         WXSDKEngine.registerModule("wb-network", with: NetworkModule.self)

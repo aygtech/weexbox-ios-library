@@ -33,7 +33,7 @@ open class Network {
         }
         sessionManager.request(url, method: method, parameters: parameters, encoding: encoding, headers: headers).validate().responseString() { response in
             var result = Result()
-            result.code = response.response?.statusCode ?? Result.error
+            result.status = response.response?.statusCode ?? Result.error
             if let value = response.result.value {
                 result.data["data"] = value
             }
@@ -68,13 +68,13 @@ open class Network {
                 result.progress = Int(upload.uploadProgress.fractionCompleted * 100)
                 progressCallback(result)
                 upload.responseJSON { response in
-                    result.code = response.response?.statusCode ?? Result.error
+                    result.status = response.response?.statusCode ?? Result.error
                     result.data = response.value as! [String : Any]
                     result.error = response.error?.localizedDescription
                     completionCallback(result)
                 }
             case .failure(let encodingError):
-                result.code = Result.error
+                result.status = Result.error
                 result.error = encodingError.localizedDescription
                 completionCallback(result)
             }

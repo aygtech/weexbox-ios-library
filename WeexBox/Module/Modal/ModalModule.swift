@@ -116,7 +116,7 @@ extension ModalModule {
         let alertController = getAlertController(info, okCallback: okCallback)
         let cancelAction = UIAlertAction(title: info.cancelTitle, style: .default) { action in
             var result = Result()
-            result.code = Result.error
+            result.status = Result.error
             cancelCallback(result, false)
         }
         alertController.addAction(cancelAction)
