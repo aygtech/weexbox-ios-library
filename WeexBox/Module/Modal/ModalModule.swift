@@ -79,7 +79,7 @@ extension ModalModule {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             let alertController = UIAlertController(title: info.title, message: info.message, preferredStyle: .actionSheet)
-            for (i, action) in info.actions!.enumerated() {
+            for (_, action) in info.actions!.enumerated() {
                 var type: UIAlertActionStyle
                 switch action.type {
                 case "danger":
@@ -90,11 +90,11 @@ extension ModalModule {
                     type = .default
                 }
                 let alertAction = UIAlertAction(title: info.title, style: type) { alert in
+                    let index = alertController.actions.index(of: alert);
                     var result = Result()
-                    result.data = ["index": alert.value(forKey: "index") as! Int]
+                    result.data = ["index": index ?? 0]
                     callback(result, false)
                 }
-                alertAction.setValue(i, forKey: "index")
                 alertController.addAction(alertAction)
             }
             self.getVC().present(alertController, animated: true, completion: nil)
@@ -116,7 +116,7 @@ extension ModalModule {
         let alertController = getAlertController(info, okCallback: okCallback)
         let cancelAction = UIAlertAction(title: info.cancelTitle, style: .default) { action in
             var result = Result()
-            result.code = Result.error
+            result.status = Result.error
             cancelCallback(result, false)
         }
         alertController.addAction(cancelAction)

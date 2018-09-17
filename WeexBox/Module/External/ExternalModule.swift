@@ -26,7 +26,7 @@ extension ExternalModule {
     }
     
     // 拍照
-   @objc func openCamera(callback: @escaping WXModuleKeepAliveCallback) {
+   @objc func openCamera(_ callback: @escaping WXModuleKeepAliveCallback) {
         Async.main {
             External().openCamera(callback: { (result) in
                 callback(result.toJsResult(), false)
@@ -35,7 +35,7 @@ extension ExternalModule {
     }
     
     // 打开相册
-   @objc func openPhoto(_ options: Dictionary<String, String>, callback: @escaping WXModuleKeepAliveCallback) {
+   @objc func openPhoto(_ options: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             External().openPhoto(from: self.getVC(), maxImagesCount: info.count!, callback: { (result) in

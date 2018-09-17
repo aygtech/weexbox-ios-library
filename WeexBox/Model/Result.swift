@@ -18,7 +18,7 @@ public struct Result: HandyJSON {
     
     
     
-    public var code: Int = Result.success
+    public var status: Int = Result.success
     public var data = Dictionary<String, Any>()
     public var error: String?
     public var progress: Int?

@@ -29,9 +29,11 @@ extension RouterModule {
     }
     
     // 关闭
-    func close(_ levels: Int?) {
+    @objc func close(_ levels: Any!) {
         Async.main {
-            self.getVC().router!.close(from: self.getVC(), levels: levels)
+            if (self.getVC().router != nil){
+                self.getVC().router!.close(from: self.getVC(),levels: levels as? Int)
+            }
         }
     }
     

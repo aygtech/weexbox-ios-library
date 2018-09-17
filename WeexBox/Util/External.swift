@@ -62,7 +62,39 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
         openPhotoCallback = callback
         let imagePickerVc = TZImagePickerController(maxImagesCount: maxImagesCount, columnNumber: 4, delegate: self)!
         imagePickerVc.didFinishPickingPhotosWithInfosHandle = { photos, assets, isSelectOriginalPhoto, infos in
-            
+            var result = Result()
+            if assets != nil{
+                result.status = Result.success
+                result.error = ""
+                var index = 0
+                let count = assets!.count
+                let urls = NSMutableArray()
+                var result = Result()
+                //没有图片。
+                if count == 0{
+                    result.data = ["urls":[]]
+                    callback(result)
+                    return;
+                }
+                for model in assets!{
+                    let asset = model as? PHAsset
+                    asset!.getURL(completionHandler: { (url) in
+                        index = index+1
+                        let urlStr = url?.absoluteString
+                        urls.add(urlStr ?? "")
+                        if index == count{
+                            result.data = ["urls":urls]
+                            callback(result)
+                        }
+                    })
+                }
+            }
+            else{
+                result.status = Result.error
+                result.error = "无法获取图片路径"
+                result.data = ["urls":[]]
+                callback(result)
+            }
         }
         from.present(imagePickerVc, animated: true, completion: nil)
     }
@@ -71,10 +103,10 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         var callbackResult = Result()
         if result == .cancelled {
-            callbackResult.code = Result.error
+            callbackResult.status = Result.error
             callbackResult.error = "cancelled"
         } else if result == .failed {
-            callbackResult.code = Result.error
+            callbackResult.status = Result.error
             callbackResult.error = "failed"
         }
         sendSMSCallback?(callbackResult)
@@ -84,7 +116,7 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
     // MARK: - CNContactPickerDelegate
     func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
         var result = Result()
-        result.code = Result.error
+        result.status = Result.error
         result.error = "cancelled"
         pickContactCallback?(result)
     }
@@ -104,5 +136,30 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
         }
         info["phones"] = phones
         return info
+    }
+}
+extension PHAsset {
+    
+    func getURL(completionHandler : @escaping ((_ responseURL : URL?) -> Void)){
+        if self.mediaType == .image {
+            let options: PHContentEditingInputRequestOptions = PHContentEditingInputRequestOptions()
+            options.canHandleAdjustmentData = {(adjustmeta: PHAdjustmentData) -> Bool in
+                return true
+            }
+            self.requestContentEditingInput(with: options, completionHandler: {(contentEditingInput: PHContentEditingInput?, info: [AnyHashable : Any]) -> Void in
+                completionHandler(contentEditingInput!.fullSizeImageURL as URL?)
+            })
+        } else if self.mediaType == .video {
+            let options: PHVideoRequestOptions = PHVideoRequestOptions()
+            options.version = .original
+            PHImageManager.default().requestAVAsset(forVideo: self, options: options, resultHandler: {(asset: AVAsset?, audioMix: AVAudioMix?, info: [AnyHashable : Any]?) -> Void in
+                if let urlAsset = asset as? AVURLAsset {
+                    let localVideoUrl: URL = urlAsset.url as URL
+                    completionHandler(localVideoUrl)
+                } else {
+                    completionHandler(nil)
+                }
+            })
+        }
     }
 }
