@@ -26,7 +26,7 @@ extension ExternalModule {
     }
     
     // 拍照
-   @objc func openCamera(callback: @escaping WXModuleKeepAliveCallback) {
+   @objc func openCamera(_ callback: @escaping WXModuleKeepAliveCallback) {
         Async.main {
             External().openCamera(callback: { (result) in
                 callback(result.toJsResult(), false)
