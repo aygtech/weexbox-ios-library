@@ -11,6 +11,8 @@
 		AC9CE8532133DF76007EF7F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE8522133DF76007EF7F2 /* ViewController.swift */; };
 		AC9CE8582133DF78007EF7F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC9CE8572133DF78007EF7F2 /* Assets.xcassets */; };
 		AC9CE85B2133DF78007EF7F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9CE8592133DF78007EF7F2 /* LaunchScreen.storyboard */; };
+		ACF90ED9214A90E8000FDAB4 /* OCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF90ED8214A90E8000FDAB4 /* OCTest.m */; };
+		ACF90EDB214B4C41000FDAB4 /* SwiftTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF90EDA214B4C41000FDAB4 /* SwiftTest.swift */; };
 		EF33C1CE2E38C1F85EE2A13C /* libPods-WeexBoxExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8366C6BCB7071E15F022D80 /* libPods-WeexBoxExample.a */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +26,10 @@
 		AC9CE8572133DF78007EF7F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC9CE85A2133DF78007EF7F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC9CE85C2133DF78007EF7F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACF90ED6214A90E8000FDAB4 /* WeexBoxExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeexBoxExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		ACF90ED7214A90E8000FDAB4 /* OCTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCTest.h; sourceTree = "<group>"; };
+		ACF90ED8214A90E8000FDAB4 /* OCTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCTest.m; sourceTree = "<group>"; };
+		ACF90EDA214B4C41000FDAB4 /* SwiftTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,9 +76,13 @@
 			children = (
 				AC9CE8502133DF76007EF7F2 /* AppDelegate.swift */,
 				AC9CE8522133DF76007EF7F2 /* ViewController.swift */,
+				ACF90ED7214A90E8000FDAB4 /* OCTest.h */,
+				ACF90ED8214A90E8000FDAB4 /* OCTest.m */,
+				ACF90EDA214B4C41000FDAB4 /* SwiftTest.swift */,
 				AC9CE8572133DF78007EF7F2 /* Assets.xcassets */,
 				AC9CE8592133DF78007EF7F2 /* LaunchScreen.storyboard */,
 				AC9CE85C2133DF78007EF7F2 /* Info.plist */,
+				ACF90ED6214A90E8000FDAB4 /* WeexBoxExample-Bridging-Header.h */,
 			);
 			path = WeexBoxExample;
 			sourceTree = "<group>";
@@ -119,6 +129,7 @@
 				TargetAttributes = {
 					AC9CE84C2133DF76007EF7F2 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -209,7 +220,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC9CE8532133DF76007EF7F2 /* ViewController.swift in Sources */,
+				ACF90ED9214A90E8000FDAB4 /* OCTest.m in Sources */,
 				AC9CE8512133DF76007EF7F2 /* AppDelegate.swift in Sources */,
+				ACF90EDB214B4C41000FDAB4 /* SwiftTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,8 +359,27 @@
 			baseConfigurationReference = 27F101CC5BC3872CE661F024 /* Pods-WeexBoxExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M5UW3GJJEM;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/ATSDK-Weex\"",
+					"\"${PODS_ROOT}/Headers/Public/BindingX\"",
+					"\"${PODS_ROOT}/Headers/Public/HandyJSON\"",
+					"\"${PODS_ROOT}/Headers/Public/RTRootNavigationController\"",
+					"\"${PODS_ROOT}/Headers/Public/Realm\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/SocketRocket\"",
+					"\"${PODS_ROOT}/Headers/Public/TZImagePickerController\"",
+					"\"${PODS_ROOT}/Headers/Public/WXDevtool\"",
+					"\"${PODS_ROOT}/Headers/Public/WeexBox\"",
+					"\"${PODS_ROOT}/Headers/Public/WeexPluginLoader\"",
+					"\"${PODS_ROOT}/Headers/Public/WeexSDK\"",
+					"\"${PODS_ROOT}/Headers/Public/Zip\"",
+				);
 				INFOPLIST_FILE = WeexBoxExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -355,6 +387,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = WeexBox.WeexBoxExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WeexBoxExample/WeexBoxExample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -365,8 +399,27 @@
 			baseConfigurationReference = 049815ECA562C1D30C195ECB /* Pods-WeexBoxExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M5UW3GJJEM;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/ATSDK-Weex\"",
+					"\"${PODS_ROOT}/Headers/Public/BindingX\"",
+					"\"${PODS_ROOT}/Headers/Public/HandyJSON\"",
+					"\"${PODS_ROOT}/Headers/Public/RTRootNavigationController\"",
+					"\"${PODS_ROOT}/Headers/Public/Realm\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/SocketRocket\"",
+					"\"${PODS_ROOT}/Headers/Public/TZImagePickerController\"",
+					"\"${PODS_ROOT}/Headers/Public/WXDevtool\"",
+					"\"${PODS_ROOT}/Headers/Public/WeexBox\"",
+					"\"${PODS_ROOT}/Headers/Public/WeexPluginLoader\"",
+					"\"${PODS_ROOT}/Headers/Public/WeexSDK\"",
+					"\"${PODS_ROOT}/Headers/Public/Zip\"",
+				);
 				INFOPLIST_FILE = WeexBoxExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -374,6 +427,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = WeexBox.WeexBoxExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WeexBoxExample/WeexBoxExample-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
