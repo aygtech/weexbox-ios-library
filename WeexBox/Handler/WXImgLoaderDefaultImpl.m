@@ -37,9 +37,9 @@
 
 - (id<WXImageOperationProtocol>)downloadImageWithURL:(NSString *)url imageFrame:(CGRect)imageFrame userInfo:(NSDictionary *)userInfo completed:(void(^)(UIImage *image,  NSError *error, BOOL finished))completedBlock
 {
-    if ([url hasPrefix:@"app://"]) {
+    if ([url hasPrefix:@"bundle://"]) {
         // 加载app内置图片
-        NSString *imageName = [url substringFromIndex:5];
+        NSString *imageName = [url substringFromIndex:9];
         UIImage *image = [UIImage imageNamed:imageName];
         completedBlock(image, nil, YES);
         return nil;
