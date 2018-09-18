@@ -20,37 +20,41 @@ extension NavigatorModule {
     }
     
     // 禁用返回手势
-   @objc func disableGestureBack(_ disable: Bool)  {
+    @objc func disableGestureBack(_ disable: Bool)  {
         Async.main {
             self.getVC().rt_disableInteractivePop = disable
         }
     }
     
-//    // 隐藏导航栏
-//    func barHidden(_ hidden: Bool) {
-//        getVC().navigationController!.isNavigationBarHidden = hidden
-//    }
+    //    // 隐藏导航栏
+    //    func barHidden(_ hidden: Bool) {
+    //        getVC().navigationController!.isNavigationBarHidden = hidden
+    //    }
     
     // 设置导航栏右边按钮
-   @objc func setRightItems(_ items: Array<Dictionary<String, String>>, callback: @escaping WXModuleKeepAliveCallback) {
+    @objc func setRightItems(_ items: Any, callback: @escaping WXModuleKeepAliveCallback) {
         Async.main {
             self.rightItemsCallback = callback
+            let items = self.optimizeTheGoodType(obj: items);
+            
             let barButtonItems = self.createBarButtons(items, position: .Right)
             self.getVC().navigationItem.rightBarButtonItems = barButtonItems
         }
     }
     
     // 设置导航栏左边按钮
-   @objc func setLeftItems(_ items: Array<Dictionary<String, String>>, callback: @escaping WXModuleKeepAliveCallback) {
+    @objc func setLeftItems(_ items: Any, callback: @escaping WXModuleKeepAliveCallback) {
+        
         Async.main {
             self.leftItemsCallback = callback
+            let items = self.optimizeTheGoodType(obj: items);
             let barButtonItems = self.createBarButtons(items, position: .Left)
             self.getVC().navigationItem.leftBarButtonItems = barButtonItems
         }
     }
-
+    
     // 设置导航栏中间按钮
-  @objc  func setCenterItem(_ item: Dictionary<String, String>, callback: @escaping WXModuleKeepAliveCallback) {
+    @objc  func setCenterItem(_ item: Dictionary<String, String>, callback: @escaping WXModuleKeepAliveCallback) {
         Async.main {
             self.centerItemCallback = callback
             let barButtonItem = self.createBarButton(item, position: .Center)
@@ -58,7 +62,7 @@ extension NavigatorModule {
         }
     }
     
-  func createBarButtons(_ items: Array<Dictionary<String, String>>, position: ItemPosition) -> Array<UIBarButtonItem> {
+    func createBarButtons(_ items: Array<Dictionary<String, String>>, position: ItemPosition) -> Array<UIBarButtonItem> {
         var barButtonItems = Array<UIBarButtonItem>()
         for (i, item) in items.enumerated() {
             barButtonItems.append(createBarButton(item, position: position, tag: i))
@@ -107,12 +111,20 @@ extension NavigatorModule {
         result.data = ["index": button.tag]
         leftItemsCallback(result, true)
     }
-
+    
     // 中间item响应事件
     @objc func onClickCenterBarButtion(_ button: UIButton) {
         let result = Result()
-//        result.data = ["index": button.tag]
+        //        result.data = ["index": button.tag]
         centerItemCallback(result, true)
     }
-   
+    //友好化类型。
+    func optimizeTheGoodType(obj:Any)->Array<Dictionary<String, String>>{
+        var arr = NSArray() as! Array<Dictionary<String, String>>;
+        if(obj != nil && obj is NSArray){
+            arr = obj as! Array<Dictionary<String, String>>
+        }
+        return arr as! Array<Dictionary<String, String>>;
+    }
+    
 }
