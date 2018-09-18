@@ -9,21 +9,21 @@
 import Foundation
 import SwiftEventBus
 
-struct Event {
+public struct Event {
     
-    static func register(target: AnyObject, name: String, handler: @escaping ((Notification?) -> Void)) {
+   public static func register(target: AnyObject, name: String, handler: @escaping ((Notification?) -> Void)) {
         SwiftEventBus.onMainThread(target, name: name, handler: handler)
     }
     
-    static func emit(name: String, info: Dictionary<String, Any>?) {
+   public static func emit(name: String, info: Dictionary<String, Any>?) {
         SwiftEventBus.post(name, userInfo: info)
     }
     
-    static func unregister(target: AnyObject, name: String) {
+   public static func unregister(target: AnyObject, name: String) {
         SwiftEventBus.unregister(target, name: name)
     }
     
-    static func unregisterAll(target: AnyObject) {
+   public static func unregisterAll(target: AnyObject) {
         SwiftEventBus.unregister(target)
     }
 }

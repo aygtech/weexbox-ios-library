@@ -13,18 +13,16 @@ import Async
 extension RouterModule {
     
     // 打开页面
-   @objc func open(_ options: Dictionary<String, Any>) {
+    @objc func open(_ options: Dictionary<String, Any>) {
         Async.main {
             self.getRouter(options: options).open(from: self.getVC())
         }
     }
     
     // 获取router的params参数
-   @objc func getParams() -> Result.JsResult {
+    @objc func getParams() -> Result.JsResult {
         var result = Result()
-        if let params = getVC().router!.params {
-            result.data = params
-        }
+        result.data = getVC().router?.params ?? result.data
         return result.toJsResult()
     }
     
@@ -38,13 +36,13 @@ extension RouterModule {
     }
     
     // 刷新
-   @objc func refresh() {
+    @objc func refresh() {
         Async.main {
             self.getVC().refreshWeex()
         }
     }
     
-   func getRouter(options: Dictionary<String, Any>) -> Router {
+    func getRouter(options: Dictionary<String, Any>) -> Router {
         return Router.deserialize(from: options)!
     }
     
