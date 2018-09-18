@@ -21,9 +21,7 @@ extension RouterModule {
     
     // 获取router的params参数
     @objc func getParams() -> Result.JsResult {
-        var result = Result()
-        result.data = getVC().router?.params ?? result.data
-        return result.toJsResult()
+        return getVC().router?.params
     }
     
     // 关闭
