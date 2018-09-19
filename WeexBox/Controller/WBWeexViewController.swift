@@ -35,7 +35,8 @@ import WeexSDK
         edgesForExtendedLayout = .init(rawValue: 0)
         
         let navBarHeight: CGFloat = navigationController?.navigationBar.frame.maxY ?? 0
-        weexHeight = view.frame.size.height - navBarHeight - UIApplication.shared.statusBarFrame.size.height
+        let tabBarHeight: CGFloat = self.hidesBottomBarWhenPushed ? 0 : (tabBarController?.tabBar.frame.size.height ?? 0)
+        weexHeight = view.frame.size.height - navBarHeight - UIApplication.shared.statusBarFrame.size.height - tabBarHeight
         if let u = router?.url {
             if u.hasPrefix("http") {
                 url = URL(string: u)
