@@ -73,9 +73,8 @@ extension ModalModule {
             self.getVC().present(alertController, animated: true, completion: nil)
         }
     }
-    
     // 操作表
-   @objc func actionSheet(_ options: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
+    @objc func actionSheet(_ options: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             let alertController = UIAlertController(title: info.title, message: info.message, preferredStyle: .actionSheet)
@@ -89,11 +88,11 @@ extension ModalModule {
                 default:
                     type = .default
                 }
-                let alertAction = UIAlertAction(title: info.title, style: type) { alert in
+                let alertAction = UIAlertAction(title: action.title, style: type) { alert in
                     let index = alertController.actions.index(of: alert);
                     var result = Result()
                     result.data = ["index": index ?? 0]
-                    callback(result, false)
+                    callback(result.toJsResult(), false)
                 }
                 alertController.addAction(alertAction)
             }
