@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.dependency 'Alamofire'
   s.dependency "Alamofire-Synchronous"
   s.dependency 'SwiftyJSON'
-  s.dependency 'HandyJSON, '4.1.3'
+  s.dependency 'HandyJSON, '~> 4.1.3'
   s.dependency 'SVProgressHUD'
   s.dependency 'AsyncSwift'
   s.dependency 'RealmSwift'
