@@ -29,5 +29,5 @@ FOUNDATION_EXPORT const unsigned char WeexBoxVersionString[];
 #import <WeexBox/LocationModule.h>
 #import <WeexBox/WXScanPlugin.h>
 #import <WeexBox/WXRefreshPlugin.h>
-
+#import <WeexBox/DDWriteFileSupport.h>
 
