@@ -18,7 +18,7 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
     var getContactsCallback: Result.Callback!
     var openCameraCallback: Result.Callback!
     var openPhotoCallback: Result.Callback!
-    
+    var imagePicker:UIImagePickerController = UIImagePickerController();
     // 打开外部浏览器
     static func openBrowser(_ url: String) {
         UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
@@ -53,8 +53,31 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
     }
     
     // 拍照
-    func openCamera(callback: @escaping Result.Callback) {
+    func openCamera(from: UIViewController,callback: @escaping Result.Callback) {
         openCameraCallback = callback
+        let imagePickerVc = TZImagePickerController(maxImagesCount: 1, columnNumber: 4, delegate: self)!
+        imagePickerVc.didFinishPickingPhotosWithInfosHandle = { photos, assets, isSelectOriginalPhoto, infos in
+            var result = Result()
+            let urls = NSMutableArray();
+            if(photos != nil && (photos?.count)!>0){
+                result.status = Result.success
+                result.error = ""
+                
+                for image in photos!{
+                    let path = self.saveImageToSandBox(image: image, fileName: self.getFileName())
+                    urls.add(path)
+                }
+                result.data = ["urls":urls]
+                callback(result)
+            }
+            else{
+                result.status = Result.error
+                result.error = "无法获取图片路径"
+                result.data = ["urls":urls]
+                callback(result)
+            }
+        }
+        from.present(imagePickerVc, animated: true, completion: nil)
     }
     
     // 选择图片
@@ -63,42 +86,39 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
         let imagePickerVc = TZImagePickerController(maxImagesCount: maxImagesCount, columnNumber: 4, delegate: self)!
         imagePickerVc.didFinishPickingPhotosWithInfosHandle = { photos, assets, isSelectOriginalPhoto, infos in
             var result = Result()
-            if assets != nil{
+            let urls = NSMutableArray();
+            if(photos != nil && (photos?.count)!>0){
                 result.status = Result.success
                 result.error = ""
-                var index = 0
-                let count = assets!.count
-                let urls = NSMutableArray()
-                var result = Result()
-                //没有图片。
-                if count == 0{
-                    result.data = ["urls":[]]
-                    callback(result)
-                    return;
+                
+                for image in photos!{
+                    let path = self.saveImageToSandBox(image: image, fileName: self.getFileName())
+                    urls.add(path)
                 }
-                for model in assets!{
-                    let asset = model as? PHAsset
-                    asset!.getURL(completionHandler: { (url) in
-                        index = index+1
-                        let urlStr = url?.absoluteString
-                        urls.add(urlStr ?? "")
-                        if index == count{
-                            result.data = ["urls":urls]
-                            callback(result)
-                        }
-                    })
-                }
+                result.data = ["urls":urls]
+                callback(result)
             }
             else{
                 result.status = Result.error
                 result.error = "无法获取图片路径"
-                result.data = ["urls":[]]
+                result.data = ["urls":urls]
                 callback(result)
             }
         }
         from.present(imagePickerVc, animated: true, completion: nil)
     }
-    
+    func getFileName() -> String {
+        let time  = NSDate().timeIntervalSince1970*1000;
+        return String(format: "temple_%.f.png", time);
+    }
+    //保存图片到沙盒
+    func saveImageToSandBox(image:UIImage,fileName:String)->String{
+        let tmpDirectory = NSTemporaryDirectory();
+        let imageData = UIImagePNGRepresentation(image) as? NSData;
+        let path = String(format:"%@%@",tmpDirectory,fileName)
+        imageData?.write(toFile: path, atomically: true)
+        return String(format:"file://%@",fileName);
+    }
     // MARK: - MFMessageComposeViewControllerDelegate
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         var callbackResult = Result()
@@ -136,30 +156,5 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
         }
         info["phones"] = phones
         return info
-    }
-}
-extension PHAsset {
-    
-    func getURL(completionHandler : @escaping ((_ responseURL : URL?) -> Void)){
-        if self.mediaType == .image {
-            let options: PHContentEditingInputRequestOptions = PHContentEditingInputRequestOptions()
-            options.canHandleAdjustmentData = {(adjustmeta: PHAdjustmentData) -> Bool in
-                return true
-            }
-            self.requestContentEditingInput(with: options, completionHandler: {(contentEditingInput: PHContentEditingInput?, info: [AnyHashable : Any]) -> Void in
-                completionHandler(contentEditingInput!.fullSizeImageURL as URL?)
-            })
-        } else if self.mediaType == .video {
-            let options: PHVideoRequestOptions = PHVideoRequestOptions()
-            options.version = .original
-            PHImageManager.default().requestAVAsset(forVideo: self, options: options, resultHandler: {(asset: AVAsset?, audioMix: AVAudioMix?, info: [AnyHashable : Any]?) -> Void in
-                if let urlAsset = asset as? AVURLAsset {
-                    let localVideoUrl: URL = urlAsset.url as URL
-                    completionHandler(localVideoUrl)
-                } else {
-                    completionHandler(nil)
-                }
-            })
-        }
     }
 }

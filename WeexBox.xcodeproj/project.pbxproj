@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		07478FBA71C49DEDA2111614 /* libPods-WeexBox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F2EEC147C70428EA946A86 /* libPods-WeexBox.a */; };
-		99DA7D8921534C5A001EC134 /* DDWriteFileSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 99DA7D8721534C5A001EC134 /* DDWriteFileSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		99DA7D8A21534C5A001EC134 /* DDWriteFileSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA7D8821534C5A001EC134 /* DDWriteFileSupport.m */; };
 		AC070F9821354D8900D4E314 /* UIApplication+WeexBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC070F9721354D8900D4E314 /* UIApplication+WeexBox.swift */; };
 		AC070F9C21354E2F00D4E314 /* WXRefreshPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = AC070F9921354E2F00D4E314 /* WXRefreshPlugin.m */; };
 		AC070F9D21354E2F00D4E314 /* WXRefreshPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = AC070F9A21354E2F00D4E314 /* WXRefreshPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -73,8 +71,6 @@
 		1557BC57E5295E8A7176AE33 /* Pods-WeexBox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexBox.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeexBox/Pods-WeexBox.debug.xcconfig"; sourceTree = "<group>"; };
 		30F2EEC147C70428EA946A86 /* libPods-WeexBox.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeexBox.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		470306F86FB9853839FE2D19 /* Pods-WeexBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexBox.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeexBox/Pods-WeexBox.release.xcconfig"; sourceTree = "<group>"; };
-		99DA7D8721534C5A001EC134 /* DDWriteFileSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDWriteFileSupport.h; sourceTree = "<group>"; };
-		99DA7D8821534C5A001EC134 /* DDWriteFileSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDWriteFileSupport.m; sourceTree = "<group>"; };
 		AC070F9721354D8900D4E314 /* UIApplication+WeexBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+WeexBox.swift"; sourceTree = "<group>"; };
 		AC070F9921354E2F00D4E314 /* WXRefreshPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXRefreshPlugin.m; sourceTree = "<group>"; };
 		AC070F9A21354E2F00D4E314 /* WXRefreshPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXRefreshPlugin.h; sourceTree = "<group>"; };
@@ -202,8 +198,6 @@
 		AC54343E2112DAAB005B7056 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				99DA7D8721534C5A001EC134 /* DDWriteFileSupport.h */,
-				99DA7D8821534C5A001EC134 /* DDWriteFileSupport.m */,
 				AC54343F2112DAD6005B7056 /* Log.h */,
 				AC5434402112DAD6005B7056 /* Log.m */,
 				AC5CBC17212D1EC100A4FBCD /* External.swift */,
@@ -406,7 +400,6 @@
 				AC5CBC06212BCBC400A4FBCD /* BaseModule.h in Headers */,
 				AC5434412112DAD6005B7056 /* Log.h in Headers */,
 				AC54342A2111B5A3005B7056 /* WeexBox.h in Headers */,
-				99DA7D8921534C5A001EC134 /* DDWriteFileSupport.h in Headers */,
 				AC5CBC1E212D616800A4FBCD /* WXImgLoaderDefaultImpl.h in Headers */,
 				AC5CBC15212D1D2A00A4FBCD /* ExternalModule.h in Headers */,
 			);
@@ -574,7 +567,6 @@
 				AC5CBBD5211C3BF400A4FBCD /* UpdateConfig.swift in Sources */,
 				AC5CBBED2127D0EB00A4FBCD /* NetworkModule.swift in Sources */,
 				AC070F9E21354E2F00D4E314 /* WXRefreshPlugin.swift in Sources */,
-				99DA7D8A21534C5A001EC134 /* DDWriteFileSupport.m in Sources */,
 				AC5CBBFF212AB6EE00A4FBCD /* ModalModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

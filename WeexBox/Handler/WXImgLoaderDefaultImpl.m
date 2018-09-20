@@ -43,15 +43,31 @@
         UIImage *image = [UIImage imageNamed:imageName];
         completedBlock(image, nil, YES);
         return nil;
-    } else if ([url hasPrefix:@"http"]) {
+    }
+    //从沙盒加载。
+    else if([url hasPrefix:@"file://"]){
+        NSString *imagePath = [self getFullPathWithUrl:url];
+        completedBlock([UIImage imageWithContentsOfFile:imagePath], nil, YES);
+    }
+    else if ([url hasPrefix:@"http"]) {
         // 从网络加载
         return (id<WXImageOperationProtocol>)[[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:url] options:0 progress:nil completed:^(UIImage *image, NSData *imageData, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             completedBlock(image, error, finished);
         }];
     }
-    // 从本地加载
-    completedBlock([UIImage imageWithContentsOfFile:url], nil, YES);
     return nil;
+}
+-(NSString *)getFullPathWithUrl:(NSString *)url{
+    NSString *tmpDirectory = NSTemporaryDirectory();
+    NSArray *urls = [url componentsSeparatedByString:@"file://"];
+    if(urls&&urls.count==2){
+        NSString *fileName = urls[1];
+        if(fileName&&fileName.length>0){
+            return [NSString stringWithFormat:@"%@%@",tmpDirectory,fileName];
+        }
+        return @"";
+    }
+    return @"";
 }
 
 @end
