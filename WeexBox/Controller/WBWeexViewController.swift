@@ -69,7 +69,6 @@ import WeexSDK
             self?.weexView?.removeFromSuperview()
             self?.weexView = view
             self?.view.addSubview((self?.weexView)!)
-            UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self?.weexView)
         }
         
         instance?.onFailed = { [weak self] (error) in
