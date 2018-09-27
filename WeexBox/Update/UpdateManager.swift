@@ -34,7 +34,6 @@ import Zip
         case DownloadFileError // "下载文件出错"
         case DownloadFileSuccess // "下载文件成功"
         case UpdateSuccess // "更新成功"
-        case CanEnterApp // "可以进入App"
     }
     
     public typealias Completion = (UpdateState, Int, Error?, URL?) -> Void
@@ -63,8 +62,8 @@ import Zip
     private static let workingUrl = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first!).appendingPathComponent(workingName)
     private static let workingConfigUrl = workingUrl.appendingPathComponent(configName)
     
-    private static let cacheUrl = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first!).appendingPathComponent(cacheName)
-    private static let cacheConfigUrl = cacheUrl.appendingPathComponent(configName)
+    private static var cacheUrl = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first!).appendingPathComponent(cacheName)
+    private static var cacheConfigUrl = cacheUrl.appendingPathComponent(configName)
     
     private static var serverConfigUrl: URL!
     private static var serverMd5Url: URL!
@@ -89,7 +88,7 @@ import Zip
         realmConfig.fileURL = realmConfig.fileURL!.deletingLastPathComponent().appendingPathComponent(cacheName + ".realm")
         return realmConfig
     }()
-    private static let cacheRealm: Realm = {
+    private static var cacheRealm: Realm = {
         return try! Realm(configuration: cacheRealmConfig)
     }()
     
@@ -104,8 +103,16 @@ import Zip
         serverWwwUrl = url
     }
     
+    // 设置强制更新
+    public static var forceUpdate = false
+    
     // 检查更新
     public static func update(completion: @escaping Completion) {
+        if forceUpdate {
+            cacheUrl = workingUrl
+            cacheConfigUrl = workingConfigUrl
+            cacheRealm = workingRealm
+        }
         self.completion = completion
         loadLocalConfig()
         loadLocalMd5()
@@ -121,8 +128,6 @@ import Zip
     public static func getFullUrl(file: String) -> URL {
         return workingUrl.appendingPathComponent(file)
     }
-    
-    
     
     // 将APP预置包解压到工作目录
     private static func unzipWwwToWorking() {
@@ -158,8 +163,10 @@ import Zip
     }
     
     private static func enterApp() {
-        // 返回工作目录地址
-        complete(.CanEnterApp, 100, nil, workingUrl)
+        if forceUpdate == false {
+            // 返回工作目录地址
+            complete(.UpdateSuccess, 100, nil, workingUrl)
+        }
         // 开始静默更新
         update()
     }
