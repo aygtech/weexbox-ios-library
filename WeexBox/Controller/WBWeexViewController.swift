@@ -51,12 +51,12 @@ import WeexSDK
     
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        updateInstanceState(state: .WeexInstanceAppear)
+        instance?.fireGlobalEvent("viewDidAppear", params: nil)
     }
     
     open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        updateInstanceState(state: .WeexInstanceDisappear)
+        instance?.fireGlobalEvent("viewDidDisappear", params: nil)
     }
     
     func render() {
@@ -87,12 +87,9 @@ import WeexSDK
             #endif
         }
         
-        instance?.renderFinish = { (view) in
+        instance?.renderFinish = { [weak self] (view) in
             Log.d("Render Finish...")
-        }
-        
-        instance?.updateFinish = { (view) in
-            Log.d("Update Finish...")
+            self?.instance?.fireGlobalEvent("viewDidAppear", params: nil)
         }
         
         instance?.render(with: url, options: ["bundleUrl": url!.absoluteString], data: nil)
@@ -100,17 +97,6 @@ import WeexSDK
     
     public func refreshWeex() {
         render()
-    }
-    
-    func updateInstanceState(state: WXState) {
-        if instance != nil, instance!.state != state {
-            instance!.state = state
-            if state == .WeexInstanceAppear {
-                WXSDKManager.bridgeMgr().fireEvent(instance!.instanceId, ref: WX_SDK_ROOT_REF, type: "viewappear", params: nil, domChanges: nil)
-            } else if state == .WeexInstanceDisappear {
-                WXSDKManager.bridgeMgr().fireEvent(instance!.instanceId, ref: WX_SDK_ROOT_REF, type: "viewdisappear", params: nil, domChanges: nil)
-            }
-        }
     }
     
     deinit {

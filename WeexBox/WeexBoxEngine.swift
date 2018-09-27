@@ -29,11 +29,11 @@ public class WeexBoxEngine {
         registerRouter()
         #if DEBUG
         WXDebugTool.setDebug(true)
-        WXLog.setLogLevel(.all)
+        WXLog.setLogLevel(.log)
         ATSDK.atAddPlugin()
         #else
         WXDebugTool.setDebug(false)
-        WXLog.setLogLevel(.error)
+        WXLog.setLogLevel(.off)
         #endif
     }
     
