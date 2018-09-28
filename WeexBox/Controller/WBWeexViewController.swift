@@ -33,7 +33,7 @@ import WeexSDK
         view.backgroundColor = .white
         view.clipsToBounds = true
         edgesForExtendedLayout = .init(rawValue: 0)
-        
+        UIApplication.shared.isStatusBarHidden = false
         let navBarHeight: CGFloat = navigationController?.navigationBar.frame.maxY ?? 0
         let tabBarHeight: CGFloat = self.hidesBottomBarWhenPushed ? 0 : (tabBarController?.tabBar.frame.size.height ?? 0)
         let isNavigat = self.navigationController?.isNavigationBarHidden
