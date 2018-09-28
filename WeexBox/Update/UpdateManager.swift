@@ -367,9 +367,7 @@ import Zip
     
     private static func complete(_ state: UpdateState, _ progress: Int = 0, _ error: Error? = nil, _ url: URL? = nil) {
         if state == .UpdateSuccess {
-            if forceUpdate == false, url == workingUrl {
-                completion(state, progress, error, url)
-            } else if forceUpdate {
+            if forceUpdate || (forceUpdate == false && url == workingUrl) {
                 completion(state, progress, error, url)
             }
         } else {
