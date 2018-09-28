@@ -210,7 +210,7 @@ import Zip
                 if shouldDownloadWww(serverConfig: serverConfig) {
                     downloadMd5()
                 } else {
-                    complete(.UpdateSuccess, 100, nil, workingUrl)
+                    complete(.UpdateSuccess, 100, nil, cacheUrl)
                 }
             case .failure(let error):
                 complete(.DownloadConfigError, 0, error)
@@ -366,7 +366,15 @@ import Zip
     }
     
     private static func complete(_ state: UpdateState, _ progress: Int = 0, _ error: Error? = nil, _ url: URL? = nil) {
-        completion(state, progress, error, url)
+        if state == .UpdateSuccess {
+            if forceUpdate == false, url == workingUrl {
+                completion(state, progress, error, url)
+            } else if forceUpdate {
+                completion(state, progress, error, url)
+            }
+        } else {
+            completion(state, progress, error, url)
+        }
     }
     
     private static func saveConfig() {
