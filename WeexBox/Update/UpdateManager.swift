@@ -108,6 +108,9 @@ import Zip
     
     // 检查更新
     public static func update(completion: @escaping Completion) {
+        // 忽略本地缓存。临时修改，后面要统一改
+        Alamofire.SessionManager.default.session.configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+
         if forceUpdate {
             cacheUrl = workingUrl
             cacheConfigUrl = workingConfigUrl
