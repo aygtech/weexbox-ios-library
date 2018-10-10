@@ -79,7 +79,7 @@ extension ModalModule {
             let info = JsOptions.deserialize(from: options)!
             let alertController = UIAlertController(title: info.title, message: info.message, preferredStyle: .actionSheet)
             for (_, action) in info.actions!.enumerated() {
-                var type: UIAlertActionStyle
+                var type: UIAlertAction.Style
                 switch action.type {
                 case "danger":
                     type = .destructive

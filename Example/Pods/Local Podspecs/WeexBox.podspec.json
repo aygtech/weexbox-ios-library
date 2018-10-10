@@ -1,6 +1,6 @@
 {
   "name": "WeexBox",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "summary": "WeexBox.",
   "homepage": "https://github.com/WeexBox/ios-library",
   "license": "MIT",
@@ -12,10 +12,10 @@
   },
   "source": {
     "git": "https://github.com/WeexBox/ios-library.git",
-    "tag": "0.0.1"
+    "tag": "0.2.0"
   },
   "source_files": "WeexBox/**/**/*.{swift,h,m}",
-  "swift_version": "4.1",
+  "swift_version": "4.2",
   "requires_arc": true,
   "frameworks": [
     "Foundation",

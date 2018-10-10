@@ -53,6 +53,7 @@ import Zip
     private static let zipName = "www.zip"
     private static let md5Name = "update-md5.json"
     private static let configName = "update-config.json"
+    private static let versionName = "update-version.txt"
     
     private static let resourceUrl = Bundle.main.bundleURL.appendingPathComponent(resourceName)
     private static let resourceConfigUrl = resourceUrl.appendingPathComponent(configName)
@@ -65,15 +66,20 @@ import Zip
     private static var cacheUrl = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first!).appendingPathComponent(cacheName)
     private static var cacheConfigUrl = cacheUrl.appendingPathComponent(configName)
     
+    private static var serverVersionUrl: URL!
     private static var serverConfigUrl: URL!
     private static var serverMd5Url: URL!
     private static var serverUrl: URL! {
         didSet {
-            serverConfigUrl = serverUrl.appendingPathComponent(configName)
-            serverMd5Url = serverUrl.appendingPathComponent(md5Name)
+            serverVersionUrl = serverUrl.appendingPathComponent(versionName)
         }
     }
-    private static var serverWwwUrl: URL!
+    private static var serverWwwUrl: URL! {
+        didSet {
+            serverConfigUrl = serverWwwUrl.appendingPathComponent(configName)
+            serverMd5Url = serverWwwUrl.appendingPathComponent(md5Name)
+        }
+    }
     
     private static var completion: Completion!
     
@@ -100,7 +106,7 @@ import Zip
     
     // 设置更新服务器
     public static func setServer(url: URL) {
-        serverWwwUrl = url
+        serverUrl = url
     }
     
     // 设置强制更新
@@ -153,10 +159,10 @@ import Zip
     
     private static func getServer() {
         complete(.GetServer)
-        Alamofire.request(serverWwwUrl).validate().responseString { response in
+        Alamofire.request(serverVersionUrl).validate().responseString { response in
             switch response.result {
             case .success(let value):
-                serverUrl = serverWwwUrl.deletingLastPathComponent().appendingPathComponent(value)
+                serverWwwUrl = serverUrl.appendingPathComponent(value)
                 // 获取服务端config文件
                 downloadConfig()
             case .failure(let error):
@@ -336,7 +342,7 @@ import Zip
                 let fileURL = cacheUrl.appendingPathComponent(path)
                 return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
             }
-            let url = serverUrl.appendingPathComponent(path)
+            let url = serverWwwUrl.appendingPathComponent(path)
             Alamofire.download(url, to: destination).validate().responseData { response in
                 switch response.result {
                 case .success(_):

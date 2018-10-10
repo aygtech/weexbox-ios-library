@@ -114,7 +114,7 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
     //保存图片到沙盒
     func saveImageToSandBox(image:UIImage,fileName:String)->String{
         let tmpDirectory = NSTemporaryDirectory();
-        let imageData = UIImagePNGRepresentation(image) as? NSData;
+        let imageData = image.pngData() as NSData?;
         let path = String(format:"%@%@",tmpDirectory,fileName)
         imageData?.write(toFile: path, atomically: true)
         return String(format:"file://%@",fileName);

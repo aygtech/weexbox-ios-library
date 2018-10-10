@@ -7,28 +7,28 @@ PODS:
   - BindingX (1.0.3):
     - WeexPluginLoader
     - WeexSDK
-  - HandyJSON (4.1.3)
+  - HandyJSON (4.2.0)
   - Hue (3.0.1)
-  - Realm (3.9.0):
-    - Realm/Headers (= 3.9.0)
-  - Realm/Headers (3.9.0)
-  - RealmSwift (3.9.0):
-    - Realm (= 3.9.0)
+  - Realm (3.11.0):
+    - Realm/Headers (= 3.11.0)
+  - Realm/Headers (3.11.0)
+  - RealmSwift (3.11.0):
+    - Realm (= 3.11.0)
   - RTRootNavigationController (0.6.7):
     - RTRootNavigationController/Core (= 0.6.7)
   - RTRootNavigationController/Core (0.6.7)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
-  - SnapKit (4.0.0)
+  - SnapKit (4.0.1)
   - SocketRocket (0.5.1)
   - SVProgressHUD (2.2.5)
   - SwiftEventBus (2.1.2)
   - swiftScan (1.1.5)
-  - SwiftyJSON (4.1.0)
+  - SwiftyJSON (4.2.0)
   - SwiftyVersion (0.2.1)
-  - TZImagePickerController (3.0.6)
-  - WeexBox (0.0.1):
+  - TZImagePickerController (3.0.9)
+  - WeexBox (0.2.0):
     - Alamofire
     - Alamofire-Synchronous
     - AsyncSwift
@@ -96,21 +96,21 @@ SPEC CHECKSUMS:
   AsyncSwift: 65775a7b32e740609b24969ece3de58723b9dc3e
   ATSDK-Weex: 1b27558f4336d77fb97704d34fc6ad1fd468592c
   BindingX: b3c6c1c5dcd8e50277cfc5daad09d7010c227524
-  HandyJSON: bc81fbeb62d65ae5d5942ed29bc4a8265d18c1e8
+  HandyJSON: 9dfc026c7d7adc1f0f8ba8b181495f0e0763b0f4
   Hue: 93e852fa6211ab35922ad8c293f51c43d6c79eb2
-  Realm: 3d36f208bf3aff8335dc3298742140182bde4edb
-  RealmSwift: aa4d11917bfcfaa3ed51f219102a487ecd895447
+  Realm: 92f09a102692b96a9a10e9617f214f15c5ab85fc
+  RealmSwift: 5f0481cd658bb751c509314b964a35eaa264d2cf
   RTRootNavigationController: d6aa6cbb78a3eaecea4f6e4df63f15dd887836b8
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftEventBus: 9e8f6d8cff2826d66536ec367d17a47299478aa0
   swiftScan: bc6dbf74e6a579c45a861691afc44628d8d9f6ab
-  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   SwiftyVersion: 79f589a2f9d252c6493f9d2e0a0296d5008f04ff
-  TZImagePickerController: f1cc4b5720f6d01c9804ad136c28bb8a986388d7
-  WeexBox: 7aedf227dedde0b925d545cf2fc26ecd0367d67e
+  TZImagePickerController: ea3e906af8caa7088f612ad673feb73cc6aa6bfc
+  WeexBox: 1e1f50909bd8258909a0eb59cf9654baa6c35574
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
   WeexSDK: 173541f2d0042664168b305952398145c0c6039c
   WXDevtool: c028138b4e3a8856758acfea2328f708d3adbedd
