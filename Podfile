@@ -79,10 +79,6 @@ pod 'Hue'
 # Hue is the all-in-one coloring utility that you'll ever need
 # https://github.com/hyperoslo/Hue
 
-#pod 'JSONWebToken'
-# Swift implementation of JSON Web Token (JWT)
-# https://github.com/kylef/JSONWebToken.swift
-
 pod 'SwiftEventBus'
 # A publish/subscribe EventBus optimized for iOS
 # https://github.com/cesarferreira/SwiftEventBus
