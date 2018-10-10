@@ -66,4 +66,28 @@ public extension String {
         }
         return nil
     }
+    
+    func wb_compare(with version: String) -> ComparisonResult {
+        return compare(version, options: .numeric, range: nil, locale: nil)
+    }
+    
+    func isNewer(than aVersionString: String) -> Bool {
+        return wb_compare(with: aVersionString) == .orderedDescending
+    }
+    
+    func isOlder(than aVersionString: String) -> Bool {
+        return wb_compare(with: aVersionString) == .orderedAscending
+    }
+    
+    func isSame(to aVersionString: String) -> Bool {
+        return wb_compare(with: aVersionString) == .orderedSame
+    }
+    
+    func isNotOlder(than aVersionString: String) -> Bool {
+        return isSame(to: aVersionString) || isNewer(than: aVersionString)
+    }
+    
+    func isNotNewer(than aVersionString: String) -> Bool {
+        return isSame(to: aVersionString) || isOlder(than: aVersionString)
+    }
 }

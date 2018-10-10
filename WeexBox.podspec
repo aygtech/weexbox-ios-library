@@ -22,7 +22,6 @@ Pod::Spec.new do |s|
   s.dependency 'SVProgressHUD'
   s.dependency 'AsyncSwift'
   s.dependency 'RealmSwift'
-  s.dependency 'SwiftyVersion'
   s.dependency 'Zip'
   s.dependency 'RTRootNavigationController'
   s.dependency 'SnapKit'

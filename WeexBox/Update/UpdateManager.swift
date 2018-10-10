@@ -12,7 +12,6 @@ import Alamofire_Synchronous
 import Async
 import RealmSwift
 import HandyJSON
-import SwiftyVersion
 import Zip
 
 /// 热更新
@@ -229,14 +228,14 @@ import Zip
     
     private static func shouldDownloadWww(serverConfig: UpdateConfig) -> Bool {
         let appBuild = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
-        if Version(appBuild) >= Version(serverConfig.ios_min_version), Version(serverConfig.release) > Version(cacheConfig!.release) {
+        if appBuild.isNotOlder(than: serverConfig.ios_min_version), serverConfig.release.isNewer(than: cacheConfig!.release) {
             return true
         }
         return false
     }
     
     private static func isWwwFolderNeedsToBeInstalled(config: UpdateConfig?) -> Bool {
-        if config == nil || Version(resourceConfig.release) > Version(config!.release) {
+        if config == nil || resourceConfig.release.isNewer(than: config!.release) {
             return true
         }
         return false

@@ -45,10 +45,6 @@ pod 'RealmSwift'
 # Realm is a mobile database: a replacement for Core Data & SQLite
 # https://github.com/realm/realm-cocoa
 
-pod 'SwiftyVersion'
-# A simpler way to manage Versions in Swift
-# https://github.com/dcordero/SwiftyVersion
-
 pod 'Zip'
 # Swift framework for zipping and unzipping files.
 # https://github.com/marmelroy/Zip
