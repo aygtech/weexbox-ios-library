@@ -36,12 +36,10 @@ import WXDevtool
             let url = URL(string: tplUrl)!
             if let weexViewController = top as? WBWeexViewController {
                 weexViewController.url = url
-                weexViewController.isDebug = true
                 weexViewController.refreshWeex()
             } else {
                 let vc = WBWeexViewController()
                 vc.url = url
-                vc.isDebug = true
                 top?.navigationController?.pushViewController(vc, animated: true)
             }
         }

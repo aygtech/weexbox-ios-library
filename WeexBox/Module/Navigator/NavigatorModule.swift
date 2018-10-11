@@ -32,22 +32,18 @@ extension NavigatorModule {
     //    }
     
     // 设置导航栏右边按钮
-    @objc func setRightItems(_ items: Any, callback: @escaping WXModuleKeepAliveCallback) {
+    @objc func setRightItems(_ items: Array<Dictionary<String, String>>, callback: @escaping WXModuleKeepAliveCallback) {
         Async.main {
             self.rightItemsCallback = callback
-            let items = self.optimizeTheGoodType(obj: items);
-            
             let barButtonItems = self.createBarButtons(items, position: .Right)
             self.getVC().navigationItem.rightBarButtonItems = barButtonItems
         }
     }
     
     // 设置导航栏左边按钮
-    @objc func setLeftItems(_ items: Any, callback: @escaping WXModuleKeepAliveCallback) {
-        
+    @objc func setLeftItems(_ items: Array<Dictionary<String, String>>, callback: @escaping WXModuleKeepAliveCallback) {
         Async.main {
             self.leftItemsCallback = callback
-            let items = self.optimizeTheGoodType(obj: items);
             let barButtonItems = self.createBarButtons(items, position: .Left)
             self.getVC().navigationItem.leftBarButtonItems = barButtonItems
         }
@@ -115,16 +111,7 @@ extension NavigatorModule {
     // 中间item响应事件
     @objc func onClickCenterBarButtion(_ button: UIButton) {
         let result = Result()
-        //        result.data = ["index": button.tag]
         centerItemCallback(result, true)
-    }
-    //友好化类型。
-    func optimizeTheGoodType(obj:Any)->Array<Dictionary<String, String>>{
-        var arr = NSArray() as! Array<Dictionary<String, String>>;
-        if(obj != nil && obj is NSArray){
-            arr = obj as! Array<Dictionary<String, String>>
-        }
-        return arr as! Array<Dictionary<String, String>>;
     }
     
 }

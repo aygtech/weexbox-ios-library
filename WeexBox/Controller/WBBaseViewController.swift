@@ -13,13 +13,12 @@ import Foundation
     
     public var router: Router?
     
-    
-    
     open override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         if let hidden = router?.navBarHidden {
-            navigationController?.isNavigationBarHidden = hidden;
+            navigationController?.isNavigationBarHidden = hidden
         }
     }
+    
 }

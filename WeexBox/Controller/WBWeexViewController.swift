@@ -17,27 +17,22 @@ import WeexSDK
     private var instance: WXSDKInstance?
     private var weexView: UIView?
     public var url: URL!
-    public var isDebug = false
     
     open override func viewDidLoad() {
         super.viewDidLoad()
         
         Event.register(target: self, name: "RefreshInstance") { [weak self] _ in
-            if let weakSelf = self {
-                if weakSelf.isDebug {
-                    weakSelf.refreshWeex()
-                }
-            }
+            self?.refreshWeex()
         }
         
         view.backgroundColor = .white
         view.clipsToBounds = true
         edgesForExtendedLayout = .init(rawValue: 0)
-        UIApplication.shared.isStatusBarHidden = false
-        let navBarHeight: CGFloat = navigationController?.navigationBar.frame.maxY ?? 0
+        let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
+        let navBarHidden = navigationController?.isNavigationBarHidden ?? true
+        let navBarHeight: CGFloat = navBarHidden ? 0 : statusBarHeight + navigationController!.navigationBar.frame.size.height
         let tabBarHeight: CGFloat = self.hidesBottomBarWhenPushed ? 0 : (tabBarController?.tabBar.frame.size.height ?? 0)
-        let isNavigat = self.navigationController?.isNavigationBarHidden
-        weexHeight = view.frame.size.height - navBarHeight - UIApplication.shared.statusBarFrame.size.height - tabBarHeight + (isNavigat! ? UIApplication.shared.statusBarFrame.size.height : 0)
+        weexHeight = view.frame.size.height - navBarHeight - tabBarHeight
         if let u = router?.url {
             if u.hasPrefix("http") {
                 url = URL(string: u)
