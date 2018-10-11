@@ -35,7 +35,7 @@ extension ModalModule {
     }
     
     // 吐司
-   @objc func showToast(_ options: Dictionary<String, String>) {
+   @objc func showToast(_ options: Dictionary<String, Any>) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             SVProgressHUD.show(UIImage(), status: info.text)

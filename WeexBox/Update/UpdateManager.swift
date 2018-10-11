@@ -42,7 +42,7 @@ import Zip
     private static let twoName = "update-two"
     private static let workingNameKey = "update-working-key"
     private static let workingName = UserDefaults.standard.string(forKey: workingNameKey) ?? oneName
-    private static let cacheName: String = {
+    private static var cacheName: String = {
         if workingName == oneName {
             return twoName
         }
@@ -115,8 +115,9 @@ import Zip
     public static func update(completion: @escaping Completion) {
         // 忽略本地缓存。临时修改，后面要统一改
         Alamofire.SessionManager.default.session.configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
-
+        
         if forceUpdate {
+            cacheName = workingName
             cacheUrl = workingUrl
             cacheConfigUrl = workingConfigUrl
             cacheRealm = workingRealm
