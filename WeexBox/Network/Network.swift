@@ -11,10 +11,11 @@ import Alamofire
 
 open class Network {
     
-    open static var sessionManager: SessionManager = {
+    public static var sessionManager: SessionManager = {
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
         configuration.timeoutIntervalForRequest = 15
+        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
         return SessionManager(configuration: configuration)
     }()
     
@@ -26,7 +27,7 @@ open class Network {
     ///   - parameters: HTTP参数. 默认`nil`.
     ///   - headers: HTTP头. 默认`nil`.
     ///   - callback: 请求回调
-    open static func request(url: URLConvertible, method: HTTPMethod = .get, parameters: Parameters? = nil, headers: HTTPHeaders? = nil, callback: @escaping (Result) -> Void) {
+    public static func request(url: URLConvertible, method: HTTPMethod = .get, parameters: Parameters? = nil, headers: HTTPHeaders? = nil, callback: @escaping (Result) -> Void) {
         var encoding: ParameterEncoding = URLEncoding.default
         if let contentType = headers?["Content-Type"], contentType.contains("application/json") {
             encoding = JSONEncoding.default
@@ -56,7 +57,7 @@ open class Network {
     ///   - to: 地址
     ///   - completionCallback: 上传完成回调
     ///   - progressCallback: 进度回调
-    open static func upload(files: Array<UploadFile>, to: URLConvertible, completionCallback: @escaping (Result) -> Void, progressCallback: @escaping (Result) -> Void) {
+    public static func upload(files: Array<UploadFile>, to: URLConvertible, completionCallback: @escaping (Result) -> Void, progressCallback: @escaping (Result) -> Void) {
         sessionManager.upload(multipartFormData: { (multipartFormData) in
             for file in files {
                 multipartFormData.append(file.url, withName: file.name)

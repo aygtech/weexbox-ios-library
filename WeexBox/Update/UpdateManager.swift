@@ -113,9 +113,6 @@ import Zip
     
     // 检查更新
     public static func update(completion: @escaping Completion) {
-        // 忽略本地缓存。临时修改，后面要统一改
-        Alamofire.SessionManager.default.session.configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
-        
         if forceUpdate {
             cacheName = workingName
             cacheUrl = workingUrl
@@ -159,7 +156,7 @@ import Zip
     
     private static func getServer() {
         complete(.GetServer)
-        Alamofire.request(serverVersionUrl).validate().responseString { response in
+        Network.sessionManager.request(serverVersionUrl).validate().responseString { response in
             switch response.result {
             case .success(let value):
                 serverWwwUrl = serverUrl.appendingPathComponent(value)
@@ -209,7 +206,7 @@ import Zip
     // 获取服务端config文件
     private static func downloadConfig() {
         complete(.DownloadConfig)
-        Alamofire.request(serverConfigUrl).validate().responseData { response in
+        Network.sessionManager.request(serverConfigUrl).validate().responseData { response in
             switch response.result {
             case .success(let value):
                 complete(.DownloadConfigSuccess)
@@ -286,7 +283,7 @@ import Zip
     
     private static func downloadMd5() {
         complete(.DownloadMd5)
-        Alamofire.request(serverMd5Url).validate().responseString { response in
+        Network.sessionManager.request(serverMd5Url).validate().responseString { response in
             switch response.result {
             case .success(let value):
                 complete(.DownloadMd5Success)
@@ -343,7 +340,7 @@ import Zip
                 return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
             }
             let url = serverWwwUrl.appendingPathComponent(path)
-            Alamofire.download(url, to: destination).validate().responseData { response in
+            Network.sessionManager.download(url, to: destination).validate().responseData { response in
                 switch response.result {
                 case .success(_):
                     downloadSuccess(file: file)
