@@ -83,12 +83,15 @@ import Zip
     private static var completion: Completion!
     
     private static let realmDefaultConfig = Realm.Configuration()
-    private static let workingRealm: Realm = {
+    private static let workingRealmConfig: Realm.Configuration = {
         var realmConfig = realmDefaultConfig
         realmConfig.fileURL = realmConfig.fileURL!.deletingLastPathComponent().appendingPathComponent(workingName + ".realm")
-        return try! Realm(configuration: realmConfig)
+        return realmConfig
     }()
-    private static let cacheRealmConfig: Realm.Configuration = {
+    private static let workingRealm: Realm = {
+        return try! Realm(configuration: workingRealmConfig)
+    }()
+    private static var cacheRealmConfig: Realm.Configuration = {
         var realmConfig = realmDefaultConfig
         realmConfig.fileURL = realmConfig.fileURL!.deletingLastPathComponent().appendingPathComponent(cacheName + ".realm")
         return realmConfig
@@ -117,6 +120,7 @@ import Zip
             cacheName = workingName
             cacheUrl = workingUrl
             cacheConfigUrl = workingConfigUrl
+            cacheRealmConfig = workingRealmConfig
             cacheRealm = workingRealm
         }
         self.completion = completion
