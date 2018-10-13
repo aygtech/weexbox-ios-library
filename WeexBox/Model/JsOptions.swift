@@ -17,6 +17,7 @@ struct JsOptions: HandyJSON {
     var method: String?
     var headers: Dictionary<String, String>?
     var params: Dictionary<String, Any>?
+    var responseType: String?
     var files: Array<UploadFile>?
     
     // modal

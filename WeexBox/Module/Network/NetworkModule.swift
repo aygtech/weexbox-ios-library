@@ -25,12 +25,39 @@ extension NetworkModule {
      params: {
      ID: 12345
      },
+     
+     // responseType 响应类型, json 或 text，默认 text
      }
      */
     @objc func request(_ options: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
         let info = JsOptions.deserialize(from: options)!
-        Network.request(url: info.url!, method: HTTPMethod(rawValue: info.method!.uppercased())!, parameters: info.params, headers: info.headers) { result in
-            callback(result.toJsResult(), false)
+        var encoding: ParameterEncoding = URLEncoding.default
+        if let contentType = info.headers?["Content-Type"], contentType.contains("application/json") {
+            encoding = JSONEncoding.default
+        }
+        
+        let dataRequest = Network.sessionManager.request(info.url!, method: HTTPMethod(rawValue: info.method!.uppercased())!, parameters: info.params, encoding: encoding, headers: info.headers)
+        
+        if info.responseType?.uppercased() == "JSON" {
+            dataRequest.validate().responseJSON() { response in
+                var result = Result()
+                result.status = response.response?.statusCode ?? Result.error
+                if let value = response.result.value {
+                    result.data["data"] = value
+                }
+                result.error = response.error?.localizedDescription
+                callback(result.toJsResult(), false)
+            }
+        } else {
+            dataRequest.validate().responseString() { response in
+                var result = Result()
+                result.status = response.response?.statusCode ?? Result.error
+                if let value = response.result.value {
+                    result.data["data"] = value
+                }
+                result.error = response.error?.localizedDescription
+                callback(result.toJsResult(), false)
+            }
         }
     }
     
@@ -45,10 +72,29 @@ extension NetworkModule {
      */
     @objc func upload(_ options: Dictionary<String, Any>, completionCallback: @escaping WXModuleKeepAliveCallback, progressCallback: @escaping WXModuleKeepAliveCallback) {
         let info = JsOptions.deserialize(from: options)!
-        Network.upload(files: info.files!, to: info.url!, completionCallback: { (result) in
-            completionCallback(result.toJsResult(), false)
-        }, progressCallback: { (result) in
-            progressCallback(result.toJsResult(), true)
-        })
+        
+        Network.sessionManager.upload(multipartFormData: { (multipartFormData) in
+            for file in info.files! {
+                multipartFormData.append(file.url, withName: file.name)
+            }
+        }, to: info.url!) { encodingResult in
+            var result = Result()
+            switch encodingResult {
+            case .success(let upload, _, _):
+                result.progress = Int(upload.uploadProgress.fractionCompleted * 100)
+                progressCallback(result.toJsResult(), true)
+                upload.responseJSON { response in
+                    result.status = response.response?.statusCode ?? Result.error
+                    result.data = response.value as! [String : Any]
+                    result.error = response.error?.localizedDescription
+                    completionCallback(result.toJsResult(), false)
+                }
+            case .failure(let encodingError):
+                result.status = Result.error
+                result.error = encodingError.localizedDescription
+                completionCallback(result.toJsResult(), false)
+            }
+        }
     }
+    
 }
