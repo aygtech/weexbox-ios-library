@@ -32,6 +32,7 @@ Pod::Spec.new do |s|
   s.dependency 'SwiftEventBus'
   s.dependency 'TZImagePickerController'
   s.dependency 'swiftScan'
+  s.dependency 'Charts'
   
   
 end
