@@ -21,4 +21,8 @@ import Foundation
         }
     }
     
+    deinit {
+        Event.unregisterAll(target: self)
+    }
+    
 }

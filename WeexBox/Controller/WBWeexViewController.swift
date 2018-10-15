@@ -96,7 +96,6 @@ import WeexSDK
     
     deinit {
         instance?.destroy()
-        NotificationCenter.default.removeObserver(self)
     }
     
 }
