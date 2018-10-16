@@ -17,7 +17,7 @@ FOUNDATION_EXPORT const unsigned char WeexBoxVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <WeexBox/PublicHeader.h>
 
 #import <WeexBox/Log.h>
-#import <WeexBox/RouterModule.h>
+#import <WeexBox/RouterModuleOC.h>
 #import <WeexBox/NavigatorModule.h>
 #import <WeexBox/NetworkModule.h>
 #import <WeexBox/ModalModule.h>
@@ -25,7 +25,7 @@ FOUNDATION_EXPORT const unsigned char WeexBoxVersionString[];
 #import <WeexBox/ExternalModule.h>
 #import <WeexBox/ATSDK.h>
 #import <WeexBox/WXImgLoaderDefaultImpl.h>
-#import <WeexBox/EventModule.h>
+#import <WeexBox/EventModuleOC.h>
 #import <WeexBox/LocationModule.h>
 #import <WeexBox/WXScanPlugin.h>
 #import <WeexBox/WXRefreshPlugin.h>

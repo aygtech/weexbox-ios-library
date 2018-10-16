@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "BaseModule.h"
 
-@interface EventModule : BaseModule
+@interface EventModuleOC : BaseModule
 
 @end

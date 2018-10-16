@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "BaseModule.h"
 
-@interface RouterModule : BaseModule
+@interface RouterModuleOC : BaseModule
 
 @end

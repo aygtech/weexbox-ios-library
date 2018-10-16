@@ -6,9 +6,9 @@
 //  Copyright © 2018年 Ayg. All rights reserved.
 //
 
-#import "EventModule.h"
+#import "EventModuleOC.h"
 
-@implementation EventModule
+@implementation EventModuleOC
 
 WX_EXPORT_METHOD(@selector(register:callback:))
 WX_EXPORT_METHOD(@selector(emit:))

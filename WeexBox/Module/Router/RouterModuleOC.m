@@ -6,9 +6,9 @@
 //  Copyright © 2018年 Ayg. All rights reserved.
 //
 
-#import "RouterModule.h"
+#import "RouterModuleOC.h"
 
-@implementation RouterModule
+@implementation RouterModuleOC
 
 WX_EXPORT_METHOD(@selector(open:))
 WX_EXPORT_METHOD_SYNC(@selector(getParams))
