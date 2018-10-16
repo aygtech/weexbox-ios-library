@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-extension NetworkModule {
+class NetworkModule: NetworkModuleOC {
     /*
      {
      // `url` 是用于请求的服务器 URL

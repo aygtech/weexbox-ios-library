@@ -9,7 +9,7 @@
 import Foundation
 import Async
 
-extension ExternalModule {
+class ExternalModule: ExternalModuleOC {
     
     // 打开浏览器
    @objc func openBrowser(_ url: String) {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension LocationModule {
+class LocationModule: LocationModuleOC {
     
     // 获取定位
     @objc func getLocation(_ callback: @escaping WXModuleKeepAliveCallback) {

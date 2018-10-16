@@ -10,7 +10,7 @@ import Foundation
 import SVProgressHUD
 import Async
 
-extension ModalModule {
+class ModalModule: ModalModuleOC {
     
     // 显示菊花
    @objc func showLoading(_ message: String?) {

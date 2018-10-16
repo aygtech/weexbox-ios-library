@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Ayg. All rights reserved.
 //
 
-#import "RouterModuleOC.h"
+#import "RouterModule.h"
 
 @implementation RouterModuleOC
 

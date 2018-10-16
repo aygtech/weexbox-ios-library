@@ -6,8 +6,7 @@
 //  Copyright © 2018年 Ayg. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "BaseModule.h"
+#import <WeexBox/BaseModule.h>
 
 @interface EventModuleOC : BaseModule
 

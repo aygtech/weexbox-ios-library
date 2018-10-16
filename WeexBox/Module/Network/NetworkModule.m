@@ -8,7 +8,7 @@
 
 #import "NetworkModule.h"
 
-@implementation NetworkModule
+@implementation NetworkModuleOC
 
 WX_EXPORT_METHOD(@selector(request:callback:))
 WX_EXPORT_METHOD(@selector(upload:completionCallback:progressCallback:))

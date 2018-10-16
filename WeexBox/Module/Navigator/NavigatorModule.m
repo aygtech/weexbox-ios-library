@@ -17,7 +17,7 @@ typedef NS_ENUM(NSUInteger, NavigationItemPosition) {
     NavigationItemPositionCenter          /* 中间位置 */
 };
 
-@implementation NavigatorModule
+@implementation NavigatorModuleOC
 
 @synthesize weexInstance;
 

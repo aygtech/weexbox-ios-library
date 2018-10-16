@@ -17,8 +17,8 @@
 		AC54343D2111D2DD005B7056 /* WBWeexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54343C2111D2DD005B7056 /* WBWeexViewController.swift */; };
 		AC5434412112DAD6005B7056 /* Log.h in Headers */ = {isa = PBXBuildFile; fileRef = AC54343F2112DAD6005B7056 /* Log.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC5434422112DAD6005B7056 /* Log.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5434402112DAD6005B7056 /* Log.m */; };
-		AC5CBBCC211C355B00A4FBCD /* RouterModuleOC.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBC8211C355B00A4FBCD /* RouterModuleOC.m */; };
-		AC5CBBCE211C355B00A4FBCD /* RouterModuleOC.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBBCA211C355B00A4FBCD /* RouterModuleOC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC5CBBCC211C355B00A4FBCD /* RouterModule.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBC8211C355B00A4FBCD /* RouterModule.m */; };
+		AC5CBBCE211C355B00A4FBCD /* RouterModule.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBBCA211C355B00A4FBCD /* RouterModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC5CBBD3211C3BF400A4FBCD /* UpdateMd5.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBD0211C3BF400A4FBCD /* UpdateMd5.swift */; };
 		AC5CBBD4211C3BF400A4FBCD /* UpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBD1211C3BF400A4FBCD /* UpdateManager.swift */; };
 		AC5CBBD5211C3BF400A4FBCD /* UpdateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBBD2211C3BF400A4FBCD /* UpdateConfig.swift */; };
@@ -53,8 +53,8 @@
 		AC5CBC23212D650000A4FBCD /* ATSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC21212D650000A4FBCD /* ATSDK.m */; };
 		AC5CBC25212D67C300A4FBCD /* NavigatorModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC24212D67C300A4FBCD /* NavigatorModule.swift */; };
 		AC5CBC28212FEA5F00A4FBCD /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC27212FEA5F00A4FBCD /* Event.swift */; };
-		AC5CBC2D212FF49500A4FBCD /* EventModuleOC.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBC2A212FF49500A4FBCD /* EventModuleOC.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC5CBC2E212FF49500A4FBCD /* EventModuleOC.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC2B212FF49500A4FBCD /* EventModuleOC.m */; };
+		AC5CBC2D212FF49500A4FBCD /* EventModule.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBC2A212FF49500A4FBCD /* EventModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC5CBC2E212FF49500A4FBCD /* EventModule.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC2B212FF49500A4FBCD /* EventModule.m */; };
 		AC5CBC2F212FF49500A4FBCD /* EventModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC2C212FF49500A4FBCD /* EventModule.swift */; };
 		AC5CBC342133957F00A4FBCD /* LocationModule.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBC312133957F00A4FBCD /* LocationModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC5CBC352133957F00A4FBCD /* LocationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC322133957F00A4FBCD /* LocationModule.m */; };
@@ -82,8 +82,8 @@
 		AC54343C2111D2DD005B7056 /* WBWeexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBWeexViewController.swift; sourceTree = "<group>"; };
 		AC54343F2112DAD6005B7056 /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
 		AC5434402112DAD6005B7056 /* Log.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Log.m; sourceTree = "<group>"; };
-		AC5CBBC8211C355B00A4FBCD /* RouterModuleOC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouterModuleOC.m; sourceTree = "<group>"; };
-		AC5CBBCA211C355B00A4FBCD /* RouterModuleOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouterModuleOC.h; sourceTree = "<group>"; };
+		AC5CBBC8211C355B00A4FBCD /* RouterModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouterModule.m; sourceTree = "<group>"; };
+		AC5CBBCA211C355B00A4FBCD /* RouterModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouterModule.h; sourceTree = "<group>"; };
 		AC5CBBD0211C3BF400A4FBCD /* UpdateMd5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateMd5.swift; sourceTree = "<group>"; };
 		AC5CBBD1211C3BF400A4FBCD /* UpdateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateManager.swift; sourceTree = "<group>"; };
 		AC5CBBD2211C3BF400A4FBCD /* UpdateConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateConfig.swift; sourceTree = "<group>"; };
@@ -118,8 +118,8 @@
 		AC5CBC21212D650000A4FBCD /* ATSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATSDK.m; sourceTree = "<group>"; };
 		AC5CBC24212D67C300A4FBCD /* NavigatorModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorModule.swift; sourceTree = "<group>"; };
 		AC5CBC27212FEA5F00A4FBCD /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		AC5CBC2A212FF49500A4FBCD /* EventModuleOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventModuleOC.h; sourceTree = "<group>"; };
-		AC5CBC2B212FF49500A4FBCD /* EventModuleOC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventModuleOC.m; sourceTree = "<group>"; };
+		AC5CBC2A212FF49500A4FBCD /* EventModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventModule.h; sourceTree = "<group>"; };
+		AC5CBC2B212FF49500A4FBCD /* EventModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventModule.m; sourceTree = "<group>"; };
 		AC5CBC2C212FF49500A4FBCD /* EventModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModule.swift; sourceTree = "<group>"; };
 		AC5CBC312133957F00A4FBCD /* LocationModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModule.h; sourceTree = "<group>"; };
 		AC5CBC322133957F00A4FBCD /* LocationModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModule.m; sourceTree = "<group>"; };
@@ -233,8 +233,8 @@
 		AC5CBBC6211C355B00A4FBCD /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				AC5CBBCA211C355B00A4FBCD /* RouterModuleOC.h */,
-				AC5CBBC8211C355B00A4FBCD /* RouterModuleOC.m */,
+				AC5CBBCA211C355B00A4FBCD /* RouterModule.h */,
+				AC5CBBC8211C355B00A4FBCD /* RouterModule.m */,
 				AC5CBBE32121363500A4FBCD /* RouterModule.swift */,
 			);
 			path = Router;
@@ -329,8 +329,8 @@
 		AC5CBC29212FF49500A4FBCD /* Event */ = {
 			isa = PBXGroup;
 			children = (
-				AC5CBC2A212FF49500A4FBCD /* EventModuleOC.h */,
-				AC5CBC2B212FF49500A4FBCD /* EventModuleOC.m */,
+				AC5CBC2A212FF49500A4FBCD /* EventModule.h */,
+				AC5CBC2B212FF49500A4FBCD /* EventModule.m */,
 				AC5CBC2C212FF49500A4FBCD /* EventModule.swift */,
 			);
 			path = Event;
@@ -389,8 +389,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC5CBBF02127D10F00A4FBCD /* NetworkModule.h in Headers */,
-				AC5CBBCE211C355B00A4FBCD /* RouterModuleOC.h in Headers */,
-				AC5CBC2D212FF49500A4FBCD /* EventModuleOC.h in Headers */,
+				AC5CBBCE211C355B00A4FBCD /* RouterModule.h in Headers */,
+				AC5CBC2D212FF49500A4FBCD /* EventModule.h in Headers */,
 				AC5CBBFD212AB6EE00A4FBCD /* ModalModule.h in Headers */,
 				AC5CBBDC211D677C00A4FBCD /* NavigatorModule.h in Headers */,
 				AC5CBC342133957F00A4FBCD /* LocationModule.h in Headers */,
@@ -535,7 +535,7 @@
 				AC9CE8692133E8E0007EF7F2 /* WXScanPlugin.m in Sources */,
 				AC5CBBDD211D677C00A4FBCD /* NavigatorModule.m in Sources */,
 				AC5CBC23212D650000A4FBCD /* ATSDK.m in Sources */,
-				AC5CBC2E212FF49500A4FBCD /* EventModuleOC.m in Sources */,
+				AC5CBC2E212FF49500A4FBCD /* EventModule.m in Sources */,
 				AC5CBBEA2127C40F00A4FBCD /* Result.swift in Sources */,
 				AC070F9821354D8900D4E314 /* UIApplication+WeexBox.swift in Sources */,
 				AC5CBBD4211C3BF400A4FBCD /* UpdateManager.swift in Sources */,
@@ -559,7 +559,7 @@
 				AC5CBC25212D67C300A4FBCD /* NavigatorModule.swift in Sources */,
 				AC5CBBF42127D87500A4FBCD /* Network.swift in Sources */,
 				AC5CBBFE212AB6EE00A4FBCD /* ModalModule.swift in Sources */,
-				AC5CBBCC211C355B00A4FBCD /* RouterModuleOC.m in Sources */,
+				AC5CBBCC211C355B00A4FBCD /* RouterModule.m in Sources */,
 				AC5CBC352133957F00A4FBCD /* LocationModule.m in Sources */,
 				AC5CBBF8212AAE5900A4FBCD /* JsOptions.swift in Sources */,
 				AC5CBC18212D1EC100A4FBCD /* External.swift in Sources */,
@@ -716,6 +716,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Ayg.WeexBox;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

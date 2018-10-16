@@ -8,7 +8,7 @@
 
 #import "LocationModule.h"
 
-@implementation LocationModule
+@implementation LocationModuleOC
 
 WX_EXPORT_METHOD(@selector(getLocation:))
 

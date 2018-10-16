@@ -8,7 +8,7 @@
 
 #import "ExternalModule.h"
 
-@implementation ExternalModule
+@implementation ExternalModuleOC
 
 WX_EXPORT_METHOD(@selector(openBrowser:))
 WX_EXPORT_METHOD(@selector(callPhone:))

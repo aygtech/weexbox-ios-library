@@ -8,7 +8,7 @@
 
 #import "ModalModule.h"
 
-@implementation ModalModule
+@implementation ModalModuleOC
 
 WX_EXPORT_METHOD(@selector(alert:callback:))
 WX_EXPORT_METHOD(@selector(confirm:callback:))
