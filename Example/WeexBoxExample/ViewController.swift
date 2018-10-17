@@ -14,7 +14,20 @@ class ViewController: WBBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "WeexBox"
+        title = "WeexBox2"
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

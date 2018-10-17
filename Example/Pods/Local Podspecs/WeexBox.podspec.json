@@ -50,9 +50,6 @@
     "RealmSwift": [
 
     ],
-    "SwiftyVersion": [
-
-    ],
     "Zip": [
 
     ],
@@ -81,6 +78,9 @@
 
     ],
     "swiftScan": [
+
+    ],
+    "Charts": [
 
     ]
   }

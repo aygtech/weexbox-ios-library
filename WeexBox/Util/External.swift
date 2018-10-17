@@ -10,7 +10,15 @@ import Foundation
 import MessageUI
 import ContactsUI
 import TZImagePickerController
+import HandyJSON
 
+struct PhotoOption:HandyJSON {
+    var count:Int?//张数
+    var enableCrop:Bool?//能否剪裁
+    var isCircle:Bool?//true为圆
+    var width:CGFloat?
+    var height:CGFloat?
+}
 class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPickerDelegate, TZImagePickerControllerDelegate {
     
     var sendSMSCallback: Result.Callback!
@@ -53,9 +61,17 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
     }
     
     // 拍照
-    func openCamera(from: UIViewController,callback: @escaping Result.Callback) {
+    func openCamera(from: UIViewController,options:Dictionary<String, Any>?,callback: @escaping Result.Callback) {
         openCameraCallback = callback
+        let option = PhotoOption.deserialize(from: options)
         let imagePickerVc = TZImagePickerController(maxImagesCount: 1, columnNumber: 4, delegate: self)!
+        //圆形裁剪
+        imagePickerVc.needCircleCrop = option?.isCircle ?? false
+        //允许裁剪
+        imagePickerVc.allowCrop = option?.enableCrop ?? true
+        if(option?.width != nil){
+            imagePickerVc.circleCropRadius = Int(option?.width ?? 60.0)
+        }
         imagePickerVc.didFinishPickingPhotosWithInfosHandle = { photos, assets, isSelectOriginalPhoto, infos in
             var result = Result()
             let urls = NSMutableArray();
@@ -81,9 +97,17 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
     }
     
     // 选择图片
-    func openPhoto(from: UIViewController, maxImagesCount: Int, callback: @escaping Result.Callback) {
+    func openPhoto(from: UIViewController, options:Dictionary<String, Any>?, callback: @escaping Result.Callback) {
         openPhotoCallback = callback
-        let imagePickerVc = TZImagePickerController(maxImagesCount: maxImagesCount, columnNumber: 4, delegate: self)!
+        let option = PhotoOption.deserialize(from: options)
+        let imagePickerVc = TZImagePickerController(maxImagesCount: option?.count ?? 1, columnNumber: 4, delegate: self)!
+        //圆形裁剪
+        imagePickerVc.needCircleCrop = option?.isCircle ?? false
+        //允许裁剪
+        imagePickerVc.allowCrop = option?.enableCrop ?? true
+        if(option?.width != nil){
+            imagePickerVc.circleCropRadius = Int(option?.width ?? 60.0)
+        }
         imagePickerVc.didFinishPickingPhotosWithInfosHandle = { photos, assets, isSelectOriginalPhoto, infos in
             var result = Result()
             let urls = NSMutableArray();
