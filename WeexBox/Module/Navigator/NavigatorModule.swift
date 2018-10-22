@@ -91,6 +91,7 @@ extension NavigatorModule {
             button.sd_setBackgroundImage(with: URL(string: image), for: .normal, completed: nil)
             button.sd_setBackgroundImage(with: URL(string: image), for: .highlighted, completed: nil)
         }
+        button.sizeToFit()
         return UIBarButtonItem(customView: button)
     }
     
