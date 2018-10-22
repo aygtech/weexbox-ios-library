@@ -11,7 +11,7 @@ import Hue
 import SDWebImage
 import Async
 
-extension NavigatorModule {
+class NavigatorModule: NavigatorModuleOC {
     
     enum ItemPosition {
         case Right

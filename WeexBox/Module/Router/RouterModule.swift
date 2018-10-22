@@ -10,7 +10,7 @@ import Foundation
 import HandyJSON
 import Async
 
-extension RouterModule {
+class RouterModule: RouterModuleOC {
     
     // 打开页面
     @objc func open(_ options: Dictionary<String, Any>) {

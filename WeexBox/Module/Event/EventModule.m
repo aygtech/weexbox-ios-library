@@ -8,7 +8,7 @@
 
 #import "EventModule.h"
 
-@implementation EventModule
+@implementation EventModuleOC
 
 WX_EXPORT_METHOD(@selector(register:callback:))
 WX_EXPORT_METHOD(@selector(emit:))

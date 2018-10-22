@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension EventModule {
+class EventModule: EventModuleOC {
     
     // 注册事件
    @objc func register(_ name: String, callback: @escaping WXModuleKeepAliveCallback) {

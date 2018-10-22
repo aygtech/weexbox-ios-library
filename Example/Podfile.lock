@@ -7,6 +7,9 @@ PODS:
   - BindingX (1.0.3):
     - WeexPluginLoader
     - WeexSDK
+  - Charts (3.2.1):
+    - Charts/Core (= 3.2.1)
+  - Charts/Core (3.2.1)
   - HandyJSON (4.2.0)
   - Hue (3.0.1)
   - Realm (3.11.0):
@@ -26,7 +29,6 @@ PODS:
   - SwiftEventBus (2.1.2)
   - swiftScan (1.1.5)
   - SwiftyJSON (4.2.0)
-  - SwiftyVersion (0.2.1)
   - TZImagePickerController (3.0.9)
   - WeexBox (0.2.0):
     - Alamofire
@@ -34,6 +36,7 @@ PODS:
     - AsyncSwift
     - ATSDK-Weex
     - BindingX
+    - Charts
     - HandyJSON
     - Hue
     - RealmSwift
@@ -44,7 +47,6 @@ PODS:
     - SwiftEventBus
     - swiftScan
     - SwiftyJSON
-    - SwiftyVersion
     - TZImagePickerController
     - WeexSDK (~> 0.18.0)
     - WXDevtool
@@ -67,6 +69,7 @@ SPEC REPOS:
     - AsyncSwift
     - ATSDK-Weex
     - BindingX
+    - Charts
     - HandyJSON
     - Hue
     - Realm
@@ -79,7 +82,6 @@ SPEC REPOS:
     - SwiftEventBus
     - swiftScan
     - SwiftyJSON
-    - SwiftyVersion
     - TZImagePickerController
     - WeexPluginLoader
     - WeexSDK
@@ -96,6 +98,7 @@ SPEC CHECKSUMS:
   AsyncSwift: 65775a7b32e740609b24969ece3de58723b9dc3e
   ATSDK-Weex: 1b27558f4336d77fb97704d34fc6ad1fd468592c
   BindingX: b3c6c1c5dcd8e50277cfc5daad09d7010c227524
+  Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
   HandyJSON: 9dfc026c7d7adc1f0f8ba8b181495f0e0763b0f4
   Hue: 93e852fa6211ab35922ad8c293f51c43d6c79eb2
   Realm: 92f09a102692b96a9a10e9617f214f15c5ab85fc
@@ -108,9 +111,8 @@ SPEC CHECKSUMS:
   SwiftEventBus: 9e8f6d8cff2826d66536ec367d17a47299478aa0
   swiftScan: bc6dbf74e6a579c45a861691afc44628d8d9f6ab
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
-  SwiftyVersion: 79f589a2f9d252c6493f9d2e0a0296d5008f04ff
   TZImagePickerController: ea3e906af8caa7088f612ad673feb73cc6aa6bfc
-  WeexBox: 1e1f50909bd8258909a0eb59cf9654baa6c35574
+  WeexBox: e12ae3f9153f63e7a57784a55a7a370b9e46ca20
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
   WeexSDK: 173541f2d0042664168b305952398145c0c6039c
   WXDevtool: c028138b4e3a8856758acfea2328f708d3adbedd

@@ -8,11 +8,11 @@
 
 #import "ExternalModule.h"
 
-@implementation ExternalModule
+@implementation ExternalModuleOC
 
 WX_EXPORT_METHOD(@selector(openBrowser:))
 WX_EXPORT_METHOD(@selector(callPhone:))
-WX_EXPORT_METHOD(@selector(openCamera:))
+WX_EXPORT_METHOD(@selector(openCamera:callback:))
 WX_EXPORT_METHOD(@selector(openPhoto:callback:))
 
 @end

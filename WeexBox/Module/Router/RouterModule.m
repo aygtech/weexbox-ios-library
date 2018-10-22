@@ -8,7 +8,7 @@
 
 #import "RouterModule.h"
 
-@implementation RouterModule
+@implementation RouterModuleOC
 
 WX_EXPORT_METHOD(@selector(open:))
 WX_EXPORT_METHOD_SYNC(@selector(getParams))
