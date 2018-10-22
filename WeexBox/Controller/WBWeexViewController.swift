@@ -25,7 +25,6 @@ import WeexSDK
             self?.refreshWeex()
         }
         
-        view.backgroundColor = .white
         view.clipsToBounds = true
         edgesForExtendedLayout = .init(rawValue: 0)
         // 临时解决状态栏的问题，后面考虑用路由控制
