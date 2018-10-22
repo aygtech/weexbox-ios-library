@@ -70,7 +70,7 @@ import swiftScan
         let vc = LBXScanViewController();
         
         vc.scanStyle = style
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.rt_navigationController?.pushViewController(vc, animated: true)
         
     }
     

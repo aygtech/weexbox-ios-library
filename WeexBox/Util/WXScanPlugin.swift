@@ -15,14 +15,14 @@ import WXDevtool
         let topViewController = UIApplication.topViewController()
         let scannerViewController = WBScannerViewController()
         scannerViewController.scanResultBlock = { [weak self] (scanResult, error) in
-            scannerViewController.navigationController?.popViewController(animated: false)
+            scannerViewController.rt_navigationController?.popViewController(animated: false)
             if error != nil {
                 Log.e(error!)
             } else {
                 self?.openUrl(scanResult.strScanned!, top: topViewController)
             }
         }
-        topViewController?.navigationController?.pushViewController(scannerViewController, animated: true)
+        topViewController?.rt_navigationController?.pushViewController(scannerViewController, animated: true)
     }
     
     func openUrl(_ urlString: String, top: UIViewController?) {
@@ -40,7 +40,7 @@ import WXDevtool
             } else {
                 let vc = WBWeexViewController()
                 vc.url = url
-                top?.navigationController?.pushViewController(vc, animated: true)
+                top?.rt_navigationController?.pushViewController(vc, animated: true)
             }
         }
     }

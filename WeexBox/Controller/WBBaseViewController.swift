@@ -17,7 +17,7 @@ import Foundation
         super.viewDidLoad()
         view.backgroundColor = .white
         if let hidden = router?.navBarHidden {
-            navigationController?.isNavigationBarHidden = hidden
+            rt_navigationController?.isNavigationBarHidden = hidden
         }
     }
     

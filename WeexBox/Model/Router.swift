@@ -35,6 +35,9 @@ public struct Router: HandyJSON {
     public var navBarHidden: Bool = false
     // 需要传到下一个页面的数据
     public var params: Dictionary<String, Any>?
+    // 指定关闭堆栈的哪些页面
+    public var closeFrom: Int?
+    public var closeCount: Int?
     
     // 打开原生页面
     public func open(from: WBBaseViewController) {
@@ -43,12 +46,26 @@ public struct Router: HandyJSON {
             to.router = self
             to.hidesBottomBarWhenPushed = true
             if type == Router.typePresent {
-                from.present(RTRootNavigationController.init(rootViewController: to), animated: true, completion: nil)
+                from.present(RTRootNavigationController.init(rootViewController: to), animated: true) {
+                    self.removeViewControllers(from)
+                }
             } else {
-                from.navigationController!.pushViewController(to, animated: true)
+                from.rt_navigationController!.pushViewController(to, animated: true) { (finished) in
+                    self.removeViewControllers(from)
+                }
             }
         } else {
             Log.e("该路由名未注册")
+        }
+    }
+    
+    func removeViewControllers(_ vc: WBBaseViewController) {
+        if let from = closeFrom {
+            let controllers = NSMutableArray(array: vc.rt_navigationController.rt_viewControllers)
+            controllers.removeObjects(in: NSRange(location: from, length: closeCount ?? (vc.rt_navigationController.rt_viewControllers.count - 1 - from)))
+            for controller in controllers {
+                vc.rt_navigationController.removeViewController((controller as! UIViewController))
+            }
         }
     }
     
@@ -57,13 +74,13 @@ public struct Router: HandyJSON {
         if type == Router.typePresent {
             from.dismiss(animated: true, completion: nil)
         } else {
-            let nav = from.navigationController!
+            let nav = from.rt_navigationController!
             if let l = levels, l > 1 {
-                let index = nav.viewControllers.count - 1 - l
+                let index = nav.rt_viewControllers.count - 1 - l
                 if index <= 0 {
                     nav.popToRootViewController(animated: true)
                 } else {
-                    let vc = nav.viewControllers[index]
+                    let vc = nav.rt_viewControllers[index]
                     nav.popToViewController(vc, animated: true)
                 }
             } else {

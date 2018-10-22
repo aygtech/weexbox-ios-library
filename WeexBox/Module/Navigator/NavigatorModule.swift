@@ -26,11 +26,6 @@ class NavigatorModule: NavigatorModuleOC {
         }
     }
     
-    //    // 隐藏导航栏
-    //    func barHidden(_ hidden: Bool) {
-    //        getVC().navigationController!.isNavigationBarHidden = hidden
-    //    }
-    
     // 设置导航栏右边按钮
     @objc func setRightItems(_ items: Array<Dictionary<String, String>>, callback: @escaping WXModuleKeepAliveCallback) {
         Async.main {

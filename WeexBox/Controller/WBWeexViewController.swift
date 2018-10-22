@@ -31,8 +31,8 @@ import WeexSDK
         // 临时解决状态栏的问题，后面考虑用路由控制
         UIApplication.shared.isStatusBarHidden = false
         let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
-        let navBarHidden = navigationController?.isNavigationBarHidden ?? true
-        let navBarHeight: CGFloat = navBarHidden ? 0 : statusBarHeight + navigationController!.navigationBar.frame.size.height
+        let navBarHidden = rt_navigationController?.isNavigationBarHidden ?? true
+        let navBarHeight: CGFloat = navBarHidden ? 0 : statusBarHeight + rt_navigationController!.navigationBar.frame.size.height
         let tabBarHeight: CGFloat = self.hidesBottomBarWhenPushed ? 0 : (tabBarController?.tabBar.frame.size.height ?? 0)
         weexHeight = view.frame.size.height - navBarHeight - tabBarHeight
         if let u = router?.url {
