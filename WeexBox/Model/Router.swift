@@ -50,7 +50,7 @@ public struct Router: HandyJSON {
                     self.removeViewControllers(from)
                 }
             } else {
-                from.rt_navigationController!.pushViewController(to, animated: true) { (finished) in
+                from.rt_navigationController.pushViewController(to, animated: true) { (finished) in
                     self.removeViewControllers(from)
                 }
             }
@@ -72,13 +72,13 @@ public struct Router: HandyJSON {
         if type == Router.typePresent {
             from.dismiss(animated: true, completion: nil)
         } else {
-            let nav = from.rt_navigationController!
+            let nav = from.navigationController!
             if let l = levels, l > 1 {
-                let index = nav.rt_viewControllers.count - 1 - l
+                let index = nav.viewControllers.count - 1 - l
                 if index <= 0 {
                     nav.popToRootViewController(animated: true)
                 } else {
-                    let vc = nav.rt_viewControllers[index]
+                    let vc = nav.viewControllers[index]
                     nav.popToViewController(vc, animated: true)
                 }
             } else {

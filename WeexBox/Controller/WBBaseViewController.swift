@@ -18,7 +18,7 @@ import Foundation
         view.backgroundColor = .white
         rt_disableInteractivePop = false
         if let hidden = router?.navBarHidden {
-            rt_navigationController?.isNavigationBarHidden = hidden
+            navigationController?.isNavigationBarHidden = hidden
         }
     }
     
