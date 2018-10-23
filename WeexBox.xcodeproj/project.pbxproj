@@ -12,6 +12,7 @@
 		AC070F9C21354E2F00D4E314 /* WXRefreshPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = AC070F9921354E2F00D4E314 /* WXRefreshPlugin.m */; };
 		AC070F9D21354E2F00D4E314 /* WXRefreshPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = AC070F9A21354E2F00D4E314 /* WXRefreshPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC070F9E21354E2F00D4E314 /* WXRefreshPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC070F9B21354E2F00D4E314 /* WXRefreshPlugin.swift */; };
+		AC43949A217EDA5A007419E8 /* UIImage+WeexBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC439499217EDA59007419E8 /* UIImage+WeexBox.swift */; };
 		AC54342A2111B5A3005B7056 /* WeexBox.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5434282111B5A3005B7056 /* WeexBox.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC5434312111BBCC005B7056 /* WeexBoxEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5434302111BBCC005B7056 /* WeexBoxEngine.swift */; };
 		AC54343D2111D2DD005B7056 /* WBWeexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54343C2111D2DD005B7056 /* WBWeexViewController.swift */; };
@@ -75,6 +76,7 @@
 		AC070F9921354E2F00D4E314 /* WXRefreshPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXRefreshPlugin.m; sourceTree = "<group>"; };
 		AC070F9A21354E2F00D4E314 /* WXRefreshPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXRefreshPlugin.h; sourceTree = "<group>"; };
 		AC070F9B21354E2F00D4E314 /* WXRefreshPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXRefreshPlugin.swift; sourceTree = "<group>"; };
+		AC439499217EDA59007419E8 /* UIImage+WeexBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+WeexBox.swift"; sourceTree = "<group>"; };
 		AC5434252111B5A3005B7056 /* WeexBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeexBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC5434282111B5A3005B7056 /* WeexBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeexBox.h; sourceTree = "<group>"; };
 		AC5434292111B5A3005B7056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 			children = (
 				AC9CE8992134F91E007EF7F2 /* String+WeexBox.swift */,
 				AC070F9721354D8900D4E314 /* UIApplication+WeexBox.swift */,
+				AC439499217EDA59007419E8 /* UIImage+WeexBox.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				AC5CBC2F212FF49500A4FBCD /* EventModule.swift in Sources */,
 				AC5CBBF6212A932B00A4FBCD /* UploadFile.swift in Sources */,
 				AC54343D2111D2DD005B7056 /* WBWeexViewController.swift in Sources */,
+				AC43949A217EDA5A007419E8 /* UIImage+WeexBox.swift in Sources */,
 				AC5CBC25212D67C300A4FBCD /* NavigatorModule.swift in Sources */,
 				AC5CBBF42127D87500A4FBCD /* Network.swift in Sources */,
 				AC5CBBFE212AB6EE00A4FBCD /* ModalModule.swift in Sources */,

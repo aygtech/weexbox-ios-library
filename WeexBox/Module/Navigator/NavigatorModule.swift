@@ -82,11 +82,16 @@ class NavigatorModule: NavigatorModuleOC {
                 button.setTitleColor(color, for: .normal)
                 button.setTitleColor(color, for: .highlighted)
             }
-        } else if let image = item["image"] {
-            button.sd_setBackgroundImage(with: URL(string: image), for: .normal, completed: nil)
-            button.sd_setBackgroundImage(with: URL(string: image), for: .highlighted, completed: nil)
+        } else if let imageUrl = item["image"] {
+            let imageHandler = WXImgLoaderDefaultImpl()
+            imageHandler.downloadImage(withURL: imageUrl, imageFrame: CGRect(), userInfo: nil) { (image, error, finished) in
+                let i = image?.changeSize(CGSize(width: 10, height: 18))
+                button.setImage(i, for: .normal)
+                button.setImage(i, for: .highlighted)
+            }
+            //            button.sd_setBackgroundImage(with: URL(string: image), for: .normal, completed: nil)
+            //            button.sd_setBackgroundImage(with: URL(string: image), for: .highlighted, completed: nil)
         }
-        button.sizeToFit()
         return UIBarButtonItem(customView: button)
     }
     
