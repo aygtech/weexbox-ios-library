@@ -61,11 +61,9 @@ public struct Router: HandyJSON {
     
     func removeViewControllers(_ vc: WBBaseViewController) {
         if let from = closeFrom {
-            let controllers = NSMutableArray(array: vc.rt_navigationController.rt_viewControllers)
-            controllers.removeObjects(in: NSRange(location: from, length: closeCount ?? (vc.rt_navigationController.rt_viewControllers.count - 1 - from)))
-            for controller in controllers {
-                vc.rt_navigationController.removeViewController((controller as! UIViewController))
-            }
+            let to = (closeCount != nil) ? closeCount! + from : vc.rt_navigationController.rt_viewControllers.count - 2
+            let controllers = Array(vc.rt_navigationController.rt_viewControllers[from...to])
+            vc.rt_navigationController.removeViewControllers(controllers, animated: false)
         }
     }
     

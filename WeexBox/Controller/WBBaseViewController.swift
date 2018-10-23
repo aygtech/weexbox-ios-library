@@ -16,6 +16,7 @@ import Foundation
     open override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        rt_disableInteractivePop = false
         if let hidden = router?.navBarHidden {
             rt_navigationController?.isNavigationBarHidden = hidden
         }
