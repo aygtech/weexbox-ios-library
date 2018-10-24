@@ -72,36 +72,36 @@ import WXDevtool
         return false
     }
     
-    func loadWeex() {
-        
-    }
+//    func loadWeex() {
+//
+//    }
     
-    func jsReplace(url: URL) {
-        if url.host == "weex-remote-debugger" {
-            let path = url.path
-            if path == "/dynamic/replace/bundle" {
-                for param in url.query!.components(separatedBy: "&") {
-                    let elts = param.components(separatedBy: "=")
-                    if elts.count < 2 {
-                        continue
-                    }
-                    if elts.first == "bundle" {
-                        WXDebugTool.setReplacedBundleJS(URL(string: elts.last!)!)
-                    }
-                }
-            }
-            if path == "/dynamic/replace/framework" {
-                for param in url.query!.components(separatedBy: "&") {
-                    let elts = param.components(separatedBy: "=")
-                    if elts.count < 2 {
-                        continue
-                    }
-                    if elts.first == "framework" {
-                        WXDebugTool.setReplacedJSFramework(URL(string: elts.last!)!)
-                    }
-                }
-            }
-        }
-    }
+//    func jsReplace(url: URL) {
+//        if url.host == "weex-remote-debugger" {
+//            let path = url.path
+//            if path == "/dynamic/replace/bundle" {
+//                for param in url.query!.components(separatedBy: "&") {
+//                    let elts = param.components(separatedBy: "=")
+//                    if elts.count < 2 {
+//                        continue
+//                    }
+//                    if elts.first == "bundle" {
+//                        WXDebugTool.setReplacedBundleJS(URL(string: elts.last!)!)
+//                    }
+//                }
+//            }
+//            if path == "/dynamic/replace/framework" {
+//                for param in url.query!.components(separatedBy: "&") {
+//                    let elts = param.components(separatedBy: "=")
+//                    if elts.count < 2 {
+//                        continue
+//                    }
+//                    if elts.first == "framework" {
+//                        WXDebugTool.setReplacedJSFramework(URL(string: elts.last!)!)
+//                    }
+//                }
+//            }
+//        }
+//    }
 
 }

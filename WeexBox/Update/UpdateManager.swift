@@ -37,12 +37,12 @@ import Zip
     
     public typealias Completion = (UpdateState, Int, Error?, URL?) -> Void
     
-    private static let resourceName = "www"
+    private static let resourceName = "weexbox-update"
     private static let oneName = "update-one"
     private static let twoName = "update-two"
     private static let workingNameKey = "update-working-key"
     private static let workingName = UserDefaults.standard.string(forKey: workingNameKey) ?? oneName
-    private static var cacheName: String = {
+    private static var backupName: String = {
         if workingName == oneName {
             return twoName
         }
@@ -59,11 +59,12 @@ import Zip
     private static let resourceMd5Url = resourceUrl.appendingPathComponent(md5Name)
     private static let resourceZipUrl = resourceUrl.appendingPathComponent(zipName)
     
-    private static let workingUrl = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first!).appendingPathComponent(workingName)
+    private static let cacheUrl = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first!).appendingPathComponent(resourceName)
+    private static let workingUrl = cacheUrl.appendingPathComponent(workingName)
     private static let workingConfigUrl = workingUrl.appendingPathComponent(configName)
     
-    private static var cacheUrl = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first!).appendingPathComponent(cacheName)
-    private static var cacheConfigUrl = cacheUrl.appendingPathComponent(configName)
+    private static var backupUrl = cacheUrl.appendingPathComponent(backupName)
+    private static var backupConfigUrl = backupUrl.appendingPathComponent(configName)
     
     private static var serverVersionUrl: URL!
     private static var serverConfigUrl: URL!
@@ -91,19 +92,19 @@ import Zip
     private static let workingRealm: Realm = {
         return try! Realm(configuration: workingRealmConfig)
     }()
-    private static var cacheRealmConfig: Realm.Configuration = {
+    private static var backupRealmConfig: Realm.Configuration = {
         var realmConfig = realmDefaultConfig
-        realmConfig.fileURL = realmConfig.fileURL!.deletingLastPathComponent().appendingPathComponent(cacheName + ".realm")
+        realmConfig.fileURL = realmConfig.fileURL!.deletingLastPathComponent().appendingPathComponent(backupName + ".realm")
         return realmConfig
     }()
-    private static var cacheRealm: Realm = {
-        return try! Realm(configuration: cacheRealmConfig)
+    private static var backupRealm: Realm = {
+        return try! Realm(configuration: backupRealmConfig)
     }()
     
     private static var resourceConfig: UpdateConfig!
     private static var resourceMd5: [UpdateMd5?]!
     private static var workingConfig: UpdateConfig?
-    private static var cacheConfig: UpdateConfig?
+    private static var backupConfig: UpdateConfig?
     private static var serverConfigData: Data!
     
     // 设置更新服务器
@@ -117,11 +118,11 @@ import Zip
     // 检查更新
     public static func update(completion: @escaping Completion) {
         if forceUpdate {
-            cacheName = workingName
-            cacheUrl = workingUrl
-            cacheConfigUrl = workingConfigUrl
-            cacheRealmConfig = workingRealmConfig
-            cacheRealm = workingRealm
+            backupName = workingName
+            backupUrl = workingUrl
+            backupConfigUrl = workingConfigUrl
+            backupRealmConfig = workingRealmConfig
+            backupRealm = workingRealm
         }
         self.completion = completion
         loadLocalConfig()
@@ -139,20 +140,31 @@ import Zip
         return workingUrl.appendingPathComponent(file)
     }
     
+    // 清空缓存
+    public static func clear() {
+        try! workingRealm.write {
+            workingRealm.deleteAll()
+        }
+        try! backupRealm.write {
+            backupRealm.deleteAll()
+        }
+        try? FileManager.default.removeItem(at: cacheUrl)
+    }
+    
     // 将APP预置包解压到工作目录
     private static func unzipWwwToWorking() {
         unzipWww(to: workingUrl, md5: resourceMd5, db: workingRealm)
     }
     
-    private static func unzipWwwToCache() {
-        unzipWww(to: cacheUrl, md5: resourceMd5, db: cacheRealm)
+    private static func unzipWwwToBackup() {
+        unzipWww(to: backupUrl, md5: resourceMd5, db: backupRealm)
     }
     
     // 静默更新
     private static func update() {
-        if isWwwFolderNeedsToBeInstalled(config: cacheConfig) {
+        if isWwwFolderNeedsToBeInstalled(config: backupConfig) {
             // 将APP预置包解压到缓存目录
-            unzipWwwToCache()
+            unzipWwwToBackup()
         } else {
             getServer()
         }
@@ -185,7 +197,7 @@ import Zip
     private static func loadLocalConfig() {
         resourceConfig = loadConfig(resourceConfigUrl)!
         workingConfig = loadConfig(workingConfigUrl)
-        cacheConfig = loadConfig(cacheConfigUrl)
+        backupConfig = loadConfig(backupConfigUrl)
     }
     
     private static func loadConfig(_ url: URL) -> UpdateConfig? {
@@ -220,7 +232,7 @@ import Zip
                 if shouldDownloadWww(serverConfig: serverConfig) {
                     downloadMd5()
                 } else {
-                    complete(.UpdateSuccess, 100, nil, cacheUrl)
+                    complete(.UpdateSuccess, 100, nil, backupUrl)
                 }
             case .failure(let error):
                 complete(.DownloadConfigError, 0, error)
@@ -230,7 +242,7 @@ import Zip
     
     private static func shouldDownloadWww(serverConfig: UpdateConfig) -> Bool {
         let appBuild = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
-        if appBuild.isNotOlder(than: serverConfig.ios_min_version), serverConfig.release.isNewer(than: cacheConfig!.release) {
+        if appBuild.isNotOlder(than: serverConfig.ios_min_version), serverConfig.release.isNewer(than: backupConfig!.release) {
             return true
         }
         return false
@@ -276,7 +288,7 @@ import Zip
         // 保存config
         try! FileManager.default.copyItem(at: resourceConfigUrl, to: to.appendingPathComponent(configName))
         loadLocalConfig()
-        if to == cacheUrl {
+        if to == backupUrl {
             getServer()
         } else {
             // 解压到了工作目录，可以进入App
@@ -301,7 +313,7 @@ import Zip
                             download(files: downloads)
                         } else {
                             saveConfig()
-                            complete(.UpdateSuccess, 0, nil, cacheUrl)
+                            complete(.UpdateSuccess, 0, nil, backupUrl)
                         }
                 }
             case .failure(let error):
@@ -311,20 +323,20 @@ import Zip
     }
     
     private static func getDownloadFiles(serverMd5: [UpdateMd5?]) -> [UpdateMd5?] {
-        let cacheBackgroundRealm = try! Realm(configuration: cacheRealmConfig)
-        let cacheMd5 = cacheBackgroundRealm.objects(Md5Realm.self)
+        let backupBackgroundRealm = try! Realm(configuration: backupRealmConfig)
+        let backupMd5 = backupBackgroundRealm.objects(Md5Realm.self)
         var downloadFiles = [UpdateMd5?]()
         for file in serverMd5 {
-            if shouldDownload(serverFile: file!, cacheMd5: cacheMd5) {
+            if shouldDownload(serverFile: file!, backupMd5: backupMd5) {
                 downloadFiles.append(file)
             }
         }
         return downloadFiles
     }
     
-    private static func shouldDownload(serverFile: UpdateMd5, cacheMd5: Results<Md5Realm>) -> Bool {
-        for cacheFile in cacheMd5 {
-            if cacheFile.path == serverFile.path && cacheFile.md5 == serverFile.md5 {
+    private static func shouldDownload(serverFile: UpdateMd5, backupMd5: Results<Md5Realm>) -> Bool {
+        for backupFile in backupMd5 {
+            if backupFile.path == serverFile.path && backupFile.md5 == serverFile.md5 {
                 return false
             }
         }
@@ -340,7 +352,7 @@ import Zip
             let file = files[index]!
             let path = file.path!
             let destination: DownloadRequest.DownloadFileDestination = { _, _ in
-                let fileURL = cacheUrl.appendingPathComponent(path)
+                let fileURL = backupUrl.appendingPathComponent(path)
                 return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
             }
             let url = serverWwwUrl.appendingPathComponent(path)
@@ -361,18 +373,18 @@ import Zip
     }
     
     private static func downloadSuccess(file: UpdateMd5) {
-        try! cacheRealm.write {
-            cacheRealm.add(file.toRealm(), update: true)
+        try! backupRealm.write {
+            backupRealm.add(file.toRealm(), update: true)
         }
     }
     
     // 所有下载成功
     private static func downloadSuccess(files: [UpdateMd5?]) {
         complete(.DownloadFileSuccess, 1)
-        saveMd5(files, db: cacheRealm)
+        saveMd5(files, db: backupRealm)
         saveConfig()
-        UserDefaults.standard.set(cacheName, forKey: workingNameKey)
-        complete(.UpdateSuccess, 0, nil, cacheUrl)
+        UserDefaults.standard.set(backupName, forKey: workingNameKey)
+        complete(.UpdateSuccess, 0, nil, backupUrl)
     }
     
     private static func complete(_ state: UpdateState, _ progress: Int = 0, _ error: Error? = nil, _ url: URL? = nil) {
@@ -386,7 +398,7 @@ import Zip
     }
     
     private static func saveConfig() {
-        try! serverConfigData.write(to: cacheConfigUrl, options: .atomic)
+        try! serverConfigData.write(to: backupConfigUrl, options: .atomic)
     }
     
     private static func saveMd5(_ files: [UpdateMd5?], db: Realm) {
