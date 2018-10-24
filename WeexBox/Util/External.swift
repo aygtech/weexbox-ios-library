@@ -67,10 +67,12 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
         let imagePickerVc = TZImagePickerController(maxImagesCount: 1, columnNumber: 4, delegate: self)!
         //圆形裁剪
         imagePickerVc.needCircleCrop = option?.isCircle ?? false
+        
         //允许裁剪
         imagePickerVc.allowCrop = option?.enableCrop ?? true
+        //把宽度转为半径，不设置尺寸。eg:/2是换算半径。再次/2是px转pt
         if(option?.width != nil){
-            imagePickerVc.circleCropRadius = Int(option?.width ?? 60.0)
+            imagePickerVc.circleCropRadius = Int(option?.width ?? 60.0)/4
         }
         imagePickerVc.didFinishPickingPhotosWithInfosHandle = { photos, assets, isSelectOriginalPhoto, infos in
             var result = Result()
@@ -105,8 +107,9 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
         imagePickerVc.needCircleCrop = option?.isCircle ?? false
         //允许裁剪
         imagePickerVc.allowCrop = option?.enableCrop ?? true
+        //把宽度转为半径，不设置尺寸。eg:/2是换算半径。再次/2是px转pt
         if(option?.width != nil){
-            imagePickerVc.circleCropRadius = Int(option?.width ?? 60.0)
+            imagePickerVc.circleCropRadius = Int(option?.width ?? 60.0)/4
         }
         imagePickerVc.didFinishPickingPhotosWithInfosHandle = { photos, assets, isSelectOriginalPhoto, infos in
             var result = Result()
