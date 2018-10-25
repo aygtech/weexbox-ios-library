@@ -85,9 +85,11 @@ class NavigatorModule: NavigatorModuleOC {
         } else if let imageUrl = item["image"] {
             let imageHandler = WXImgLoaderDefaultImpl()
             imageHandler.downloadImage(withURL: imageUrl, imageFrame: CGRect(), userInfo: nil) { (image, error, finished) in
-                let i = image?.changeSize(CGSize(width: 10, height: 18))
-                button.setImage(i, for: .normal)
-                button.setImage(i, for: .highlighted)
+                if image != nil {
+                    let i = image!.changeSize(CGSize(width: image!.size.width / 2, height: image!.size.height / 2))
+                    button.setImage(i, for: .normal)
+                    button.setImage(i, for: .highlighted)
+                }
             }
             //            button.sd_setBackgroundImage(with: URL(string: image), for: .normal, completed: nil)
             //            button.sd_setBackgroundImage(with: URL(string: image), for: .highlighted, completed: nil)

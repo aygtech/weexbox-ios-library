@@ -38,7 +38,7 @@ public struct Router: HandyJSON {
     // 指定关闭堆栈的哪些页面
     public var closeFrom: Int?
     // 关闭页面的方向，默认和堆栈方向一致
-    public var closeFromLeftToRight = true
+    public var closeFromBottomToTop = true
     public var closeCount: Int?
     
     // 打开原生页面
@@ -66,7 +66,7 @@ public struct Router: HandyJSON {
             let count = vc.rt_navigationController.rt_viewControllers.count
             var left: Int!
             var right: Int!
-            if closeFromLeftToRight {
+            if closeFromBottomToTop {
                 left = from
                 right = (closeCount != nil) ? (closeCount! + left - 1) : (count - 2)
             } else {
