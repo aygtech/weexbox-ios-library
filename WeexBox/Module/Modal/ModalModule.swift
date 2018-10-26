@@ -9,6 +9,7 @@
 import Foundation
 import SVProgressHUD
 import Async
+import Toast_Swift
 
 class ModalModule: ModalModuleOC {
     
@@ -38,8 +39,7 @@ class ModalModule: ModalModuleOC {
    @objc func showToast(_ options: Dictionary<String, Any>) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
-            SVProgressHUD.show(UIImage(), status: info.text)
-            SVProgressHUD.dismiss(withDelay: info.duration ?? 3)
+            self.getVC().view.makeToast(info.text, duration: info.duration ?? 3)
         }
     }
     

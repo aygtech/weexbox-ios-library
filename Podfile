@@ -91,4 +91,8 @@ pod 'Charts'
 # Beautiful charts for iOS/tvOS/OSX! The Apple side of the crossplatform MPAndroidChart.
 # https://github.com/danielgindi/Charts
 
+pod 'Toast-Swift'
+# A Swift extension that adds toast notifications to the UIView object class.
+# https://github.com/scalessec/Toast-Swift
+
 end

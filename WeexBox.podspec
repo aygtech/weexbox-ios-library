@@ -33,6 +33,6 @@ Pod::Spec.new do |s|
   s.dependency 'TZImagePickerController'
   s.dependency 'swiftScan'
   s.dependency 'Charts'
-  
+  s.dependency 'Toast-Swift'
   
 end

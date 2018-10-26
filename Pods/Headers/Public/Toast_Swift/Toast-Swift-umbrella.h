@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double SwiftyVersionVersionNumber;
-FOUNDATION_EXPORT const unsigned char SwiftyVersionVersionString[];
+FOUNDATION_EXPORT double Toast_SwiftVersionNumber;
+FOUNDATION_EXPORT const unsigned char Toast_SwiftVersionString[];
 
