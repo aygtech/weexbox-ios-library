@@ -35,6 +35,11 @@ class NavigatorModule: NavigatorModuleOC {
         }
     }
     
+    // 兼容Android物理返回按钮
+    @objc func onBackPressed(_ callback: WXModuleKeepAliveCallback?) {
+        
+    }
+    
     // 设置导航栏左边按钮
     @objc func setLeftItems(_ items: Array<Dictionary<String, String>>, callback: @escaping WXModuleKeepAliveCallback) {
         Async.main {

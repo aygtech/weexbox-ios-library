@@ -26,6 +26,7 @@ WX_EXPORT_METHOD(@selector(disableGestureBack:))
 WX_EXPORT_METHOD(@selector(setRightItems:callback:))
 WX_EXPORT_METHOD(@selector(setLeftItems:callback:))
 WX_EXPORT_METHOD(@selector(setCenterItem:callback:))
+WX_EXPORT_METHOD(@selector(onBackPressed:))
 
 @end
 
