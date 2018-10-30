@@ -12,19 +12,19 @@ import MBProgressHUD
 open class HUD {
     
     // view为nil时会加在window上
-    static func showLoading(view: UIView?, message: String?) {
+    public static func showLoading(view: UIView?, message: String?) {
         let hud = getHUD(view: view)
         hud.label.text = message
     }
     
-    static func showProgress(view: UIView?, progress: Float, message: String?) {
+    public static func showProgress(view: UIView?, progress: Float, message: String?) {
         let hud = getHUD(view: view)
         hud.mode = .annularDeterminate
         hud.progress = progress
         hud.label.text = message
     }
     
-    static func showToast(view: UIView?, message: String, duration: Double?) {
+    public static func showToast(view: UIView?, message: String, duration: Double?) {
         let hud = getHUD(view: view)
         hud.mode = .text
         hud.label.text = message
@@ -32,7 +32,7 @@ open class HUD {
         hud.hide(animated: true, afterDelay: duration ?? 3)
     }
     
-    static func dismiss(view: UIView?) {
+    public static func dismiss(view: UIView?) {
         let hud = MBProgressHUD(for: view ?? getWindow())
         if hud != nil {
             if hud!.mode == .text {
