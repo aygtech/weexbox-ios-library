@@ -28,6 +28,7 @@ open class HUD {
         let hud = getHUD(view: view)
         hud.mode = .text
         hud.label.text = message
+        hud.label.numberOfLines = 0
         hud.offset = CGPoint(x: 0, y: MBProgressMaxOffset)
         hud.hide(animated: true, afterDelay: duration ?? 3)
     }
