@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.dependency "Alamofire-Synchronous"
   s.dependency 'SwiftyJSON'
   s.dependency 'HandyJSON'
-  s.dependency 'SVProgressHUD'
+  s.dependency 'MBProgressHUD'
   s.dependency 'AsyncSwift'
   s.dependency 'RealmSwift'
   s.dependency 'Zip'
@@ -33,6 +33,5 @@ Pod::Spec.new do |s|
   s.dependency 'TZImagePickerController'
   s.dependency 'swiftScan'
   s.dependency 'Charts'
-  s.dependency 'Toast-Swift'
   
 end
