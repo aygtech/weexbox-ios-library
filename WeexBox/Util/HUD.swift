@@ -9,15 +9,15 @@
 import Foundation
 import MBProgressHUD
 
-open class HUD {
+@objc open class HUD: NSObject {
     
     // view为nil时会加在window上
-    public static func showLoading(view: UIView?, message: String?) {
+    @objc public static func showLoading(view: UIView?, message: String?) {
         let hud = getHUD(view: view)
         hud.label.text = message
     }
     
-    public static func showProgress(view: UIView?, progress: Float, message: String?) {
+    @objc public static func showProgress(view: UIView?, progress: Float, message: String?) {
         let hud = getHUD(view: view)
         hud.mode = .annularDeterminate
         hud.progress = progress
@@ -33,7 +33,17 @@ open class HUD {
         hud.hide(animated: true, afterDelay: duration ?? 3)
     }
     
-    public static func dismiss(view: UIView?) {
+    // 以后要删除
+    @objc public static func showToast(view: UIView?, message: String) {
+        let hud = getHUD(view: view)
+        hud.mode = .text
+        hud.label.text = message
+        hud.label.numberOfLines = 0
+        hud.offset = CGPoint(x: 0, y: MBProgressMaxOffset)
+        hud.hide(animated: true, afterDelay: 3)
+    }
+    
+    @objc public static func dismiss(view: UIView?) {
         let hud = MBProgressHUD(for: view ?? getWindow())
         if hud != nil {
             if hud!.mode == .text {
