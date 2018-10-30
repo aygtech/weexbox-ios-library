@@ -10,7 +10,8 @@
 #endif
 #endif
 
+#import "MBProgressHUD.h"
 
-FOUNDATION_EXPORT double Toast_SwiftVersionNumber;
-FOUNDATION_EXPORT const unsigned char Toast_SwiftVersionString[];
+FOUNDATION_EXPORT double MBProgressHUDVersionNumber;
+FOUNDATION_EXPORT const unsigned char MBProgressHUDVersionString[];
 

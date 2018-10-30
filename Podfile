@@ -33,9 +33,9 @@ pod 'HandyJSON'
 # Network abstraction layer written in Swift
 # https://github.com/Moya/Moya
 
-pod 'SVProgressHUD'
-# A clean and lightweight progress HUD for your iOS and tvOS app
-# https://github.com/SVProgressHUD/SVProgressHUD
+pod 'MBProgressHUD'
+# MBProgressHUD + Customizations
+# https://github.com/jdg/MBProgressHUD
 
 pod 'AsyncSwift'
 # Syntactic sugar in Swift for asynchronous dispatches in Grand Central Dispatch
@@ -91,8 +91,8 @@ pod 'Charts'
 # Beautiful charts for iOS/tvOS/OSX! The Apple side of the crossplatform MPAndroidChart.
 # https://github.com/danielgindi/Charts
 
-pod 'Toast-Swift'
-# A Swift extension that adds toast notifications to the UIView object class.
-# https://github.com/scalessec/Toast-Swift
+#pod 'Toast-Swift'
+## A Swift extension that adds toast notifications to the UIView object class.
+## https://github.com/scalessec/Toast-Swift
 
 end
