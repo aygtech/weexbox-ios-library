@@ -29,8 +29,8 @@ import MBProgressHUD
         hud.mode = .text
         hud.label.text = message
         hud.label.numberOfLines = 0
-        hud.offset = CGPoint(x: 0, y: MBProgressMaxOffset)
-        hud.hide(animated: true, afterDelay: duration ?? 3)
+//        hud.offset = CGPoint(x: 0, y: MBProgressMaxOffset)
+        hud.hide(animated: true, afterDelay: duration ?? 2)
     }
     
     // 以后要删除
@@ -39,8 +39,8 @@ import MBProgressHUD
         hud.mode = .text
         hud.label.text = message
         hud.label.numberOfLines = 0
-        hud.offset = CGPoint(x: 0, y: MBProgressMaxOffset)
-        hud.hide(animated: true, afterDelay: 3)
+//        hud.offset = CGPoint(x: 0, y: MBProgressMaxOffset)
+        hud.hide(animated: true, afterDelay: 2)
     }
     
     @objc public static func dismiss(view: UIView?) {
