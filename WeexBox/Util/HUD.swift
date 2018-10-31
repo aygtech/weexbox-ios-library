@@ -60,7 +60,7 @@ import MBProgressHUD
     }
     
     static func getWindow() -> UIView {
-        var window = UIApplication.shared.keyWindow!
+        var window = UIApplication.shared.delegate!.window!!
         if window.windowLevel != UIWindow.Level.normal {
             let windowArray = UIApplication.shared.windows
             for tempWin in windowArray {
