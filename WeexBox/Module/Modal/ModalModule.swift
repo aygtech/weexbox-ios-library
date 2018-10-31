@@ -14,7 +14,7 @@ class ModalModule: ModalModuleOC {
     // 显示菊花
    @objc func showLoading(_ message: String?) {
         Async.main {
-            HUD.showLoading(view: self.getVC().navigationController!.view, message: message)
+            HUD.showLoading(view: self.getVC().view, message: message)
         }
     }
     
@@ -22,14 +22,14 @@ class ModalModule: ModalModuleOC {
    @objc func showProgress(_ options: Dictionary<String, Any>) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
-            HUD.showProgress(view: self.getVC().navigationController!.view, progress: Float(info.progress!) / 100, message: info.text)
+            HUD.showProgress(view: self.getVC().view, progress: Float(info.progress!) / 100, message: info.text)
         }
     }
     
     // 关闭菊花
    @objc func dismiss() {
         Async.main {
-            HUD.dismiss(view: self.getVC().navigationController!.view)
+            HUD.dismiss(view: self.getVC().view)
         }
     }
     
@@ -37,7 +37,7 @@ class ModalModule: ModalModuleOC {
    @objc func showToast(_ options: Dictionary<String, Any>) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
-            HUD.showToast(view: self.getVC().navigationController!.view, message: info.text!, duration: info.duration)
+            HUD.showToast(view: self.getVC().view, message: info.text!, duration: info.duration)
         }
     }
     

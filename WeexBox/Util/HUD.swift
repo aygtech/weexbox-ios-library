@@ -55,7 +55,7 @@ import MBProgressHUD
     
     static func getHUD(view: UIView?) -> MBProgressHUD {
         let hud = MBProgressHUD(for: view ?? getWindow()) ?? MBProgressHUD.showAdded(to: view ?? getWindow(), animated: true)
-        hud.isUserInteractionEnabled = false
+        hud.isUserInteractionEnabled = true
         return hud
     }
     
