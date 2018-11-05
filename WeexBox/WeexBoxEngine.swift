@@ -37,7 +37,7 @@ public class WeexBoxEngine {
     }
     
     private static func registerHandler() {
-        WXSDKEngine.registerHandler(WXImgLoaderDefaultImpl(), with: WXImgLoaderProtocol.self)
+        WXSDKEngine.registerHandler(ImageHander(), with: WXImgLoaderProtocol.self)
     }
     
     private static func registerComponent() {

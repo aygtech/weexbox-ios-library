@@ -1,5 +1,5 @@
 //
-//  WXImgLoaderDefaultImpl.h
+//  ImageHander.h
 //  WeexBox
 //
 //  Created by Mario on 2018/8/2.
@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 #import <WeexSDK/WeexSDK.h>
 
-@interface WXImgLoaderDefaultImpl : NSObject<WXImgLoaderProtocol, WXModuleProtocol>
+@interface ImageHander : NSObject<WXImgLoaderProtocol, WXModuleProtocol>
 @end

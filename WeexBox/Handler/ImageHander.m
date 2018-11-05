@@ -1,12 +1,12 @@
 //
-//  WXImgLoaderDefaultImpl.m
+//  ImageHander.m
 //  WeexBox
 //
 //  Created by Mario on 2018/8/2.
 //  Copyright © 2018年 Ayg. All rights reserved.
 //
 
-#import "WXImgLoaderDefaultImpl.h"
+#import "ImageHander.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 #define MIN_IMAGE_WIDTH 36
@@ -24,13 +24,13 @@
 #define WXDispatchQueueSetterSementics assign
 #endif
 
-@interface WXImgLoaderDefaultImpl()
+@interface ImageHander()
 
 @property (WXDispatchQueueSetterSementics, nonatomic) dispatch_queue_t ioQueue;
 
 @end
 
-@implementation WXImgLoaderDefaultImpl
+@implementation ImageHander
 
 #pragma mark -
 #pragma mark WXImgLoaderProtocol

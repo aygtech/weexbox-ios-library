@@ -48,8 +48,8 @@
 		AC5CBC16212D1D2A00A4FBCD /* ExternalModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC13212D1D2A00A4FBCD /* ExternalModule.swift */; };
 		AC5CBC18212D1EC100A4FBCD /* External.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC17212D1EC100A4FBCD /* External.swift */; };
 		AC5CBC1A212D601500A4FBCD /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AC5CBC19212D601500A4FBCD /* libsqlite3.tbd */; };
-		AC5CBC1E212D616800A4FBCD /* WXImgLoaderDefaultImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBC1C212D616800A4FBCD /* WXImgLoaderDefaultImpl.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC5CBC1F212D616800A4FBCD /* WXImgLoaderDefaultImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC1D212D616800A4FBCD /* WXImgLoaderDefaultImpl.m */; };
+		AC5CBC1E212D616800A4FBCD /* ImageHander.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBC1C212D616800A4FBCD /* ImageHander.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC5CBC1F212D616800A4FBCD /* ImageHander.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC1D212D616800A4FBCD /* ImageHander.m */; };
 		AC5CBC25212D67C300A4FBCD /* NavigatorModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC24212D67C300A4FBCD /* NavigatorModule.swift */; };
 		AC5CBC28212FEA5F00A4FBCD /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC27212FEA5F00A4FBCD /* Event.swift */; };
 		AC5CBC2D212FF49500A4FBCD /* EventModule.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBC2A212FF49500A4FBCD /* EventModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -112,8 +112,8 @@
 		AC5CBC13212D1D2A00A4FBCD /* ExternalModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalModule.swift; sourceTree = "<group>"; };
 		AC5CBC17212D1EC100A4FBCD /* External.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = External.swift; sourceTree = "<group>"; };
 		AC5CBC19212D601500A4FBCD /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		AC5CBC1C212D616800A4FBCD /* WXImgLoaderDefaultImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXImgLoaderDefaultImpl.h; sourceTree = "<group>"; };
-		AC5CBC1D212D616800A4FBCD /* WXImgLoaderDefaultImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXImgLoaderDefaultImpl.m; sourceTree = "<group>"; };
+		AC5CBC1C212D616800A4FBCD /* ImageHander.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHander.h; sourceTree = "<group>"; };
+		AC5CBC1D212D616800A4FBCD /* ImageHander.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageHander.m; sourceTree = "<group>"; };
 		AC5CBC24212D67C300A4FBCD /* NavigatorModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorModule.swift; sourceTree = "<group>"; };
 		AC5CBC27212FEA5F00A4FBCD /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		AC5CBC2A212FF49500A4FBCD /* EventModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventModule.h; sourceTree = "<group>"; };
@@ -308,8 +308,8 @@
 		AC5CBC1B212D616800A4FBCD /* Handler */ = {
 			isa = PBXGroup;
 			children = (
-				AC5CBC1C212D616800A4FBCD /* WXImgLoaderDefaultImpl.h */,
-				AC5CBC1D212D616800A4FBCD /* WXImgLoaderDefaultImpl.m */,
+				AC5CBC1C212D616800A4FBCD /* ImageHander.h */,
+				AC5CBC1D212D616800A4FBCD /* ImageHander.m */,
 			);
 			path = Handler;
 			sourceTree = "<group>";
@@ -395,7 +395,7 @@
 				AC5CBC06212BCBC400A4FBCD /* BaseModule.h in Headers */,
 				AC5434412112DAD6005B7056 /* Log.h in Headers */,
 				AC54342A2111B5A3005B7056 /* WeexBox.h in Headers */,
-				AC5CBC1E212D616800A4FBCD /* WXImgLoaderDefaultImpl.h in Headers */,
+				AC5CBC1E212D616800A4FBCD /* ImageHander.h in Headers */,
 				AC5CBC15212D1D2A00A4FBCD /* ExternalModule.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,7 +525,7 @@
 				AC070F9821354D8900D4E314 /* UIApplication+WeexBox.swift in Sources */,
 				AC5CBBD4211C3BF400A4FBCD /* UpdateManager.swift in Sources */,
 				AC5CBBE02121320400A4FBCD /* WBBaseViewController.swift in Sources */,
-				AC5CBC1F212D616800A4FBCD /* WXImgLoaderDefaultImpl.m in Sources */,
+				AC5CBC1F212D616800A4FBCD /* ImageHander.m in Sources */,
 				AC9CE87421340A59007EF7F2 /* WXScanPlugin.swift in Sources */,
 				AC5CBC16212D1D2A00A4FBCD /* ExternalModule.swift in Sources */,
 				AC7579992188563900919B7E /* HUD.swift in Sources */,

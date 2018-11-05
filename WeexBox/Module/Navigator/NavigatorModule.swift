@@ -88,7 +88,7 @@ class NavigatorModule: NavigatorModuleOC {
                 button.setTitleColor(color, for: .highlighted)
             }
         } else if let imageUrl = item["image"] {
-            let imageHandler = WXImgLoaderDefaultImpl()
+            let imageHandler = ImageHander()
             imageHandler.downloadImage(withURL: imageUrl, imageFrame: CGRect(), userInfo: nil) { (image, error, finished) in
                 if image != nil {
                     let i = image!.changeSize(CGSize(width: image!.size.width / 2, height: image!.size.height / 2))
