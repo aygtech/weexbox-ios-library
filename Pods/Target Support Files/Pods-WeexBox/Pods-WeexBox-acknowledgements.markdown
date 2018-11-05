@@ -1,11 +1,6 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
-## ATSDK-Weex
-
-Alibaba-INC copyright
-
-
 ## Alamofire
 
 Copyright (c) 2014-2018 Alamofire Software Foundation (http://alamofire.org/)

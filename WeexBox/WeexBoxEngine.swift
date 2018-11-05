@@ -30,7 +30,7 @@ public class WeexBoxEngine {
         #if DEBUG
         WXDebugTool.setDebug(true)
         WXLog.setLogLevel(.log)
-        ATSDK.atAddPlugin()
+//        ATSDK.atAddPlugin()
         #else
         WXDebugTool.setDebug(false)
         WXLog.setLogLevel(.off)

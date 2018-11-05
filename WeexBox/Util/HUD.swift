@@ -26,6 +26,7 @@ import MBProgressHUD
     
     public static func showToast(view: UIView?, message: String, duration: Double?) {
         let hud = getHUD(view: view)
+        hud.isUserInteractionEnabled = false
         hud.mode = .text
         hud.label.text = message
         hud.label.numberOfLines = 0
@@ -36,6 +37,7 @@ import MBProgressHUD
     // 以后要删除
     @objc public static func showToast(view: UIView?, message: String) {
         let hud = getHUD(view: view)
+        hud.isUserInteractionEnabled = false
         hud.mode = .text
         hud.label.text = message
         hud.label.numberOfLines = 0

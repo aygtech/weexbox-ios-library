@@ -25,7 +25,6 @@ Pod::Spec.new do |s|
   s.dependency 'Zip'
   s.dependency 'RTRootNavigationController'
   s.dependency 'SnapKit'
-  s.dependency 'ATSDK-Weex'
   s.dependency 'SDWebImage'
   s.dependency 'BindingX'
   s.dependency 'Hue'

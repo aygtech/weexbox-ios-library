@@ -6,8 +6,8 @@
 //  Copyright © 2018年 Ayg. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-@interface WXScanPlugin : NSObject
-
-@end
+//#import <Foundation/Foundation.h>
+//
+//@interface WXScanPlugin : NSObject
+//
+//@end
