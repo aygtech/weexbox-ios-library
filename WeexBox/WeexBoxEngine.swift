@@ -27,7 +27,10 @@ import WeexSDK
         #if DEBUG
         WXDebugTool.setDebug(true)
         WXLog.setLogLevel(.log)
-//        ATSDK.atAddPlugin()
+        let assistveButton = AssistveButton(frame: CGRect(x: 100, y: 100, width: 50, height: 50), assistiveType: .YGAssistiveTypeNone) {
+            DebugWeex.openScan()
+        }
+        UIApplication.shared.delegate?.window!!.addSubview(assistveButton)
         #else
         WXDebugTool.setDebug(false)
         WXLog.setLogLevel(.off)

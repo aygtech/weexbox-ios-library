@@ -12,6 +12,8 @@
 		AC070F9C21354E2F00D4E314 /* WXRefreshPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = AC070F9921354E2F00D4E314 /* WXRefreshPlugin.m */; };
 		AC070F9D21354E2F00D4E314 /* WXRefreshPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = AC070F9A21354E2F00D4E314 /* WXRefreshPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC070F9E21354E2F00D4E314 /* WXRefreshPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC070F9B21354E2F00D4E314 /* WXRefreshPlugin.swift */; };
+		AC41388D2190458E00A2B887 /* AssistveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41388C2190458E00A2B887 /* AssistveButton.swift */; };
+		AC41388F219045B400A2B887 /* assistve.png in Resources */ = {isa = PBXBuildFile; fileRef = AC41388E219045B400A2B887 /* assistve.png */; };
 		AC43949A217EDA5A007419E8 /* UIImage+WeexBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC439499217EDA59007419E8 /* UIImage+WeexBox.swift */; };
 		AC54342A2111B5A3005B7056 /* WeexBox.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5434282111B5A3005B7056 /* WeexBox.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC5434312111BBCC005B7056 /* WeexBoxEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5434302111BBCC005B7056 /* WeexBoxEngine.swift */; };
@@ -74,6 +76,8 @@
 		AC070F9921354E2F00D4E314 /* WXRefreshPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXRefreshPlugin.m; sourceTree = "<group>"; };
 		AC070F9A21354E2F00D4E314 /* WXRefreshPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXRefreshPlugin.h; sourceTree = "<group>"; };
 		AC070F9B21354E2F00D4E314 /* WXRefreshPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXRefreshPlugin.swift; sourceTree = "<group>"; };
+		AC41388C2190458E00A2B887 /* AssistveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistveButton.swift; sourceTree = "<group>"; };
+		AC41388E219045B400A2B887 /* assistve.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = assistve.png; sourceTree = "<group>"; };
 		AC439499217EDA59007419E8 /* UIImage+WeexBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+WeexBox.swift"; sourceTree = "<group>"; };
 		AC5434252111B5A3005B7056 /* WeexBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeexBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC5434282111B5A3005B7056 /* WeexBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeexBox.h; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 		AC54343E2112DAAB005B7056 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				AC41388C2190458E00A2B887 /* AssistveButton.swift */,
+				AC41388E219045B400A2B887 /* assistve.png */,
 				AC54343F2112DAD6005B7056 /* Log.h */,
 				AC5434402112DAD6005B7056 /* Log.m */,
 				AC5CBC17212D1EC100A4FBCD /* External.swift */,
@@ -460,6 +466,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC41388F219045B400A2B887 /* assistve.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,6 +539,7 @@
 				AC5CBC09212BCC1800A4FBCD /* BaseModule.swift in Sources */,
 				AC5CBBD7211C485000A4FBCD /* WBNavigationController.swift in Sources */,
 				AC5CBBE621218B3200A4FBCD /* WBWebViewController.swift in Sources */,
+				AC41388D2190458E00A2B887 /* AssistveButton.swift in Sources */,
 				AC5CBBD3211C3BF400A4FBCD /* UpdateMd5.swift in Sources */,
 				AC5CBC14212D1D2A00A4FBCD /* ExternalModule.m in Sources */,
 				AC9CE86E2133F2D5007EF7F2 /* WBScannerViewController.swift in Sources */,
