@@ -8,7 +8,6 @@
 
 import Foundation
 import WeexSDK
-import Alamofire
 
 /// 初始化SDK
 public class WeexBoxEngine {
