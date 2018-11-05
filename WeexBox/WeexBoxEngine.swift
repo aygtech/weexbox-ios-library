@@ -10,11 +10,9 @@ import Foundation
 import WeexSDK
 
 /// 初始化SDK
-public class WeexBoxEngine {
+@objc public class WeexBoxEngine: NSObject {
     
-    public static func initialize() {
-        
-        
+    @objc public static func setup() {
         // 初始化WeexSDK
         initWeexSDK()
         //        Test.test()
