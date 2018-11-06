@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 enum YGTouchType {
     case YGAssistiveTypeNone
@@ -24,8 +25,10 @@ class AssistveButton: UIButton {
         super.init(frame: frame)
         self.assistveButtonClick = eventCallBack
         self.type = assistiveType
-        self.setBackgroundImage(UIImage(named: "assistve"), for: .normal)
-        self.backgroundColor = UIColor.red
+        let url = URL(string: "https://raw.githubusercontent.com/aygtech/weexbox-document/master/docs/.vuepress/public/logo.png")!
+        self.sd_setBackgroundImage(with: url, for: .normal)
+        self.sd_setBackgroundImage(with: url, for: .highlighted)
+        self.backgroundColor = UIColor.white
         self.layer.cornerRadius = frame.size.height / 2.0
         self.layer.masksToBounds = true
         self.addTarget(self, action: #selector(actionAssistveClick), for: .touchUpInside)
@@ -79,7 +82,6 @@ class AssistveButton: UIButton {
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        
         let btnWidth = CGFloat(self.frame.size.width)
         let btnHeight = CGFloat(self.frame.size.height)
         let btnY = CGFloat(self.frame.origin.y)
