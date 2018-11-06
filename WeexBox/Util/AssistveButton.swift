@@ -31,15 +31,15 @@ class AssistveButton: UIButton {
         self.backgroundColor = UIColor.white
         self.layer.cornerRadius = frame.size.height / 2.0
         self.layer.masksToBounds = true
-        self.addTarget(self, action: #selector(actionAssistveClick), for: .touchUpInside)
+        let tap =  UITapGestureRecognizer(target: self, action: #selector(actionAssistveClick))
+        self.addGestureRecognizer(tap)
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
+        //        super.touchesBegan(touches, with: event)
         let touch = ((touches as NSSet).anyObject() as AnyObject)
         touchPoint = touch.location(in:self)
     }
@@ -81,7 +81,7 @@ class AssistveButton: UIButton {
         }
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
+        //        super.touchesEnded(touches, with: event)
         let btnWidth = CGFloat(self.frame.size.width)
         let btnHeight = CGFloat(self.frame.size.height)
         let btnY = CGFloat(self.frame.origin.y)
@@ -106,11 +106,11 @@ class AssistveButton: UIButton {
                 self.frame = CGRect(x: CGFloat(btnX), y: btnY, width: btnWidth, height: btnHeight)
             }
             break
-            case .YGAssistiveTypeNearRight?:
-                UIView.animate(withDuration: 0.5) {
-                    let btnX = (self.superview?.frame.size.width)! - btnWidth
-                    self.frame = CGRect(x: btnX, y: btnY, width: btnWidth, height: btnHeight)
-                }
+        case .YGAssistiveTypeNearRight?:
+            UIView.animate(withDuration: 0.5) {
+                let btnX = (self.superview?.frame.size.width)! - btnWidth
+                self.frame = CGRect(x: btnX, y: btnY, width: btnWidth, height: btnHeight)
+            }
             break
         default:
             break

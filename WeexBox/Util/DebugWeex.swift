@@ -14,6 +14,7 @@ struct DebugWeex {
     static func openScan() {
         let topViewController = UIApplication.topViewController()
         let scannerViewController = WBScannerViewController()
+        scannerViewController.view.backgroundColor = .white
         scannerViewController.scanResultBlock = { (scanResult, error) in
             scannerViewController.navigationController?.popViewController(animated: false)
             if error != nil {
@@ -22,7 +23,9 @@ struct DebugWeex {
                 openUrl(scanResult.strScanned!, top: topViewController)
             }
         }
-        topViewController?.navigationController?.pushViewController(scannerViewController, animated: true)
+        if(topViewController!.isMember(of: WBScannerViewController.classForCoder()) == false){
+            topViewController?.navigationController?.pushViewController(scannerViewController, animated: true)
+        }
     }
     
     static func openUrl(_ urlString: String, top: UIViewController?) {
