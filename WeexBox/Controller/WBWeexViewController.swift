@@ -17,8 +17,7 @@ import WeexSDK
     public var instance: WXSDKInstance?
     public var weexView: UIView?
     public var url: URL!
-    private var hasSendViewDidAppear = false
-    
+    private var isFirstSendDidAppear = true
     open override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,18 +43,18 @@ import WeexSDK
                 url = UpdateManager.getFullUrl(file: u)
             }
         }
+        self.isFirstSendDidAppear = true
         render()
     }
-    
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        sendViewDidAppear()
+        //第一次加载不发送通知,使用renderFinish的发送。
+        if(self.isFirstSendDidAppear == false){
+            sendViewDidAppear()
+        }
     }
-    
     open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
         sendViewDidDisappear()
     }
     
@@ -98,15 +97,13 @@ import WeexSDK
     }
     
     func sendViewDidAppear() {
-        if hasSendViewDidAppear == false {
-            instance?.fireGlobalEvent("viewDidAppear", params: nil)
-            hasSendViewDidAppear = true
-        }
+        instance?.fireGlobalEvent("viewDidAppear", params: nil)
+        print("执行sendViewDidAppear")
     }
     
     func sendViewDidDisappear() {
+        self.isFirstSendDidAppear = false
         instance?.fireGlobalEvent("viewDidDisappear", params: nil)
-        hasSendViewDidAppear = false
     }
     
     deinit {
