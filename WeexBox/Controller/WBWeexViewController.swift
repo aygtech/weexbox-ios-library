@@ -14,9 +14,10 @@ import WeexSDK
 @objcMembers open class WBWeexViewController: WBBaseViewController {
     
     public var weexHeight: CGFloat!
-    private var instance: WXSDKInstance?
-    private var weexView: UIView?
+    public var instance: WXSDKInstance?
+    public var weexView: UIView?
     public var url: URL!
+    private var hasSendViewDidAppear = false
     
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,12 +49,14 @@ import WeexSDK
     
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        instance?.fireGlobalEvent("viewDidAppear", params: nil)
+        
+        sendViewDidAppear()
     }
     
     open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        instance?.fireGlobalEvent("viewDidDisappear", params: nil)
+        
+        sendViewDidDisappear()
     }
     
     func render() {
@@ -66,6 +69,10 @@ import WeexSDK
             self?.weexView?.removeFromSuperview()
             self?.weexView = view
             self?.view.addSubview((self?.weexView)!)
+        }
+        
+        instance?.renderFinish = { [weak self] (view) in
+            self?.sendViewDidAppear()
         }
         
         if WeexBoxEngine.isDebug {
@@ -88,6 +95,18 @@ import WeexSDK
     
     public func refreshWeex() {
         render()
+    }
+    
+    func sendViewDidAppear() {
+        if hasSendViewDidAppear == false {
+            instance?.fireGlobalEvent("viewDidAppear", params: nil)
+            hasSendViewDidAppear = true
+        }
+    }
+    
+    func sendViewDidDisappear() {
+        instance?.fireGlobalEvent("viewDidDisappear", params: nil)
+        hasSendViewDidAppear = false
     }
     
     deinit {
