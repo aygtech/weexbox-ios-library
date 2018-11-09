@@ -82,6 +82,7 @@
 #import "WXRuntimeDomainController.h"
 #import "WXSourceDebuggerDomainController.h"
 #import "WXDevTool.h"
+#import "WXMonitorHandler.h"
 #import "WXNetworkRecorder.h"
 #import "WXNetworkTransaction.h"
 #import "WXResources.h"

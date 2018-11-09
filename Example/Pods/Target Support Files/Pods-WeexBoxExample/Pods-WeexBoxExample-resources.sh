@@ -92,21 +92,19 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "${PODS_ROOT}/ATSDK-Weex/ATSDK.framework/Versions/A/Resources/ATSDK.bundle"
-  install_resource "${PODS_ROOT}/ATSDK-Weex/ATSDK.framework/Versions/A/Resources/en.lproj"
-  install_resource "${PODS_ROOT}/ATSDK-Weex/ATSDK.framework/Versions/A/Resources/zh-Hans.lproj"
-  install_resource "${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
   install_resource "${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle"
   install_resource "${PODS_ROOT}/WeexSDK/pre-build/native-bundle-main.js"
+  install_resource "${PODS_ROOT}/WeexSDK/pre-build/weex-main-jsfm.js"
+  install_resource "${PODS_ROOT}/WeexSDK/pre-build/weex-polyfill.js"
+  install_resource "${PODS_ROOT}/WeexSDK/pre-build/weex-rax-api.js"
   install_resource "${PODS_ROOT}/WeexSDK/ios/sdk/WeexSDK/Resources/wx_load_error@3x.png"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "${PODS_ROOT}/ATSDK-Weex/ATSDK.framework/Versions/A/Resources/ATSDK.bundle"
-  install_resource "${PODS_ROOT}/ATSDK-Weex/ATSDK.framework/Versions/A/Resources/en.lproj"
-  install_resource "${PODS_ROOT}/ATSDK-Weex/ATSDK.framework/Versions/A/Resources/zh-Hans.lproj"
-  install_resource "${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
   install_resource "${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle"
   install_resource "${PODS_ROOT}/WeexSDK/pre-build/native-bundle-main.js"
+  install_resource "${PODS_ROOT}/WeexSDK/pre-build/weex-main-jsfm.js"
+  install_resource "${PODS_ROOT}/WeexSDK/pre-build/weex-polyfill.js"
+  install_resource "${PODS_ROOT}/WeexSDK/pre-build/weex-rax-api.js"
   install_resource "${PODS_ROOT}/WeexSDK/ios/sdk/WeexSDK/Resources/wx_load_error@3x.png"
 fi
 

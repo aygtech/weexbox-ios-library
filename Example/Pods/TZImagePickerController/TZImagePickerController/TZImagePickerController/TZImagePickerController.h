@@ -4,7 +4,7 @@
 //
 //  Created by 谭真 on 15/12/24.
 //  Copyright © 2015年 谭真. All rights reserved.
-//  version 3.0.9 - 2018.10.09
+//  version 3.1.1 - 2018.11.07
 //  更多信息，请前往项目的github地址：https://github.com/banchichen/TZImagePickerController
 
 /*
@@ -127,8 +127,8 @@
 /// Default is white color with 0.8 alpha;
 @property (strong, nonatomic) UIColor *cannotSelectLayerColor;
 
-/// Default is No, if set YES, the result photo will not be scaled to photoWidth pixel width. The photoWidth default is 828px
-/// 默认是NO，如果设置为YES，内部不会缩放图片到photoWidth像素宽
+/// Default is YES, if set NO, the result photo will be scaled to photoWidth pixel width. The photoWidth default is 828px
+/// 默认是YES，如果设置为NO，内部会缩放图片到photoWidth像素宽
 @property (assign, nonatomic) BOOL notScaleImage;
 
 /// 默认是NO，如果设置为YES，导出视频时会修正转向（慎重设为YES，可能导致部分安卓下拍的视频导出失败）
@@ -300,7 +300,7 @@
 
 
 @interface UIImage (MyBundle)
-+ (UIImage *)imageNamedFromMyBundle:(NSString *)name;
++ (UIImage *)tz_imageNamedFromMyBundle:(NSString *)name;
 @end
 
 
@@ -309,7 +309,7 @@
 + (CGFloat)tz_statusBarHeight;
 // 获得Info.plist数据字典
 + (NSDictionary *)tz_getInfoDictionary;
-+ (BOOL)isRightToLeftLayout;
++ (BOOL)tz_isRightToLeftLayout;
 @end
 
 

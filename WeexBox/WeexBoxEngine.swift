@@ -11,38 +11,40 @@ import WeexSDK
 import Async
 
 /// 初始化SDK
-@objc public class WeexBoxEngine: NSObject {
+@objcMembers public class WeexBoxEngine: NSObject {
     
     @objc public static func setup() {
         // 初始化WeexSDK
         initWeexSDK()
-        setDebug(false)
-        //        Test.test()
+        isDebug = false
     }
     
-    @objc public static func setDebug(_ debug: Bool) {
-        if debug {
-            WXDebugTool.setDebug(true)
-            WXLog.setLogLevel(.log)
-            Async.main(after: 3) {
-                let assistveButton = AssistveButton(frame: CGRect(x: 100, y: 100, width: 50, height: 50), assistiveType: .YGAssistiveTypeNone) {
-                    DebugWeex.openScan()
+    public static var isDebug: Bool! {
+        didSet {
+            if isDebug {
+                WXDebugTool.setDebug(true)
+                WXLog.setLogLevel(.WXLogLevelLog)
+                Async.main(after: 3) {
+                    let assistveButton = AssistveButton(frame: CGRect(x: 100, y: 100, width: 50, height: 50), assistiveType: .YGAssistiveTypeNone) {
+                        DebugWeex.openScan()
+                    }
+                    let window = UIApplication.shared.delegate?.window
+                    if window != nil, window!?.rootViewController != nil {
+                        window!!.addSubview(assistveButton)
+                    } else {
+                        print("请在初始化rootViewController之后再开启debug")
+                    }
                 }
-                let window = UIApplication.shared.delegate?.window
-                if window != nil, window!?.rootViewController != nil {
-                    window!!.addSubview(assistveButton)
-                } else {
-                    print("请在初始化rootViewController之后再开启debug")
-                }
+            } else {
+                WXDebugTool.setDebug(false)
+                WXLog.setLogLevel(.WXLogLevelOff)
             }
-        } else {
-            WXDebugTool.setDebug(false)
-            WXLog.setLogLevel(.off)
         }
     }
     
     private static func initWeexSDK() {
         WXSDKEngine.initSDKEnvironment()
+        WXTracingManager.switchTracing(false)
         registerHandler()
         registerComponent()
         registerModule()

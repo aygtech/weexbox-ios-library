@@ -1,8 +1,8 @@
 {
   "name": "WeexBox",
-  "version": "0.2.0",
+  "version": "0.5.0",
   "summary": "WeexBox.",
-  "homepage": "https://github.com/WeexBox/ios-library",
+  "homepage": "https://github.com/aygtech/weexbox-ios-library",
   "license": "MIT",
   "authors": {
     "Mario": "myeveryheart@qq.com"
@@ -11,8 +11,8 @@
     "ios": "10.0"
   },
   "source": {
-    "git": "https://github.com/WeexBox/ios-library.git",
-    "tag": "0.2.0"
+    "git": "https://github.com/aygtech/weexbox-ios-library.git",
+    "tag": "0.5.0"
   },
   "source_files": "WeexBox/**/**/*.{swift,h,m}",
   "swift_version": "4.2",
@@ -24,10 +24,10 @@
   "libraries": "sqlite3",
   "dependencies": {
     "WeexSDK": [
-      "~> 0.18.0"
+      "~> 0.19.0"
     ],
     "WXDevtool": [
-
+      "~> 0.17.0"
     ],
     "Alamofire": [
 
@@ -41,7 +41,7 @@
     "HandyJSON": [
 
     ],
-    "SVProgressHUD": [
+    "MBProgressHUD": [
 
     ],
     "AsyncSwift": [
@@ -57,9 +57,6 @@
 
     ],
     "SnapKit": [
-
-    ],
-    "ATSDK-Weex": [
 
     ],
     "SDWebImage": [

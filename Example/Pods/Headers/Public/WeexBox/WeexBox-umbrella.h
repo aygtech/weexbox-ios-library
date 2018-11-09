@@ -10,7 +10,7 @@
 #endif
 #endif
 
-#import "WXImgLoaderDefaultImpl.h"
+#import "ImageHander.h"
 #import "BaseModule.h"
 #import "EventModule.h"
 #import "ExternalModule.h"
@@ -19,10 +19,8 @@
 #import "NavigatorModule.h"
 #import "NetworkModule.h"
 #import "RouterModule.h"
-#import "ATSDK.h"
 #import "Log.h"
 #import "WXRefreshPlugin.h"
-#import "WXScanPlugin.h"
 #import "WeexBox.h"
 
 FOUNDATION_EXPORT double WeexBoxVersionNumber;

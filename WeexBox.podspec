@@ -13,8 +13,8 @@ Pod::Spec.new do |s|
   s.frameworks = 'Foundation', 'UIKit'
   s.libraries = 'sqlite3'
 
-  s.dependency 'WeexSDK', '~> 0.18.0'
-  s.dependency 'WXDevtool', '~> 0.16.0'
+  s.dependency 'WeexSDK', '~> 0.19.0'
+  s.dependency 'WXDevtool', '~> 0.17.0'
   s.dependency 'Alamofire'
   s.dependency "Alamofire-Synchronous"
   s.dependency 'SwiftyJSON'

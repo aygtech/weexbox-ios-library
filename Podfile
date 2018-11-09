@@ -5,11 +5,11 @@ use_modular_headers!
 
 target 'WeexBox' do
 
-pod 'WeexSDK'
+pod 'WeexSDK', '~> 0.19.0'
 # Apache Weex
 # https://github.com/apache/incubator-weex
 
-pod 'WXDevtool'
+pod 'WXDevtool', '~> 0.17.0'
 # Remote debug for your native iOS app using Chrome Developer Tools
 # https://github.com/weexteam/weex-devtool-iOS
 
