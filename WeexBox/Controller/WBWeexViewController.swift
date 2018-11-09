@@ -21,8 +21,10 @@ import WeexSDK
     open override func viewDidLoad() {
         super.viewDidLoad()
         
-        Event.register(target: self, name: "RefreshInstance") { [weak self] _ in
-            self?.refreshWeex()
+        if WeexBoxEngine.isDebug {
+            Event.register(target: self, name: "RefreshInstance") { [weak self] _ in
+                self?.refreshWeex()
+            }
         }
         
         view.clipsToBounds = true
@@ -66,24 +68,19 @@ import WeexSDK
             self?.view.addSubview((self?.weexView)!)
         }
         
-        instance?.onFailed = { [weak self] (error) in
-            #if DEBUG
-            let ocError = error! as NSError
-            let errMsg = """
-            ErrorType:\(ocError.domain)
-            ErrorCode:\(ocError.code)
-            ErrorInfo:\(ocError.userInfo)
-            """
-            let alertController = UIAlertController(title: "render failed", message: errMsg, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default)
-            alertController.addAction(okAction)
-            self?.present(alertController, animated: true, completion: nil)
-            #endif
-        }
-        
-        instance?.renderFinish = { [weak self] (view) in
-            Log.d("Render Finish...")
-            self?.instance?.fireGlobalEvent("viewDidAppear", params: nil)
+        if WeexBoxEngine.isDebug {
+            instance?.onFailed = { [weak self] (error) in
+                let ocError = error! as NSError
+                let errMsg = """
+                ErrorType:\(ocError.domain)
+                ErrorCode:\(ocError.code)
+                ErrorInfo:\(ocError.userInfo)
+                """
+                let alertController = UIAlertController(title: "render failed", message: errMsg, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default)
+                alertController.addAction(okAction)
+                self?.present(alertController, animated: true, completion: nil)
+            }
         }
         
         instance?.render(with: url, options: ["bundleUrl": url!.absoluteString], data: nil)
