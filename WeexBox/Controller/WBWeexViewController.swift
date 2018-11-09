@@ -14,7 +14,7 @@ import WeexSDK
 @objcMembers open class WBWeexViewController: WBBaseViewController {
     
     public var weexHeight: CGFloat!
-    private var instance: WXSDKInstance?
+    public var instance: WXSDKInstance?
     private var weexView: UIView?
     public var url: URL!
     
