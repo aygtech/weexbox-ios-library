@@ -17,7 +17,7 @@ import WeexSDK
     public var instance: WXSDKInstance?
     public var weexView: UIView?
     public var url: URL!
-    private var hasSendViewDidAppear = false
+    private var isFristEnter = true
     
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +59,7 @@ import WeexSDK
         sendViewDidDisappear()
     }
     
-    func render() {
+    private func render() {
         instance?.destroy()
         instance = WXSDKInstance()
         instance?.viewController = self
@@ -72,6 +72,7 @@ import WeexSDK
         }
         
         instance?.renderFinish = { [weak self] (view) in
+            self?.isFristEnter = false
             self?.sendViewDidAppear()
         }
         
@@ -97,16 +98,14 @@ import WeexSDK
         render()
     }
     
-    func sendViewDidAppear() {
-        if hasSendViewDidAppear == false {
+    private func sendViewDidAppear() {
+        if isFristEnter == false {
             instance?.fireGlobalEvent("viewDidAppear", params: nil)
-            hasSendViewDidAppear = true
         }
     }
     
-    func sendViewDidDisappear() {
+    private func sendViewDidDisappear() {
         instance?.fireGlobalEvent("viewDidDisappear", params: nil)
-        hasSendViewDidAppear = false
     }
     
     deinit {
