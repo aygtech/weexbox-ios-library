@@ -44,13 +44,13 @@ import WeexSDK
                 url = UpdateManager.getFullUrl(file: u)
             }
         }
-     
+        
         render()
     }
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        if(isFirstSendDidAppear == false){
+        
+        if (isFirstSendDidAppear == false) {
             sendViewDidAppear()
         }
     }
