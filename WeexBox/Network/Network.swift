@@ -19,4 +19,22 @@ open class Network {
         return SessionManager(configuration: configuration)
     }()
     
+    public static var server: URL?
+    
+    @discardableResult
+    public static func request(
+        _ url: URLConvertible,
+        method: HTTPMethod = .get,
+        parameters: Parameters? = nil,
+        encoding: ParameterEncoding = URLEncoding.default,
+        headers: HTTPHeaders? = nil)
+        -> DataRequest {
+            var urlFinal: URL?
+            if let urlString = url as? String {
+                if urlString.hasPrefix("http://") == false, urlString.hasPrefix("https://") == false {
+                    urlFinal = server?.appendingPathComponent(urlString)
+                }
+            }
+        return sessionManager.request(urlFinal ?? url, method: method, parameters: parameters, encoding: encoding, headers: headers)
+    }
 }

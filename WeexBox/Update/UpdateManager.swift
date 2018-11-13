@@ -172,7 +172,7 @@ import Zip
     
     private static func getServer() {
         complete(.GetServer)
-        Network.sessionManager.request(serverVersionUrl).validate().responseString { response in
+        Network.request(serverVersionUrl).validate().responseString { response in
             switch response.result {
             case .success(let value):
                 serverWwwUrl = serverUrl.appendingPathComponent(value)
@@ -222,7 +222,7 @@ import Zip
     // 获取服务端config文件
     private static func downloadConfig() {
         complete(.DownloadConfig)
-        Network.sessionManager.request(serverConfigUrl).validate().responseData { response in
+        Network.request(serverConfigUrl).validate().responseData { response in
             switch response.result {
             case .success(let value):
                 complete(.DownloadConfigSuccess)
@@ -299,7 +299,7 @@ import Zip
     
     private static func downloadMd5() {
         complete(.DownloadMd5)
-        Network.sessionManager.request(serverMd5Url).validate().responseString { response in
+        Network.request(serverMd5Url).validate().responseString { response in
             switch response.result {
             case .success(let value):
                 complete(.DownloadMd5Success)

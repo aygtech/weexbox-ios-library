@@ -36,14 +36,14 @@ class NetworkModule: NetworkModuleOC {
             encoding = JSONEncoding.default
         }
         
-        let dataRequest = Network.sessionManager.request(info.url!, method: HTTPMethod(rawValue: info.method!.uppercased())!, parameters: info.params, encoding: encoding, headers: info.headers)
+        let dataRequest = Network.request(info.url!, method: HTTPMethod(rawValue: info.method!.uppercased())!, parameters: info.params, encoding: encoding, headers: info.headers)
         
         if info.responseType?.uppercased() == "JSON" {
             dataRequest.validate().responseJSON() { response in
                 var result = Result()
                 result.status = response.response?.statusCode ?? Result.error
-                if let value = response.result.value {
-                    result.data["data"] = value
+                if let value = response.result.value as? Dictionary<String, Any> {
+                    result.data = value
                 }
                 result.error = response.error?.localizedDescription
                 callback(result.toJsResult(), false)
@@ -85,7 +85,9 @@ class NetworkModule: NetworkModuleOC {
                 progressCallback(result.toJsResult(), true)
                 upload.responseJSON { response in
                     result.status = response.response?.statusCode ?? Result.error
-                    result.data = response.value as! [String : Any]
+                    if let value = response.value as? Dictionary<String, Any> {
+                        result.data = value
+                    }
                     result.error = response.error?.localizedDescription
                     completionCallback(result.toJsResult(), false)
                 }
