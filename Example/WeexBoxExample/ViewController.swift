@@ -13,20 +13,7 @@ class ViewController: WBBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = "WeexBox2"
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
     }
 

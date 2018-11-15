@@ -81,9 +81,13 @@ pod 'TZImagePickerController'
 # 一个支持多选、选原图和视频的图片选择器，同时有预览、裁剪功能
 # https://github.com/banchichen/TZImagePickerController
 
-pod 'swiftScan'
-# 二维码 各种码识别，生成，界面效果
-# https://github.com/MxABC/swiftScan
+
+#pod 'swiftScan'
+## 二维码 各种码识别，生成，界面效果
+## https://github.com/MxABC/swiftScan
+
+pod 'LBXScan'
+# 二维码
 
 pod 'Charts'
 # Beautiful charts for iOS/tvOS/OSX! The Apple side of the crossplatform MPAndroidChart.

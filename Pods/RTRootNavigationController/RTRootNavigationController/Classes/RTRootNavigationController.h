@@ -144,6 +144,4 @@ IB_DESIGNABLE
  */
 - (NSArray <__kindof UIViewController *> *)popToRootViewControllerAnimated:(BOOL)animated
                                                                   complete:(void(^)(BOOL finished))block;
-
-- (void)removeViewControllers:(NSArray<UIViewController *> *)viewContrViews animated:(BOOL)flag;
 @end
