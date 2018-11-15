@@ -17,6 +17,7 @@ import swiftScan
     
     
     open override func viewDidLoad() {
+        super.viewDidLoad()
 //        let configure = SGQRCodeObtainConfigure()
 //        let obtain = SGQRCodeObtain()
 //        obtain.establishQRCodeObtainScan(with: self, configure: configure)

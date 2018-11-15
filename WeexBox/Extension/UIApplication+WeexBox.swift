@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import RTRootNavigationController
 
 public extension UIApplication {
     
     // 获取最顶层VC, 根视图必须是nav或者tab
     public static func topViewController(_ controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
-        if let rtController = controller as? WBNavigationController {
+        if let rtController = controller as? RTRootNavigationController {
             return topViewController(rtController.rt_visibleViewController)
         }
         if let navigationController = controller as? UINavigationController {
