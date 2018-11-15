@@ -1,0 +1,127 @@
+PODS:
+  - Alamofire (4.7.3)
+  - Alamofire-Synchronous (4.0.0):
+    - Alamofire (~> 4.0)
+  - AsyncSwift (2.0.4)
+  - BindingX (1.0.3):
+    - WeexPluginLoader
+    - WeexSDK
+  - Charts (3.2.1):
+    - Charts/Core (= 3.2.1)
+  - Charts/Core (3.2.1)
+  - HandyJSON (4.2.0)
+  - Hue (3.0.1)
+  - LBXScan (2.3):
+    - LBXScan/All (= 2.3)
+  - LBXScan/All (2.3):
+    - LBXScan/Types (~> 2.2)
+    - ZBarSDK (~> 1.3.1)
+  - LBXScan/Types (2.3)
+  - MBProgressHUD (1.1.0)
+  - Realm (3.11.1):
+    - Realm/Headers (= 3.11.1)
+  - Realm/Headers (3.11.1)
+  - RealmSwift (3.11.1):
+    - Realm (= 3.11.1)
+  - RTRootNavigationController (0.7.0):
+    - RTRootNavigationController/Core (= 0.7.0)
+  - RTRootNavigationController/Core (0.7.0)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
+  - SnapKit (4.2.0)
+  - SocketRocket (0.5.1)
+  - SwiftEventBus (2.1.2)
+  - SwiftyJSON (4.2.0)
+  - TZImagePickerController (3.1.1)
+  - WeexBox (0.5.0):
+    - Alamofire
+    - Alamofire-Synchronous
+    - AsyncSwift
+    - BindingX
+    - Charts
+    - HandyJSON
+    - Hue
+    - LBXScan
+    - MBProgressHUD
+    - RealmSwift
+    - RTRootNavigationController
+    - SDWebImage
+    - SnapKit
+    - SwiftEventBus
+    - SwiftyJSON
+    - TZImagePickerController
+    - WeexSDK (~> 0.19.0)
+    - WXDevtool (~> 0.17.0)
+    - Zip
+  - WeexPluginLoader (0.0.1.9.1):
+    - WeexSDK
+  - WeexSDK (0.19.0.2)
+  - WXDevtool (0.17.1):
+    - SocketRocket
+    - WeexSDK
+  - ZBarSDK (1.3.1)
+  - Zip (1.1.0)
+
+DEPENDENCIES:
+  - WeexBox (from `..`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Alamofire-Synchronous
+    - AsyncSwift
+    - BindingX
+    - Charts
+    - HandyJSON
+    - Hue
+    - LBXScan
+    - MBProgressHUD
+    - Realm
+    - RealmSwift
+    - RTRootNavigationController
+    - SDWebImage
+    - SnapKit
+    - SocketRocket
+    - SwiftEventBus
+    - SwiftyJSON
+    - TZImagePickerController
+    - WeexPluginLoader
+    - WeexSDK
+    - WXDevtool
+    - ZBarSDK
+    - Zip
+
+EXTERNAL SOURCES:
+  WeexBox:
+    :path: ".."
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Alamofire-Synchronous: eedf1e6e961c3795a63c74990b3f7d9fbfac7e50
+  AsyncSwift: 65775a7b32e740609b24969ece3de58723b9dc3e
+  BindingX: b3c6c1c5dcd8e50277cfc5daad09d7010c227524
+  Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
+  HandyJSON: 9dfc026c7d7adc1f0f8ba8b181495f0e0763b0f4
+  Hue: 93e852fa6211ab35922ad8c293f51c43d6c79eb2
+  LBXScan: e51449f0832d1fe17da632af0d22adeb3cfa3543
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  Realm: 037c5919b9ceb59d6beed5d3b031096856b119b3
+  RealmSwift: c9580133e73ef40ed340401af2dbc9a5790dfea7
+  RTRootNavigationController: f1369f4257c8a44a05c5d3b151d2b8ec7accf121
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
+  SwiftEventBus: 9e8f6d8cff2826d66536ec367d17a47299478aa0
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  TZImagePickerController: b33cb21ea66c1ed4c56443a0e8c84494c44be560
+  WeexBox: cfb92a0c14e646cff3910c468fd276ff5cbe5495
+  WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
+  WeexSDK: 0515e386d0eae3400ed8e55f31f198ae35acce44
+  WXDevtool: 9e3da2c92c83c8f62521c8264d9c2c721512f5c5
+  ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
+  Zip: 8877eede3dda76bcac281225c20e71c25270774c
+
+PODFILE CHECKSUM: 657c944383e8cbbeb76290cbefaeb2c7d2fd6a18
+
+COCOAPODS: 1.5.3
