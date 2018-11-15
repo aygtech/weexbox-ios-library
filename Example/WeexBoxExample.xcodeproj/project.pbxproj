@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		99DD51B2219D8C51003B0DF3 /* WBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD51B1219D8C51003B0DF3 /* WBViewController.swift */; };
 		AC9CE8512133DF76007EF7F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE8502133DF76007EF7F2 /* AppDelegate.swift */; };
-		AC9CE8532133DF76007EF7F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE8522133DF76007EF7F2 /* ViewController.swift */; };
 		AC9CE8582133DF78007EF7F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC9CE8572133DF78007EF7F2 /* Assets.xcassets */; };
 		AC9CE85B2133DF78007EF7F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9CE8592133DF78007EF7F2 /* LaunchScreen.storyboard */; };
 		ACF90ED9214A90E8000FDAB4 /* OCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF90ED8214A90E8000FDAB4 /* OCTest.m */; };
@@ -19,10 +19,10 @@
 /* Begin PBXFileReference section */
 		049815ECA562C1D30C195ECB /* Pods-WeexBoxExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexBoxExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeexBoxExample/Pods-WeexBoxExample.release.xcconfig"; sourceTree = "<group>"; };
 		27F101CC5BC3872CE661F024 /* Pods-WeexBoxExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexBoxExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeexBoxExample/Pods-WeexBoxExample.debug.xcconfig"; sourceTree = "<group>"; };
+		99DD51B1219D8C51003B0DF3 /* WBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBViewController.swift; sourceTree = "<group>"; };
 		A8366C6BCB7071E15F022D80 /* libPods-WeexBoxExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeexBoxExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9CE84D2133DF76007EF7F2 /* WeexBoxExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeexBoxExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9CE8502133DF76007EF7F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AC9CE8522133DF76007EF7F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AC9CE8572133DF78007EF7F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC9CE85A2133DF78007EF7F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC9CE85C2133DF78007EF7F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -75,10 +75,10 @@
 			isa = PBXGroup;
 			children = (
 				AC9CE8502133DF76007EF7F2 /* AppDelegate.swift */,
-				AC9CE8522133DF76007EF7F2 /* ViewController.swift */,
 				ACF90ED7214A90E8000FDAB4 /* OCTest.h */,
 				ACF90ED8214A90E8000FDAB4 /* OCTest.m */,
 				ACF90EDA214B4C41000FDAB4 /* SwiftTest.swift */,
+				99DD51B1219D8C51003B0DF3 /* WBViewController.swift */,
 				AC9CE8572133DF78007EF7F2 /* Assets.xcassets */,
 				AC9CE8592133DF78007EF7F2 /* LaunchScreen.storyboard */,
 				AC9CE85C2133DF78007EF7F2 /* Info.plist */,
@@ -227,8 +227,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC9CE8532133DF76007EF7F2 /* ViewController.swift in Sources */,
 				ACF90ED9214A90E8000FDAB4 /* OCTest.m in Sources */,
+				99DD51B2219D8C51003B0DF3 /* WBViewController.swift in Sources */,
 				AC9CE8512133DF76007EF7F2 /* AppDelegate.swift in Sources */,
 				ACF90EDB214B4C41000FDAB4 /* SwiftTest.swift in Sources */,
 			);
@@ -299,7 +299,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -356,7 +356,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -377,7 +377,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = M5UW3GJJEM;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -406,6 +406,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "WeexBoxExample/WeexBoxExample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -421,7 +422,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = M5UW3GJJEM;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -449,6 +450,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "WeexBoxExample/WeexBoxExample-Bridging-Header.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";

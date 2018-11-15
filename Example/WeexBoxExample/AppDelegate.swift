@@ -8,7 +8,6 @@
 
 import UIKit
 import WeexBox
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -24,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = .white
         window?.backgroundColor = .white
         
-        window?.rootViewController = WBNavigationController(rootViewController: ViewController())
+        window?.rootViewController = WBNavigationController(rootViewController: WBViewController())
         window?.makeKeyAndVisible()
         
         return true

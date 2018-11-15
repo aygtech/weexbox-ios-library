@@ -7,6 +7,31 @@
 //
 
 import Foundation
+
+@objcMembers open class WBScannerViewController: LBXScanViewController,LBXScanViewControllerDelegate {
+    public var scanResultBlock: ((LBXScanResult, String?) -> Void)!
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "扫码调试"
+        self.cameraInvokeMsg = "相机启动中"
+        self.isNeedScanImage = true
+        let style = LBXScanViewStyle()
+        style.colorRetangleLine = UIColor.blue
+        self.style = style
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(clickOntheBack))
+    }
+    @objc func clickOntheBack(){
+       self.navigationController?.popViewController(animated: true)
+    }
+    public func scanResult(with array: [LBXScanResult]!) {
+        if(array.count>0){
+            if(scanResultBlock != nil){
+                scanResultBlock(array[0] as! LBXScanResult, nil)
+            }
+        }
+    }
+}
+/*
 import swiftScan
 
 /// 扫描二维码
@@ -105,3 +130,4 @@ import swiftScan
     }
     
 }
+ */

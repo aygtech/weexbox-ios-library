@@ -26,3 +26,6 @@ FOUNDATION_EXPORT const unsigned char WeexBoxVersionString[];
 #import <WeexBox/ImageHander.h>
 #import <WeexBox/EventModule.h>
 #import <WeexBox/LocationModule.h>
+//#import <LBXScan/LBXScanViewController.h>
+#import <LBXScan/LBXScan-umbrella.h>
+
