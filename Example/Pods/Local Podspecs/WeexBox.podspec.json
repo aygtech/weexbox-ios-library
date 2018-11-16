@@ -74,7 +74,10 @@
     "TZImagePickerController": [
 
     ],
-    "LBXScan": [
+    "LBXScan/LBXNative": [
+
+    ],
+    "LBXScan/UI": [
 
     ],
     "Charts": [

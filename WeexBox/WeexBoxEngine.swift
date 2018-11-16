@@ -25,10 +25,11 @@ import Async
                 WXDebugTool.setDebug(true)
                 WXLog.setLogLevel(.WXLogLevelLog)
                 Async.main(after: 3) {
-                    let assistveButton = AssistveButton(frame: CGRect(x: 100, y: 100, width: 50, height: 50), assistiveType: .YGAssistiveTypeNone) {
+                    let assistveButton = AssistveButton(frame: CGRect(x: 0, y: UIScreen.main.bounds.size.height/2, width: 50, height: 50), assistiveType: .YGAssistiveTypeNone) {
                         DebugWeex.openScan()
                     }
                     let window = UIApplication.shared.delegate?.window
+                    
                     if window != nil, window!?.rootViewController != nil {
                         window!!.addSubview(assistveButton)
                     } else {

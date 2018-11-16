@@ -26,7 +26,6 @@ open class WBWebViewController: WBBaseViewController {
 //        webView.delegate = self
         webView.loadRequest(URLRequest(url: url))
     }
-    
     func bottomNavBar() {
         
     }

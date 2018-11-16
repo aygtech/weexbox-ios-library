@@ -11,12 +11,11 @@ PODS:
   - Charts/Core (3.2.1)
   - HandyJSON (4.2.1)
   - Hue (3.0.1)
-  - LBXScan (2.3):
-    - LBXScan/All (= 2.3)
-  - LBXScan/All (2.3):
+  - LBXScan/LBXNative (2.3):
     - LBXScan/Types (~> 2.2)
-    - ZBarSDK (~> 1.3.1)
   - LBXScan/Types (2.3)
+  - LBXScan/UI (2.3):
+    - LBXScan/Types (~> 2.2)
   - MBProgressHUD (1.1.0)
   - Realm (3.11.1):
     - Realm/Headers (= 3.11.1)
@@ -40,7 +39,6 @@ PODS:
   - WXDevtool (0.17.1):
     - SocketRocket
     - WeexSDK
-  - ZBarSDK (1.3.1)
   - Zip (1.1.0)
 
 DEPENDENCIES:
@@ -51,7 +49,8 @@ DEPENDENCIES:
   - Charts
   - HandyJSON
   - Hue
-  - LBXScan
+  - LBXScan/LBXNative
+  - LBXScan/UI
   - MBProgressHUD
   - RealmSwift
   - RTRootNavigationController
@@ -87,7 +86,6 @@ SPEC REPOS:
     - WeexPluginLoader
     - WeexSDK
     - WXDevtool
-    - ZBarSDK
     - Zip
 
 SPEC CHECKSUMS:
@@ -112,9 +110,8 @@ SPEC CHECKSUMS:
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
   WeexSDK: 0515e386d0eae3400ed8e55f31f198ae35acce44
   WXDevtool: 9e3da2c92c83c8f62521c8264d9c2c721512f5c5
-  ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: eebf1d9ae18aa277c7653c995400c9bbb5d5fe3a
+PODFILE CHECKSUM: ac61811c46327162657b6e0ac8a0bcc3845ca9a1
 
 COCOAPODS: 1.5.3
