@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import LBXScan
 
 @objcMembers open class WBScannerViewController: LBXScanViewController,LBXScanViewControllerDelegate {
     public var scanResultBlock: ((LBXScanResult, String?) -> Void)!
