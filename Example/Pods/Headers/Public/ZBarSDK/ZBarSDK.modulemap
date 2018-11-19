@@ -1,6 +1,0 @@
-module ZBarSDK {
-  umbrella header "ZBarSDK-umbrella.h"
-
-  export *
-  module * { export * }
-}

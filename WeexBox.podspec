@@ -30,7 +30,8 @@ Pod::Spec.new do |s|
   s.dependency 'Hue'
   s.dependency 'SwiftEventBus'
   s.dependency 'TZImagePickerController'
-  s.dependency 'LBXScan'
+  s.dependency 'LBXScan/LBXNative'
+  s.dependency 'LBXScan/UI'
   s.dependency 'Charts'
   
 end
