@@ -14,6 +14,8 @@ import RTRootNavigationController
 public struct Router: HandyJSON {
     
     static var routes = Dictionary<String, WBBaseViewController.Type>()
+    
+    // 注册路由
     public static func register(name: String, controller: WBBaseViewController.Type) {
         routes[name] = controller
     }
@@ -35,13 +37,14 @@ public struct Router: HandyJSON {
     public var navBarHidden: Bool = false
     // 需要传到下一个页面的数据
     public var params: Dictionary<String, Any>?
-    // 指定关闭堆栈的哪些页面
+    // 打开页面的同时关闭页面
     public var closeFrom: Int?
     // 关闭页面的方向，默认和堆栈方向一致
     public var closeFromBottomToTop = true
+    // 关闭页面的个数
     public var closeCount: Int?
     
-    // 打开原生页面
+    // 打开页面
     public func open(from: WBBaseViewController) {
         if let toType = Router.routes[name] {
             let to = toType.init()

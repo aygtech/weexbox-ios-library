@@ -11,19 +11,23 @@ import SwiftEventBus
 
 public struct Event {
     
-   public static func register(target: AnyObject, name: String, handler: @escaping ((Notification?) -> Void)) {
+    // 注册事件
+    public static func register(target: AnyObject, name: String, handler: @escaping ((Notification?) -> Void)) {
         SwiftEventBus.onMainThread(target, name: name, handler: handler)
     }
     
-   public static func emit(name: String, info: Dictionary<String, Any>?) {
+    // 发送事件
+    public static func emit(name: String, info: Dictionary<String, Any>?) {
         SwiftEventBus.post(name, userInfo: info)
     }
     
-   public static func unregister(target: AnyObject, name: String) {
+    // 注销事件
+    public static func unregister(target: AnyObject, name: String) {
         SwiftEventBus.unregister(target, name: name)
     }
     
-   public static func unregisterAll(target: AnyObject) {
+    // 注销所有事件
+    public static func unregisterAll(target: AnyObject) {
         SwiftEventBus.unregister(target)
     }
 }

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		99DD51B2219D8C51003B0DF3 /* WBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD51B1219D8C51003B0DF3 /* WBViewController.swift */; };
+		99DD51B2219D8C51003B0DF3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD51B1219D8C51003B0DF3 /* BaseViewController.swift */; };
 		AC9CE8512133DF76007EF7F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE8502133DF76007EF7F2 /* AppDelegate.swift */; };
 		AC9CE8582133DF78007EF7F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC9CE8572133DF78007EF7F2 /* Assets.xcassets */; };
 		AC9CE85B2133DF78007EF7F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9CE8592133DF78007EF7F2 /* LaunchScreen.storyboard */; };
@@ -19,7 +19,7 @@
 /* Begin PBXFileReference section */
 		049815ECA562C1D30C195ECB /* Pods-WeexBoxExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexBoxExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeexBoxExample/Pods-WeexBoxExample.release.xcconfig"; sourceTree = "<group>"; };
 		27F101CC5BC3872CE661F024 /* Pods-WeexBoxExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexBoxExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeexBoxExample/Pods-WeexBoxExample.debug.xcconfig"; sourceTree = "<group>"; };
-		99DD51B1219D8C51003B0DF3 /* WBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBViewController.swift; sourceTree = "<group>"; };
+		99DD51B1219D8C51003B0DF3 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A8366C6BCB7071E15F022D80 /* libPods-WeexBoxExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeexBoxExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9CE84D2133DF76007EF7F2 /* WeexBoxExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeexBoxExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9CE8502133DF76007EF7F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,7 +78,7 @@
 				ACF90ED7214A90E8000FDAB4 /* OCTest.h */,
 				ACF90ED8214A90E8000FDAB4 /* OCTest.m */,
 				ACF90EDA214B4C41000FDAB4 /* SwiftTest.swift */,
-				99DD51B1219D8C51003B0DF3 /* WBViewController.swift */,
+				99DD51B1219D8C51003B0DF3 /* BaseViewController.swift */,
 				AC9CE8572133DF78007EF7F2 /* Assets.xcassets */,
 				AC9CE8592133DF78007EF7F2 /* LaunchScreen.storyboard */,
 				AC9CE85C2133DF78007EF7F2 /* Info.plist */,
@@ -228,7 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACF90ED9214A90E8000FDAB4 /* OCTest.m in Sources */,
-				99DD51B2219D8C51003B0DF3 /* WBViewController.swift in Sources */,
+				99DD51B2219D8C51003B0DF3 /* BaseViewController.swift in Sources */,
 				AC9CE8512133DF76007EF7F2 /* AppDelegate.swift in Sources */,
 				ACF90EDB214B4C41000FDAB4 /* SwiftTest.swift in Sources */,
 			);

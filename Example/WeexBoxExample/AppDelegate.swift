@@ -16,14 +16,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        // 初始化 WeexBox
         WeexBoxEngine.setup()
+        
+        // 开启调试
         WeexBoxEngine.isDebug = true
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
-        window?.backgroundColor = .white
         
-        window?.rootViewController = WBNavigationController(rootViewController: WBViewController())
+        // 使用 WBNavigationController 作为导航基类
+        window?.rootViewController = WBNavigationController(rootViewController: BaseViewController())
+        
         window?.makeKeyAndVisible()
         
         return true

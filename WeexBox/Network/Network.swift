@@ -19,6 +19,7 @@ open class Network {
         return SessionManager(configuration: configuration)
     }()
     
+    // 网络请求域名
     public static var server: URL?
     
     @discardableResult

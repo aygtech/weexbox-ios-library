@@ -1,5 +1,5 @@
 //
-//  WBViewController.swift
+//  BaseViewController.swift
 //  WeexBoxExample
 //
 //  Created by Baird-weng on 2018/11/15.
@@ -8,7 +8,7 @@
 import UIKit
 import WeexBox
 
-class WBViewController: WBBaseViewController {
+class BaseViewController: WBBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
