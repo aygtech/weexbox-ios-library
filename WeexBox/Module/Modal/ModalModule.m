@@ -8,6 +8,7 @@
 
 #import "ModalModule.h"
 
+#pragma clang diagnostic ignored "-Wundeclared-selector"
 @implementation ModalModuleOC
 
 WX_EXPORT_METHOD(@selector(alert:callback:))
@@ -19,3 +20,4 @@ WX_EXPORT_METHOD(@selector(showLoading:))
 WX_EXPORT_METHOD(@selector(dismiss))
 
 @end
+#pragma clang diagnostic pop

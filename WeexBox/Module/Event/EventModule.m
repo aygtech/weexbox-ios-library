@@ -8,6 +8,7 @@
 
 #import "EventModule.h"
 
+#pragma clang diagnostic ignored "-Wundeclared-selector"
 @implementation EventModuleOC
 
 WX_EXPORT_METHOD(@selector(register:callback:))
@@ -16,3 +17,4 @@ WX_EXPORT_METHOD(@selector(unregister:))
 WX_EXPORT_METHOD(@selector(unregisterAll:))
 
 @end
+#pragma clang diagnostic pop
