@@ -1,0 +1,6 @@
+module Hue {
+  umbrella header "Hue-umbrella.h"
+
+  export *
+  module * { export * }
+}

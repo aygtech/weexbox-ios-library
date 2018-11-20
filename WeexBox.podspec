@@ -12,7 +12,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.frameworks = 'Foundation', 'UIKit'
   s.libraries = 'sqlite3'
-  s.static_framework = true
 
   s.dependency 'WeexSDK', '~> 0.19.0'
   s.dependency 'WXDevtool', '~> 0.17.0'
