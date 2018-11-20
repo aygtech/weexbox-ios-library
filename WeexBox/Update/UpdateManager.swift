@@ -69,7 +69,9 @@ import Zip
     private static var serverVersionUrl: URL!
     private static var serverConfigUrl: URL!
     private static var serverMd5Url: URL!
-    private static var serverUrl: URL! {
+    
+    // 设置更新服务器
+    public static var serverUrl: URL! {
         didSet {
             serverVersionUrl = serverUrl.appendingPathComponent(versionName)
         }
@@ -106,11 +108,6 @@ import Zip
     private static var workingConfig: UpdateConfig?
     private static var backupConfig: UpdateConfig?
     private static var serverConfigData: Data!
-    
-    // 设置更新服务器
-    public static func setServer(url: URL) {
-        serverUrl = url
-    }
     
     // 设置强制更新
     public static var forceUpdate = false
