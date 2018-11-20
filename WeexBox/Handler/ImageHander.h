@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <WeexSDK/WeexSDK.h>
+@import WeexSDK;
 
 @interface ImageHander : NSObject<WXImgLoaderProtocol, WXModuleProtocol>
 @end

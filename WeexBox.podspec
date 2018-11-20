@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.dependency 'AsyncSwift'
   s.dependency 'RealmSwift'
   s.dependency 'Zip'
-  s.dependency 'RTRootNavigationController'
+  s.dependency 'RTRootNavigationController_WeexBox'
   s.dependency 'SnapKit'
   s.dependency 'SDWebImage'
   s.dependency 'BindingX'

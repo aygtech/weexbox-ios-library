@@ -7,7 +7,7 @@
 //
 
 #import "Log.h"
-#import <WeexSDK/WeexSDK.h>
+@import WeexSDK;
 
 @implementation Log
 

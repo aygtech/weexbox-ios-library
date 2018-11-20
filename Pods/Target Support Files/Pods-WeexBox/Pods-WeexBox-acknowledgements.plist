@@ -466,7 +466,7 @@ THE SOFTWARE.
 			<key>License</key>
 			<string>MIT</string>
 			<key>Title</key>
-			<string>RTRootNavigationController</string>
+			<string>RTRootNavigationController_WeexBox</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

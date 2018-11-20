@@ -8,7 +8,7 @@
 
 import Foundation
 import HandyJSON
-import RTRootNavigationController
+import RTRootNavigationController_WeexBox
 
 /// 路由
 public struct Router: HandyJSON {

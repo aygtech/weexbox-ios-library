@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import RTRootNavigationController
+import RTRootNavigationController_WeexBox
 
 /// 导航基类
 open class WBNavigationController: RTRootNavigationController {

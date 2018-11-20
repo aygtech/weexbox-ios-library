@@ -7,9 +7,6 @@
 //
 
 #import "NavigatorModule.h"
-#import <SDWebImage/UIImageView+WebCache.h>
-#import <RTRootNavigationController/RTRootNavigationController.h>
-#import <WeexSDK/WeexSDK.h>
 
 typedef NS_ENUM(NSUInteger, NavigationItemPosition) {
     NavigationItemPositionRight = 1,      /* 右边位置 */

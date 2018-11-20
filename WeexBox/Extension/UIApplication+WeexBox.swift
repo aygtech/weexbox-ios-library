@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import RTRootNavigationController
+import RTRootNavigationController_WeexBox
 
 public extension UIApplication {
     

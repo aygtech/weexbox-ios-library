@@ -49,9 +49,9 @@ pod 'Zip'
 # Swift framework for zipping and unzipping files.
 # https://github.com/marmelroy/Zip
 
-pod 'RTRootNavigationController'
+pod 'RTRootNavigationController_WeexBox'
 # Transparently make every view controller has its own navigation bar
-# https://github.com/rickytan/RTRootNavigationController
+# https://github.com/aygtech/RTRootNavigationController_WeexBox
 
 pod 'SnapKit'
 # A Swift Autolayout DSL for iOS & OS X

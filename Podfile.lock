@@ -17,14 +17,14 @@ PODS:
   - LBXScan/UI (2.3):
     - LBXScan/Types (~> 2.2)
   - MBProgressHUD (1.1.0)
-  - Realm (3.11.1):
-    - Realm/Headers (= 3.11.1)
-  - Realm/Headers (3.11.1)
-  - RealmSwift (3.11.1):
-    - Realm (= 3.11.1)
-  - RTRootNavigationController (0.7.0):
-    - RTRootNavigationController/Core (= 0.7.0)
-  - RTRootNavigationController/Core (0.7.0)
+  - Realm (3.11.2):
+    - Realm/Headers (= 3.11.2)
+  - Realm/Headers (3.11.2)
+  - RealmSwift (3.11.2):
+    - Realm (= 3.11.2)
+  - RTRootNavigationController_WeexBox (0.7.0):
+    - RTRootNavigationController_WeexBox/Core (= 0.7.0)
+  - RTRootNavigationController_WeexBox/Core (0.7.0)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
@@ -53,7 +53,7 @@ DEPENDENCIES:
   - LBXScan/UI
   - MBProgressHUD
   - RealmSwift
-  - RTRootNavigationController
+  - RTRootNavigationController_WeexBox
   - SDWebImage
   - SnapKit
   - SwiftEventBus
@@ -76,7 +76,7 @@ SPEC REPOS:
     - MBProgressHUD
     - Realm
     - RealmSwift
-    - RTRootNavigationController
+    - RTRootNavigationController_WeexBox
     - SDWebImage
     - SnapKit
     - SocketRocket
@@ -98,9 +98,9 @@ SPEC CHECKSUMS:
   Hue: 93e852fa6211ab35922ad8c293f51c43d6c79eb2
   LBXScan: e51449f0832d1fe17da632af0d22adeb3cfa3543
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
-  Realm: 037c5919b9ceb59d6beed5d3b031096856b119b3
-  RealmSwift: c9580133e73ef40ed340401af2dbc9a5790dfea7
-  RTRootNavigationController: f1369f4257c8a44a05c5d3b151d2b8ec7accf121
+  Realm: 864477d028db77f7c5a0cba64a4892ad53db128a
+  RealmSwift: 12b8262fc08020b47de4fd88eb3d5c9425b34ec7
+  RTRootNavigationController_WeexBox: 7bf573bd84d0244f3f2fab00e21288f4df3aa509
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
@@ -112,6 +112,6 @@ SPEC CHECKSUMS:
   WXDevtool: 9e3da2c92c83c8f62521c8264d9c2c721512f5c5
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: ac61811c46327162657b6e0ac8a0bcc3845ca9a1
+PODFILE CHECKSUM: 427fb79830ba7b1700e4ba6c9c16f8d27c7dd375
 
 COCOAPODS: 1.5.3

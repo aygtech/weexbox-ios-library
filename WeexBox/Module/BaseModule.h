@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <WeexSDK/WXModuleProtocol.h>
+@import WeexSDK;
 
 @interface BaseModule : NSObject<WXModuleProtocol>
 
