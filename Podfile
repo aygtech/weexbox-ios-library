@@ -49,7 +49,7 @@ pod 'Zip'
 # Swift framework for zipping and unzipping files.
 # https://github.com/marmelroy/Zip
 
-pod 'RTRootNavigationController_WeexBox'
+pod 'RTRootNavigationController_WeexBox', :git => 'https://github.com/aygtech/RTRootNavigationController_WeexBox'
 # Transparently make every view controller has its own navigation bar
 # https://github.com/aygtech/RTRootNavigationController_WeexBox
 
