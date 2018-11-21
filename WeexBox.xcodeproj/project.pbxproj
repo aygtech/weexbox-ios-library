@@ -65,6 +65,7 @@
 		AC9CE87421340A59007EF7F2 /* WXScanPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE87321340A59007EF7F2 /* WXScanPlugin.swift */; };
 		AC9CE89A2134F91E007EF7F2 /* String+WeexBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE8992134F91E007EF7F2 /* String+WeexBox.swift */; };
 		ACB6F0CC21901F7B001D39D4 /* DebugWeex.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB6F0CB21901F7B001D39D4 /* DebugWeex.swift */; };
+		ACE49D9121A5612100340A41 /* BaseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE49D9021A5612100340A41 /* BaseComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +131,7 @@
 		AC9CE87321340A59007EF7F2 /* WXScanPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXScanPlugin.swift; sourceTree = "<group>"; };
 		AC9CE8992134F91E007EF7F2 /* String+WeexBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+WeexBox.swift"; sourceTree = "<group>"; };
 		ACB6F0CB21901F7B001D39D4 /* DebugWeex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugWeex.swift; sourceTree = "<group>"; };
+		ACE49D9021A5612100340A41 /* BaseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				AC70278C213FAED700B069F1 /* Component.swift */,
+				ACE49D9021A5612100340A41 /* BaseComponent.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				AC5CBC2F212FF49500A4FBCD /* EventModule.swift in Sources */,
 				AC5CBBF6212A932B00A4FBCD /* UploadFile.swift in Sources */,
 				AC54343D2111D2DD005B7056 /* WBWeexViewController.swift in Sources */,
+				ACE49D9121A5612100340A41 /* BaseComponent.swift in Sources */,
 				AC43949A217EDA5A007419E8 /* UIImage+WeexBox.swift in Sources */,
 				AC5CBC25212D67C300A4FBCD /* NavigatorModule.swift in Sources */,
 				AC5CBBF42127D87500A4FBCD /* Network.swift in Sources */,
