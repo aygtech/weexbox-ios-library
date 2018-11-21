@@ -8,6 +8,7 @@
 
 #import "ExternalModule.h"
 
+#pragma clang diagnostic ignored "-Wundeclared-selector"
 @implementation ExternalModuleOC
 
 WX_EXPORT_METHOD(@selector(openBrowser:))
@@ -16,3 +17,4 @@ WX_EXPORT_METHOD(@selector(openCamera:callback:))
 WX_EXPORT_METHOD(@selector(openPhoto:callback:))
 
 @end
+#pragma clang diagnostic pop

@@ -8,8 +8,10 @@
 
 #import "LocationModule.h"
 
+#pragma clang diagnostic ignored "-Wundeclared-selector"
 @implementation LocationModuleOC
 
 WX_EXPORT_METHOD(@selector(getLocation:))
 
 @end
+#pragma clang diagnostic pop

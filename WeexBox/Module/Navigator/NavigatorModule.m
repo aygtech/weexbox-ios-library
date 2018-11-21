@@ -14,6 +14,7 @@ typedef NS_ENUM(NSUInteger, NavigationItemPosition) {
     NavigationItemPositionCenter          /* 中间位置 */
 };
 
+#pragma clang diagnostic ignored "-Wundeclared-selector"
 @implementation NavigatorModuleOC
 
 @synthesize weexInstance;
@@ -26,4 +27,5 @@ WX_EXPORT_METHOD(@selector(setCenterItem:callback:))
 WX_EXPORT_METHOD(@selector(onBackPressed:))
 
 @end
+#pragma clang diagnostic pop
 
