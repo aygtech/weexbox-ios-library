@@ -53,7 +53,7 @@ DEPENDENCIES:
   - LBXScan/UI
   - MBProgressHUD
   - RealmSwift
-  - RTRootNavigationController_WeexBox
+  - RTRootNavigationController_WeexBox (from `https://github.com/aygtech/RTRootNavigationController_WeexBox`)
   - SDWebImage
   - SnapKit
   - SwiftEventBus
@@ -76,7 +76,6 @@ SPEC REPOS:
     - MBProgressHUD
     - Realm
     - RealmSwift
-    - RTRootNavigationController_WeexBox
     - SDWebImage
     - SnapKit
     - SocketRocket
@@ -87,6 +86,15 @@ SPEC REPOS:
     - WeexSDK
     - WXDevtool
     - Zip
+
+EXTERNAL SOURCES:
+  RTRootNavigationController_WeexBox:
+    :git: https://github.com/aygtech/RTRootNavigationController_WeexBox
+
+CHECKOUT OPTIONS:
+  RTRootNavigationController_WeexBox:
+    :commit: 6c0f63509a2eb89b2094ecd8b93ee5b00aed3c0d
+    :git: https://github.com/aygtech/RTRootNavigationController_WeexBox
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
@@ -112,6 +120,6 @@ SPEC CHECKSUMS:
   WXDevtool: 9e3da2c92c83c8f62521c8264d9c2c721512f5c5
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 427fb79830ba7b1700e4ba6c9c16f8d27c7dd375
+PODFILE CHECKSUM: 9ee70273987979777fe1b584efc2498598db659b
 
 COCOAPODS: 1.5.3
