@@ -66,6 +66,7 @@
 		AC9CE89A2134F91E007EF7F2 /* String+WeexBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE8992134F91E007EF7F2 /* String+WeexBox.swift */; };
 		ACB6F0CC21901F7B001D39D4 /* DebugWeex.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB6F0CB21901F7B001D39D4 /* DebugWeex.swift */; };
 		ACE49D9121A5612100340A41 /* BaseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE49D9021A5612100340A41 /* BaseComponent.swift */; };
+		ACE49D9721A658B100340A41 /* PieChartComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE49D9621A658B100340A41 /* PieChartComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +133,7 @@
 		AC9CE8992134F91E007EF7F2 /* String+WeexBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+WeexBox.swift"; sourceTree = "<group>"; };
 		ACB6F0CB21901F7B001D39D4 /* DebugWeex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugWeex.swift; sourceTree = "<group>"; };
 		ACE49D9021A5612100340A41 /* BaseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseComponent.swift; sourceTree = "<group>"; };
+		ACE49D9621A658B100340A41 /* PieChartComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -352,6 +354,7 @@
 			children = (
 				AC70278C213FAED700B069F1 /* Component.swift */,
 				ACE49D9021A5612100340A41 /* BaseComponent.swift */,
+				ACE49D9621A658B100340A41 /* PieChartComponent.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				ACB6F0CC21901F7B001D39D4 /* DebugWeex.swift in Sources */,
 				AC5CBC18212D1EC100A4FBCD /* External.swift in Sources */,
 				AC5CBC362133957F00A4FBCD /* LocationModule.swift in Sources */,
+				ACE49D9721A658B100340A41 /* PieChartComponent.swift in Sources */,
 				AC5CBBD5211C3BF400A4FBCD /* UpdateConfig.swift in Sources */,
 				AC5CBBED2127D0EB00A4FBCD /* NetworkModule.swift in Sources */,
 				AC070F9E21354E2F00D4E314 /* WXRefreshPlugin.swift in Sources */,
