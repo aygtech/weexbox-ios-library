@@ -10,13 +10,6 @@
 
 @interface NavigatorModuleOC: BaseModule
 
-// 右边按钮点击回调
-@property (nonatomic, strong, nonnull) WXModuleKeepAliveCallback rightItemsCallback;
-// 左边按钮点击回调
-@property (nonatomic, strong, nonnull) WXModuleKeepAliveCallback leftItemsCallback;
-// 中间按钮点击回调
-@property (nonatomic, strong, nonnull) WXModuleKeepAliveCallback centerItemCallback;
-
 @end
 
 

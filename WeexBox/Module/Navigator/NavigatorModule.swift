@@ -19,6 +19,15 @@ class NavigatorModule: NavigatorModuleOC {
         case Center
     }
     
+    // 右边按钮点击回调
+    var rightItemsCallback: WXModuleKeepAliveCallback?
+    // 左边按钮点击回调
+    var leftItemsCallback: WXModuleKeepAliveCallback?
+    // 中间按钮点击回调
+    var centerItemCallback: WXModuleKeepAliveCallback?
+    // 导航栏高度
+    let height = UIApplication.shared.statusBarFrame.size.height
+    
     // 禁用返回手势
     @objc func disableGestureBack(_ disable: Bool)  {
         Async.main {
@@ -27,7 +36,7 @@ class NavigatorModule: NavigatorModuleOC {
     }
     
     // 设置导航栏右边按钮
-    @objc func setRightItems(_ items: Array<Dictionary<String, String>>, callback: @escaping WXModuleKeepAliveCallback) {
+    @objc func setRightItems(_ items: Array<Dictionary<String, String>>, callback: WXModuleKeepAliveCallback?) {
         Async.main {
             self.rightItemsCallback = callback
             let barButtonItems = self.createBarButtons(items, position: .Right)
@@ -41,7 +50,7 @@ class NavigatorModule: NavigatorModuleOC {
     }
     
     // 设置导航栏左边按钮
-    @objc func setLeftItems(_ items: Array<Dictionary<String, String>>, callback: @escaping WXModuleKeepAliveCallback) {
+    @objc func setLeftItems(_ items: Array<Dictionary<String, String>>, callback: WXModuleKeepAliveCallback?) {
         Async.main {
             self.leftItemsCallback = callback
             let barButtonItems = self.createBarButtons(items, position: .Left)
@@ -50,7 +59,7 @@ class NavigatorModule: NavigatorModuleOC {
     }
     
     // 设置导航栏中间按钮
-    @objc  func setCenterItem(_ item: Dictionary<String, String>, callback: @escaping WXModuleKeepAliveCallback) {
+    @objc  func setCenterItem(_ item: Dictionary<String, String>, callback: WXModuleKeepAliveCallback?) {
         Async.main {
             self.centerItemCallback = callback
             let barButtonItem = self.createBarButton(item, position: .Center)
@@ -106,20 +115,24 @@ class NavigatorModule: NavigatorModuleOC {
     @objc func onClickRightBarButton(_ button: UIButton) {
         var result = Result()
         result.data = ["index": button.tag]
-        rightItemsCallback(result, true)
+        rightItemsCallback?(result, true)
     }
     
     // 左侧item响应事件
     @objc func onClickLeftBarButton(_ button: UIButton) {
         var result = Result()
         result.data = ["index": button.tag]
-        leftItemsCallback(result, true)
+        leftItemsCallback?(result, true)
     }
     
     // 中间item响应事件
     @objc func onClickCenterBarButtion(_ button: UIButton) {
         let result = Result()
-        centerItemCallback(result, true)
+        centerItemCallback?(result, true)
     }
     
+    // 获取导航栏高度
+    @objc func getHeight() -> Float {
+        return Float(height / weexInstance.pixelScaleFactor)
+    }
 }
