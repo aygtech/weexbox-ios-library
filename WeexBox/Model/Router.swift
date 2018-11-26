@@ -60,7 +60,7 @@ public struct Router: HandyJSON {
                 }
             }
         } else {
-            Log.e("该路由名未注册")
+            print("该路由名未注册")
         }
     }
     

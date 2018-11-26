@@ -18,7 +18,7 @@ struct DebugWeex {
         scannerViewController.scanResultBlock = { (scanResult, error) in
             scannerViewController.navigationController?.popViewController(animated: false)
             if error != nil {
-                Log.e(error!)
+                print(error!)
             } else {
                 openUrl(scanResult.strScanned!, top: topViewController)
             }
