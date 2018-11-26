@@ -33,7 +33,7 @@ PODS:
   - SwiftEventBus (2.1.2)
   - SwiftyJSON (4.2.0)
   - TZImagePickerController (3.1.2)
-  - WeexBox (0.5.1):
+  - WeexBox (0.6.0):
     - Alamofire
     - Alamofire-Synchronous
     - AsyncSwift
@@ -113,7 +113,7 @@ SPEC CHECKSUMS:
   SwiftEventBus: 9e8f6d8cff2826d66536ec367d17a47299478aa0
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   TZImagePickerController: 29b279caee3309cbaa04ef1384b036ec90297f3f
-  WeexBox: 03428ed81b8ca13f7bea3fc50150d68513099f3e
+  WeexBox: 900cae60268457ec8d5927ddd328688c7c73179b
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
   WeexSDK: 0515e386d0eae3400ed8e55f31f198ae35acce44
   WXDevtool: 9e3da2c92c83c8f62521c8264d9c2c721512f5c5

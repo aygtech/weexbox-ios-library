@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "WBScanComponentOC.h"
 #import "ImageHander.h"
 #import "BaseModule.h"
 #import "EventModule.h"
