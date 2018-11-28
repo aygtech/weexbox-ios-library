@@ -11,15 +11,13 @@ import Foundation
 /// vc基类
 @objcMembers open class WBBaseViewController: UIViewController {
     
-    public var router: Router?
+    public var router = Router()
     
     open override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         rt_disableInteractivePop = false
-        if let hidden = router?.navBarHidden {
-            navigationController?.isNavigationBarHidden = hidden
-        }
+        navigationController?.isNavigationBarHidden = router.navBarHidden
     }
     
     deinit {

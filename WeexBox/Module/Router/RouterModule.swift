@@ -21,15 +21,13 @@ class RouterModule: RouterModuleOC {
     
     // 获取router的params参数
     @objc func getParams() -> Result.JsResult {
-        return getVC().router?.params
+        return getVC().router.params
     }
     
     // 关闭
-    @objc func close(_ levels: Any!) {
+    @objc func close(_ levels: Int) {
         Async.main {
-            if (self.getVC().router != nil){
-                self.getVC().router!.close(from: self.getVC(),levels: levels as? Int)
-            }
+            self.getVC().router.close(from: self.getVC(), levels: levels)
         }
     }
     

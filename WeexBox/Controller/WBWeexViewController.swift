@@ -37,7 +37,7 @@ import WeexSDK
         let navBarHeight: CGFloat = navBarHidden ? 0 : statusBarHeight + navigationController!.navigationBar.frame.size.height
         let tabBarHeight: CGFloat = self.hidesBottomBarWhenPushed ? 0 : (tabBarController?.tabBar.frame.size.height ?? 0)
         weexHeight = view.frame.size.height - navBarHeight - tabBarHeight
-        if let u = router?.url {
+        if let u = router.url {
             if u.hasPrefix("http") {
                 url = URL(string: u)
             } else {

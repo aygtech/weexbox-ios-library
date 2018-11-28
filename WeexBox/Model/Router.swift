@@ -28,7 +28,7 @@ public struct Router: HandyJSON {
     public init() {}
     
     // 页面名称
-    public var name: String = ""
+    public var name: String?
     // 下一个weex/web的路径
     public var url: String?
     // 页面出现方式：push, present
@@ -46,7 +46,7 @@ public struct Router: HandyJSON {
     
     // 打开页面
     public func open(from: WBBaseViewController) {
-        if let toType = Router.routes[name] {
+        if let pageName = name, let toType = Router.routes[pageName] {
             let to = toType.init()
             to.router = self
             to.hidesBottomBarWhenPushed = true
@@ -60,7 +60,7 @@ public struct Router: HandyJSON {
                 }
             }
         } else {
-            print("该路由名未注册")
+            print("路由未注册")
         }
     }
     
