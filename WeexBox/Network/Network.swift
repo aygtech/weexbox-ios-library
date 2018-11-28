@@ -27,7 +27,7 @@ open class Network {
         _ url: URLConvertible,
         method: HTTPMethod = .get,
         parameters: Parameters? = nil,
-        encoding: ParameterEncoding = JSONEncoding.default,
+        encoding: ParameterEncoding = URLEncoding.default,
         headers: HTTPHeaders? = nil)
         -> DataRequest {
             var urlFinal: URL?
@@ -36,6 +36,6 @@ open class Network {
                     urlFinal = server?.appendingPathComponent(urlString)
                 }
             }
-        return sessionManager.request(urlFinal ?? url, method: method, parameters: parameters, encoding: encoding, headers: headers)
+            return sessionManager.request(urlFinal ?? url, method: method, parameters: parameters, encoding: (method == .post) ? JSONEncoding.default : encoding, headers: headers)
     }
 }
