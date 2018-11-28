@@ -27,7 +27,7 @@ open class Network {
         _ url: URLConvertible,
         method: HTTPMethod = .get,
         parameters: Parameters? = nil,
-        encoding: ParameterEncoding = URLEncoding.default,
+        encoding: ParameterEncoding = JSONEncoding.default,
         headers: HTTPHeaders? = nil)
         -> DataRequest {
             var urlFinal: URL?

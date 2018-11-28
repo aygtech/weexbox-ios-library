@@ -26,34 +26,29 @@ class NetworkModule: NetworkModuleOC {
      ID: 12345
      },
      
-     // responseType 响应类型, json 或 text，默认 text
+     // responseType 响应类型, json 或 text，默认 json
      }
      */
     @objc func request(_ options: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
         let info = JsOptions.deserialize(from: options)!
-        var encoding: ParameterEncoding = URLEncoding.default
-        if let contentType = info.headers?["Content-Type"], contentType.contains("application/json") {
-            encoding = JSONEncoding.default
-        }
+        let dataRequest = Network.request(info.url!, method: HTTPMethod(rawValue: info.method!.uppercased())!, parameters: info.params, headers: info.headers)
         
-        let dataRequest = Network.request(info.url!, method: HTTPMethod(rawValue: info.method!.uppercased())!, parameters: info.params, encoding: encoding, headers: info.headers)
-        
-        if info.responseType?.uppercased() == "JSON" {
-            dataRequest.validate().responseJSON() { response in
-                var result = Result()
-                result.status = response.response?.statusCode ?? Result.error
-                if let value = response.result.value as? Dictionary<String, Any> {
-                    result.data = value
-                }
-                result.error = response.error?.localizedDescription
-                callback(result.toJsResult(), false)
-            }
-        } else {
+        if info.responseType?.uppercased() == "TEXT" {
             dataRequest.validate().responseString() { response in
                 var result = Result()
                 result.status = response.response?.statusCode ?? Result.error
                 if let value = response.result.value {
                     result.data["data"] = value
+                }
+                result.error = response.error?.localizedDescription
+                callback(result.toJsResult(), false)
+            }
+        } else {
+            dataRequest.validate().responseJSON() { response in
+                var result = Result()
+                result.status = response.response?.statusCode ?? Result.error
+                if let value = response.result.value as? Dictionary<String, Any> {
+                    result.data = value
                 }
                 result.error = response.error?.localizedDescription
                 callback(result.toJsResult(), false)
