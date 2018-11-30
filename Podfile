@@ -94,4 +94,8 @@ pod 'Charts'
 ## A Swift extension that adds toast notifications to the UIView object class.
 ## https://github.com/scalessec/Toast-Swift
 
+pod 'VasSonic'
+# A Lightweight And High-performance Hybrid Framework
+# https://github.com/Tencent/VasSonic
+
 end

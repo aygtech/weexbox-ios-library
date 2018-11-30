@@ -9,6 +9,7 @@
 import Foundation
 import WeexSDK
 import Async
+import VasSonic
 
 /// 初始化SDK
 @objcMembers public class WeexBoxEngine: NSObject {
@@ -17,6 +18,8 @@ import Async
         // 初始化WeexSDK
         initWeexSDK()
         isDebug = false
+        
+        URLProtocol.registerClass(SonicURLProtocol.self)
     }
     
     public static var isDebug: Bool! {

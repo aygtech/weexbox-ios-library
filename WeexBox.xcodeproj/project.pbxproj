@@ -474,7 +474,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-WeexBox/Pods-WeexBox-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-WeexBox/Pods-WeexBox-resources.sh",
 				"${PODS_ROOT}/LBXScan/LBXScan/UI/CodeScan.bundle",
 				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
 				"${PODS_ROOT}/WeexSDK/pre-build/native-bundle-main.js",
@@ -495,7 +495,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeexBox/Pods-WeexBox-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WeexBox/Pods-WeexBox-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		ED5CB52D1F11CC4BEA76E1B0 /* [CP] Check Pods Manifest.lock */ = {

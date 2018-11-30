@@ -33,6 +33,7 @@ PODS:
   - SwiftEventBus (2.1.2)
   - SwiftyJSON (4.2.0)
   - TZImagePickerController (3.1.2)
+  - VasSonic (3.0.0)
   - WeexPluginLoader (0.0.1.9.1):
     - WeexSDK
   - WeexSDK (0.19.0.2)
@@ -53,12 +54,13 @@ DEPENDENCIES:
   - LBXScan/UI
   - MBProgressHUD
   - RealmSwift
-  - RTRootNavigationController_WeexBox (from `https://github.com/aygtech/RTRootNavigationController_WeexBox`)
+  - RTRootNavigationController_WeexBox
   - SDWebImage
   - SnapKit
   - SwiftEventBus
   - SwiftyJSON
   - TZImagePickerController
+  - VasSonic
   - WeexSDK (~> 0.19.0)
   - WXDevtool (~> 0.17.0)
   - Zip
@@ -76,25 +78,18 @@ SPEC REPOS:
     - MBProgressHUD
     - Realm
     - RealmSwift
+    - RTRootNavigationController_WeexBox
     - SDWebImage
     - SnapKit
     - SocketRocket
     - SwiftEventBus
     - SwiftyJSON
     - TZImagePickerController
+    - VasSonic
     - WeexPluginLoader
     - WeexSDK
     - WXDevtool
     - Zip
-
-EXTERNAL SOURCES:
-  RTRootNavigationController_WeexBox:
-    :git: https://github.com/aygtech/RTRootNavigationController_WeexBox
-
-CHECKOUT OPTIONS:
-  RTRootNavigationController_WeexBox:
-    :commit: 6c0f63509a2eb89b2094ecd8b93ee5b00aed3c0d
-    :git: https://github.com/aygtech/RTRootNavigationController_WeexBox
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
@@ -115,11 +110,12 @@ SPEC CHECKSUMS:
   SwiftEventBus: 9e8f6d8cff2826d66536ec367d17a47299478aa0
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   TZImagePickerController: 29b279caee3309cbaa04ef1384b036ec90297f3f
+  VasSonic: 681ec95418d485d8c501d13549e25dff18754893
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
   WeexSDK: 0515e386d0eae3400ed8e55f31f198ae35acce44
   WXDevtool: 9e3da2c92c83c8f62521c8264d9c2c721512f5c5
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 9ee70273987979777fe1b584efc2498598db659b
+PODFILE CHECKSUM: d4ed6f6660952a9f56989eaff42da064b039cd97
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0.beta.2

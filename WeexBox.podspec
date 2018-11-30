@@ -33,5 +33,6 @@ Pod::Spec.new do |s|
   s.dependency 'LBXScan/LBXNative'
   s.dependency 'LBXScan/UI'
   s.dependency 'Charts'
+  s.dependency 'VasSonic'
   
 end

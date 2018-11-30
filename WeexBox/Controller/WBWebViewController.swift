@@ -8,9 +8,10 @@
 
 import Foundation
 import SnapKit
+import VasSonic
 
 /// web基类
-open class WBWebViewController: WBBaseViewController {
+open class WBWebViewController: WBBaseViewController, SonicSessionDelegate {
     
     var url: URL!
     let webView = UIWebView()
@@ -18,15 +19,33 @@ open class WBWebViewController: WBBaseViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
         view.addSubview(webView)
         webView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-//        webView.delegate = self
-        webView.loadRequest(URLRequest(url: url))
+        SonicEngine.shared().createSession(withUrl: url.absoluteString, withWebDelegate: self)
+        let request = URLRequest(url: url)
+        let session = SonicEngine.shared().session(withWebDelegate: self)
+        if session != nil {
+            webView.loadRequest(SonicUtil.sonicWebRequest(with: session, withOrigin: request))
+        }
+        else {
+            webView.loadRequest(request)
+        }
     }
     func bottomNavBar() {
         
+    }
+    
+    deinit {
+        SonicEngine.shared().removeSession(withWebDelegate: self)
+    }
+    
+    // MARK: - SonicSessionDelegate
+    /*
+     * Call back when Sonic require WebView to reload, e.g template changed or error occurred.
+     */
+    public func session(_ session: SonicSession!, requireWebViewReload request: URLRequest!) {
+        webView.loadRequest(request)
     }
 }
