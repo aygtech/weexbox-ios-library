@@ -13,10 +13,9 @@ import WeexSDK
 /// Weex基类
 @objcMembers open class WBWeexViewController: WBBaseViewController {
     
-    public var weexHeight: CGFloat!
+    private var weexHeight: CGFloat!
     public var instance: WXSDKInstance?
-    public var weexView: UIView?
-    public var url: URL!
+    private var weexView: UIView?
     private var isFirstSendDidAppear = true
     
     open override func viewDidLoad() {
@@ -37,13 +36,6 @@ import WeexSDK
         let navBarHeight: CGFloat = navBarHidden ? 0 : statusBarHeight + navigationController!.navigationBar.frame.size.height
         let tabBarHeight: CGFloat = self.hidesBottomBarWhenPushed ? 0 : (tabBarController?.tabBar.frame.size.height ?? 0)
         weexHeight = view.frame.size.height - navBarHeight - tabBarHeight
-        if let u = router.url {
-            if u.hasPrefix("http") {
-                url = URL(string: u)
-            } else {
-                url = UpdateManager.getFullUrl(file: u)
-            }
-        }
         
         render()
     }
@@ -91,7 +83,15 @@ import WeexSDK
             }
         }
         
-        instance?.render(with: url, options: ["bundleUrl": url!.absoluteString], data: nil)
+        var url: URL?
+        if let urlString = router.url {
+            if urlString.hasPrefix("http") {
+                url = URL(string: urlString)
+            } else {
+                url = UpdateManager.getFullUrl(file: urlString)
+            }
+        }
+        instance?.render(with: url, options: nil, data: nil)
     }
     
     public func refreshWeex() {

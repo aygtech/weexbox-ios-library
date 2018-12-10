@@ -12,8 +12,7 @@ import VasSonic
 
 /// web基类
 open class WBWebViewController: WBBaseViewController, SonicSessionDelegate {
-    
-    var url: URL!
+
     let webView = UIWebView()
     
     override open func viewDidLoad() {
@@ -23,8 +22,8 @@ open class WBWebViewController: WBBaseViewController, SonicSessionDelegate {
         webView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        SonicEngine.shared().createSession(withUrl: url.absoluteString, withWebDelegate: self)
-        let request = URLRequest(url: url)
+        SonicEngine.shared().createSession(withUrl: router.url, withWebDelegate: self)
+        let request = URLRequest(url: URL(string: router.url!)!)
         let session = SonicEngine.shared().session(withWebDelegate: self)
         if session != nil {
             webView.loadRequest(SonicUtil.sonicWebRequest(with: session, withOrigin: request))

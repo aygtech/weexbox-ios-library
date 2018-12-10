@@ -1,0 +1,6 @@
+module WeexBox {
+  umbrella header "WeexBox-umbrella.h"
+
+  export *
+  module * { export * }
+}
