@@ -70,16 +70,18 @@ import WeexSDK
         
         if WeexBoxEngine.isDebug {
             instance?.onFailed = { [weak self] (error) in
-                let ocError = error! as NSError
-                let errMsg = """
-                ErrorType:\(ocError.domain)
-                ErrorCode:\(ocError.code)
-                ErrorInfo:\(ocError.userInfo)
-                """
-                let alertController = UIAlertController(title: "render failed", message: errMsg, preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default)
-                alertController.addAction(okAction)
-                self?.present(alertController, animated: true, completion: nil)
+                Async.main {
+                    let ocError = error! as NSError
+                    let errMsg = """
+                    ErrorType:\(ocError.domain)
+                    ErrorCode:\(ocError.code)
+                    ErrorInfo:\(ocError.userInfo)
+                    """
+                    let alertController = UIAlertController(title: "render failed", message: errMsg, preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .default)
+                    alertController.addAction(okAction)
+                    self?.present(alertController, animated: true, completion: nil)
+                }
             }
         }
         
