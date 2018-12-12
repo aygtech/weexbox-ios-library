@@ -37,7 +37,7 @@ struct DebugWeex {
         } else if let tplUrl = params["_wx_tpl"] {
             // 连页面
             var router = Router()
-            router.name = Router.weex
+            router.name = Router.nameWeex
             router.url = tplUrl
             router.open(from: top as! WBBaseViewController)
         }

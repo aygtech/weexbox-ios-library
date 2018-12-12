@@ -22,8 +22,8 @@ public struct Router: HandyJSON {
     
     public static let typePush = "push"
     public static let typePresent = "present"
-    public static let weex = "weex"
-    public static let web = "web"
+    public static let nameWeex = "weex"
+    public static let nameWeb = "web"
     
     public init() {}
     

@@ -74,8 +74,8 @@ import VasSonic
     }
     
     private static func registerRouter() {
-        Router.register(name: Router.weex, controller: WBWeexViewController.self)
-        Router.register(name: Router.web, controller: WBWebViewController.self)
+        Router.register(name: Router.nameWeex, controller: WBWeexViewController.self)
+        Router.register(name: Router.nameWeb, controller: WBWebViewController.self)
     }
     
 }
