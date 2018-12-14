@@ -25,7 +25,7 @@ class AssistveButton: UIButton {
         super.init(frame: frame)
         self.assistveButtonClick = eventCallBack
         self.type = assistiveType
-        let url = URL(string: "https://raw.githubusercontent.com/aygtech/weexbox-document/master/docs/.vuepress/public/logo.png")!
+        let url = URL(string: "https://aygtech.github.io/weexbox/logo.png")!
         self.sd_setBackgroundImage(with: url, for: .normal)
         self.sd_setBackgroundImage(with: url, for: .highlighted)
         self.backgroundColor = UIColor.white

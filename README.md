@@ -1,4 +1,4 @@
-WeexBox iOS SDK https://weexbox.surge.sh/guide/native-ios.html
+WeexBox iOS SDK https://aygtech.github.io/weexbox/guide/native-ios.html
 
 # 介绍
 
