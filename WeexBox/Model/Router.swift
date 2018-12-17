@@ -32,9 +32,11 @@ public struct Router: HandyJSON {
     // 下一个weex/web的路径
     public var url: String?
     // 页面出现方式：push, present
-    public var type: String = Router.typePush
+    public var type = Router.typePush
     // 是否隐藏导航栏
-    public var navBarHidden: Bool = false
+    public var navBarHidden = false
+    // 禁用返回手势
+    public var disableGestureBack = false
     // 需要传到下一个页面的数据
     public var params: Dictionary<String, Any>?
     // 打开页面的同时关闭页面

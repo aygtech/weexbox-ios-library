@@ -18,8 +18,9 @@ import Foundation
     
     open override func viewDidLoad() {
         super.viewDidLoad()
+        
+        rt_disableInteractivePop = router.disableGestureBack
         view.backgroundColor = .white
-        rt_disableInteractivePop = false
         navigationController?.isNavigationBarHidden = router.navBarHidden
     }
     

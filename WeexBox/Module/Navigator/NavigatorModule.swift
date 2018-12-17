@@ -26,13 +26,6 @@ class NavigatorModule: NavigatorModuleOC {
     // 中间按钮点击回调
     var centerItemCallback: WXModuleKeepAliveCallback?
     
-    // 禁用返回手势
-    @objc func disableGestureBack(_ disable: Bool)  {
-        Async.main {
-            self.getVC().rt_disableInteractivePop = disable
-        }
-    }
-    
     // 设置导航栏右边按钮
     @objc func setRightItems(_ items: Array<Dictionary<String, String>>, callback: WXModuleKeepAliveCallback?) {
         Async.main {
