@@ -25,8 +25,6 @@ class NavigatorModule: NavigatorModuleOC {
     var leftItemsCallback: WXModuleKeepAliveCallback?
     // 中间按钮点击回调
     var centerItemCallback: WXModuleKeepAliveCallback?
-    // 导航栏高度
-    let height = UIApplication.shared.statusBarFrame.size.height
     
     // 禁用返回手势
     @objc func disableGestureBack(_ disable: Bool)  {
@@ -133,6 +131,11 @@ class NavigatorModule: NavigatorModuleOC {
     
     // 获取导航栏高度
     @objc func getHeight() -> Float {
-        return Float(height / weexInstance.pixelScaleFactor)
+        return Float(getVC().navHeight / weexInstance.pixelScaleFactor)
+    }
+    
+    // 设置导航栏颜色
+    @objc func setNavColor(_ color: String) {
+        getVC().navigationController?.navigationBar.barTintColor = UIColor(hex: color)
     }
 }

@@ -11,7 +11,10 @@ import Foundation
 /// vc基类
 @objcMembers open class WBBaseViewController: UIViewController {
     
+    // 路由
     public var router = Router()
+    // 导航栏原始高度
+    let navHeight = UIApplication.shared.statusBarFrame.size.height
     
     open override func viewDidLoad() {
         super.viewDidLoad()
