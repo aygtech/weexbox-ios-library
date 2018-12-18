@@ -10,9 +10,9 @@ import Foundation
 
 class EventModule: EventModuleOC {
     
-    @objc func register(_ name: String, callback: @escaping WXModuleKeepAliveCallback) {
+    @objc func register(_ name: String, callback: WXModuleKeepAliveCallback?) {
         Event.register(target: getVC(), name: name) { notification in
-            callback(notification?.userInfo, true)
+            callback?(notification?.userInfo, true)
         }
     }
     

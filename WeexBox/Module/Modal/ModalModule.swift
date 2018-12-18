@@ -42,7 +42,7 @@ class ModalModule: ModalModuleOC {
     }
     
     // 提示框
-   @objc func alert(_ options: Dictionary<String, String>, callback: @escaping WXModuleKeepAliveCallback) {
+   @objc func alert(_ options: Dictionary<String, String>, callback: WXModuleKeepAliveCallback?) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             let alertController = self.getAlertController(info, okCallback: callback)
@@ -51,7 +51,7 @@ class ModalModule: ModalModuleOC {
     }
     
     // 确认框
-   @objc func confirm(_ options: Dictionary<String, String>, callback: @escaping WXModuleKeepAliveCallback) {
+   @objc func confirm(_ options: Dictionary<String, String>, callback: WXModuleKeepAliveCallback?) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             let alertController = self.getAlertController(info, okCallback: callback, cancelCallback: callback)
@@ -60,7 +60,7 @@ class ModalModule: ModalModuleOC {
     }
     
     // 输入框
-   @objc func prompt(_ options: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
+   @objc func prompt(_ options: Dictionary<String, Any>, callback: WXModuleKeepAliveCallback?) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             let alertController = self.getAlertController(info, okCallback: callback, cancelCallback: callback)
@@ -72,7 +72,7 @@ class ModalModule: ModalModuleOC {
         }
     }
     // 操作表
-    @objc func actionSheet(_ options: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
+    @objc func actionSheet(_ options: Dictionary<String, Any>, callback: WXModuleKeepAliveCallback?) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             let alertController = UIAlertController(title: info.title, message: info.message, preferredStyle: .actionSheet)
@@ -90,7 +90,7 @@ class ModalModule: ModalModuleOC {
                     let index = alertController.actions.index(of: alert);
                     var result = Result()
                     result.data = ["index": index ?? 0]
-                    callback(result.toJsResult(), false)
+                    callback?(result.toJsResult(), false)
                 }
                 alertController.addAction(alertAction)
             }
@@ -98,23 +98,23 @@ class ModalModule: ModalModuleOC {
         }
     }
     
-    func getAlertController(_ info: JsOptions, okCallback: @escaping WXModuleKeepAliveCallback) -> UIAlertController {
+    func getAlertController(_ info: JsOptions, okCallback: WXModuleKeepAliveCallback?) -> UIAlertController {
         let alertController = UIAlertController(title: info.title, message: info.message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: info.okTitle, style: .default) { action in
             var result = Result()
             result.data = ["text": alertController.textFields?.first?.text ?? ""]
-            okCallback(result.toJsResult(), false)
+            okCallback?(result.toJsResult(), false)
         }
         alertController.addAction(okAction)
         return alertController
     }
     
-    func getAlertController(_ info: JsOptions, okCallback: @escaping WXModuleKeepAliveCallback, cancelCallback: @escaping WXModuleKeepAliveCallback) -> UIAlertController {
+    func getAlertController(_ info: JsOptions, okCallback: WXModuleKeepAliveCallback?, cancelCallback: WXModuleKeepAliveCallback?) -> UIAlertController {
         let alertController = getAlertController(info, okCallback: okCallback)
         let cancelAction = UIAlertAction(title: info.cancelTitle, style: .default) { action in
             var result = Result()
             result.status = Result.error
-            cancelCallback(result, false)
+            cancelCallback?(result, false)
         }
         alertController.addAction(cancelAction)
         return alertController

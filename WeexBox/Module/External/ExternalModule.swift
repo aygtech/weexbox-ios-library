@@ -26,19 +26,19 @@ class ExternalModule: ExternalModuleOC {
     }
     
     // 拍照
-    @objc func openCamera(_ options: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
+    @objc func openCamera(_ options: Dictionary<String, Any>, callback: WXModuleKeepAliveCallback?) {
         Async.main {
             External().openCamera(from: self.getVC(),options:options,callback: { (result) in
-                callback(result.toJsResult(), false)
+                callback?(result.toJsResult(), false)
             })
         }
     }
     
     // 打开相册
-    @objc func openPhoto(_ options: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
+    @objc func openPhoto(_ options: Dictionary<String, Any>, callback: WXModuleKeepAliveCallback?) {
         Async.main {
             External().openPhoto(from: self.getVC(), options:options, callback: { (result) in
-                callback(result.toJsResult(), false)
+                callback?(result.toJsResult(), false)
             })
         }
     }

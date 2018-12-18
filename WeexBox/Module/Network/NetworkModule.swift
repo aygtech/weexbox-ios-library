@@ -29,7 +29,7 @@ class NetworkModule: NetworkModuleOC {
      // responseType 响应类型, json 或 text，默认 json
      }
      */
-    @objc func request(_ options: Dictionary<String, Any>, callback: @escaping WXModuleKeepAliveCallback) {
+    @objc func request(_ options: Dictionary<String, Any>, callback: WXModuleKeepAliveCallback?) {
         let info = JsOptions.deserialize(from: options)!
         let dataRequest = Network.request(info.url!, method: HTTPMethod(rawValue: info.method!.uppercased())!, parameters: info.params, headers: info.headers)
         
@@ -41,7 +41,7 @@ class NetworkModule: NetworkModuleOC {
                     result.data["data"] = value
                 }
                 result.error = response.error?.localizedDescription
-                callback(result.toJsResult(), false)
+                callback?(result.toJsResult(), false)
             }
         } else {
             dataRequest.validate().responseJSON() { response in
@@ -51,7 +51,7 @@ class NetworkModule: NetworkModuleOC {
                     result.data = value
                 }
                 result.error = response.error?.localizedDescription
-                callback(result.toJsResult(), false)
+                callback?(result.toJsResult(), false)
             }
         }
     }
@@ -65,7 +65,7 @@ class NetworkModule: NetworkModuleOC {
      url: 'https://some-domain.com/api/user',
      }
      */
-    @objc func upload(_ options: Dictionary<String, Any>, completionCallback: @escaping WXModuleKeepAliveCallback, progressCallback: @escaping WXModuleKeepAliveCallback) {
+    @objc func upload(_ options: Dictionary<String, Any>, completionCallback: WXModuleKeepAliveCallback?, progressCallback: WXModuleKeepAliveCallback?) {
         let info = JsOptions.deserialize(from: options)!
         
         Network.sessionManager.upload(multipartFormData: { (multipartFormData) in
@@ -77,19 +77,19 @@ class NetworkModule: NetworkModuleOC {
             switch encodingResult {
             case .success(let upload, _, _):
                 result.progress = Int(upload.uploadProgress.fractionCompleted * 100)
-                progressCallback(result.toJsResult(), true)
+                progressCallback?(result.toJsResult(), true)
                 upload.responseJSON { response in
                     result.status = response.response?.statusCode ?? Result.error
                     if let value = response.value as? Dictionary<String, Any> {
                         result.data = value
                     }
                     result.error = response.error?.localizedDescription
-                    completionCallback(result.toJsResult(), false)
+                    completionCallback?(result.toJsResult(), false)
                 }
             case .failure(let encodingError):
                 result.status = Result.error
                 result.error = encodingError.localizedDescription
-                completionCallback(result.toJsResult(), false)
+                completionCallback?(result.toJsResult(), false)
             }
         }
     }
