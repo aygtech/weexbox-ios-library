@@ -53,7 +53,7 @@ class NavigatorModule: NavigatorModuleOC {
     @objc  func setCenterItem(_ item: Dictionary<String, String>, callback: WXModuleKeepAliveCallback?) {
         Async.main {
             self.centerItemCallback = callback
-            let barButtonItem = self.createBarButton(item, position: .Center)
+            let barButtonItem = self.createBarButton(JsOptions.deserialize(from: item)!, position: .Center)
             self.getVC().navigationItem.titleView = barButtonItem.customView
         }
     }
@@ -61,12 +61,12 @@ class NavigatorModule: NavigatorModuleOC {
     func createBarButtons(_ items: Array<Dictionary<String, String>>, position: ItemPosition) -> Array<UIBarButtonItem> {
         var barButtonItems = Array<UIBarButtonItem>()
         for (i, item) in items.enumerated() {
-            barButtonItems.append(createBarButton(item, position: position, tag: i))
+            barButtonItems.append(createBarButton(JsOptions.deserialize(from: item)!, position: position, tag: i))
         }
         return barButtonItems
     }
     
-    func createBarButton(_ item: Dictionary<String, String>, position: ItemPosition, tag: Int = 0) -> UIBarButtonItem {
+    func createBarButton(_ item: JsOptions, position: ItemPosition, tag: Int = 0) -> UIBarButtonItem {
         let button = UIButton(type: .custom)
         button.tag = tag
         var selector: Selector
@@ -79,15 +79,15 @@ class NavigatorModule: NavigatorModuleOC {
             selector = #selector(onClickLeftBarButton(_:))
         }
         button.addTarget(self, action: selector, for: .touchUpInside)
-        if let text = item["text"] {
+        if let text = item.text {
             button.setTitle(text, for: .normal)
             button.setTitle(text, for: .highlighted)
-            if let hexColor = item["color"] {
+            if let hexColor = item.color {
                 let color = UIColor(hex: hexColor)
                 button.setTitleColor(color, for: .normal)
                 button.setTitleColor(color, for: .highlighted)
             }
-        } else if let imageUrl = item["image"] {
+        } else if let imageUrl = item.image {
             let imageHandler = ImageHander()
             imageHandler.downloadImage(withURL: imageUrl, imageFrame: CGRect(), userInfo: nil) { (image, error, finished) in
                 if image != nil {

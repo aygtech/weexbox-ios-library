@@ -40,4 +40,9 @@ struct JsOptions: HandyJSON {
     
     var name: String?
     var count: Int?
+    
+    // navigator
+    var color: String?
+    var image: String?
+    
 }
