@@ -123,8 +123,8 @@ class NavigatorModule: NavigatorModuleOC {
     }
     
     // 获取导航栏高度
-    @objc func getHeight() -> Float {
-        return Float(getVC().navHeight / weexInstance.pixelScaleFactor)
+    @objc func getHeight() -> Int {
+        return Int(getVC().navHeight / weexInstance.pixelScaleFactor)
     }
     
     // 设置导航栏颜色
