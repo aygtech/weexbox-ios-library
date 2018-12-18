@@ -35,6 +35,8 @@ public struct Router: HandyJSON {
     public var type = Router.typePush
     // 是否隐藏导航栏
     public var navBarHidden = false
+    // 导航栏标题
+    public var title: String?
     // 禁用返回手势
     public var disableGestureBack = false
     // 需要传到下一个页面的数据
