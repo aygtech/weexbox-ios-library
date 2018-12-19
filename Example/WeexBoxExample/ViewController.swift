@@ -9,14 +9,10 @@
 import UIKit
 import WeexBox
 class ViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         WeexBoxEngine.isDebug = true
-
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-
 }
 

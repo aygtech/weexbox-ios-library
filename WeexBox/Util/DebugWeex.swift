@@ -43,10 +43,10 @@ struct DebugWeex {
         }
     }
     
-//    static func refresh() {
-//        let topViewController = UIApplication.topViewController()
-//        if let weexViewController = topViewController as? WBWeexViewController {
-//            weexViewController.refreshWeex()
-//        }
-//    }
+    static func refresh() {
+        let topViewController = UIApplication.topViewController()
+        if let weexViewController = topViewController as? WBWeexViewController {
+            weexViewController.refreshWeex()
+        }
+    }
 }

@@ -8,6 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		07478FBA71C49DEDA2111614 /* libPods-WeexBox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F2EEC147C70428EA946A86 /* libPods-WeexBox.a */; };
+		997325A221CA4F7C008ACDF4 /* WBAssistiveTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9973259221CA4F7C008ACDF4 /* WBAssistiveTouch.swift */; };
+		997325A321CA4F7C008ACDF4 /* XFATPosition.h in Headers */ = {isa = PBXBuildFile; fileRef = 9973259421CA4F7C008ACDF4 /* XFATPosition.h */; };
+		997325A421CA4F7C008ACDF4 /* XFAssistiveTouch.h in Headers */ = {isa = PBXBuildFile; fileRef = 9973259521CA4F7C008ACDF4 /* XFAssistiveTouch.h */; };
+		997325A521CA4F7C008ACDF4 /* XFATNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9973259621CA4F7C008ACDF4 /* XFATNavigationController.m */; };
+		997325A621CA4F7C008ACDF4 /* XFATViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9973259721CA4F7C008ACDF4 /* XFATViewController.m */; };
+		997325A721CA4F7C008ACDF4 /* XFATItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9973259821CA4F7C008ACDF4 /* XFATItemView.m */; };
+		997325A821CA4F7C008ACDF4 /* XFATRootViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9973259921CA4F7C008ACDF4 /* XFATRootViewController.h */; };
+		997325A921CA4F7C008ACDF4 /* XFATLayoutAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = 9973259A21CA4F7C008ACDF4 /* XFATLayoutAttributes.h */; };
+		997325AA21CA4F7C008ACDF4 /* XFAssistiveTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9973259B21CA4F7C008ACDF4 /* XFAssistiveTouch.m */; };
+		997325AB21CA4F7C008ACDF4 /* XFATPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9973259C21CA4F7C008ACDF4 /* XFATPosition.m */; };
+		997325AC21CA4F7C008ACDF4 /* XFATRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9973259D21CA4F7C008ACDF4 /* XFATRootViewController.m */; };
+		997325AD21CA4F7C008ACDF4 /* XFATItemView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9973259E21CA4F7C008ACDF4 /* XFATItemView.h */; };
+		997325AE21CA4F7C008ACDF4 /* XFATViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9973259F21CA4F7C008ACDF4 /* XFATViewController.h */; };
+		997325AF21CA4F7C008ACDF4 /* XFATNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 997325A021CA4F7C008ACDF4 /* XFATNavigationController.h */; };
+		997325B021CA4F7C008ACDF4 /* XFATLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 997325A121CA4F7C008ACDF4 /* XFATLayoutAttributes.m */; };
 		AC070F9821354D8900D4E314 /* UIApplication+WeexBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC070F9721354D8900D4E314 /* UIApplication+WeexBox.swift */; };
 		AC070F9C21354E2F00D4E314 /* WXRefreshPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = AC070F9921354E2F00D4E314 /* WXRefreshPlugin.m */; };
 		AC070F9D21354E2F00D4E314 /* WXRefreshPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = AC070F9A21354E2F00D4E314 /* WXRefreshPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -71,6 +86,21 @@
 		1557BC57E5295E8A7176AE33 /* Pods-WeexBox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexBox.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeexBox/Pods-WeexBox.debug.xcconfig"; sourceTree = "<group>"; };
 		30F2EEC147C70428EA946A86 /* libPods-WeexBox.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeexBox.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		470306F86FB9853839FE2D19 /* Pods-WeexBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexBox.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeexBox/Pods-WeexBox.release.xcconfig"; sourceTree = "<group>"; };
+		9973259221CA4F7C008ACDF4 /* WBAssistiveTouch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBAssistiveTouch.swift; sourceTree = "<group>"; };
+		9973259421CA4F7C008ACDF4 /* XFATPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFATPosition.h; sourceTree = "<group>"; };
+		9973259521CA4F7C008ACDF4 /* XFAssistiveTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFAssistiveTouch.h; sourceTree = "<group>"; };
+		9973259621CA4F7C008ACDF4 /* XFATNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFATNavigationController.m; sourceTree = "<group>"; };
+		9973259721CA4F7C008ACDF4 /* XFATViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFATViewController.m; sourceTree = "<group>"; };
+		9973259821CA4F7C008ACDF4 /* XFATItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFATItemView.m; sourceTree = "<group>"; };
+		9973259921CA4F7C008ACDF4 /* XFATRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFATRootViewController.h; sourceTree = "<group>"; };
+		9973259A21CA4F7C008ACDF4 /* XFATLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFATLayoutAttributes.h; sourceTree = "<group>"; };
+		9973259B21CA4F7C008ACDF4 /* XFAssistiveTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFAssistiveTouch.m; sourceTree = "<group>"; };
+		9973259C21CA4F7C008ACDF4 /* XFATPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFATPosition.m; sourceTree = "<group>"; };
+		9973259D21CA4F7C008ACDF4 /* XFATRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFATRootViewController.m; sourceTree = "<group>"; };
+		9973259E21CA4F7C008ACDF4 /* XFATItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFATItemView.h; sourceTree = "<group>"; };
+		9973259F21CA4F7C008ACDF4 /* XFATViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFATViewController.h; sourceTree = "<group>"; };
+		997325A021CA4F7C008ACDF4 /* XFATNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFATNavigationController.h; sourceTree = "<group>"; };
+		997325A121CA4F7C008ACDF4 /* XFATLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFATLayoutAttributes.m; sourceTree = "<group>"; };
 		AC070F9721354D8900D4E314 /* UIApplication+WeexBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+WeexBox.swift"; sourceTree = "<group>"; };
 		AC070F9921354E2F00D4E314 /* WXRefreshPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXRefreshPlugin.m; sourceTree = "<group>"; };
 		AC070F9A21354E2F00D4E314 /* WXRefreshPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXRefreshPlugin.h; sourceTree = "<group>"; };
@@ -145,6 +175,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9973259321CA4F7C008ACDF4 /* XFAssistiveTouch */ = {
+			isa = PBXGroup;
+			children = (
+				9973259421CA4F7C008ACDF4 /* XFATPosition.h */,
+				9973259521CA4F7C008ACDF4 /* XFAssistiveTouch.h */,
+				9973259621CA4F7C008ACDF4 /* XFATNavigationController.m */,
+				9973259721CA4F7C008ACDF4 /* XFATViewController.m */,
+				9973259821CA4F7C008ACDF4 /* XFATItemView.m */,
+				9973259921CA4F7C008ACDF4 /* XFATRootViewController.h */,
+				9973259A21CA4F7C008ACDF4 /* XFATLayoutAttributes.h */,
+				9973259B21CA4F7C008ACDF4 /* XFAssistiveTouch.m */,
+				9973259C21CA4F7C008ACDF4 /* XFATPosition.m */,
+				9973259D21CA4F7C008ACDF4 /* XFATRootViewController.m */,
+				9973259E21CA4F7C008ACDF4 /* XFATItemView.h */,
+				9973259F21CA4F7C008ACDF4 /* XFATViewController.h */,
+				997325A021CA4F7C008ACDF4 /* XFATNavigationController.h */,
+				997325A121CA4F7C008ACDF4 /* XFATLayoutAttributes.m */,
+			);
+			path = XFAssistiveTouch;
+			sourceTree = "<group>";
+		};
 		AC54341B2111B5A3005B7056 = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +249,8 @@
 		AC54343E2112DAAB005B7056 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				9973259321CA4F7C008ACDF4 /* XFAssistiveTouch */,
+				9973259221CA4F7C008ACDF4 /* WBAssistiveTouch.swift */,
 				AC41388C2190458E00A2B887 /* AssistveButton.swift */,
 				AC5CBC17212D1EC100A4FBCD /* External.swift */,
 				ACB6F0CB21901F7B001D39D4 /* DebugWeex.swift */,
@@ -389,16 +442,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC5CBBF02127D10F00A4FBCD /* NetworkModule.h in Headers */,
+				997325AD21CA4F7C008ACDF4 /* XFATItemView.h in Headers */,
 				AC5CBBCE211C355B00A4FBCD /* RouterModule.h in Headers */,
 				AC5CBC2D212FF49500A4FBCD /* EventModule.h in Headers */,
 				AC5CBBFD212AB6EE00A4FBCD /* ModalModule.h in Headers */,
+				997325AF21CA4F7C008ACDF4 /* XFATNavigationController.h in Headers */,
+				997325A821CA4F7C008ACDF4 /* XFATRootViewController.h in Headers */,
 				AC5CBBDC211D677C00A4FBCD /* NavigatorModule.h in Headers */,
+				997325A921CA4F7C008ACDF4 /* XFATLayoutAttributes.h in Headers */,
 				AC5CBC342133957F00A4FBCD /* LocationModule.h in Headers */,
 				AC070F9D21354E2F00D4E314 /* WXRefreshPlugin.h in Headers */,
 				AC5CBC06212BCBC400A4FBCD /* BaseModule.h in Headers */,
+				997325A321CA4F7C008ACDF4 /* XFATPosition.h in Headers */,
 				AC54342A2111B5A3005B7056 /* WeexBox.h in Headers */,
 				AC5CBC1E212D616800A4FBCD /* ImageHander.h in Headers */,
 				AC5CBC15212D1D2A00A4FBCD /* ExternalModule.h in Headers */,
+				997325AE21CA4F7C008ACDF4 /* XFATViewController.h in Headers */,
+				997325A421CA4F7C008ACDF4 /* XFAssistiveTouch.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,7 +534,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WeexBox/Pods-WeexBox-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-WeexBox/Pods-WeexBox-resources.sh",
 				"${PODS_ROOT}/LBXScan/LBXScan/UI/CodeScan.bundle",
 				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
 				"${PODS_ROOT}/WeexSDK/pre-build/native-bundle-main.js",
@@ -495,7 +555,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WeexBox/Pods-WeexBox-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeexBox/Pods-WeexBox-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		ED5CB52D1F11CC4BEA76E1B0 /* [CP] Check Pods Manifest.lock */ = {
@@ -526,6 +586,7 @@
 				AC5CBBE42121363500A4FBCD /* RouterModule.swift in Sources */,
 				AC70278D213FAED700B069F1 /* Component.swift in Sources */,
 				AC5CBBE22121345400A4FBCD /* Router.swift in Sources */,
+				997325AB21CA4F7C008ACDF4 /* XFATPosition.m in Sources */,
 				AC5CBBF12127D10F00A4FBCD /* NetworkModule.m in Sources */,
 				AC5434312111BBCC005B7056 /* WeexBoxEngine.swift in Sources */,
 				AC5CBC28212FEA5F00A4FBCD /* Event.swift in Sources */,
@@ -534,6 +595,7 @@
 				AC5CBBEA2127C40F00A4FBCD /* Result.swift in Sources */,
 				AC070F9821354D8900D4E314 /* UIApplication+WeexBox.swift in Sources */,
 				AC5CBBD4211C3BF400A4FBCD /* UpdateManager.swift in Sources */,
+				997325AA21CA4F7C008ACDF4 /* XFAssistiveTouch.m in Sources */,
 				AC5CBBE02121320400A4FBCD /* WBBaseViewController.swift in Sources */,
 				AC5CBC1F212D616800A4FBCD /* ImageHander.m in Sources */,
 				AC9CE87421340A59007EF7F2 /* WXScanPlugin.swift in Sources */,
@@ -543,6 +605,7 @@
 				AC5CBBD7211C485000A4FBCD /* WBNavigationController.swift in Sources */,
 				AC5CBBE621218B3200A4FBCD /* WBWebViewController.swift in Sources */,
 				AC41388D2190458E00A2B887 /* AssistveButton.swift in Sources */,
+				997325A721CA4F7C008ACDF4 /* XFATItemView.m in Sources */,
 				AC5CBBD3211C3BF400A4FBCD /* UpdateMd5.swift in Sources */,
 				AC5CBC14212D1D2A00A4FBCD /* ExternalModule.m in Sources */,
 				AC9CE86E2133F2D5007EF7F2 /* WBScannerViewController.swift in Sources */,
@@ -556,18 +619,23 @@
 				AC43949A217EDA5A007419E8 /* UIImage+WeexBox.swift in Sources */,
 				AC5CBC25212D67C300A4FBCD /* NavigatorModule.swift in Sources */,
 				AC5CBBF42127D87500A4FBCD /* Network.swift in Sources */,
+				997325A621CA4F7C008ACDF4 /* XFATViewController.m in Sources */,
 				AC5CBBFE212AB6EE00A4FBCD /* ModalModule.swift in Sources */,
+				997325B021CA4F7C008ACDF4 /* XFATLayoutAttributes.m in Sources */,
 				AC5CBBCC211C355B00A4FBCD /* RouterModule.m in Sources */,
 				AC5CBC352133957F00A4FBCD /* LocationModule.m in Sources */,
 				AC5CBBF8212AAE5900A4FBCD /* JsOptions.swift in Sources */,
 				ACB6F0CC21901F7B001D39D4 /* DebugWeex.swift in Sources */,
+				997325A221CA4F7C008ACDF4 /* WBAssistiveTouch.swift in Sources */,
 				AC5CBC18212D1EC100A4FBCD /* External.swift in Sources */,
 				AC5CBC362133957F00A4FBCD /* LocationModule.swift in Sources */,
 				ACE49D9721A658B100340A41 /* PieChartComponent.swift in Sources */,
 				AC5CBBD5211C3BF400A4FBCD /* UpdateConfig.swift in Sources */,
 				AC5CBBED2127D0EB00A4FBCD /* NetworkModule.swift in Sources */,
 				AC070F9E21354E2F00D4E314 /* WXRefreshPlugin.swift in Sources */,
+				997325AC21CA4F7C008ACDF4 /* XFATRootViewController.m in Sources */,
 				AC5CBBFF212AB6EE00A4FBCD /* ModalModule.m in Sources */,
+				997325A521CA4F7C008ACDF4 /* XFATNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

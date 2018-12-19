@@ -10,15 +10,15 @@ import Foundation
 import WeexSDK
 import Async
 import VasSonic
-
+//import XFAssistiveTouch
 /// 初始化SDK
 @objcMembers public class WeexBoxEngine: NSObject {
+   
     
     @objc public static func setup() {
         // 初始化WeexSDK
         initWeexSDK()
         isDebug = false
-        
         URLProtocol.registerClass(SonicURLProtocol.self)
     }
     
@@ -28,15 +28,16 @@ import VasSonic
                 WXDebugTool.setDebug(true)
                 WXLog.setLogLevel(.WXLogLevelLog)
                 Async.main(after: 3) {
-                    let assistveButton = AssistveButton(frame: CGRect(x: 0, y: UIScreen.main.bounds.size.height/2, width: 50, height: 50), assistiveType: .YGAssistiveTypeNone) {
-                        DebugWeex.openScan()
-                    }
-                    let window = UIApplication.shared.delegate?.window
-                    
-                    if window != nil, window!?.rootViewController != nil {
-                        window!!.addSubview(assistveButton)
-                    } else {
-                        print("请在初始化rootViewController之后再开启debug")
+                    let touch = AssistiveTouch.sing;
+                    touch.show();
+                    touch.callBack = {(index)->() in
+                        AssistiveTouch.sing.dissShow()
+                        if(index == 0){
+                            DebugWeex.refresh()
+                        }
+                        else{
+                            DebugWeex.openScan()
+                        }
                     }
                 }
             } else {
