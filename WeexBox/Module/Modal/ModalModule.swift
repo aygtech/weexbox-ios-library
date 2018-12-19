@@ -37,7 +37,9 @@ class ModalModule: ModalModuleOC {
    @objc func showToast(_ options: Dictionary<String, Any>) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
-            HUD.showToast(view: self.getVC().view, message: info.text ?? "", duration: info.duration)
+            if info.text?.isEmpty == false {
+                HUD.showToast(view: self.getVC().view, message: info.text!, duration: info.duration)
+            }
         }
     }
     
