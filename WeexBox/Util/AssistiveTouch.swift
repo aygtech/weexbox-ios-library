@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import XFAssistiveTouch_WeexBox
+
 typealias touchCallback = (_ index:Int)->Void
 
 class AssistiveTouch: NSObject,XFXFAssistiveTouchDelegate {
@@ -24,7 +26,7 @@ class AssistiveTouch: NSObject,XFXFAssistiveTouchDelegate {
         XFAssistiveTouch.sharedInstance().show()
     }
     func dissShow(){
-         XFAssistiveTouch.sharedInstance().navigationController.shrink()
+        XFAssistiveTouch.sharedInstance().navigationController.shrink()
     }
     func numberOfItems(in viewController: XFATViewController) -> Int {
         return icons.count

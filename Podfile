@@ -97,4 +97,9 @@ pod 'Charts'
 pod 'VasSonic'
 # A Lightweight And High-performance Hybrid Framework
 # https://github.com/Tencent/VasSonic
+
+pod 'XFAssistiveTouch_WeexBox'
+# Assistive Button imitate the iOS system AssistiveTouch
+# https://github.com/aygtech/XFAssistiveTouch_WeexBox
+
 end

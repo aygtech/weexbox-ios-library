@@ -1,0 +1,6 @@
+module XFAssistiveTouch_WeexBox {
+  umbrella header "XFAssistiveTouch_WeexBox-umbrella.h"
+
+  export *
+  module * { export * }
+}

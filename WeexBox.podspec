@@ -34,4 +34,5 @@ Pod::Spec.new do |s|
   s.dependency 'LBXScan/UI'
   s.dependency 'Charts'
   s.dependency 'VasSonic'
+  s.dependency 'XFAssistiveTouch_WeexBox'
 end

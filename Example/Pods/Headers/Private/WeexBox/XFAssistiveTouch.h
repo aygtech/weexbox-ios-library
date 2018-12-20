@@ -1,1 +1,0 @@
-../../../../../WeexBox/Util/XFAssistiveTouch/XFAssistiveTouch.h

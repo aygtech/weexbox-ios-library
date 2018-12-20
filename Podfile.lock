@@ -40,6 +40,8 @@ PODS:
   - WXDevtool (0.17.1):
     - SocketRocket
     - WeexSDK
+  - XFAssistiveTouch_WeexBox (1.0.0):
+    - SDWebImage
   - Zip (1.1.0)
 
 DEPENDENCIES:
@@ -63,6 +65,7 @@ DEPENDENCIES:
   - VasSonic
   - WeexSDK (~> 0.19.0)
   - WXDevtool (~> 0.17.0)
+  - XFAssistiveTouch_WeexBox
   - Zip
 
 SPEC REPOS:
@@ -89,6 +92,7 @@ SPEC REPOS:
     - WeexPluginLoader
     - WeexSDK
     - WXDevtool
+    - XFAssistiveTouch_WeexBox
     - Zip
 
 SPEC CHECKSUMS:
@@ -114,8 +118,9 @@ SPEC CHECKSUMS:
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
   WeexSDK: 0515e386d0eae3400ed8e55f31f198ae35acce44
   WXDevtool: 9e3da2c92c83c8f62521c8264d9c2c721512f5c5
+  XFAssistiveTouch_WeexBox: 50ee133d7e5a1717907f2518b8415d56d39c65fe
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 4f682d148d6bdeb31ca3bfe696189a66596d503c
+PODFILE CHECKSUM: 4232af4800694d7e218cc4b660aae92be9791767
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0.beta.2
