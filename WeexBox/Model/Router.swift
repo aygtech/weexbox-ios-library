@@ -49,13 +49,13 @@ public struct Router: HandyJSON {
     public var closeCount: Int?
     
     // 打开页面
-    public func open(from: WBBaseViewController) {
+    public func open(from: UIViewController) {
         if let pageName = name, let toType = Router.routes[pageName] {
             let to = toType.init()
             to.router = self
             to.hidesBottomBarWhenPushed = true
             if type == Router.typePresent {
-                from.present(RTRootNavigationController.init(rootViewController: to), animated: true) {
+                from.present(RTRootNavigationController(rootViewController: to), animated: true) {
                     self.removeViewControllers(from)
                 }
             } else {
@@ -68,7 +68,7 @@ public struct Router: HandyJSON {
         }
     }
     
-    func removeViewControllers(_ vc: WBBaseViewController) {
+    func removeViewControllers(_ vc: UIViewController) {
         if let from = closeFrom {
             let count = vc.rt_navigationController.rt_viewControllers.count
             var left: Int!
