@@ -14,8 +14,8 @@ class AssistiveTouch: NSObject,XFXFAssistiveTouchDelegate {
     var callBack:touchCallback?
     static let sing = AssistiveTouch()
     let icons = [
-        "https://raw.githubusercontent.com/aygtech/aygtech.github.io/master/docs/.vuepress/public/refesh.png",
-        "https://raw.githubusercontent.com/aygtech/aygtech.github.io/master/docs/.vuepress/public/camera.png"
+        "https://raw.githubusercontent.com/aygtech/aygtech.github.io/master/docs/.vuepress/public/camera.png",
+        "https://raw.githubusercontent.com/aygtech/aygtech.github.io/master/docs/.vuepress/public/refesh.png"
     ]
     override init() {
         super.init()
