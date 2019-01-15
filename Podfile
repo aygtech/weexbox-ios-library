@@ -102,4 +102,8 @@ pod 'XFAssistiveTouch_WeexBox'
 # Assistive Button imitate the iOS system AssistiveTouch
 # https://github.com/aygtech/XFAssistiveTouch_WeexBox
 
+pod 'lottie-ios'
+# An iOS library to natively render After Effects vector animations
+# https://github.com/airbnb/lottie-ios
+
 end

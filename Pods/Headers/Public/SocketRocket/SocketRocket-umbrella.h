@@ -1,0 +1,1 @@
+/Users/mario/Documents/aygtech/weexbox-ios-library/Pods/Target Support Files/SocketRocket/SocketRocket-umbrella.h

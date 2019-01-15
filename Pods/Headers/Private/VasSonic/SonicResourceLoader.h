@@ -1,0 +1,1 @@
+../../../VasSonic/sonic-iOS/Sonic/ResourceLoader/SonicResourceLoader.h
