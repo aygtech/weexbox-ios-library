@@ -33,10 +33,10 @@ import VasSonic
                     touch.callBack = {(index)->() in
                         AssistiveTouch.sing.dissShow()
                         if(index == 0){
-                            DebugWeex.refresh()
+                            DebugWeex.openScan()
                         }
                         else{
-                            DebugWeex.openScan()
+                            DebugWeex.refresh()
                         }
                     }
                 }

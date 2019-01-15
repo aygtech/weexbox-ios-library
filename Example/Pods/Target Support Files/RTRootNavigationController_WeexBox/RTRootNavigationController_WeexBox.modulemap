@@ -1,6 +1,0 @@
-module RTRootNavigationController_WeexBox {
-  umbrella header "RTRootNavigationController_WeexBox-umbrella.h"
-
-  export *
-  module * { export * }
-}

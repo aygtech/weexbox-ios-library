@@ -1,1 +1,0 @@
-/Users/mario/Documents/aygtech/weexbox-ios-library/Pods/Target Support Files/XFAssistiveTouch_WeexBox/XFAssistiveTouch_WeexBox-umbrella.h

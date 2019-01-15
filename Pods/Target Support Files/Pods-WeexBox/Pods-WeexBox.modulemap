@@ -1,6 +1,0 @@
-module Pods_WeexBox {
-  umbrella header "Pods-WeexBox-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,1 +1,0 @@
-../../../VasSonic/sonic-iOS/Sonic/Session/SonicSessionConfiguration.h

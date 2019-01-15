@@ -1,1 +1,0 @@
-../../../../../WeexBox/Component/WBScanComponentOC.h
