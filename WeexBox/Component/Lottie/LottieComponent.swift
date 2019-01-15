@@ -8,76 +8,62 @@
 
 import Foundation
 import Lottie
-import HandyJSON
-import SwiftyJSON
-
-struct AnimationObject: HandyJSON {
-    
-    var v: String?
-    var fr: Double?
-    var ip: Double?
-    var op: Double?
-    var w: Double?
-    var h: Double?
-    var nm: String?
-    var ddd: Double?
-    var assets: Array<Any>?
-    var layers: Array<Any>?
-}
-
-struct AnimatedLottieViewProps: HandyJSON {
-    
-    var source: Any!
-    var progress: Double?
-    var speed: Double?
-    var duration: Double?
-    var loop: Bool?
-    var style: [AnyHashable : Any]?
-    var imageAssetsFolder: String?
-    var hardwareAccelerationAndroid: Bool?
-    var resizeMode: String?  // "cover" | "contain" | "center"
-    var cacheStrategy: String?  // 'strong' | 'weak' | 'none'
-    var autoPlay: Bool?
-    var autoSize: Bool?
-    var enableMergePathsAndroidForKitKatAndAbove: Bool?
-//    var onAnimationFinish: (isCancelled: boolean) => void
-}
-
 
 class LottieComponent: LottieComponentOC {
 
     var animationView: LOTAnimationView?
     
-    var loop: Bool! {
-        didSet {
-            animationView?.loopAnimation = loop
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        loadSource()
+    }
+    
+    override func updateAttributes(_ attributes: [AnyHashable : Any] = [:]) {
+        super.updateAttributes(attributes)
+        
+        applyProperties(attributes)
+    }
+    
+    func loadSource() {
+        if let sourceJson = attributes["sourceJson"] as? [AnyHashable : Any] {
+            replaceAnimationView(next: LOTAnimationView(json: sourceJson))
+        } else if let sourceName = attributes["sourceName"] {
+            replaceAnimationView(next: LOTAnimationView(name: WXConvert.nsString(sourceName)))
+        } else if let sourceUrl = attributes["sourceUrl"] {
+            replaceAnimationView(next: LOTAnimationView(contentsOf: URL(string: WXConvert.nsString(sourceUrl))!))
         }
     }
-    var speed: CGFloat! {
-        didSet {
-            animationView?.animationSpeed = speed
+    
+    func replaceAnimationView(next: LOTAnimationView) {
+        var contentMode = UIView.ContentMode.scaleAspectFit
+        if (animationView != nil) {
+            contentMode = animationView!.contentMode
+            animationView?.removeFromSuperview()
+        }
+        animationView = next
+        view.addSubview(next)
+        animationView?.frame = view.frame
+        animationView?.contentMode = contentMode
+        applyProperties(attributes)
+        if let autoPlay = attributes["autoPlay"], WXConvert.bool(autoPlay) {
+            play(nil)
         }
     }
-    var progress: CGFloat! {
-        didSet {
-            animationView?.animationProgress = progress
+    
+    func applyProperties(_ attributes: [AnyHashable : Any]) {
+        if let progress = attributes["progress"] {
+            animationView?.animationProgress = WXConvert.cgFloat(progress)
         }
-    }
-    var sourceJson: String! {
-        didSet {
-            let json = JSON(parseJSON: sourceJson).dictionaryObject!
-            replaceAnimationView(next: LOTAnimationView(json: json))
+        if let speed = attributes["speed"] {
+            animationView?.animationSpeed = WXConvert.cgFloat(speed)
         }
-    }
-    var sourceName: String! {
-        didSet {
-            replaceAnimationView(next: LOTAnimationView(name: sourceName))
+        if let loop = attributes["loop"] {
+            animationView?.loopAnimation = WXConvert.bool(loop)
         }
-    }
-    var resizeMode: String! {
-        didSet {
+        if let resizeMode = attributes["resizeMode"] {
             var contentMode = UIView.ContentMode.scaleAspectFit
-            switch resizeMode {
+            switch WXConvert.nsString(resizeMode) {
             case "cover":
                 contentMode = .scaleAspectFill
             case "contain":
@@ -91,68 +77,34 @@ class LottieComponent: LottieComponentOC {
         }
     }
     
-//    var  onAnimationFinish: RCTBubblingEventBlock
-    
-    override init(ref: String, type: String, styles: [AnyHashable : Any]?, attributes: [AnyHashable : Any]? = nil, events: [Any]?, weexInstance: WXSDKInstance) {
-        super.init(ref: ref, type: type, styles: styles, attributes: attributes, events: events, weexInstance: weexInstance)
-        
+    @objc func isAnimationPlaying() -> Bool {
+        return animationView?.isAnimationPlaying ?? false
     }
     
-    override func loadView() -> UIView {
-        return UIView()
+    @objc func play(fromProgress: Any, _ toProgress: Any, _ completion: WXKeepAliveCallback?) {
+        animationView?.play(fromProgress: WXConvert.cgFloat(fromProgress), toProgress: WXConvert.cgFloat(toProgress), withCompletion: { (complete) in
+            completion?(complete, false)
+        })
     }
     
-    override func viewDidLoad() {
-        
+    @objc func play(fromFrame: Any, _ toFrame: Any, _ completion: WXKeepAliveCallback?) {
+        animationView?.play(fromFrame: NSNumber(value: WXConvert.nsInteger(fromFrame)), toFrame: NSNumber(value: WXConvert.nsInteger(toFrame)), withCompletion: { (complete) in
+            completion?(complete, false)
+        })
     }
     
-//    override func addEvent(_ eventName: String) {
-//        switch eventName {
-//        case "play":
-//
-//        default:
-//            <#code#>
-//        }
-//    }
-    
-    func play() {
-        animationView?.play()
+    @objc func play(_ completion: WXKeepAliveCallback?) {
+        animationView?.play(completion: { (complete) in
+            completion?(complete, false)
+        })
     }
     
-    func play(completion: LOTAnimationCompletionBlock?) {
-        animationView?.play(completion: completion)
-    }
-    
-    func play(startFrame: NSNumber, endFrame: NSNumber, completion: LOTAnimationCompletionBlock?) {
-        animationView?.play(fromFrame: startFrame, toFrame: endFrame, withCompletion: completion)
-    }
-    
-    func reset() {
-        animationView?.animationProgress = 0
+    @objc func pause() {
         animationView?.pause()
     }
     
-    @objc func play(_ startFrame: Int, _ endFrame: Int) {
-        
-    }
-    
-    func replaceAnimationView(next: LOTAnimationView) {
-        var contentMode = UIView.ContentMode.scaleAspectFit
-        if (animationView != nil) {
-            contentMode = animationView!.contentMode
-            animationView!.removeFromSuperview()
-        }
-        animationView = next
-        view.addSubview(next)
-        animationView!.frame = view.frame
-        animationView!.contentMode = contentMode
-        applyProperties()
-    }
-    
-    func applyProperties() {
-//        animationView!.animationProgress = progress
-//        animationView!.animationSpeed = speed
-//        animationView!.loopAnimation = loop
+    @objc func stop() {
+        animationView?.stop()
     }
     
 }

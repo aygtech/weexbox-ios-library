@@ -1,0 +1,6 @@
+module VasSonic {
+  umbrella header "VasSonic-umbrella.h"
+
+  export *
+  module * { export * }
+}

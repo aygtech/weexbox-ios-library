@@ -10,5 +10,11 @@
 
 @implementation LottieComponentOC
 
-WX_EXPORT_METHOD(@selector(play:endFrame:))
+WX_EXPORT_METHOD_SYNC(@selector(isAnimationPlaying))
+WX_EXPORT_METHOD(@selector(playFromProgress:toProgress:completion:))
+WX_EXPORT_METHOD(@selector(playFromFrame:toFrame:completion:))
+WX_EXPORT_METHOD(@selector(play:))
+WX_EXPORT_METHOD(@selector(pause))
+WX_EXPORT_METHOD(@selector(stop))
+
 @end

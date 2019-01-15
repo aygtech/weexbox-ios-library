@@ -1,0 +1,6 @@
+module LBXScan {
+  umbrella header "LBXScan-umbrella.h"
+
+  export *
+  module * { export * }
+}

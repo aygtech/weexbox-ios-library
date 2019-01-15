@@ -35,4 +35,5 @@ Pod::Spec.new do |s|
   s.dependency 'Charts'
   s.dependency 'VasSonic'
   s.dependency 'XFAssistiveTouch_WeexBox'
+  s.dependency 'lottie-ios'
 end
