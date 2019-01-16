@@ -78,21 +78,21 @@ class LottieComponent: LottieComponentOC {
         return animationView?.isAnimationPlaying ?? false
     }
     
-    @objc func play(fromProgress: Any, _ toProgress: Any, _ completion: WXKeepAliveCallback?) {
+    @objc func play(fromProgress: Any, toProgress: Any, callback: WXKeepAliveCallback?) {
         animationView?.play(fromProgress: WXConvert.cgFloat(fromProgress), toProgress: WXConvert.cgFloat(toProgress), withCompletion: { (complete) in
-            completion?(complete, false)
+            callback?(complete, false)
         })
     }
     
-    @objc func play(fromFrame: Any, _ toFrame: Any, _ completion: WXKeepAliveCallback?) {
+    @objc func play(fromFrame: Any, toFrame: Any, callback: WXKeepAliveCallback?) {
         animationView?.play(fromFrame: NSNumber(value: WXConvert.nsInteger(fromFrame)), toFrame: NSNumber(value: WXConvert.nsInteger(toFrame)), withCompletion: { (complete) in
-            completion?(complete, false)
+            callback?(complete, false)
         })
     }
     
-    @objc func play(_ completion: WXKeepAliveCallback?) {
+    @objc func play(_ callback: WXKeepAliveCallback?) {
         animationView?.play(completion: { (complete) in
-            completion?(complete, false)
+            callback?(complete, false)
         })
     }
     
