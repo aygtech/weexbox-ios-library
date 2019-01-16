@@ -46,9 +46,6 @@ class LottieComponent: LottieComponentOC {
         animationView?.frame = view.frame
         animationView?.contentMode = contentMode
         applyProperties(attributes)
-        if let autoPlay = attributes["autoPlay"], WXConvert.bool(autoPlay) {
-            play(nil)
-        }
     }
     
     func applyProperties(_ attributes: [AnyHashable : Any]) {
