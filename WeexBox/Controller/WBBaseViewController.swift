@@ -21,7 +21,7 @@ import Foundation
         
         rt_disableInteractivePop = router.disableGestureBack
         view.backgroundColor = .white
-        if router.title?.isEmpty == false {
+        if title == nil {
             title = router.title
         }
         navigationController?.isNavigationBarHidden = router.navBarHidden

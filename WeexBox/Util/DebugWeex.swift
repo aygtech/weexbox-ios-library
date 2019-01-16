@@ -20,15 +20,15 @@ struct DebugWeex {
             if error != nil {
                 print(error!)
             } else {
-                openWeex(scanResult.strScanned!, top: topViewController)
+                openWeex(scanResult.strScanned!, from: topViewController!)
             }
         }
-        if(topViewController!.isMember(of: WBScannerViewController.classForCoder()) == false){
+        if(topViewController!.isMember(of: WBScannerViewController.classForCoder()) == false) {
             topViewController?.navigationController?.pushViewController(scannerViewController, animated: true)
         }
     }
     
-    static func openWeex(_ urlString: String, top: UIViewController?) {
+    static func openWeex(_ urlString: String, from: UIViewController) {
         // 处理windows上的dev路径带有"\\"
         let params = urlString.replacingOccurrences(of: "\\", with: "/").getParameters()
         if let devtoolUrl = params["_wx_devtool"] {
@@ -39,7 +39,7 @@ struct DebugWeex {
             var router = Router()
             router.name = Router.nameWeex
             router.url = tplUrl
-            router.open(from: top as! WBBaseViewController)
+            router.open(from: from)
         }
     }
     

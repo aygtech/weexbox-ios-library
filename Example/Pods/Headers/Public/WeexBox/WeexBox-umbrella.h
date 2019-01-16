@@ -21,13 +21,6 @@
 #import "NetworkModule.h"
 #import "RouterModule.h"
 #import "WXRefreshPlugin.h"
-#import "XFAssistiveTouch.h"
-#import "XFATItemView.h"
-#import "XFATLayoutAttributes.h"
-#import "XFATNavigationController.h"
-#import "XFATPosition.h"
-#import "XFATRootViewController.h"
-#import "XFATViewController.h"
 #import "WeexBox.h"
 
 FOUNDATION_EXPORT double WeexBoxVersionNumber;
