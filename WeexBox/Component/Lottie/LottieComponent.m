@@ -8,6 +8,7 @@
 
 #import "LottieComponent.h"
 
+#pragma clang diagnostic ignored "-Wundeclared-selector"
 @implementation LottieComponentOC
 
 WX_EXPORT_METHOD_SYNC(@selector(isAnimationPlaying))
@@ -18,3 +19,4 @@ WX_EXPORT_METHOD(@selector(pause))
 WX_EXPORT_METHOD(@selector(stop))
 
 @end
+#pragma clang diagnostic pop

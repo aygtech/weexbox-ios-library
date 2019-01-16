@@ -62,7 +62,6 @@
 		AC5CBC342133957F00A4FBCD /* LocationModule.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBC312133957F00A4FBCD /* LocationModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC5CBC352133957F00A4FBCD /* LocationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC322133957F00A4FBCD /* LocationModule.m */; };
 		AC5CBC362133957F00A4FBCD /* LocationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC332133957F00A4FBCD /* LocationModule.swift */; };
-		AC70278D213FAED700B069F1 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC70278C213FAED700B069F1 /* Component.swift */; };
 		AC7579992188563900919B7E /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7579982188563900919B7E /* HUD.swift */; };
 		AC9CE86E2133F2D5007EF7F2 /* WBScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE86D2133F2D5007EF7F2 /* WBScannerViewController.swift */; };
 		AC9CE87421340A59007EF7F2 /* WXScanPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE87321340A59007EF7F2 /* WXScanPlugin.swift */; };
@@ -131,7 +130,6 @@
 		AC5CBC312133957F00A4FBCD /* LocationModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModule.h; sourceTree = "<group>"; };
 		AC5CBC322133957F00A4FBCD /* LocationModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModule.m; sourceTree = "<group>"; };
 		AC5CBC332133957F00A4FBCD /* LocationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModule.swift; sourceTree = "<group>"; };
-		AC70278C213FAED700B069F1 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		AC7579982188563900919B7E /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		AC9CE86D2133F2D5007EF7F2 /* WBScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBScannerViewController.swift; sourceTree = "<group>"; };
 		AC9CE87321340A59007EF7F2 /* WXScanPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXScanPlugin.swift; sourceTree = "<group>"; };
@@ -365,7 +363,6 @@
 			isa = PBXGroup;
 			children = (
 				AC05976021ED930100DF69AC /* Lottie */,
-				AC70278C213FAED700B069F1 /* Component.swift */,
 				AC05975821ED8EA300DF69AC /* BaseComponent.h */,
 				AC05975921ED8EA300DF69AC /* BaseComponent.m */,
 				ACE49D9621A658B100340A41 /* PieChartComponent.swift */,
@@ -546,7 +543,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC5CBBE42121363500A4FBCD /* RouterModule.swift in Sources */,
-				AC70278D213FAED700B069F1 /* Component.swift in Sources */,
 				AC5CBBE22121345400A4FBCD /* Router.swift in Sources */,
 				AC5CBBF12127D10F00A4FBCD /* NetworkModule.m in Sources */,
 				AC5434312111BBCC005B7056 /* WeexBoxEngine.swift in Sources */,
