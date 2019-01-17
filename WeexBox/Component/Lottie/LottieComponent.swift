@@ -16,23 +16,28 @@ class LottieComponent: LottieComponentOC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadSource()
+        loadSource(attributes)
     }
     
     override func updateAttributes(_ attributes: [AnyHashable : Any] = [:]) {
         super.updateAttributes(attributes)
         
-        applyProperties(attributes)
+        if loadSource(attributes) {
+            applyProperties(self.attributes)
+        } else {
+            applyProperties(attributes)
+        }
     }
     
-    func loadSource() {
+    func loadSource(_ attributes: [AnyHashable : Any]) -> Bool {
         if let sourceJson = attributes["sourceJson"] as? [AnyHashable : Any] {
             replaceAnimationView(next: LOTAnimationView(json: sourceJson))
-        } else if let sourceName = attributes["sourceName"] {
-            replaceAnimationView(next: LOTAnimationView(name: WXConvert.nsString(sourceName)))
+            return true
         } else if let sourceUrl = attributes["sourceUrl"] {
             replaceAnimationView(next: LOTAnimationView(contentsOf: URL(string: WXConvert.nsString(sourceUrl))!))
+            return true
         }
+        return false
     }
     
     func replaceAnimationView(next: LOTAnimationView) {
