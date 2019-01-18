@@ -1,6 +1,1 @@
-module HandyJSON {
-  umbrella header "HandyJSON-umbrella.h"
-
-  export *
-  module * { export * }
-}
+/Users/mario/Documents/aygtech/weexbox-ios-library/Example/Pods/Target Support Files/HandyJSON/HandyJSON.modulemap

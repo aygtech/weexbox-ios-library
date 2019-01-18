@@ -235,6 +235,11 @@ __attribute((overloadable)) static inline UIViewController *RTSafeWrapViewContro
     return self;
 }
 
+- (NSString *)debugDescription
+{
+    return [NSString stringWithFormat:@"<%@: %p contentViewController: %@>", self.class, self, self.contentViewController];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -425,7 +430,10 @@ __attribute((overloadable)) static inline UIViewController *RTSafeWrapViewContro
         }
         
     }
-    [self.rt_navigationController _installsLeftBarButtonItemIfNeededForViewController:viewController];
+    if ([self.parentViewController isKindOfClass:[RTContainerController class]] &&
+        [self.parentViewController.parentViewController isKindOfClass:[RTRootNavigationController class]]) {
+        [self.rt_navigationController _installsLeftBarButtonItemIfNeededForViewController:viewController];
+    }
 }
 
 - (UITabBarController *)tabBarController
@@ -713,6 +721,14 @@ __attribute((overloadable)) static inline UIViewController *RTSafeWrapViewContro
 - (void)pushViewController:(UIViewController *)viewController
                   animated:(BOOL)animated
 {
+    if (viewController == nil) {
+        if (self.animationBlock) {
+            self.animationBlock(YES);
+            self.animationBlock = nil;
+        }
+        return;
+    }
+
     if (self.viewControllers.count > 0) {
         UIViewController *currentLast = RTSafeUnwrapViewController(self.viewControllers.lastObject);
         [super pushViewController:RTSafeWrapViewController(viewController,
@@ -959,15 +975,24 @@ __attribute((overloadable)) static inline UIViewController *RTSafeWrapViewContro
     
     [RTRootNavigationController attemptRotationToDeviceOrientation];
     
-    if (self.animationBlock) {
-        self.animationBlock(YES);
-        self.animationBlock = nil;
-    }
     
     if ([self.rt_delegate respondsToSelector:@selector(navigationController:didShowViewController:animated:)]) {
         [self.rt_delegate navigationController:navigationController
                          didShowViewController:viewController
                                       animated:animated];
+    }
+    
+    if (self.animationBlock) {
+        if (animated) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.animationBlock(YES);
+                self.animationBlock = nil;
+            });
+        }
+        else {
+            self.animationBlock(YES);
+            self.animationBlock = nil;
+        }
     }
 }
 

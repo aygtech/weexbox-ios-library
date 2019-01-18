@@ -61,7 +61,7 @@ import VasSonic
     }
     
     private static func registerComponent() {
-        
+        WXSDKEngine.registerComponent("wb-lottie", with: LottieComponent.self)
     }
     
     private static func registerModule() {

@@ -1,6 +1,1 @@
-module LBXScan {
-  umbrella header "LBXScan-umbrella.h"
-
-  export *
-  module * { export * }
-}
+/Users/mario/Documents/aygtech/weexbox-ios-library/Pods/Target Support Files/LBXScan/LBXScan.modulemap

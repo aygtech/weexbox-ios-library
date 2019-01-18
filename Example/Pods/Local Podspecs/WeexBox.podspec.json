@@ -1,6 +1,6 @@
 {
   "name": "WeexBox",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "summary": "WeexBox.",
   "homepage": "https://github.com/aygtech/weexbox-ios-library",
   "license": "MIT",
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/aygtech/weexbox-ios-library.git",
-    "tag": "1.0.9"
+    "tag": "1.1.0"
   },
   "source_files": "WeexBox/**/**/*.{swift,h,m}",
   "swift_version": "4.2",
@@ -24,10 +24,10 @@
   "libraries": "sqlite3",
   "dependencies": {
     "WeexSDK": [
-      "~> 0.19.0"
+      "~> 0.20.0"
     ],
     "WXDevtool": [
-      "~> 0.17.0"
+      "~> 0.20.0"
     ],
     "Alamofire": [
 
@@ -87,6 +87,9 @@
 
     ],
     "XFAssistiveTouch_WeexBox": [
+
+    ],
+    "lottie-ios": [
 
     ]
   }

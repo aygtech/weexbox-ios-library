@@ -1,6 +1,0 @@
-module WeexSDK {
-  umbrella header "WeexSDK-umbrella.h"
-
-  export *
-  module * { export * }
-}

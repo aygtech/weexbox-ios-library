@@ -25,6 +25,6 @@ FOUNDATION_EXPORT const unsigned char WeexBoxVersionString[];
 #import <WeexBox/ImageHander.h>
 #import <WeexBox/EventModule.h>
 #import <WeexBox/LocationModule.h>
-//#import <WeexBox/WBScanComponentOC.h>
+#import <WeexBox/LottieComponent.h>
 
 

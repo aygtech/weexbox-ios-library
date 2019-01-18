@@ -10,6 +10,8 @@
 #endif
 #endif
 
+#import "BaseComponent.h"
+#import "LottieComponent.h"
 #import "WBScanComponentOC.h"
 #import "ImageHander.h"
 #import "BaseModule.h"

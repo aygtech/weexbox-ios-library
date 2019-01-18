@@ -5,11 +5,11 @@ use_modular_headers!
 
 target 'WeexBox' do
 
-pod 'WeexSDK', '~> 0.19.0'
+pod 'WeexSDK', '~> 0.20.0'
 # Apache Weex
 # https://github.com/apache/incubator-weex
 
-pod 'WXDevtool', '~> 0.17.0'
+pod 'WXDevtool', '~> 0.20.0'
 # Remote debug for your native iOS app using Chrome Developer Tools
 # https://github.com/weexteam/weex-devtool-iOS
 
@@ -101,5 +101,9 @@ pod 'VasSonic'
 pod 'XFAssistiveTouch_WeexBox'
 # Assistive Button imitate the iOS system AssistiveTouch
 # https://github.com/aygtech/XFAssistiveTouch_WeexBox
+
+pod 'lottie-ios'
+# An iOS library to natively render After Effects vector animations
+# https://github.com/airbnb/lottie-ios
 
 end
