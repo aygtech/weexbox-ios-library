@@ -10,11 +10,8 @@ import Foundation
 import Lottie
 
 class LottieComponent: LottieComponentOC {
-    
-    static let eventNameEnd = "end"
 
     var animationView: LOTAnimationView?
-    var isSendEnd = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,15 +27,6 @@ class LottieComponent: LottieComponentOC {
             applyProperties(self.attributes)
         } else {
             applyProperties(attributes)
-        }
-    }
-    
-    override func addEvent(_ eventName: String) {
-        switch eventName {
-        case LottieComponent.eventNameEnd:
-            isSendEnd = true
-        default:
-            break
         }
     }
     
@@ -81,34 +69,31 @@ class LottieComponent: LottieComponentOC {
         if contentMode != nil {
             animationView?.contentMode = contentMode!
         }
-    }
-    
-    func sendEnd(complete: Bool) {
-        if isSendEnd {
-            var result = Result()
-            result.data["complete"] = complete
-            fireEvent(LottieComponent.eventNameEnd, params: result.toJsResult())
-        }
+
     }
     
     @objc func isAnimationPlaying() -> Bool {
         return animationView?.isAnimationPlaying ?? false
     }
     
-    @objc func play(fromProgress: Any, toProgress: Any) {
-        animationView?.play(fromProgress: WXConvert.cgFloat(fromProgress), toProgress: WXConvert.cgFloat(toProgress), withCompletion: { [weak self] (complete) in
-            self?.sendEnd(complete: complete)
+    @objc func play(fromProgress: Any, toProgress: Any, callback: WXKeepAliveCallback?) {
+        stop()
+        animationView?.play(fromProgress: WXConvert.cgFloat(fromProgress), toProgress: WXConvert.cgFloat(toProgress), withCompletion: { (complete) in
+            callback?(complete, false)
         })
     }
     
-    @objc func play(fromFrame: Any, toFrame: Any) {
-        animationView?.play(fromFrame: NSNumber(value: WXConvert.nsInteger(fromFrame)), toFrame: NSNumber(value: WXConvert.nsInteger(toFrame)), withCompletion: { [weak self] (complete) in
-            self?.sendEnd(complete: complete)
+    @objc func play(fromFrame: Any, toFrame: Any, callback: WXKeepAliveCallback?) {
+        stop()
+        animationView?.play(fromFrame: NSNumber(value: WXConvert.nsInteger(fromFrame)), toFrame: NSNumber(value: WXConvert.nsInteger(toFrame)), withCompletion: { (complete) in
+            callback?(complete, false)
         })
     }
     
-    @objc func play() {
-        play(fromProgress: 0, toProgress: 1)
+    @objc func play(_ callback: WXKeepAliveCallback?) {
+        animationView?.play(completion: { (complete) in
+            callback?(complete, false)
+        })
     }
     
     @objc func pause() {

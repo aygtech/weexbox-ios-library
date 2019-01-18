@@ -12,9 +12,9 @@
 @implementation LottieComponentOC
 
 WX_EXPORT_METHOD_SYNC(@selector(isAnimationPlaying))
-WX_EXPORT_METHOD(@selector(playFromProgress:toProgress:))
-WX_EXPORT_METHOD(@selector(playFromFrame:toFrame:))
-WX_EXPORT_METHOD(@selector(play))
+WX_EXPORT_METHOD(@selector(playFromProgress:toProgress:callback:))
+WX_EXPORT_METHOD(@selector(playFromFrame:toFrame:callback:))
+WX_EXPORT_METHOD(@selector(play:))
 WX_EXPORT_METHOD(@selector(pause))
 WX_EXPORT_METHOD(@selector(stop))
 
