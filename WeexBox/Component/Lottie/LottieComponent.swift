@@ -72,27 +72,33 @@ class LottieComponent: LottieComponentOC {
 
     }
     
+    func complete(_ complete: Bool, _ callback: WXKeepAliveCallback?) {
+        var result = Result()
+        result.data["complete"] = complete
+        callback?(result, false)
+    }
+    
     @objc func isAnimationPlaying() -> Bool {
         return animationView?.isAnimationPlaying ?? false
     }
     
     @objc func play(fromProgress: Any, toProgress: Any, callback: WXKeepAliveCallback?) {
         stop()
-        animationView?.play(fromProgress: WXConvert.cgFloat(fromProgress), toProgress: WXConvert.cgFloat(toProgress), withCompletion: { (complete) in
-            callback?(complete, false)
+        animationView?.play(fromProgress: WXConvert.cgFloat(fromProgress), toProgress: WXConvert.cgFloat(toProgress), withCompletion: { [weak self] (complete) in
+            self?.complete(complete, callback)
         })
     }
     
     @objc func play(fromFrame: Any, toFrame: Any, callback: WXKeepAliveCallback?) {
         stop()
-        animationView?.play(fromFrame: NSNumber(value: WXConvert.nsInteger(fromFrame)), toFrame: NSNumber(value: WXConvert.nsInteger(toFrame)), withCompletion: { (complete) in
-            callback?(complete, false)
+        animationView?.play(fromFrame: NSNumber(value: WXConvert.nsInteger(fromFrame)), toFrame: NSNumber(value: WXConvert.nsInteger(toFrame)), withCompletion: { [weak self] (complete) in
+            self?.complete(complete, callback)
         })
     }
     
     @objc func play(_ callback: WXKeepAliveCallback?) {
-        animationView?.play(completion: { (complete) in
-            callback?(complete, false)
+        animationView?.play(completion: { [weak self] (complete) in
+            self?.complete(complete, callback)
         })
     }
     
