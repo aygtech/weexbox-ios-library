@@ -10,13 +10,17 @@ import Foundation
 import Lottie
 
 class LottieComponent: LottieComponentOC {
+    
+    static let eventNameEnd = "end"
 
     var animationView: LOTAnimationView?
+    var isSendEnd = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadSource(attributes)
+        applyProperties(attributes)
     }
     
     override func updateAttributes(_ attributes: [AnyHashable : Any] = [:]) {
@@ -26,6 +30,15 @@ class LottieComponent: LottieComponentOC {
             applyProperties(self.attributes)
         } else {
             applyProperties(attributes)
+        }
+    }
+    
+    override func addEvent(_ eventName: String) {
+        switch eventName {
+        case LottieComponent.eventNameEnd:
+            isSendEnd = true
+        default:
+            break
         }
     }
     
@@ -41,41 +54,40 @@ class LottieComponent: LottieComponentOC {
     }
     
     func replaceAnimationView(next: LOTAnimationView) {
-        var contentMode = UIView.ContentMode.scaleAspectFit
-        if (animationView != nil) {
-            contentMode = animationView!.contentMode
-            animationView?.removeFromSuperview()
-        }
+        animationView?.removeFromSuperview()
         animationView = next
         view.addSubview(next)
         animationView?.frame = view.frame
-        animationView?.contentMode = contentMode
-        applyProperties(attributes)
     }
     
     func applyProperties(_ attributes: [AnyHashable : Any]) {
-        if let progress = attributes["progress"] {
-            animationView?.animationProgress = WXConvert.cgFloat(progress)
-        }
         if let speed = attributes["speed"] {
             animationView?.animationSpeed = WXConvert.cgFloat(speed)
         }
         if let loop = attributes["loop"] {
             animationView?.loopAnimation = WXConvert.bool(loop)
         }
-        if let resizeMode = attributes["resizeMode"] {
-            var contentMode = UIView.ContentMode.scaleAspectFit
-            switch WXConvert.nsString(resizeMode) {
-            case "cover":
-                contentMode = .scaleAspectFill
-            case "contain":
-                contentMode = .scaleAspectFit
-            case "center":
-                contentMode = .center
-            default:
-                break
-            }
-            animationView?.contentMode = contentMode
+        var contentMode: UIView.ContentMode?
+        switch WXConvert.nsString(attributes["resizeMode"]) {
+        case "cover":
+            contentMode = .scaleAspectFill
+        case "contain":
+            contentMode = .scaleAspectFit
+        case "center":
+            contentMode = .center
+        default:
+            break
+        }
+        if contentMode != nil {
+            animationView?.contentMode = contentMode!
+        }
+    }
+    
+    func sendEnd(complete: Bool) {
+        if isSendEnd {
+            var result = Result()
+            result.data["complete"] = complete
+            fireEvent(LottieComponent.eventNameEnd, params: result.toJsResult())
         }
     }
     
@@ -83,22 +95,20 @@ class LottieComponent: LottieComponentOC {
         return animationView?.isAnimationPlaying ?? false
     }
     
-    @objc func play(fromProgress: Any, toProgress: Any, callback: WXKeepAliveCallback?) {
-        animationView?.play(fromProgress: WXConvert.cgFloat(fromProgress), toProgress: WXConvert.cgFloat(toProgress), withCompletion: { (complete) in
-            callback?(complete, false)
+    @objc func play(fromProgress: Any, toProgress: Any) {
+        animationView?.play(fromProgress: WXConvert.cgFloat(fromProgress), toProgress: WXConvert.cgFloat(toProgress), withCompletion: { [weak self] (complete) in
+            self?.sendEnd(complete: complete)
         })
     }
     
-    @objc func play(fromFrame: Any, toFrame: Any, callback: WXKeepAliveCallback?) {
-        animationView?.play(fromFrame: NSNumber(value: WXConvert.nsInteger(fromFrame)), toFrame: NSNumber(value: WXConvert.nsInteger(toFrame)), withCompletion: { (complete) in
-            callback?(complete, false)
+    @objc func play(fromFrame: Any, toFrame: Any) {
+        animationView?.play(fromFrame: NSNumber(value: WXConvert.nsInteger(fromFrame)), toFrame: NSNumber(value: WXConvert.nsInteger(toFrame)), withCompletion: { [weak self] (complete) in
+            self?.sendEnd(complete: complete)
         })
     }
     
-    @objc func play(_ callback: WXKeepAliveCallback?) {
-        animationView?.play(completion: { (complete) in
-            callback?(complete, false)
-        })
+    @objc func play() {
+        play(fromProgress: 0, toProgress: 1)
     }
     
     @objc func pause() {
