@@ -12,9 +12,9 @@ import Async
 class ModalModule: ModalModuleOC {
     
     // 显示菊花
-   @objc func showLoading(_ message: String?) {
+   @objc func showLoading(_ message: Any?) {
         Async.main {
-            HUD.showLoading(view: self.getVC().view, message: message)
+            HUD.showLoading(view: self.getVC().view, message: WXConvert.nsString(message))
         }
     }
     
