@@ -10,7 +10,7 @@ import Foundation
 import Lottie
 
 class LottieComponent: LottieComponentOC {
-
+    
     var animationView: LOTAnimationView?
     
     override func viewDidLoad() {
@@ -30,6 +30,7 @@ class LottieComponent: LottieComponentOC {
         }
     }
     
+    @discardableResult
     func loadSource(_ attributes: [AnyHashable : Any]) -> Bool {
         if let sourceJson = attributes["sourceJson"] as? [AnyHashable : Any] {
             replaceAnimationView(next: LOTAnimationView(json: sourceJson))
@@ -45,7 +46,7 @@ class LottieComponent: LottieComponentOC {
         animationView?.removeFromSuperview()
         animationView = next
         view.addSubview(next)
-        animationView?.frame = view.frame
+        animationView?.frame = view.bounds
     }
     
     func applyProperties(_ attributes: [AnyHashable : Any]) {
@@ -69,7 +70,7 @@ class LottieComponent: LottieComponentOC {
         if contentMode != nil {
             animationView?.contentMode = contentMode!
         }
-
+        
     }
     
     func complete(_ complete: Bool, _ callback: WXKeepAliveCallback?) {
