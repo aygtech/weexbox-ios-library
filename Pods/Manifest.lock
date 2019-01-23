@@ -1,7 +1,10 @@
 PODS:
-  - Alamofire (4.8.0)
+  - Alamofire (4.8.1)
   - Alamofire-Synchronous (4.0.0):
     - Alamofire (~> 4.0)
+  - Apollo (0.9.5):
+    - Apollo/Core (= 0.9.5)
+  - Apollo/Core (0.9.5)
   - AsyncSwift (2.0.4)
   - BindingX (1.0.3):
     - WeexPluginLoader
@@ -10,7 +13,7 @@ PODS:
     - Charts/Core (= 3.2.1)
   - Charts/Core (3.2.1)
   - HandyJSON (4.2.1)
-  - Hue (3.0.1)
+  - Hue (4.0.0)
   - LBXScan/LBXNative (2.3):
     - LBXScan/Types (~> 2.2)
   - LBXScan/Types (2.3)
@@ -48,6 +51,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - Alamofire-Synchronous
+  - Apollo
   - AsyncSwift
   - BindingX
   - Charts
@@ -74,6 +78,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Alamofire-Synchronous
+    - Apollo
     - AsyncSwift
     - BindingX
     - Charts
@@ -99,13 +104,14 @@ SPEC REPOS:
     - Zip
 
 SPEC CHECKSUMS:
-  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   Alamofire-Synchronous: eedf1e6e961c3795a63c74990b3f7d9fbfac7e50
+  Apollo: 19caf3246d292bbb69ecad1bd098661f78222aba
   AsyncSwift: 65775a7b32e740609b24969ece3de58723b9dc3e
   BindingX: b3c6c1c5dcd8e50277cfc5daad09d7010c227524
   Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
   HandyJSON: d0c5fc80204f29056d59d3e5c4587fa0b16b60a8
-  Hue: 93e852fa6211ab35922ad8c293f51c43d6c79eb2
+  Hue: afe18b4e819e2848e7d2d5b4b33f4d3f88dd921b
   LBXScan: e51449f0832d1fe17da632af0d22adeb3cfa3543
   lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
@@ -125,6 +131,6 @@ SPEC CHECKSUMS:
   XFAssistiveTouch_WeexBox: 50ee133d7e5a1717907f2518b8415d56d39c65fe
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 32a9d8fcb16d2dce2888516a6127e6d2b3ae20b3
+PODFILE CHECKSUM: b020ad72632c7cd8993a6919b9a73b5f2019bab4
 
 COCOAPODS: 1.6.0.beta.2

@@ -106,4 +106,8 @@ pod 'lottie-ios'
 # An iOS library to natively render After Effects vector animations
 # https://github.com/airbnb/lottie-ios
 
+pod 'Apollo'
+# A strongly-typed, caching GraphQL client for iOS, written in Swift
+# https://github.com/apollographql/apollo-ios
+
 end
