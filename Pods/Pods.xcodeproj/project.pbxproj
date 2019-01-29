@@ -337,6 +337,7 @@
 		360BE10685FAB54D31CD7AA0DEC25248 /* RLMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 972DB98EE0730020B23AC3080500D86A /* RLMConstants.m */; settings = {COMPILER_FLAGS = "-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@\"3.13.1\"' -D__ASSERTMACROS__ -DREALM_ENABLE_SYNC -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		3625697F6EF24FEA5A2FDF50AF8E9CEE /* WXValidateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = F21F78EE46B4B30A3B12212FE7396F23 /* WXValidateProtocol.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		363498563A7F0D0F94E350553AB576BD /* WXCSSTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = BB1CBEEF0D6409A25CE798161480F12C /* WXCSSTypes.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		366C07844AEF047D4FDD7F4F9CD6C03D /* UIColor+Hue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D953A0BA8785BB96BF71161AE5A0E /* UIColor+Hue.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		367ADD54CC255C40CEC31395B035F551 /* WXProfilerDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2D339DB9FDD485EE76C85A4A742A78 /* WXProfilerDomain.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		374A19F436A79D4626320C012D9BE20F /* NSBundle+TZImagePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F1DA3A123167FDFAB49D8A452757BF7 /* NSBundle+TZImagePicker.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		37A9E003169F679181DE002A43AA57EB /* WXURLRewriteDefaultImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F7E1D574360CD13C85A5601BFC21780 /* WXURLRewriteDefaultImpl.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -888,7 +889,7 @@
 		993662C9C00238AC56D53E25BE210B78 /* render_action_trigger_vsync.h in Headers */ = {isa = PBXBuildFile; fileRef = BD037ED02BE8A67A04156091E859CF6D /* render_action_trigger_vsync.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		993A6E74ABBA6B9D353AECD845EA7F76 /* WXWebGLDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = C83EC611E1CA12BF032A221F2C747C5C /* WXWebGLDomain.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		99B4C94B837CF10E829DDC6CCEF14F2B /* rax_parser_builder.cc in Sources */ = {isa = PBXBuildFile; fileRef = A4D9807C26F684A4F287E1556D2261E6 /* rax_parser_builder.cc */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		9A2050EF7BEBC2F2DEE502DE550FCB1C /* Hue-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BDC3788061F4E6BC3EDE5E2162928F4E /* Hue-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9A2050EF7BEBC2F2DEE502DE550FCB1C /* Hue-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D4315740B1E1CB930B9EFF78778D98F8 /* Hue-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		9A4401509FED90A021F47E1B27802A47 /* LOTAnimationCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C76903D68B3532711969B381EE4EB9 /* LOTAnimationCache.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		9ADE88F7CABEA39DD3F6326FF59FEEF6 /* RLMResults.h in Headers */ = {isa = PBXBuildFile; fileRef = 04DFB11EFF14AE690633044A4448E146 /* RLMResults.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		9B1A52EB6DCA0E64B28BF358E262F12D /* LegendEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3738D782D546F70F525744EA7BBDBA /* LegendEntry.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -930,7 +931,6 @@
 		A11FEB878476053C2CA2DD303F5BF4B4 /* RLMSchema.h in Headers */ = {isa = PBXBuildFile; fileRef = D24599404949C05A050BC402D0A6A92B /* RLMSchema.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A13773469ECBE5AEAADFB72329398139 /* WXApplicationCacheTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 05C9858E264F4CAA5FD7619857391D7F /* WXApplicationCacheTypes.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A15038710B79846807E8C5F222451363 /* LOTPolygonAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 431FFF7CA80952E306BFAB368BDBD64A /* LOTPolygonAnimator.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		A15D32AE44127BD372FFCA308B2956A9 /* UIImage+Hue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7F0DEB41934B92482610E70C729AFD /* UIImage+Hue.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A1B2CA7C84779D8A96058C803B5A0D74 /* WXTextInputComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 132E22BD206546B362C7403F09188E56 /* WXTextInputComponent.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A1D657B950F82FB27A947251C7B2CF22 /* XShapeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3159A03B8E72C0DFA3981D55F9282677 /* XShapeRenderer.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A1F55FB74B8DD67494F88E517D0CA3D0 /* ConstraintConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17998B71502A60A0345C82D75D068D1 /* ConstraintConfig.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -952,13 +952,14 @@
 		A56320B4A5595F944F291BC82AF98A84 /* LBXScanNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 38717F5B621690C196C6A6D1D3B87D39 /* LBXScanNative.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A57D6730CE42429AE75A3B39958B6F3D /* RLMSyncUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7DBBF1B85B4C37030CFB89950A66FD0 /* RLMSyncUtil.mm */; settings = {COMPILER_FLAGS = "-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@\"3.13.1\"' -D__ASSERTMACROS__ -DREALM_ENABLE_SYNC -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A5B79E689384854785446DF5DF97FBEB /* WXMemoryTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 52555B08E4149560E9CCBEC35AA24416 /* WXMemoryTypes.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		A5D0F1E19813976C569FD30E9C7138F1 /* Hue-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F128E763F46F37C77F503F9ECA0959A /* Hue-dummy.m */; };
+		A5D0F1E19813976C569FD30E9C7138F1 /* Hue-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECBE45B25E0979F3EEADFB1E864E085 /* Hue-dummy.m */; };
 		A5FACF175CA823453EB0E1F9CD4F34A5 /* rax_source_locator.cc in Sources */ = {isa = PBXBuildFile; fileRef = 48C557143AC719720426B9EBBCB51F3D /* rax_source_locator.cc */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A6015472C674D46B8B4E745499E77466 /* SonicResourceLoadOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1F976C0C3B3641C35D4F1BB750BD5B /* SonicResourceLoadOperation.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A682764C7930F15D95E488EF22E8B115 /* WXPonyDebugger.h in Headers */ = {isa = PBXBuildFile; fileRef = 23DBC0CB819A7F7A30F4924D99E06F59 /* WXPonyDebugger.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A694154DDF741E5DF52E36DCCBB60C3A /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A372208351FB0E9420D278131498F15D /* UIImageView+WebCache.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A6B0C1A21E288740ECD0FBF7D86AAB28 /* MBProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8131D78FFB5F37F0BF691E99AB6B5FD0 /* MBProgressHUD-dummy.m */; };
 		A6C8848C6B79B2D544CB3A20A46883A3 /* class_factory.cc in Sources */ = {isa = PBXBuildFile; fileRef = 783C86EA5D8763695F52020FAEC71C78 /* class_factory.cc */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A6D0B3AC6A3B90B29C4F86C5359B2232 /* UIImage+Hue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9590652B79A794C87918E7BB24EDF2 /* UIImage+Hue.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A6FFED305C0313F308FA262116C6E281 /* render_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CD325E469457AD003749023174503 /* render_text.cpp */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A7063D946074ED4A2015096849A9A092 /* WXComponent+DataBinding.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8691023ADC3D6892D9ED3848762D8227 /* WXComponent+DataBinding.mm */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A70883B851CB1DFC53F3795E81BC01A1 /* LOTValueCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B01280D431A83F85618FE887EAB211 /* LOTValueCallback.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -1020,7 +1021,6 @@
 		B091B804C35A80BF3D2848AEFFF9EDE3 /* RLMSyncPermissionResults.mm in Sources */ = {isa = PBXBuildFile; fileRef = 95F4BBD801DAFE9683A1C33E5FD2EFF6 /* RLMSyncPermissionResults.mm */; settings = {COMPILER_FLAGS = "-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@\"3.13.1\"' -D__ASSERTMACROS__ -DREALM_ENABLE_SYNC -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B0A4F9CA205E1A89642EEE56BFCDAF90 /* WXDomainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A73ADEC8B3386ABE5FEA71DE2A8CCFA /* WXDomainController.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B0B0C6111297DB307ADB71ED7F28EAD1 /* HandyJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 511EA080E2062FCA91B596464034EDE9 /* HandyJSON.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		B0C5978C30E7C5AED376ADC41FD1501F /* UIColor+Hue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D316DC5B3074E13D9E2FDD7CD9EFDF /* UIColor+Hue.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B0FB6EEEA8A20775E5A2AA346FD34EAD /* LOTValueCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = B6F30557E9AC55A02355F2CB10181D5C /* LOTValueCallback.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B1110F0584A6CFDDA90DFB6DE1A95BAE /* WXDevToolType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEBE8E96F34CDF93EDF460AE1E556F2 /* WXDevToolType.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B125BEBB126D4BB6C0E1C170B269A572 /* WXAComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 46B4499AB175EB8E4CB92ED831ECF36B /* WXAComponent.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -1911,7 +1911,6 @@
 		22F1811CF4DA284177183B8C5316663D /* ConstraintView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintView+Extensions.swift"; path = "Source/ConstraintView+Extensions.swift"; sourceTree = "<group>"; };
 		231DBB192A03DAD1C2922E2C2446B8AE /* LOTLayerContainer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTLayerContainer.h; path = "lottie-ios/Classes/AnimatableLayers/LOTLayerContainer.h"; sourceTree = "<group>"; };
 		2362B5F97F1F0BAC6830D6B18AD56ED8 /* Zip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Zip.xcconfig; sourceTree = "<group>"; };
-		236FDBD4A60B049BB5886C0DDDF62D59 /* Hue-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Hue-prefix.pch"; sourceTree = "<group>"; };
 		239518850B22C2100B8777B71FEFA37D /* AsyncSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AsyncSwift-dummy.m"; sourceTree = "<group>"; };
 		23D6B207B4D02DDF196F0C2CC5836F13 /* tokenizer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tokenizer.h; path = weex_core/Source/core/data_render/tokenizer.h; sourceTree = "<group>"; };
 		23DBC0CB819A7F7A30F4924D99E06F59 /* WXPonyDebugger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXPonyDebugger.h; path = sdk/WXDevTool/Source/PonyDebugger/WXPonyDebugger.h; sourceTree = "<group>"; };
@@ -1972,12 +1971,14 @@
 		2D191BF99A392F97D06C87997D2573A5 /* LegendRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LegendRenderer.swift; path = Source/Charts/Renderers/LegendRenderer.swift; sourceTree = "<group>"; };
 		2D28BBDF585B6F8560AD16E47B83D4B0 /* LOTAnimatorNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTAnimatorNode.m; path = "lottie-ios/Classes/RenderSystem/LOTAnimatorNode.m"; sourceTree = "<group>"; };
 		2D5D205C14B10DB17DE96E5D5BB2D1E2 /* EBJSEase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EBJSEase.h; path = core/ios/BindingX/EBJSEase.h; sourceTree = "<group>"; };
+		2D6A4DF80ED1F8B53D0776F7DBFF5C25 /* Hue.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Hue.modulemap; sourceTree = "<group>"; };
 		2DC404F40C1B277668491987824E3985 /* binding_callback_thread_observer.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = binding_callback_thread_observer.cpp; path = Realm/ObjectStore/src/binding_callback_thread_observer.cpp; sourceTree = "<group>"; };
 		2E3330870F14DBCD076197DD1C90AFF1 /* LOTAsset.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTAsset.m; path = "lottie-ios/Classes/Models/LOTAsset.m"; sourceTree = "<group>"; };
 		2E378351DBD36B82FD84399BBCE9B41E /* rax_parser_scope.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = rax_parser_scope.h; path = weex_core/Source/core/data_render/rax_parser_scope.h; sourceTree = "<group>"; };
 		2E3B7B20834E82CF29D50D2895A63F73 /* vcomponent.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = vcomponent.cc; path = weex_core/Source/core/data_render/vnode/vcomponent.cc; sourceTree = "<group>"; };
 		2E6A82B895E933C2A4D941607F4BB02A /* Transformer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Transformer.swift; path = Source/Charts/Utils/Transformer.swift; sourceTree = "<group>"; };
 		2E966CBEC9F844FBAC6E3632AE0F7668 /* SonicConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SonicConfiguration.m; path = "sonic-iOS/Sonic/Engine/SonicConfiguration.m"; sourceTree = "<group>"; };
+		2ECBE45B25E0979F3EEADFB1E864E085 /* Hue-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Hue-dummy.m"; sourceTree = "<group>"; };
 		2F11DD7FE5D01D98C0EB61F270D0B43F /* RLMRealmConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMRealmConfiguration.h; path = include/RLMRealmConfiguration.h; sourceTree = "<group>"; };
 		2F123FB9A0BF84E237C934AB52FE8D20 /* RLMArray_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMArray_Private.h; path = include/RLMArray_Private.h; sourceTree = "<group>"; };
 		2F4406556F3640485BC08BFB13B5AC0B /* UIImage+ForceDecode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ForceDecode.m"; path = "SDWebImage/UIImage+ForceDecode.m"; sourceTree = "<group>"; };
@@ -2075,6 +2076,7 @@
 		3DEE3CEDC1C7236160C78BAD16635842 /* transact_log_handler.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = transact_log_handler.cpp; path = Realm/ObjectStore/src/impl/transact_log_handler.cpp; sourceTree = "<group>"; };
 		3E041B6F2BD232E398CD0114ACE5EC2D /* Description.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Description.swift; path = Source/Charts/Components/Description.swift; sourceTree = "<group>"; };
 		3E396CF72C08AFE5010A62439DB2CC6B /* WXLocaleModule.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXLocaleModule.m; path = ios/sdk/WeexSDK/Sources/Module/WXLocaleModule.m; sourceTree = "<group>"; };
+		3E3D953A0BA8785BB96BF71161AE5A0E /* UIColor+Hue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Hue.swift"; path = "Source/iOS+tvOS/UIColor+Hue.swift"; sourceTree = "<group>"; };
 		3E57F6B632CDA8F969E42ABDE4882475 /* LOTRoundedRectAnimator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTRoundedRectAnimator.m; path = "lottie-ios/Classes/RenderSystem/AnimatorNodes/LOTRoundedRectAnimator.m"; sourceTree = "<group>"; };
 		3E6C58B2B7326BCDE16F5F8FA5564597 /* handle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = handle.h; path = weex_core/Source/core/data_render/handle.h; sourceTree = "<group>"; };
 		3E8B547B836A9DA62B8946E8F17E0838 /* WXTextInputComponent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXTextInputComponent.m; path = ios/sdk/WeexSDK/Sources/Component/WXTextInputComponent.m; sourceTree = "<group>"; };
@@ -2082,7 +2084,6 @@
 		3EE20A9B5898F72FD65C3F7217A1560C /* common.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = common.h; path = weex_core/Source/base/common.h; sourceTree = "<group>"; };
 		3FDDF6E5C616A85DA74C4AD45BF4DA40 /* SonicEventStatistics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SonicEventStatistics.h; path = "sonic-iOS/Sonic/Statistics/SonicEventStatistics.h"; sourceTree = "<group>"; };
 		40098580DB64584D476436F17B01755F /* IValueFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IValueFormatter.swift; path = Source/Charts/Formatters/IValueFormatter.swift; sourceTree = "<group>"; };
-		401EAB415D26D49977EE1259AA345017 /* Hue.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Hue.xcconfig; sourceTree = "<group>"; };
 		406C0F8F7F34B446272DCCBFC6F33881 /* script_bridge.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = script_bridge.h; path = weex_core/Source/core/bridge/script_bridge.h; sourceTree = "<group>"; };
 		409833FF9E1DC5C080958FF429A476BC /* WXCallJSMethod.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXCallJSMethod.h; path = ios/sdk/WeexSDK/Sources/Bridge/WXCallJSMethod.h; sourceTree = "<group>"; };
 		40F41E17AAEF2D6A8B1EEBCE53951C97 /* LOTColorInterpolator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTColorInterpolator.h; path = "lottie-ios/Classes/RenderSystem/InterpolatorNodes/LOTColorInterpolator.h"; sourceTree = "<group>"; };
@@ -2300,7 +2301,6 @@
 		68F7F8961C8F55A11ACBB8CE703C41DC /* LOTPathAnimator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTPathAnimator.h; path = "lottie-ios/Classes/RenderSystem/AnimatorNodes/LOTPathAnimator.h"; sourceTree = "<group>"; };
 		690AC009DCE8AF6F4C9519F0A030681E /* liblottie-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "liblottie-ios.a"; path = "liblottie-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		692BDE3E75BDEA83ECAE803DCF6A10CC /* WXRecycleListTemplateManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXRecycleListTemplateManager.h; path = ios/sdk/WeexSDK/Sources/Component/RecycleList/WXRecycleListTemplateManager.h; sourceTree = "<group>"; };
-		69A2C26C46DDCF3BFF7E76063336E821 /* Hue.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Hue.modulemap; sourceTree = "<group>"; };
 		69B55DDAC1F9A0298419CD5D73B02548 /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
 		6A6E1CEFAEC60A95DC53A11311007CB1 /* render_mask.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = render_mask.h; path = weex_core/Source/core/render/node/render_mask.h; sourceTree = "<group>"; };
 		6A93475D94A1B9EA4BFA2EA5C7B38B74 /* ILineScatterCandleRadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ILineScatterCandleRadarChartDataSet.swift; path = Source/Charts/Data/Interfaces/ILineScatterCandleRadarChartDataSet.swift; sourceTree = "<group>"; };
@@ -2325,7 +2325,6 @@
 		6ED534F1B7698728610053BF404C3957 /* WXWebSocketLoader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXWebSocketLoader.m; path = ios/sdk/WeexSDK/Sources/Loader/WXWebSocketLoader.m; sourceTree = "<group>"; };
 		6EEE88C9D88F149A276BD59AE086525B /* XFATItemView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XFATItemView.m; path = XFAssistiveTouch/XFATItemView.m; sourceTree = "<group>"; };
 		6F107B154FC498B8C3A22A0063FEF2D9 /* ConstraintMakerPriortizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerPriortizable.swift; path = Source/ConstraintMakerPriortizable.swift; sourceTree = "<group>"; };
-		6F128E763F46F37C77F503F9ECA0959A /* Hue-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Hue-dummy.m"; sourceTree = "<group>"; };
 		6F13C57C6BAD826EBA8134F81654AFC9 /* EBUtility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EBUtility.h; path = core/ios/BindingX/EBUtility.h; sourceTree = "<group>"; };
 		6F1C77827CDCBF66C83B26299A19CAEC /* WXStorageModule.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXStorageModule.m; path = ios/sdk/WeexSDK/Sources/Module/WXStorageModule.m; sourceTree = "<group>"; };
 		6F1DA3A123167FDFAB49D8A452757BF7 /* NSBundle+TZImagePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle+TZImagePicker.h"; path = "TZImagePickerController/TZImagePickerController/NSBundle+TZImagePicker.h"; sourceTree = "<group>"; };
@@ -2387,6 +2386,7 @@
 		7806F8F34AA977E050D608C100B94111 /* EBExpression.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EBExpression.h; path = core/ios/BindingX/EBExpression.h; sourceTree = "<group>"; };
 		783C86EA5D8763695F52020FAEC71C78 /* class_factory.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = class_factory.cc; path = weex_core/Source/core/data_render/class_factory.cc; sourceTree = "<group>"; };
 		78613F99582C004377CD9DEB4494F784 /* WXRecycleListUpdateManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXRecycleListUpdateManager.m; path = ios/sdk/WeexSDK/Sources/Component/RecycleList/WXRecycleListUpdateManager.m; sourceTree = "<group>"; };
+		787C51186E574CF7250A0FA46A873D83 /* Hue.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Hue.xcconfig; sourceTree = "<group>"; };
 		78898F901F6BCC0D1793DBF1AB66B1AB /* RLMMigration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMMigration.h; path = include/RLMMigration.h; sourceTree = "<group>"; };
 		788B44C37161881CBD7B276988E8819E /* LBXScanViewStyle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LBXScanViewStyle.m; path = LBXScan/UI/LBXScanViewStyle.m; sourceTree = "<group>"; };
 		789AC73754BA3FAD2DDDD42D1EAF64BB /* WXModuleFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXModuleFactory.h; path = ios/sdk/WeexSDK/Sources/Manager/WXModuleFactory.h; sourceTree = "<group>"; };
@@ -2538,7 +2538,6 @@
 		8E20406F2FDD004B1914DEECE1CA0B82 /* LOTHelpers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTHelpers.h; path = "lottie-ios/Classes/Extensions/LOTHelpers.h"; sourceTree = "<group>"; };
 		8E21FC9C88533BA010E74BE182BC7045 /* NSData+WXDebugger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+WXDebugger.h"; path = "sdk/WXDevTool/Source/PonyDebugger/NSData+WXDebugger.h"; sourceTree = "<group>"; };
 		8E6697BCE929665B644E756E5C780BD5 /* RTRootNavigationController_WeexBox-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RTRootNavigationController_WeexBox-prefix.pch"; sourceTree = "<group>"; };
-		8E7F0DEB41934B92482610E70C729AFD /* UIImage+Hue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+Hue.swift"; path = "Source/iOS/UIImage+Hue.swift"; sourceTree = "<group>"; };
 		8E8A0530E826DEEB15D2CD99BD4C97B8 /* render_action_remove_element.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = render_action_remove_element.h; path = weex_core/Source/core/render/action/render_action_remove_element.h; sourceTree = "<group>"; };
 		8EA559E6B06F48FBBA78724EF47CFFD8 /* Alamofire-Synchronous.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Alamofire-Synchronous.modulemap"; sourceTree = "<group>"; };
 		8EA6BB51E221C85D7A39642039744759 /* LOTGradientFillRender.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTGradientFillRender.m; path = "lottie-ios/Classes/RenderSystem/RenderNodes/LOTGradientFillRender.m"; sourceTree = "<group>"; };
@@ -2637,6 +2636,7 @@
 		9DC5CC461D7F4632A6ED98521CF1AC88 /* rax_parser_builder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = rax_parser_builder.h; path = weex_core/Source/core/data_render/rax_parser_builder.h; sourceTree = "<group>"; };
 		9E085403E5CB22CC3BBB491BE7660224 /* WXNetworkDomain.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXNetworkDomain.m; path = sdk/WXDevTool/Source/DerivedSources/WXNetworkDomain.m; sourceTree = "<group>"; };
 		9E34431D03D32C35C33EE14996557272 /* PieChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieChartRenderer.swift; path = Source/Charts/Renderers/PieChartRenderer.swift; sourceTree = "<group>"; };
+		9E9590652B79A794C87918E7BB24EDF2 /* UIImage+Hue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+Hue.swift"; path = "Source/iOS+tvOS/UIImage+Hue.swift"; sourceTree = "<group>"; };
 		9EDEAA789C949E15260DA3C7BF5EBEDD /* TZProgressView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TZProgressView.h; path = TZImagePickerController/TZImagePickerController/TZProgressView.h; sourceTree = "<group>"; };
 		9F1AAFE824169D0CB2262D3F70C641B8 /* WXAppConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXAppConfiguration.m; path = ios/sdk/WeexSDK/Sources/Utility/WXAppConfiguration.m; sourceTree = "<group>"; };
 		9F5B9A379B6B0880F7B127D8265BB5E7 /* BarChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarChartDataProvider.swift; path = Source/Charts/Interfaces/BarChartDataProvider.swift; sourceTree = "<group>"; };
@@ -2796,6 +2796,7 @@
 		B90677874F6CD703089BF8A57F192D98 /* SDWebImage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SDWebImage-dummy.m"; sourceTree = "<group>"; };
 		B91BDEC028E734459993D39B74AB97B3 /* Zip.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Zip.modulemap; sourceTree = "<group>"; };
 		B92C18873F774D294456156EFA3E9ECB /* Sonic.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Sonic.h; path = "sonic-iOS/Sonic/Sonic.h"; sourceTree = "<group>"; };
+		B94E8FB771A09770004CB192EBD2A248 /* Hue-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Hue-prefix.pch"; sourceTree = "<group>"; };
 		B9B21759AAA5A081A76B232881FF3A89 /* LineChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineChartData.swift; path = Source/Charts/Data/Implementations/Standard/LineChartData.swift; sourceTree = "<group>"; };
 		B9CD2F3BC44C656BBFF66B724A0A85DE /* WXInvocationConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXInvocationConfig.m; path = ios/sdk/WeexSDK/Sources/Manager/WXInvocationConfig.m; sourceTree = "<group>"; };
 		B9D4DE9B64315D016BA5D53D73BAD679 /* WXLength.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXLength.h; path = ios/sdk/WeexSDK/Sources/Utility/WXLength.h; sourceTree = "<group>"; };
@@ -2821,7 +2822,6 @@
 		BD34A9FFAC5B2B305B517A221BA284BF /* WXJSASTParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXJSASTParser.h; path = ios/sdk/WeexSDK/Sources/Component/RecycleList/WXJSASTParser.h; sourceTree = "<group>"; };
 		BD8B2758E753770971FE2838D9C382CB /* WXRecycleListTemplateManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXRecycleListTemplateManager.m; path = ios/sdk/WeexSDK/Sources/Component/RecycleList/WXRecycleListTemplateManager.m; sourceTree = "<group>"; };
 		BD96F23D21316A714F3894ED62943D78 /* WXTracingManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXTracingManager.h; path = ios/sdk/WeexSDK/Sources/Manager/WXTracingManager.h; sourceTree = "<group>"; };
-		BDC3788061F4E6BC3EDE5E2162928F4E /* Hue-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Hue-umbrella.h"; sourceTree = "<group>"; };
 		BDC8E27527394B45522D5A5388D1283A /* vm_monitor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = vm_monitor.h; path = weex_core/Source/core/data_render/monitor/vm_monitor.h; sourceTree = "<group>"; };
 		BDE59B8509E98220A9AC6A721F2D4C82 /* WXGlobalEventModule.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXGlobalEventModule.h; path = ios/sdk/WeexSDK/Sources/Module/WXGlobalEventModule.h; sourceTree = "<group>"; };
 		BDFAB4CB6AE472C4DA6438AEA750F302 /* IBarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IBarChartDataSet.swift; path = Source/Charts/Data/Interfaces/IBarChartDataSet.swift; sourceTree = "<group>"; };
@@ -2952,9 +2952,9 @@
 		D33C65CCF488347B2D465489CA4438B9 /* libWeexSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libWeexSDK.a; path = libWeexSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3ADD4B79B8917E511E3028D23F17A5C /* RLMSyncUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMSyncUser.h; path = include/RLMSyncUser.h; sourceTree = "<group>"; };
 		D3BA883BA3DF0F0A2299B1DD137B9C5B /* EBGyroEuler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EBGyroEuler.m; path = core/ios/BindingX/EBGyroEuler.m; sourceTree = "<group>"; };
-		D3D316DC5B3074E13D9E2FDD7CD9EFDF /* UIColor+Hue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Hue.swift"; path = "Source/iOS/UIColor+Hue.swift"; sourceTree = "<group>"; };
 		D403F3AB54D36ECAAFF437756BD93991 /* render_manager.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = render_manager.cpp; path = weex_core/Source/core/render/manager/render_manager.cpp; sourceTree = "<group>"; };
 		D40E7E38EA341E896DAD28711058783B /* SwiftEventBus.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftEventBus.xcconfig; sourceTree = "<group>"; };
+		D4315740B1E1CB930B9EFF78778D98F8 /* Hue-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Hue-umbrella.h"; sourceTree = "<group>"; };
 		D43372A78161A6BEABF2CDCB4FD20D7D /* Debugging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debugging.swift; path = Source/Debugging.swift; sourceTree = "<group>"; };
 		D4366F38592EAEE18EB215A9F12A5A5B /* op_code.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = op_code.cc; path = weex_core/Source/core/data_render/op_code.cc; sourceTree = "<group>"; };
 		D43E4A1DEB4050D92596789ACC25EC5A /* WXTracingManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXTracingManager.m; path = ios/sdk/WeexSDK/Sources/Manager/WXTracingManager.m; sourceTree = "<group>"; };
@@ -3453,7 +3453,7 @@
 				2AE49321C382D2148180ADEB8EFFA082 /* BindingX */,
 				671B7F9BBAE991721DB2DDAA11777141 /* Charts */,
 				BD366D2F374AEF5C0020CA27C6D09F32 /* HandyJSON */,
-				8DEFD4EF81BC13086BF19DEC26F08A0A /* Hue */,
+				64EA757649D4DBF80AFC610EA816A414 /* Hue */,
 				17E9D5D9452ABB6048D2AA88EAB80FBC /* LBXScan */,
 				3E744DA8B81AA93D415B89A95578078B /* lottie-ios */,
 				66864B57F8C179B06D7091D724B2EA32 /* MBProgressHUD */,
@@ -4315,6 +4315,17 @@
 			path = AsyncSwift;
 			sourceTree = "<group>";
 		};
+		64EA757649D4DBF80AFC610EA816A414 /* Hue */ = {
+			isa = PBXGroup;
+			children = (
+				3E3D953A0BA8785BB96BF71161AE5A0E /* UIColor+Hue.swift */,
+				9E9590652B79A794C87918E7BB24EDF2 /* UIImage+Hue.swift */,
+				C326F8BFDCEFC4B555F367FFA285BB9D /* Support Files */,
+			);
+			name = Hue;
+			path = Hue;
+			sourceTree = "<group>";
+		};
 		66864B57F8C179B06D7091D724B2EA32 /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -4796,17 +4807,6 @@
 			path = WXDevtool;
 			sourceTree = "<group>";
 		};
-		8DEFD4EF81BC13086BF19DEC26F08A0A /* Hue */ = {
-			isa = PBXGroup;
-			children = (
-				D3D316DC5B3074E13D9E2FDD7CD9EFDF /* UIColor+Hue.swift */,
-				8E7F0DEB41934B92482610E70C729AFD /* UIImage+Hue.swift */,
-				9F7697F79F32850860D840FFA8BE27B6 /* Support Files */,
-			);
-			name = Hue;
-			path = Hue;
-			sourceTree = "<group>";
-		};
 		8E95F189B7197088FC581C44EAE13253 /* Alamofire */ = {
 			isa = PBXGroup;
 			children = (
@@ -5005,19 +5005,6 @@
 				494B1B472E291FABC7856141C08DABBF /* UIView+WebCacheOperation.m */,
 			);
 			name = Core;
-			sourceTree = "<group>";
-		};
-		9F7697F79F32850860D840FFA8BE27B6 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				69A2C26C46DDCF3BFF7E76063336E821 /* Hue.modulemap */,
-				401EAB415D26D49977EE1259AA345017 /* Hue.xcconfig */,
-				6F128E763F46F37C77F503F9ECA0959A /* Hue-dummy.m */,
-				236FDBD4A60B049BB5886C0DDDF62D59 /* Hue-prefix.pch */,
-				BDC3788061F4E6BC3EDE5E2162928F4E /* Hue-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Hue";
 			sourceTree = "<group>";
 		};
 		9F8F9620D2723E267F080C8147773988 /* Support Files */ = {
@@ -5392,6 +5379,19 @@
 				AC3948BB16E2677E4963E9174A604F0A /* UIViewController+RTRootNavigationController.m */,
 			);
 			name = Core;
+			sourceTree = "<group>";
+		};
+		C326F8BFDCEFC4B555F367FFA285BB9D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2D6A4DF80ED1F8B53D0776F7DBFF5C25 /* Hue.modulemap */,
+				787C51186E574CF7250A0FA46A873D83 /* Hue.xcconfig */,
+				2ECBE45B25E0979F3EEADFB1E864E085 /* Hue-dummy.m */,
+				B94E8FB771A09770004CB192EBD2A248 /* Hue-prefix.pch */,
+				D4315740B1E1CB930B9EFF78778D98F8 /* Hue-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Hue";
 			sourceTree = "<group>";
 		};
 		D5A0FE7646005D82DDD04EBF71DE1000 /* VasSonic */ = {
@@ -7851,8 +7851,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5D0F1E19813976C569FD30E9C7138F1 /* Hue-dummy.m in Sources */,
-				B0C5978C30E7C5AED376ADC41FD1501F /* UIColor+Hue.swift in Sources */,
-				A15D32AE44127BD372FFCA308B2956A9 /* UIImage+Hue.swift in Sources */,
+				366C07844AEF047D4FDD7F4F9CD6C03D /* UIColor+Hue.swift in Sources */,
+				A6D0B3AC6A3B90B29C4F86C5359B2232 /* UIImage+Hue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8573,6 +8573,32 @@
 			};
 			name = Debug;
 		};
+		38BEF235DBF87E34D5A9067AB7756BC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 787C51186E574CF7250A0FA46A873D83 /* Hue.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/Hue/Hue-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MODULEMAP_FILE = Headers/Public/Hue/Hue.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = Hue;
+				PRODUCT_NAME = Hue;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		3A00520B895B787F6E680C7B1455667B /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AE69892D33A33467FDC637EB8AAF8EB2 /* SocketRocket.xcconfig */;
@@ -9004,31 +9030,6 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
-		};
-		7C613623594B1B9C7F135654AE15F408 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 401EAB415D26D49977EE1259AA345017 /* Hue.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/Hue/Hue-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MODULEMAP_FILE = Headers/Public/Hue/Hue.modulemap;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = Hue;
-				PRODUCT_NAME = Hue;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
 		};
 		7E652F5C8CDA9A16570721B0503CF412 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -9514,32 +9515,6 @@
 			};
 			name = Release;
 		};
-		E2ACBA92E076D88554715FE068488A5C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 401EAB415D26D49977EE1259AA345017 /* Hue.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/Hue/Hue-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MODULEMAP_FILE = Headers/Public/Hue/Hue.modulemap;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = Hue;
-				PRODUCT_NAME = Hue;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		E3D38496E146C8212AF1203E6734FFD6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CF982AD1D13004B06D3E8329A14E9A41 /* RealmSwift.xcconfig */;
@@ -9668,6 +9643,31 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
+		};
+		F72DBBD65618BDAAC24642BC69A92CA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 787C51186E574CF7250A0FA46A873D83 /* Hue.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/Hue/Hue-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MODULEMAP_FILE = Headers/Public/Hue/Hue.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = Hue;
+				PRODUCT_NAME = Hue;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
 		};
 		F767420C4B7841B8DAF39B35FBE4ADCF /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -9907,8 +9907,8 @@
 		D778EB8243B71FDDFDD9F555846806A8 /* Build configuration list for PBXNativeTarget "Hue" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7C613623594B1B9C7F135654AE15F408 /* Debug */,
-				E2ACBA92E076D88554715FE068488A5C /* Release */,
+				F72DBBD65618BDAAC24642BC69A92CA2 /* Debug */,
+				38BEF235DBF87E34D5A9067AB7756BC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
