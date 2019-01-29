@@ -62,6 +62,7 @@
 		AC5CBC342133957F00A4FBCD /* LocationModule.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5CBC312133957F00A4FBCD /* LocationModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC5CBC352133957F00A4FBCD /* LocationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC322133957F00A4FBCD /* LocationModule.m */; };
 		AC5CBC362133957F00A4FBCD /* LocationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CBC332133957F00A4FBCD /* LocationModule.swift */; };
+		AC635546220028970094A5E6 /* Apollo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC635545220028970094A5E6 /* Apollo.swift */; };
 		AC7579992188563900919B7E /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7579982188563900919B7E /* HUD.swift */; };
 		AC9CE86E2133F2D5007EF7F2 /* WBScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE86D2133F2D5007EF7F2 /* WBScannerViewController.swift */; };
 		AC9CE87421340A59007EF7F2 /* WXScanPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CE87321340A59007EF7F2 /* WXScanPlugin.swift */; };
@@ -130,6 +131,7 @@
 		AC5CBC312133957F00A4FBCD /* LocationModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModule.h; sourceTree = "<group>"; };
 		AC5CBC322133957F00A4FBCD /* LocationModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModule.m; sourceTree = "<group>"; };
 		AC5CBC332133957F00A4FBCD /* LocationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModule.swift; sourceTree = "<group>"; };
+		AC635545220028970094A5E6 /* Apollo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apollo.swift; sourceTree = "<group>"; };
 		AC7579982188563900919B7E /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		AC9CE86D2133F2D5007EF7F2 /* WBScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBScannerViewController.swift; sourceTree = "<group>"; };
 		AC9CE87321340A59007EF7F2 /* WXScanPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXScanPlugin.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				AC5CBBF32127D87500A4FBCD /* Network.swift */,
+				AC635545220028970094A5E6 /* Apollo.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				AC5CBC07212BCBC400A4FBCD /* BaseModule.m in Sources */,
 				AC070F9C21354E2F00D4E314 /* WXRefreshPlugin.m in Sources */,
 				AC5CBC2F212FF49500A4FBCD /* EventModule.swift in Sources */,
+				AC635546220028970094A5E6 /* Apollo.swift in Sources */,
 				AC5CBBF6212A932B00A4FBCD /* UploadFile.swift in Sources */,
 				AC54343D2111D2DD005B7056 /* WBWeexViewController.swift in Sources */,
 				AC05975B21ED8EA300DF69AC /* BaseComponent.m in Sources */,
