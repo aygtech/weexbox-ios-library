@@ -39,7 +39,7 @@
 {
     if ([url hasPrefix:@"bundle://"]) {
         // 加载app内置图片
-        NSString *imageName = [url substringFromIndex:9];
+        NSString *imageName = [url lastPathComponent];
         UIImage *image = [UIImage imageNamed:imageName];
         completedBlock(image, nil, YES);
         return nil;
