@@ -37,12 +37,16 @@
 
 - (id<WXImageOperationProtocol>)downloadImageWithURL:(NSString *)url imageFrame:(CGRect)imageFrame userInfo:(NSDictionary *)userInfo completed:(void(^)(UIImage *image,  NSError *error, BOOL finished))completedBlock
 {
-    if ([url hasPrefix:@"bundle://"]) {
-        // 加载app内置图片
+    //从目录加载。
+    if([url containsString:@"/static/"]){
+        NSString *imageName = [url lastPathComponent];
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"weexbox-update/static/%@",imageName]];
+        completedBlock(image, nil, YES);
+    }
+    else{
         NSString *imageName = [url lastPathComponent];
         UIImage *image = [UIImage imageNamed:imageName];
         completedBlock(image, nil, YES);
-        return nil;
     }
     //从沙盒加载。
     else if([url hasPrefix:@"file://"]){
