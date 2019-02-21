@@ -8,7 +8,7 @@
 
 import Foundation
 import Async
-
+import AudioToolbox
 class ExternalModule: ExternalModuleOC {
     
     // 打开浏览器
@@ -41,6 +41,10 @@ class ExternalModule: ExternalModuleOC {
                 callback?(result.toJsResult(), false)
             })
         }
+    }
+    //震动
+    @objc func vibration(_ options: Dictionary<String, Any>){
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
     }
     
 }

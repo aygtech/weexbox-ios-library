@@ -15,6 +15,7 @@ WX_EXPORT_METHOD(@selector(openBrowser:))
 WX_EXPORT_METHOD(@selector(callPhone:))
 WX_EXPORT_METHOD(@selector(openCamera:callback:))
 WX_EXPORT_METHOD(@selector(openPhoto:callback:))
+WX_EXPORT_METHOD(@selector(vibration:))
 
 @end
 #pragma clang diagnostic pop
