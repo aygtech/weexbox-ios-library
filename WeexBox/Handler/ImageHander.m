@@ -39,20 +39,18 @@
 {
     if ([url hasPrefix:@"bundle://"]) {
         //从目录加载。
-        if([url containsString:@"/static/"]){
+        if([url containsString:@"/static/"]) {
             NSString *imageName = [url lastPathComponent];
-            UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"weexbox-update/static/%@",imageName]];
+            UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"weexbox-update/static/%@", imageName]];
             completedBlock(image, nil, YES);
-        }
-        else{
+        } else {
             NSString *imageName = [url lastPathComponent];
             UIImage *image = [UIImage imageNamed:imageName];
             completedBlock(image, nil, YES);
         }
-        return nil;
     }
     //从沙盒加载。
-    else if([url hasPrefix:@"file://"]){
+    else if([url hasPrefix:@"file://"]) {
         NSString *imagePath = [self getFullPathWithUrl:url];
         completedBlock([UIImage imageWithContentsOfFile:imagePath], nil, YES);
     }
