@@ -23,6 +23,7 @@ FOUNDATION_EXPORT const unsigned char WeexBoxVersionString[];
 #import <WeexBox/BaseModule.h>
 #import <WeexBox/ExternalModule.h>
 #import <WeexBox/ImageHander.h>
+#import <WeexBox/WebSocketHander.h>
 #import <WeexBox/EventModule.h>
 #import <WeexBox/LocationModule.h>
 #import <WeexBox/LottieComponent.h>

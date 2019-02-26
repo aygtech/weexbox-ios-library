@@ -58,6 +58,7 @@ import VasSonic
     
     private static func registerHandler() {
         WXSDKEngine.registerHandler(ImageHander(), with: WXImgLoaderProtocol.self)
+        WXSDKEngine.registerHandler(WebSocketHander(), with: WXWebSocketHandler.self)
     }
     
     private static func registerComponent() {
