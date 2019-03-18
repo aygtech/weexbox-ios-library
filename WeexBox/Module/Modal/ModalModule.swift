@@ -12,14 +12,14 @@ import Async
 class ModalModule: ModalModuleOC {
     
     // 显示菊花
-   @objc func showLoading(_ message: Any?) {
+    @objc func showLoading(_ message: Any?) {
         Async.main {
             HUD.showLoading(view: self.getVC().view, message: WXConvert.nsString(message))
         }
     }
     
     // 显示进度
-   @objc func showProgress(_ options: Dictionary<String, Any>) {
+    @objc func showProgress(_ options: Dictionary<String, Any>) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             HUD.showProgress(view: self.getVC().view, progress: Float(info.progress!) / 100, message: info.text)
@@ -27,14 +27,14 @@ class ModalModule: ModalModuleOC {
     }
     
     // 关闭菊花
-   @objc func dismiss() {
+    @objc func dismiss() {
         Async.main {
             HUD.dismiss(view: self.getVC().view)
         }
     }
     
     // 吐司
-   @objc func showToast(_ options: Dictionary<String, Any>) {
+    @objc func showToast(_ options: Dictionary<String, Any>) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             if info.text?.isEmpty == false {
@@ -44,25 +44,28 @@ class ModalModule: ModalModuleOC {
     }
     
     // 提示框
-   @objc func alert(_ options: Dictionary<String, String>, callback: WXModuleKeepAliveCallback?) {
+    @objc func alert(_ options: Dictionary<String, String>, callback: WXModuleKeepAliveCallback?) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             let alertController = self.getAlertController(info, okCallback: callback)
-            self.getVC().present(alertController, animated: true, completion: nil)
-        }
+            let isRoot = info.root ?? false
+            let currentVc = (isRoot == true) ? (UIApplication.shared.delegate?.window!?.rootViewController ?? self.getVC()) : self.getVC()
+            currentVc.present(alertController, animated: true, completion: nil)        }
     }
     
     // 确认框
-   @objc func confirm(_ options: Dictionary<String, String>, callback: WXModuleKeepAliveCallback?) {
+    @objc func confirm(_ options: Dictionary<String, String>, callback: WXModuleKeepAliveCallback?) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             let alertController = self.getAlertController(info, okCallback: callback, cancelCallback: callback)
-            self.getVC().present(alertController, animated: true, completion: nil)
+            let isRoot = info.root ?? false
+            let currentVc = (isRoot == true) ? (UIApplication.shared.delegate?.window!?.rootViewController ?? self.getVC()) : self.getVC()
+            currentVc.present(alertController, animated: true, completion: nil)
         }
     }
     
     // 输入框
-   @objc func prompt(_ options: Dictionary<String, Any>, callback: WXModuleKeepAliveCallback?) {
+    @objc func prompt(_ options: Dictionary<String, Any>, callback: WXModuleKeepAliveCallback?) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             let alertController = self.getAlertController(info, okCallback: callback, cancelCallback: callback)
@@ -70,7 +73,9 @@ class ModalModule: ModalModuleOC {
                 textField.placeholder = info.placeholder
                 textField.isSecureTextEntry = info.isSecure ?? false
             }
-            self.getVC().present(alertController, animated: true, completion: nil)
+            let isRoot = info.root ?? false
+            let currentVc = (isRoot == true) ? (UIApplication.shared.delegate?.window!?.rootViewController ?? self.getVC()) : self.getVC()
+            currentVc.present(alertController, animated: true, completion: nil)
         }
     }
     // 操作表
@@ -96,7 +101,9 @@ class ModalModule: ModalModuleOC {
                 }
                 alertController.addAction(alertAction)
             }
-            self.getVC().present(alertController, animated: true, completion: nil)
+            let isRoot = info.root ?? false
+            let currentVc = (isRoot == true) ? (UIApplication.shared.delegate?.window!?.rootViewController ?? self.getVC()) : self.getVC()
+            currentVc.present(alertController, animated: true, completion: nil)
         }
     }
     

@@ -14,6 +14,8 @@
 #import "LottieComponent.h"
 #import "WBScanComponentOC.h"
 #import "ImageHander.h"
+#import "SRWebSocket+Weex.h"
+#import "WebSocketHander.h"
 #import "BaseModule.h"
 #import "EventModule.h"
 #import "ExternalModule.h"
