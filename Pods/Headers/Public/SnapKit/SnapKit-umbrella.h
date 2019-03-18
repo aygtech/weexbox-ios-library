@@ -1,1 +1,1 @@
-/Users/mario/Documents/aygtech/weexbox-ios-library/Pods/Target Support Files/SnapKit/SnapKit-umbrella.h
+../../../Target Support Files/SnapKit/SnapKit-umbrella.h

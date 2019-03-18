@@ -1,1 +1,1 @@
-/Users/mario/Documents/aygtech/weexbox-ios-library/Pods/Target Support Files/SwiftEventBus/SwiftEventBus-umbrella.h
+../../../Target Support Files/SwiftEventBus/SwiftEventBus-umbrella.h

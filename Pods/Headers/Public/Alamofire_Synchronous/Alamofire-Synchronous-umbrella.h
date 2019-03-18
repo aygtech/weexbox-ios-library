@@ -1,1 +1,1 @@
-/Users/mario/Documents/aygtech/weexbox-ios-library/Pods/Target Support Files/Alamofire-Synchronous/Alamofire-Synchronous-umbrella.h
+../../../Target Support Files/Alamofire-Synchronous/Alamofire-Synchronous-umbrella.h

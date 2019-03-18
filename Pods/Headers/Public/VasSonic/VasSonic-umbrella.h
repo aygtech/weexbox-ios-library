@@ -1,1 +1,1 @@
-/Users/mario/Documents/aygtech/weexbox-ios-library/Pods/Target Support Files/VasSonic/VasSonic-umbrella.h
+../../../Target Support Files/VasSonic/VasSonic-umbrella.h

@@ -1,1 +1,1 @@
-/Users/mario/Documents/aygtech/weexbox-ios-library/Pods/Target Support Files/Alamofire/Alamofire-umbrella.h
+../../../Target Support Files/Alamofire/Alamofire-umbrella.h
