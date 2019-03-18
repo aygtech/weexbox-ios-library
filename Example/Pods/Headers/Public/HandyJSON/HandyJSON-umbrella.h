@@ -1,1 +1,1 @@
-/Users/baird/Desktop/合摩科技/weexbox-ios-library/Example/Pods/Target Support Files/HandyJSON/HandyJSON-umbrella.h
+../../../Target Support Files/HandyJSON/HandyJSON-umbrella.h
