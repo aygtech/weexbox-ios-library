@@ -87,7 +87,11 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
                 
                 for image in photos!{
                     let path = self.saveImageToSandBox(image: image, fileName: self.getFileName())
-                    urls.add(path)
+                    urls.add([
+                        "url":path,
+                        "width":image.size.width ?? 0,
+                        "height":image.size.height ?? 0
+                        ])
                 }
                 result.data = ["urls":urls]
                 callback(result)
@@ -128,7 +132,11 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
                 
                 for image in photos!{
                     let path = self.saveImageToSandBox(image: image, fileName: self.getFileName())
-                    urls.add(path)
+                    urls.add([
+                        "url":path,
+                        "width":image.size.width ?? 0,
+                        "height":image.size.height ?? 0
+                        ])
                 }
                 result.data = ["urls":urls]
                 callback(result)
