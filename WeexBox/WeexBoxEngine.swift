@@ -73,6 +73,7 @@ import VasSonic
         WXSDKEngine.registerModule("wb-router", with: RouterModule.self)
         WXSDKEngine.registerModule("wb-event", with: EventModule.self)
         WXSDKEngine.registerModule("wb-location", with: LocationModule.self)
+        WXSDKEngine.registerModule("wb-util", with: UtilModule.self)
     }
     
     private static func registerRouter() {

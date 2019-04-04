@@ -122,11 +122,6 @@ class NavigatorModule: NavigatorModuleOC {
         centerItemCallback?(result, true)
     }
     
-    // 获取导航栏高度
-    @objc func getHeight() -> Int {
-        return Int(getVC().navHeight / weexInstance.pixelScaleFactor)
-    }
-    
     // 设置导航栏颜色
     @objc func setNavColor(_ color: String) {
         getVC().navigationController?.navigationBar.barTintColor = UIColor(hex: color)

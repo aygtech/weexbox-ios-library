@@ -9,7 +9,7 @@ PODS:
   - Charts (3.2.2):
     - Charts/Core (= 3.2.2)
   - Charts/Core (3.2.2)
-  - HandyJSON (4.2.1)
+  - HandyJSON (5.0.0-beta.1)
   - Hue (4.0.0)
   - LBXScan/LBXNative (2.3):
     - LBXScan/Types (~> 2.2)
@@ -51,7 +51,7 @@ DEPENDENCIES:
   - AsyncSwift
   - BindingX
   - Charts
-  - HandyJSON
+  - HandyJSON (= 5.0.0-beta.1)
   - Hue
   - LBXScan/LBXNative
   - LBXScan/UI
@@ -104,7 +104,7 @@ SPEC CHECKSUMS:
   AsyncSwift: 65775a7b32e740609b24969ece3de58723b9dc3e
   BindingX: b3c6c1c5dcd8e50277cfc5daad09d7010c227524
   Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
-  HandyJSON: d0c5fc80204f29056d59d3e5c4587fa0b16b60a8
+  HandyJSON: 582477127ab3ab65bd2e471815f1a7b846856978
   Hue: afe18b4e819e2848e7d2d5b4b33f4d3f88dd921b
   LBXScan: e51449f0832d1fe17da632af0d22adeb3cfa3543
   lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
@@ -125,6 +125,6 @@ SPEC CHECKSUMS:
   XFAssistiveTouch_WeexBox: 50ee133d7e5a1717907f2518b8415d56d39c65fe
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 76427ed576379e6f0b6d5680ef76db21f3743477
+PODFILE CHECKSUM: cf07365dc3349adb882f775f105c6a5ddce290bc
 
 COCOAPODS: 1.6.1
