@@ -10,7 +10,7 @@ import Foundation
 import WeexSDK
 import Async
 import VasSonic
-//import XFAssistiveTouch
+
 /// 初始化SDK
 @objcMembers public class WeexBoxEngine: NSObject {
    
@@ -28,14 +28,14 @@ import VasSonic
                 WXDebugTool.setDebug(true)
                 WXLog.setLogLevel(.WXLogLevelLog)
                 Async.main(after: 3) {
-                    let touch = AssistiveTouch.sing;
-                    touch.show();
+                    let touch = AssistiveTouch.sing
+                    touch.show()
                     touch.callBack = {(index)->() in
                         AssistiveTouch.sing.dissShow()
-                        if(index == 0){
+                        if index == 0 {
                             DebugWeex.openScan()
                         }
-                        else{
+                        else {
                             DebugWeex.refresh()
                         }
                     }
