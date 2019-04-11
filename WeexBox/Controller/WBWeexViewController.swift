@@ -9,21 +9,29 @@
 import Foundation
 import Async
 import WeexSDK
+import SwiftyJSON
 
 /// Weex基类
-@objcMembers open class WBWeexViewController: WBBaseViewController {
+@objcMembers open class WBWeexViewController: WBBaseViewController, SRWebSocketDelegate {
     
     private var weexHeight: CGFloat!
     public var instance: WXSDKInstance?
     private var weexView: UIView?
     private var isFirstSendDidAppear = true
+    private var hotReloadSocket: SRWebSocket?
+    private var url: URL?
     
     open override func viewDidLoad() {
         super.viewDidLoad()
         
         if WeexBoxEngine.isDebug {
-            Event.register(target: self, name: "RefreshInstance") { [weak self] _ in
-                self?.refreshWeex()
+//            Event.register(target: self, name: "RefreshInstance") { [weak self] _ in
+//                self?.refreshWeex()
+//            }
+            if let hotReloadURL = Bundle.main.object(forInfoDictionaryKey: "WXSocketConnectionURL") as? String {
+                hotReloadSocket = SRWebSocket(url: URL(string: hotReloadURL))
+                hotReloadSocket?.delegate = self
+                hotReloadSocket?.open()
             }
         }
         
@@ -37,6 +45,13 @@ import WeexSDK
         let tabBarHeight: CGFloat = self.hidesBottomBarWhenPushed ? 0 : (tabBarController?.tabBar.frame.size.height ?? 0)
         weexHeight = view.frame.size.height - navBarHeight - tabBarHeight
         
+        if let urlString = router.url {
+            if urlString.hasPrefix("http") {
+                url = URL(string: urlString)
+            } else {
+                url = UpdateManager.getFullUrl(file: urlString)
+            }
+        }
         render()
     }
     open override func viewDidAppear(_ animated: Bool) {
@@ -85,14 +100,6 @@ import WeexSDK
             }
         }
         
-        var url: URL?
-        if let urlString = router.url {
-            if urlString.hasPrefix("http") {
-                url = URL(string: urlString)
-            } else {
-                url = UpdateManager.getFullUrl(file: urlString)
-            }
-        }
         instance?.render(with: url, options: nil, data: nil)
     }
     
@@ -113,4 +120,24 @@ import WeexSDK
         instance?.destroy()
     }
     
+    // MARK: SRWebSocketDelegate
+    public func webSocket(_ webSocket: SRWebSocket!, didReceiveMessage message: Any!) {
+        if let messageString = message as? String, url != nil, self == UIApplication.topViewController() {
+            if messageString == "refresh" {
+                refreshWeex()
+            } else {
+                let messageJson = JSON(parseJSON: messageString)
+                let method = messageJson["method"].stringValue
+                if method == "WXReloadBundle" {
+                    let paths = url!.pathComponents
+                    let name = paths[paths.count - 2] + "/" + paths[paths.count - 1]
+                    let params = messageJson["params"].stringValue
+                    if params.hasSuffix(name) {
+                        url = URL(string: params)
+                        refreshWeex()
+                    }
+                }
+            }
+        }
+    }
 }

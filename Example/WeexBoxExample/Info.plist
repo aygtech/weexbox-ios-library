@@ -48,5 +48,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>WXSocketConnectionURL</key>
+	<string>ws://192.168.4.247:9090</string>
 </dict>
 </plist>

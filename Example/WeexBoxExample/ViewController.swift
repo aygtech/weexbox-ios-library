@@ -9,10 +9,10 @@
 import UIKit
 import WeexBox
 
-class ViewController: WBBaseViewController {
+class ViewController: WBWeexViewController {
     override func viewDidLoad() {
+        router.url = "page/about.js"
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 }
 
