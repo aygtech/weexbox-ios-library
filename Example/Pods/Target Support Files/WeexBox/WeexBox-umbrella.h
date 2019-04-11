@@ -24,6 +24,7 @@
 #import "NavigatorModule.h"
 #import "NetworkModule.h"
 #import "RouterModule.h"
+#import "UtilModule.h"
 #import "WXRefreshPlugin.h"
 #import "WeexBox.h"
 
