@@ -8,10 +8,12 @@
 
 import Foundation
 import SwiftyJSON
+import Async
 
 class HotReload: NSObject, SRWebSocketDelegate {
     
     private var hotReloadSocket: SRWebSocket?
+    private var isReconnect = false
     
     override init() {
         super.init()
@@ -23,8 +25,19 @@ class HotReload: NSObject, SRWebSocketDelegate {
         }
     }
     
+    func reconnect() {
+        if isReconnect {
+            return
+        }
+        isReconnect = true
+        Async.main(after: 2) { [weak self] in
+            self?.hotReloadSocket?.open()
+            self?.isReconnect = false
+        }
+    }
+    
     // MARK: SRWebSocketDelegate
-    public func webSocket(_ webSocket: SRWebSocket!, didReceiveMessage message: Any!) {
+    func webSocket(_ webSocket: SRWebSocket!, didReceiveMessage message: Any!) {
         if let messageString = message as? String {
             let messageJson = JSON(parseJSON: messageString)
             let method = messageJson["method"].stringValue
@@ -32,5 +45,13 @@ class HotReload: NSObject, SRWebSocketDelegate {
                 Event.emit(name: method, info: messageJson.dictionaryObject)
             }
         }
+    }
+    
+    func webSocket(_ webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
+        reconnect()
+    }
+    
+    func webSocket(_ webSocket: SRWebSocket!, didFailWithError error: Error!) {
+        reconnect()
     }
 }
