@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "WeexBox"
-  s.version      = "1.3.3"
+  s.version      = "1.3.4"
   s.summary      = "WeexBox."
   s.homepage     = "https://github.com/aygtech/weexbox-ios-library"
   s.license      = "MIT"
@@ -15,25 +15,25 @@ Pod::Spec.new do |s|
 
   s.dependency 'WeexSDK', '~> 0.20.0'
   s.dependency 'WXDevtool', '~> 0.20.0'
-  s.dependency 'Alamofire'
-  s.dependency "Alamofire-Synchronous"
-  s.dependency 'SwiftyJSON'
+  s.dependency 'Alamofire', '~> 4.0'
+  s.dependency "Alamofire-Synchronous", '~> 4.0'
+  s.dependency 'SwiftyJSON', '~> 4.0'
   s.dependency 'HandyJSON', '5.0.0-beta.1'
-  s.dependency 'MBProgressHUD'
-  s.dependency 'AsyncSwift'
-  s.dependency 'RealmSwift'
-  s.dependency 'Zip'
-  s.dependency 'RTRootNavigationController_WeexBox'
-  s.dependency 'SnapKit'
-  s.dependency 'SDWebImage'
-  s.dependency 'BindingX'
-  s.dependency 'Hue'
-  s.dependency 'SwiftEventBus'
-  s.dependency 'TZImagePickerController'
-  s.dependency 'LBXScan/LBXNative'
-  s.dependency 'LBXScan/UI'
-  s.dependency 'Charts'
-  s.dependency 'VasSonic'
-  s.dependency 'XFAssistiveTouch_WeexBox'
-  s.dependency 'lottie-ios', '~> 2.5.3'
+  s.dependency 'MBProgressHUD', '~> 1.0'
+  s.dependency 'AsyncSwift', '~> 2.0'
+  s.dependency 'RealmSwift', '~> 3.0'
+  s.dependency 'Zip', '~> 1.0'
+  s.dependency 'RTRootNavigationController_WeexBox', '~> 0.7.0'
+  s.dependency 'SnapKit', '~> 4.0'
+  s.dependency 'SDWebImage', '~> 4.0'
+  s.dependency 'BindingX', '~> 1.0'
+  s.dependency 'Hue', '~> 4.0'
+  s.dependency 'SwiftEventBus', '~> 5.0'
+  s.dependency 'TZImagePickerController', '~> 3.0'
+  s.dependency 'LBXScan/LBXNative', '~> 2.0'
+  s.dependency 'LBXScan/UI', '~> 2.0'
+  s.dependency 'Charts', '~> 3.0'
+  s.dependency 'VasSonic', '~> 3.0'
+  s.dependency 'XFAssistiveTouch_WeexBox', '~> 1.0'
+  s.dependency 'lottie-ios', '~> 2.0'
 end
