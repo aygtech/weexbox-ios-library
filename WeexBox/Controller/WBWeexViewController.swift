@@ -24,6 +24,14 @@ import SwiftyJSON
     open override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let urlString = router.url {
+            if urlString.hasPrefix("http") {
+                url = URL(string: urlString)
+            } else {
+                url = UpdateManager.getFullUrl(file: urlString)
+            }
+        }
+        
         if WeexBoxEngine.isDebug {
 //            Event.register(target: self, name: "RefreshInstance") { [weak self] _ in
 //                self?.refreshWeex()
@@ -45,13 +53,6 @@ import SwiftyJSON
         let tabBarHeight: CGFloat = self.hidesBottomBarWhenPushed ? 0 : (tabBarController?.tabBar.frame.size.height ?? 0)
         weexHeight = view.frame.size.height - navBarHeight - tabBarHeight
         
-        if let urlString = router.url {
-            if urlString.hasPrefix("http") {
-                url = URL(string: urlString)
-            } else {
-                url = UpdateManager.getFullUrl(file: urlString)
-            }
-        }
         render()
     }
     open override func viewDidAppear(_ animated: Bool) {
@@ -117,6 +118,7 @@ import SwiftyJSON
     }
     
     deinit {
+        hotReloadSocket?.close()
         instance?.destroy()
     }
     
