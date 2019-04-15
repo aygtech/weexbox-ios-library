@@ -25,6 +25,7 @@ import VasSonic
     public static var isDebug: Bool! {
         didSet {
             if isDebug {
+                _ = HotReload()
                 WXDebugTool.setDebug(true)
                 WXLog.setLogLevel(.WXLogLevelLog)
                 Async.main(after: 3) {
