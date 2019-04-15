@@ -31,8 +31,8 @@ class HotReload: NSObject, SRWebSocketDelegate {
         }
         isReconnect = true
         Async.main(after: 2) { [weak self] in
-            self?.hotReloadSocket?.open()
             self?.isReconnect = false
+            self?.hotReloadSocket?.open()
         }
     }
     
