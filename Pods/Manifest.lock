@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.8.1)
+  - Alamofire (4.8.2)
   - Alamofire-Synchronous (4.0.0):
     - Alamofire (~> 4.0)
   - AsyncSwift (2.0.4)
@@ -18,11 +18,11 @@ PODS:
     - LBXScan/Types (~> 2.2)
   - lottie-ios (2.5.3)
   - MBProgressHUD (1.1.0)
-  - Realm (3.13.1):
-    - Realm/Headers (= 3.13.1)
-  - Realm/Headers (3.13.1)
-  - RealmSwift (3.13.1):
-    - Realm (= 3.13.1)
+  - Realm (3.14.1):
+    - Realm/Headers (= 3.14.1)
+  - Realm/Headers (3.14.1)
+  - RealmSwift (3.14.1):
+    - Realm (= 3.14.1)
   - RTRootNavigationController_WeexBox (0.7.1):
     - RTRootNavigationController_WeexBox/Core (= 0.7.1)
   - RTRootNavigationController_WeexBox/Core (0.7.1)
@@ -31,8 +31,8 @@ PODS:
   - SDWebImage/Core (4.4.6)
   - SnapKit (4.2.0)
   - SocketRocket (0.5.1)
-  - SwiftEventBus (3.0.1)
-  - SwiftyJSON (4.2.0)
+  - SwiftEventBus (5.0.0)
+  - SwiftyJSON (4.3.0)
   - TZImagePickerController (3.2.0)
   - VasSonic (3.0.0)
   - WeexPluginLoader (0.0.1.9.1):
@@ -46,29 +46,29 @@ PODS:
   - Zip (1.1.0)
 
 DEPENDENCIES:
-  - Alamofire
-  - Alamofire-Synchronous
-  - AsyncSwift
-  - BindingX
-  - Charts
-  - HandyJSON (= 5.0.0-beta.1)
-  - Hue
-  - LBXScan/LBXNative
-  - LBXScan/UI
-  - lottie-ios (~> 2.5.3)
-  - MBProgressHUD
-  - RealmSwift
-  - RTRootNavigationController_WeexBox
-  - SDWebImage
-  - SnapKit
-  - SwiftEventBus
-  - SwiftyJSON
-  - TZImagePickerController
-  - VasSonic
+  - Alamofire (~> 4.0)
+  - Alamofire-Synchronous (~> 4.0)
+  - AsyncSwift (~> 2.0)
+  - BindingX (~> 1.0)
+  - Charts (~> 3.0)
+  - HandyJSON (~> 5.0.0-beta.1)
+  - Hue (~> 4.0)
+  - LBXScan/LBXNative (~> 2.0)
+  - LBXScan/UI (~> 2.0)
+  - lottie-ios (~> 2.0)
+  - MBProgressHUD (~> 1.0)
+  - RealmSwift (~> 3.0)
+  - RTRootNavigationController_WeexBox (~> 0.7.0)
+  - SDWebImage (~> 4.0)
+  - SnapKit (~> 4.0)
+  - SwiftEventBus (~> 5.0)
+  - SwiftyJSON (~> 4.0)
+  - TZImagePickerController (~> 3.0)
+  - VasSonic (~> 3.0)
   - WeexSDK (~> 0.20.0)
   - WXDevtool (~> 0.20.0)
-  - XFAssistiveTouch_WeexBox
-  - Zip
+  - XFAssistiveTouch_WeexBox (~> 1.0)
+  - Zip (~> 1.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -99,7 +99,7 @@ SPEC REPOS:
     - Zip
 
 SPEC CHECKSUMS:
-  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Alamofire-Synchronous: eedf1e6e961c3795a63c74990b3f7d9fbfac7e50
   AsyncSwift: 65775a7b32e740609b24969ece3de58723b9dc3e
   BindingX: b3c6c1c5dcd8e50277cfc5daad09d7010c227524
@@ -109,14 +109,14 @@ SPEC CHECKSUMS:
   LBXScan: e51449f0832d1fe17da632af0d22adeb3cfa3543
   lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
-  Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
-  RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
+  Realm: e12c9c2387d05c5bba3a9c394838f5870e85763b
+  RealmSwift: a82eab9b04c3e1616082c7e17aa300740847769c
   RTRootNavigationController_WeexBox: ef63000401bb1e7caa1313f6ece8afb0bb0f9a7f
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
-  SwiftEventBus: 87ccaeceff91b748775e37751ae3a81ec815b3d5
-  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  SwiftEventBus: b30f617a6aca5a9336464b4d3f5931034762f2d5
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   TZImagePickerController: 7850b158d025065b162a1a963d445040b828abc9
   VasSonic: 681ec95418d485d8c501d13549e25dff18754893
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
@@ -125,6 +125,6 @@ SPEC CHECKSUMS:
   XFAssistiveTouch_WeexBox: 50ee133d7e5a1717907f2518b8415d56d39c65fe
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: cf07365dc3349adb882f775f105c6a5ddce290bc
+PODFILE CHECKSUM: b14abfa29b2cff8babc9472192b37f4feb0e8372
 
 COCOAPODS: 1.6.1
