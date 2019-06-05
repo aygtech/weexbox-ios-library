@@ -83,11 +83,14 @@ import Zip
         }
     }
     
+    public  static var realmConfigSchemaVersion:Int = 0
+    
     private static var completion: Completion!
     
     private static let realmDefaultConfig = Realm.Configuration()
     private static let workingRealmConfig: Realm.Configuration = {
         var realmConfig = realmDefaultConfig
+        realmConfig.schemaVersion = UInt64(realmConfigSchemaVersion)
         realmConfig.fileURL = realmConfig.fileURL!.deletingLastPathComponent().appendingPathComponent(workingName + ".realm")
         return realmConfig
     }()

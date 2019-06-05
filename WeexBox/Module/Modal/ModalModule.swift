@@ -123,7 +123,7 @@ class ModalModule: ModalModuleOC {
         let cancelAction = UIAlertAction(title: info.cancelTitle, style: .default) { action in
             var result = Result()
             result.status = Result.error
-            cancelCallback?(result, false)
+            cancelCallback?(result.toJsResult(), false)
         }
         alertController.addAction(cancelAction)
         return alertController
