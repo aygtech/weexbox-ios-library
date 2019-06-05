@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "WeexBox"
-  s.version      = "1.3.4"
+  s.version      = "1.3.5"
   s.summary      = "WeexBox."
   s.homepage     = "https://github.com/aygtech/weexbox-ios-library"
   s.license      = "MIT"
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.dependency 'Alamofire', '~> 4.0'
   s.dependency "Alamofire-Synchronous", '~> 4.0'
   s.dependency 'SwiftyJSON', '~> 4.0'
-  s.dependency 'HandyJSON', '5.0.0-beta.1'
+  s.dependency 'HandyJSON', '~> 5.0'
   s.dependency 'MBProgressHUD', '~> 1.0'
   s.dependency 'AsyncSwift', '~> 2.0'
   s.dependency 'RealmSwift', '~> 3.0'

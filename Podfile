@@ -25,7 +25,7 @@ pod 'SwiftyJSON', '~> 4.0'
 # The better way to deal with JSON data in Swift
 # https://github.com/SwiftyJSON/SwiftyJSON
 
-pod 'HandyJSON', '~> 5.0.0-beta.1'
+pod 'HandyJSON', '~> 5.0'
 # A handy swift json-object serialization/deserialization library
 # https://github.com/alibaba/HandyJSON
 
