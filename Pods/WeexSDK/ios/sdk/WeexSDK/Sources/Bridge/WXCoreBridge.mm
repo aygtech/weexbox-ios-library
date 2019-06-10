@@ -17,21 +17,26 @@
  * under the License.
  */
 
+#import "WXSDKError.h"
 #import "WXCoreBridge.h"
 #import "JSValue+Weex.h"
 #import "WXSDKManager.h"
 #import "WXComponentManager.h"
 #import "WXSDKInstance_private.h"
 #import "WXLog.h"
-#import "WXTracingManager.h"
 #import "WXBridgeProtocol.h"
 #import "WXUtility.h"
 #import "WXAssert.h"
 #import "WXAppConfiguration.h"
+#import "WXConvertUtility.h"
 #import "WXSDKEngine.h"
 #import "WXAppMonitorProtocol.h"
+#import "WXComponentMethod.h"
+#import "WXExceptionUtils.h"
+#import "WXModuleFactory.h"
 
-#include "base/CoreConstants.h"
+#include "base/core_constants.h"
+#include "base/time_utils.h"
 #include "core/manager/weex_core_manager.h"
 #include "core/render/manager/render_manager.h"
 #include "core/render/page/render_page.h"
@@ -40,126 +45,15 @@
 #include "core/render/node/factory/render_type.h"
 #include "core/render/node/factory/render_creator.h"
 #include "core/config/core_environment.h"
-#include "core/data_render/vnode/vnode_render_manager.h"
 #include "core/bridge/platform/core_side_in_platform.h"
 #include "core/bridge/script/core_side_in_script.h"
-#include "base/TimeUtils.h"
+#include "core/network/http_module.h"
 
 #import <objc/runtime.h>
 #include <fstream>
 
-
-#define NSSTRING(cstr) ((__bridge_transfer NSString*)(CFStringCreateWithCString(NULL, (const char *)(cstr), kCFStringEncodingUTF8)))
-#define NSSTRING_NO_COPY(cstr) ((__bridge_transfer NSString*)(CFStringCreateWithCStringNoCopy(NULL, (const char *)(cstr), kCFStringEncodingUTF8, kCFAllocatorNull)))
-
 namespace WeexCore
-{
-    static NSString* const JSONSTRING_SUFFIX = @"\t\n\t\r";
-    
-    static NSString* TO_JSON(id object)
-    {
-        if (object == nil) {
-            return nil;
-        }
-        
-        @try {
-            if ([object isKindOfClass:[NSArray class]] || [object isKindOfClass:[NSDictionary class]]) {
-                NSError *error = nil;
-                NSData *data = [NSJSONSerialization dataWithJSONObject:object
-                                                               options:0
-                                                                 error:&error];
-                
-                if (error) {
-                    WXLogError(@"%@", error);
-                    WXAssert(NO, @"Fail to convert object to json. %@", error);
-                    return nil;
-                }
-                
-                return [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] stringByAppendingString:JSONSTRING_SUFFIX]; // add suffix so that we know this is a json string
-            }
-        } @catch (NSException *exception) {
-            WXLogError(@"%@", exception);
-            WXAssert(NO, @"Fail to convert object to json. %@", exception);
-            return nil;
-        }
-        
-        return nil;
-    }
-    
-    static id TO_OBJECT(NSString* s)
-    {
-        if ([s hasSuffix:JSONSTRING_SUFFIX]) {
-            if ([s length] == [JSONSTRING_SUFFIX length]) {
-                return [NSNull null];
-            }
-            
-            // s is a json string
-            @try {
-                NSError* error = nil;
-                id jsonObj = [NSJSONSerialization JSONObjectWithData:[s dataUsingEncoding:NSUTF8StringEncoding]
-                                                             options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves
-                                                               error:&error];
-                
-                if (jsonObj == nil) {
-                    WXLogError(@"%@", error);
-                    WXAssert(NO, @"Fail to convert json to object. %@", error);
-                }
-                else {
-                    return jsonObj;
-                }
-            } @catch (NSException *exception) {
-                WXLogError(@"%@", exception);
-                WXAssert(NO, @"Fail to convert json to object. %@", exception);
-            }
-        }
-        return s; // return s instead
-    }
-    
-    static NSMutableDictionary* NSDICTIONARY(std::map<std::string, std::string>* map)
-    {
-        if (map == nullptr || map->size() == 0)
-            return [[NSMutableDictionary alloc] init];
-        
-        NSMutableDictionary* result = [[NSMutableDictionary alloc] initWithCapacity:map->size()];
-        for (auto it = map->begin(); it != map->end(); it ++) {
-            id object = TO_OBJECT(NSSTRING(it->second.c_str()));
-            if (object) {
-                [result setObject:object forKey:NSSTRING(it->first.c_str())];
-            }
-        }
-        return result;
-    }
-    
-    static NSMutableDictionary* NSDICTIONARY(std::vector<std::pair<std::string, std::string>>* vec)
-    {
-        if (vec == nullptr || vec->size() == 0)
-            return [[NSMutableDictionary alloc] init];
-        
-        NSMutableDictionary* result = [[NSMutableDictionary alloc] initWithCapacity:vec->size()];
-        for (auto& p : *vec) {
-            id object = TO_OBJECT(NSSTRING(p.second.c_str()));
-            if (object) {
-                [result setObject:object forKey:NSSTRING(p.first.c_str())];
-            }
-        }
-        return result;
-    }
-    
-    static NSMutableArray* NSARRAY(std::set<std::string>* set)
-    {
-        if (set == nullptr || set->size() == 0)
-            return [[NSMutableArray alloc] init];
-        
-        NSMutableArray* result = [[NSMutableArray alloc] initWithCapacity:set->size()];
-        for (auto& s : *set) {
-            id object = TO_OBJECT(NSSTRING(s.c_str()));
-            if (object) {
-                [result addObject:object];
-            }
-        }
-        return result;
-    }
-    
+{    
     static void consoleWithArguments(NSArray *arguments, WXLogFlag logLevel)
     {
         NSMutableString *jsLog = [NSMutableString string];
@@ -206,7 +100,7 @@ namespace WeexCore
             dict[@"borderRightWidth"] = @(borders.getBorderWidth(kBorderWidthRight) / pixelScaleFactor);
         }
     }
-    
+
     static void MergeBorderWidthValues(NSMutableDictionary* dict,
                                        std::vector<std::pair<std::string, std::string>>* borders,
                                        float pixelScaleFactor)
@@ -222,7 +116,7 @@ namespace WeexCore
             dict[NSSTRING(p.first.c_str())] = @(atof(p.second.c_str()) / pixelScaleFactor);
         }
     }
-    
+
     void IOSSide::SetJSVersion(const char* version)
     {
         NSString *jsVersion = NSSTRING(version);
@@ -231,18 +125,36 @@ namespace WeexCore
         }
     }
     
-    void IOSSide::ReportException(const char* pageId, const char *func, const char *exception_string)
+    void IOSSide::ReportException(const char *page_id, const char *func, const char *exception)
     {
-        NSString* ns_instanceId = NSSTRING(pageId);
-
-        WXComponentManager* manager = [WXSDKManager instanceForID:ns_instanceId].componentManager;
-        if (!manager.isValid) {
-            return;
-        }
-
-        int wxErrorCode = 9999;
-        NSError * error = [NSError errorWithDomain:WX_ERROR_DOMAIN code:wxErrorCode userInfo:@{@"message":[NSString stringWithUTF8String:exception_string]}];
-        [manager renderFailed:error];
+        do {
+            WXSDKInstance *instance = [WXSDKManager instanceForID:NSSTRING(page_id)];
+            if (!instance) {
+                break;
+            }
+            WXSDKErrCode errorCode = WX_KEY_EXCEPTION_DEGRADE;
+            BOOL is_render_failed = NO;
+            if (func && strcmp(func, "createInstance") == 0) {
+                errorCode = WX_KEY_EXCEPTION_EMPTY_SCREEN_JS;
+                WXComponentManager *manager = instance.componentManager;
+                if (manager.isValid) {
+                    NSError *error = [NSError errorWithDomain:WX_ERROR_DOMAIN code:errorCode userInfo:@{@"message":[NSString stringWithUTF8String:exception]}];
+                    [manager renderFailed:error];
+                }
+                is_render_failed = YES;
+            }
+            NSString *bundleUrl = instance.pageName ? : ([instance.scriptURL absoluteString] ? : @"WX_KEY_EXCEPTION_WXBRIDGE");
+            NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+            [userInfo setObject:instance.userInfo[@"jsMainBundleStringContentLength"] ? : @"" forKey:@"jsMainBundleStringContentLength"];
+            [userInfo setObject:instance.userInfo[@"jsMainBundleStringContentMd5"] ? : @"" forKey:@"jsMainBundleStringContentMd5"];
+            WXJSExceptionInfo *jsException = [[WXJSExceptionInfo alloc] initWithInstanceId:instance.instanceId bundleUrl:bundleUrl errorCode: [NSString stringWithFormat:@"%d", errorCode] functionName:func ? [NSString stringWithUTF8String:func] :@"exceptionHandler" exception:exception ? [NSString stringWithUTF8String:exception] : @"unkown" userInfo:userInfo];
+            [WXExceptionUtils commitCriticalExceptionRT:jsException.instanceId errCode:jsException.errorCode function:jsException.functionName exception:jsException.exception extParams:jsException.userInfo];
+            if (!is_render_failed && instance.onJSRuntimeException) {
+                instance.onJSRuntimeException(jsException);
+            }
+            
+        } while (0);
+        
     }
     
     int IOSSide::CallNative(const char* pageId, const char *task, const char *callback)
@@ -251,8 +163,67 @@ namespace WeexCore
         assert(false);
     }
     
+    static WeexByteArray *generator_bytes_array(const char *str, size_t len) {
+        auto *result = (WeexByteArray *)malloc(len + sizeof(WeexByteArray));
+        do {
+            if (!result) {
+                break;
+            }
+            memset(result, 0, len + sizeof(WeexByteArray));
+            result->length = static_cast<uint32_t>(len);
+            memcpy(result->content, str, len);
+            result->content[len] = '\0';
+            
+        } while (0);
+        
+        return result;
+    }
+    
+    std::unique_ptr<ValueWithType> IOSSide::RegisterPluginModule(const char *pcstr_name, const char *pcstr_class_name, const char *pcstr_version) {
+        ValueWithType *returnValue = new ValueWithType();
+        memset(returnValue, 0, sizeof(ValueWithType));
+        returnValue->type = ParamsType::VOID;
+        do {
+            if (!pcstr_class_name) {
+                break;
+            }
+            NSString *className = [NSString stringWithUTF8String:pcstr_class_name];
+            Class clazz = NSClassFromString(className);
+            if (!clazz) {
+                break;
+            }
+            if (!pcstr_name) {
+                break;
+            }
+            NSString *name = [NSString stringWithUTF8String:pcstr_name];
+            NSString *version = @"0";
+            if (pcstr_version) {
+                version = [NSString stringWithUTF8String:pcstr_version];
+            }
+            NSString *moduleName = [WXModuleFactory registerModule:name withClass:clazz];
+            if (!moduleName.length) {
+                break;
+            }
+            NSDictionary *moduleInfo = [WXModuleFactory moduleMethodMapsWithName:moduleName];
+            if (!moduleInfo || ![moduleInfo isKindOfClass:[NSDictionary class]]) {
+                break;
+            }
+            NSString *setting = [WXUtility JSONString:moduleInfo];
+            if (setting.length > 0) {
+                returnValue->type = ParamsType::BYTEARRAYSTRING;
+                const char *pcstr_utf8 = [setting UTF8String];
+                returnValue->value.byteArray = generator_bytes_array(pcstr_utf8, setting.length);
+            }
+
+        } while (0);
+        
+        return std::unique_ptr<ValueWithType>(returnValue);
+    }
     std::unique_ptr<ValueWithType> IOSSide::CallNativeModule(const char *page_id, const char *module, const char *method, const char *args, int args_length, const char *options, int options_length)
     {
+        ValueWithType *returnValue = new ValueWithType();
+        memset(returnValue, 0, sizeof(ValueWithType));
+        returnValue->type = ParamsType::VOID;
         // should not enter this function
         do {
             NSString *instanceId = NSSTRING(page_id);
@@ -269,21 +240,118 @@ namespace WeexCore
             }
             LOGD("CallNativeModule:[%s]:[%s]=>%s \n", module, method, args);
             WXModuleMethod *method = [[WXModuleMethod alloc] initWithModuleName:moduleName methodName:methodName arguments:newArguments options:nil instance:instance];
-            [method invoke];
+            NSInvocation *invocation = [method invoke];
+            if (!invocation) {
+                break;
+            }
+            const char *returnType = [invocation.methodSignature methodReturnType];
+            switch (returnType[0] == _C_CONST ? returnType[1] : returnType[0]) {
+                case _C_VOID: {
+                    // 1.void
+                    returnValue->type = ParamsType::VOID;
+                    break;
+                }
+                case _C_ID: {
+                    // 2.id
+                    void *value;
+                    [invocation getReturnValue:&value];
+                    id object = (__bridge id)value;
+                    if ([object isKindOfClass:[NSString class]]) {
+                        returnValue->type = ParamsType::BYTEARRAYSTRING;
+                        const char *pcstr_utf8 = [(NSString *)object UTF8String];
+                        returnValue->value.byteArray = generator_bytes_array(pcstr_utf8, ((NSString *)object).length);
+                    }
+                    if ([object isKindOfClass:[NSDictionary class]] || [object isKindOfClass:[NSArray class]]) {
+                        NSString *jsonString = [WXUtility JSONString:object];
+                        returnValue->type = ParamsType::BYTEARRAYJSONSTRING;
+                        returnValue->value.byteArray = generator_bytes_array(jsonString.UTF8String, jsonString.length);
+                    }
+                    break;
+                }
+#define WX_MODULE_INT32_VALUE_RET_CASE(ctype, ttype) \
+case ctype: {                         \
+ttype value;                          \
+[invocation getReturnValue:&value];   \
+returnValue->type = ParamsType::INT32; \
+returnValue->value.int32Value = value; \
+break; \
+}
+#define WX_MODULE_INT64_VALUE_RET_CASE(ctype, ttype) \
+case ctype: {                         \
+ttype value;                          \
+[invocation getReturnValue:&value];   \
+returnValue->type = ParamsType::INT64; \
+returnValue->value.int64Value = value; \
+break; \
+}
+                // 3.number
+                WX_MODULE_INT32_VALUE_RET_CASE(_C_CHR, char)
+                WX_MODULE_INT32_VALUE_RET_CASE(_C_UCHR, unsigned char)
+                WX_MODULE_INT32_VALUE_RET_CASE(_C_SHT, short)
+                WX_MODULE_INT32_VALUE_RET_CASE(_C_USHT, unsigned short)
+                WX_MODULE_INT32_VALUE_RET_CASE(_C_INT, int)
+                WX_MODULE_INT32_VALUE_RET_CASE(_C_UINT, unsigned int)
+                WX_MODULE_INT32_VALUE_RET_CASE(_C_BOOL, BOOL)
+                WX_MODULE_INT64_VALUE_RET_CASE(_C_LNG, long)
+                WX_MODULE_INT64_VALUE_RET_CASE(_C_ULNG, unsigned long)
+                WX_MODULE_INT64_VALUE_RET_CASE(_C_LNG_LNG, long long)
+                WX_MODULE_INT64_VALUE_RET_CASE(_C_ULNG_LNG, unsigned long long)
+                case _C_FLT:
+                {
+                    float value;
+                    [invocation getReturnValue:&value];
+                    returnValue->type = ParamsType::FLOAT;
+                    returnValue->value.floatValue = value;
+                    break;
+                }
+                case _C_DBL:
+                {
+                    double value;
+                    [invocation getReturnValue:&value];
+                    returnValue->type = ParamsType::DOUBLE;
+                    returnValue->value.doubleValue = value;
+                    break;
+                }
+                case _C_STRUCT_B:
+                case _C_CHARPTR:
+                case _C_PTR:
+                case _C_CLASS: {
+                    returnValue->type = ParamsType::JSUNDEFINED;
+                    break;
+                }
+            }
             
         } while (0);
         
-        return std::unique_ptr<ValueWithType>();
+        return std::unique_ptr<ValueWithType>(returnValue);
     }
         
-    void IOSSide::CallNativeComponent(const char* pageId, const char* ref, const char *method,
-                                           const char *arguments, int argumentsLength,
-                                           const char *options, int optionsLength)
+    void IOSSide::CallNativeComponent(const char *page_id, const char *ref, const char *method,
+                                      const char *args, int args_length,
+                                      const char *options, int options_length)
     {
-        // should not enter this function
-        assert(false);
+        do {
+            NSString *instanceId = NSSTRING(page_id);
+            WXSDKInstance *instance = [WXSDKManager instanceForID:instanceId];
+            if (!instance) {
+                break;
+            }
+            if (!ref || !method) {
+                break;
+            }
+            NSString *componentRef = [NSString stringWithUTF8String:ref];
+            NSString *methodName = [NSString stringWithUTF8String:method];
+            NSArray *newArguments;
+            if (args && args_length > 0) {
+                NSString *arguments = [NSString stringWithUTF8String:args];
+                newArguments = [WXUtility objectFromJSON:arguments];
+            }
+            WXComponentMethod *method = [[WXComponentMethod alloc] initWithComponentRef:componentRef methodName:methodName arguments:newArguments instance:instance];
+            [method invoke];
+            
+        } while (0);
     }
-        
+
     void IOSSide::SetTimeout(const char* callbackID, const char* time)
     {
         // should not enter this function
@@ -350,8 +418,7 @@ namespace WeexCore
         }
         [manager startComponentTasks];
         [manager updateFinish];
-        [WXTracingManager startTracingWithInstanceId:ns_instanceId ref:nil className:nil name:WXTDomCall phase:WXTracingEnd functionName:@"updateFinish" options:@{@"threadName":WXTDOMThread}];
-        
+
         return 0;
     }
         
@@ -369,7 +436,6 @@ namespace WeexCore
         }
         [manager startComponentTasks];
         [manager refreshFinish];
-        [WXTracingManager startTracingWithInstanceId:ns_instanceId ref:nil className:nil name:WXTDomCall phase:WXTracingEnd functionName:@"refreshFinish" options:@{@"threadName":WXTDOMThread}];
         
         return 0;
     }
@@ -391,13 +457,12 @@ namespace WeexCore
         WXLogDebug(@"flexLayout -> action: addEvent ref:%@", ns_ref);
 #endif
         
-        WXComponentManager* manager = [WXSDKManager instanceForID:ns_instanceId].componentManager;
+        WXComponentManager *manager = [WXSDKManager instanceForID:ns_instanceId].componentManager;
         if (!manager.isValid) {
             return -1;
         }
         [manager startComponentTasks];
         [manager addEvent:ns_event toComponent:ns_ref];
-        [WXTracingManager startTracingWithInstanceId:ns_instanceId ref:ns_ref className:nil name:WXTDomCall phase:WXTracingEnd functionName:@"addEvent" options:@{@"threadName":WXTDOMThread}];
 
         page->CallBridgeTime(getCurrentTime() - startTime);
         return 0;
@@ -426,7 +491,6 @@ namespace WeexCore
         }
         [manager startComponentTasks];
         [manager removeEvent:ns_event fromComponent:ns_ref];
-        [WXTracingManager startTracingWithInstanceId:ns_instanceId ref:ns_ref className:nil name:WXTDomCall phase:WXTracingEnd functionName:@"removeEvent" options:@{@"threadName":WXTDOMThread}];
     
         page->CallBridgeTime(getCurrentTime() - startTime);
         return 0;
@@ -469,7 +533,6 @@ namespace WeexCore
         }
         [manager startComponentTasks];
         [manager createBody:ns_ref type:ns_type styles:ns_styles attributes:ns_attributes events:ns_events renderObject:renderObject];
-        [WXTracingManager startTracingWithInstanceId:ns_instanceId ref:ns_ref className:nil name:WXTDomCall phase:WXTracingEnd functionName:@"createBody" options:@{@"threadName":WXTDOMThread}];
         
         page->CallBridgeTime(getCurrentTime() - startTime);
         return 0;
@@ -517,7 +580,6 @@ namespace WeexCore
         
         [manager startComponentTasks];
         [manager addComponent:ns_ref type:ns_componentType parentRef:ns_parentRef styles:ns_styles attributes:ns_attributes events:ns_events index:ns_index renderObject:renderObject];
-        [WXTracingManager startTracingWithInstanceId:ns_instanceId ref:ns_ref className:nil name:WXTDomCall phase:WXTracingEnd functionName:@"addElement" options:@{@"threadName":WXTDOMThread}];
 
         page->CallBridgeTime(getCurrentTime() - startTime);
         return 0;
@@ -612,7 +674,6 @@ namespace WeexCore
         
         [manager startComponentTasks];
         [manager updateStyles:ns_style forComponent:ns_ref];
-        [WXTracingManager startTracingWithInstanceId:ns_instanceId ref:ns_ref className:nil name:WXTDomCall phase:WXTracingEnd functionName:@"updateStyles" options:@{@"threadName":WXTDOMThread}];
         
         page->CallBridgeTime(getCurrentTime() - startTime);
         return 0;
@@ -649,7 +710,6 @@ namespace WeexCore
         }
         [manager startComponentTasks];
         [manager updateAttributes:ns_attributes forComponent:ns_ref];
-        [WXTracingManager startTracingWithInstanceId:ns_instanceId ref:ns_ref className:nil name:WXTDomCall phase:WXTracingEnd functionName:@"updateAttrs" options:@{@"threadName":WXTDOMThread}];
 
         page->CallBridgeTime(getCurrentTime() - startTime);
         return 0;
@@ -676,7 +736,6 @@ namespace WeexCore
         }
         [manager startComponentTasks];
         [manager createFinish];
-        [WXTracingManager startTracingWithInstanceId:ns_instanceId ref:nil className:nil name:WXTDomCall phase:WXTracingEnd functionName:@"createFinish" options:@{@"threadName":WXTDOMThread}];
 
         page->CallBridgeTime(getCurrentTime() - startTime);
         return 0;
@@ -703,7 +762,6 @@ namespace WeexCore
         }
         [manager startComponentTasks];
         [manager renderFinish];
-        [WXTracingManager startTracingWithInstanceId:ns_instanceId ref:nil className:nil name:WXTDomCall phase:WXTracingEnd functionName:@"renderFinish" options:@{@"threadName":WXTDOMThread}];
         
         page->CallBridgeTime(getCurrentTime() - startTime);
         return 0;
@@ -732,7 +790,6 @@ namespace WeexCore
         
         [manager startComponentTasks];
         [manager removeComponent:ns_ref];
-        [WXTracingManager startTracingWithInstanceId:ns_instanceId ref:ns_ref className:nil name:WXTDomCall phase:WXTracingEnd functionName:@"removeElement" options:@{@"threadName":WXTDOMThread}];
         
         page->CallBridgeTime(getCurrentTime() - startTime);
         return 0;
@@ -763,7 +820,6 @@ namespace WeexCore
         
         [manager startComponentTasks];
         [manager moveComponent:ns_ref toSuper:ns_parentRef atIndex:ns_index];
-        [WXTracingManager startTracingWithInstanceId:ns_instanceId ref:ns_ref className:nil name:WXTDomCall phase:WXTracingEnd functionName:@"moveElement" options:@{@"threadName":WXTDOMThread}];
         
         page->CallBridgeTime(getCurrentTime() - startTime);
         return 0;
@@ -820,7 +876,6 @@ namespace WeexCore
         page->CallBridgeTime(getCurrentTime() - startTime);
         return result;
     }
-    
 #pragma mark - Layout Impl
     
     WXCoreSize WXCoreMeasureFunctionBridge::Measure(const char* page_id, long render_ptr, float width, MeasureMode widthMeasureMode, float height, MeasureMode heightMeasureMode)
@@ -858,7 +913,6 @@ static WeexCore::ScriptBridge* jsBridge = nullptr;
         env->SetDeviceHeight(std::to_string(screenSize.height));
         env->AddOption("screen_width_pixels", std::to_string(screenSize.width));
         env->AddOption("screen_height_pixels", std::to_string(screenSize.height));
-        env->AddOption("status_bar_height", std::to_string([[UIApplication sharedApplication] statusBarFrame].size.height));
         
         platformBridge = new WeexCore::PlatformBridge();
         platformBridge->set_platform_side(new WeexCore::IOSSide());
@@ -871,48 +925,6 @@ static WeexCore::ScriptBridge* jsBridge = nullptr;
         
         WeexCore::WeexCoreManager::Instance()->set_measure_function_adapter(new WeexCore::WXCoreMeasureFunctionBridge());
     });
-}
-
-+ (void)createDataRenderInstance:(NSString *)pageId template:(NSString *)jsBundleString options:(NSDictionary *)options  data:(id)data
-{
-    auto node_manager = weex::core::data_render::VNodeRenderManager::GetInstance();
-    NSString *optionsString = [WXUtility JSONString:options];
-    NSString *dataString = [WXUtility JSONString:data];
-    node_manager->CreatePage([jsBundleString UTF8String] ?: "", [pageId UTF8String] ?: "", [optionsString UTF8String] ?: "", [dataString UTF8String] ?: "");
-}
-
-+ (void)createDataRenderInstance:(NSString *)pageId contents:(NSData *)contents options:(NSDictionary *)options data:(id)data
-{
-    auto node_manager = weex::core::data_render::VNodeRenderManager::GetInstance();
-    NSString *optionsString = [WXUtility JSONString:options];
-    NSString *dataString = [WXUtility JSONString:data];
-    node_manager->CreatePage(static_cast<const char *>(contents.bytes), contents.length, [pageId UTF8String], [optionsString UTF8String], dataString ? [dataString UTF8String] : "");
-}
-
-+ (void)destroyDataRenderInstance:(NSString *)pageId
-{
-    auto node_manager = weex::core::data_render::VNodeRenderManager::GetInstance();
-    node_manager->ClosePage([pageId UTF8String] ?: "");
-}
-
-+ (void)refreshDataRenderInstance:(NSString *)pageId data:(NSString *)data;
-{
-    auto node_manager = weex::core::data_render::VNodeRenderManager::GetInstance();
-    node_manager->RefreshPage([pageId UTF8String] ?: "", [data UTF8String] ?: "");
-}
-
-+ (void)fireEvent:(NSString *)pageId ref:(NSString *)ref event:(NSString *)event args:(NSDictionary *)args
-{
-    NSString *params = [WXUtility JSONString:args];
-    auto vnode_manager = weex::core::data_render::VNodeRenderManager::GetInstance();
-    vnode_manager->FireEvent([pageId UTF8String] ? : "", [ref UTF8String] ? : "", [event UTF8String] ? : "", [params UTF8String] ? : "");
-}
-
-+ (void)registerModules:(NSDictionary *)modules {
-    NSString *setting = [WXUtility JSONString:modules];
-    if (setting.length > 0) {
-        weex::core::data_render::VNodeRenderManager::GetInstance()->RegisterModules([setting UTF8String] ? : "");
-    }
 }
 
 + (void)registerComponentAffineType:(NSString *)type asType:(NSString *)baseType
@@ -942,11 +954,26 @@ static WeexCore::ScriptBridge* jsBridge = nullptr;
     }
 }
 
++ (void)setDeviceSize:(CGSize)size
+{
+    WeexCore::WXCoreEnvironment* env = WeexCore::WXCoreEnvironment::getInstance();
+    env->SetDeviceWidth(std::to_string(size.width));
+    env->SetDeviceHeight(std::to_string(size.height));
+}
+
 + (void)setViewportWidth:(NSString*)pageId width:(CGFloat)width
 {
     if (platformBridge) {
         platformBridge->core_side()->SetViewPortWidth([pageId UTF8String] ?: "", (float)width);
     }
+}
+
++ (void)setPageRequired:(NSString *)pageId width:(CGFloat)width height:(CGFloat)height
+{
+    /// Because env is global, pageId is not used now time.
+    WeexCore::WXCoreEnvironment* env = WeexCore::WXCoreEnvironment::getInstance();
+    env->SetDeviceWidth(std::to_string(width));
+    env->SetDeviceHeight(std::to_string(height));
 }
 
 + (void)layoutPage:(NSString*)pageId forced:(BOOL)forced
@@ -1050,30 +1077,12 @@ static WeexCore::ScriptBridge* jsBridge = nullptr;
     }
 }
 
-static void _convertToCString(id _Nonnull obj, void (^callback)(const char*))
-{
-    if ([obj isKindOfClass:[NSString class]]) {
-        callback([obj UTF8String]);
-    }
-    else if ([obj isKindOfClass:[NSNumber class]]) {
-        callback([[(NSNumber*)obj stringValue] UTF8String]);
-    }
-    else if ([obj isKindOfClass:[NSNull class]]) {
-        callback([JSONSTRING_SUFFIX UTF8String]);
-    }
-    else {
-        NSString* jsonstring = WeexCore::TO_JSON(obj);
-        if (jsonstring != nil) {
-            callback([jsonstring UTF8String]);
-        }
-    }
-}
 
 + (void)_parseStyleBeforehand:(NSDictionary *)styles key:(NSString *)key render:(WeexCore::RenderObject*)render
 {
     id data = styles[key];
     if (data) {
-        _convertToCString(data, ^(const char * value) {
+        ConvertToCString(data, ^(const char * value) {
             if (value != nullptr) {
                 render->AddStyle([key UTF8String], value);
             }
@@ -1095,7 +1104,7 @@ static void _convertToCString(id _Nonnull obj, void (^callback)(const char*))
         }
         
         [data[@"attr"] enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-            _convertToCString(obj, ^(const char * value) {
+            ConvertToCString(obj, ^(const char * value) {
                 if (value != nullptr) {
                     render->AddAttr([key UTF8String], value);
                 }
@@ -1111,7 +1120,7 @@ static void _convertToCString(id _Nonnull obj, void (^callback)(const char*))
             if ([key isEqualToString:@"margin"] || [key isEqualToString:@"padding"] || [key isEqualToString:@"borderWidth"]) {
                 return;
             }
-            _convertToCString(obj, ^(const char * value) {
+            ConvertToCString(obj, ^(const char * value) {
                 if (value != nullptr) {
                     render->AddStyle([key UTF8String], value);
                 }
@@ -1119,7 +1128,7 @@ static void _convertToCString(id _Nonnull obj, void (^callback)(const char*))
         }];
         
         for (id obj in data[@"event"]) {
-            _convertToCString(obj, ^(const char * value) {
+            ConvertToCString(obj, ^(const char * value) {
                 if (value != nullptr) {
                     render->AddEvent(value);
                 }
@@ -1143,7 +1152,7 @@ static void _convertToCString(id _Nonnull obj, void (^callback)(const char*))
 {
     std::vector<std::pair<std::string, std::string>>* result = new std::vector<std::pair<std::string, std::string>>();
     [data enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-        _convertToCString(obj, ^(const char * value) {
+        ConvertToCString(obj, ^(const char * value) {
             if (value != nullptr) {
                 result->emplace_back([key UTF8String], value);
             }

@@ -48,7 +48,7 @@ struct Changeset {
     using timestamp_type = uint_fast64_t;
     using file_ident_type = uint_fast64_t;
     using version_type = uint_fast64_t; // FIXME: Get from `History`.
-    using StringBuffer = util::BasicStringBuffer<AllocationMetric>;
+    using StringBuffer = util::BasicStringBuffer<MeteredAllocator>;
 
     Changeset();
     struct share_buffers_tag {};

@@ -28,10 +28,13 @@
 #import "WXResourceRequest.h"
 #import "WXResourceLoader.h"
 #import "WXDebugTool.h"
-#import "WXTracingManager.h"
 #import "WXMonitor.h"
 #import "WXSDKInstance_performance.h"
 #import "WXThreadSafeMutableArray.h"
+#import "WXComponentManager.h"
+#import "WXCoreBridge.h"
+#import "WXDataRenderHandler.h"
+#import "WXHandlerFactory.h"
 
 @interface WXBridgeManager ()
 
@@ -142,6 +145,21 @@ void WXPerformBlockSyncOnBridgeThread(void (^block) (void))
 }
 
 #pragma mark JSBridge Management
+- (void)createInstanceForJS:(NSString *)instance
+              template:(NSString *)temp
+               options:(NSDictionary *)options
+                  data:(id)data {
+    if (!instance || !temp) return;
+    __weak typeof(self) weakSelf = self;
+    NSMutableDictionary *newOptions = [options mutableCopy] ?: [NSMutableDictionary new];
+    newOptions[@"EXEC_JS"] = @(YES);
+    WXPerformBlockOnBridgeThread(^(){
+        [weakSelf.bridgeCtx createInstance:instance
+                                  template:temp
+                                   options:newOptions
+                                      data:data];
+    });
+}
 
 - (void)createInstance:(NSString *)instance
               template:(NSString *)temp
@@ -163,13 +181,10 @@ void WXPerformBlockSyncOnBridgeThread(void (^block) (void))
     }
     __weak typeof(self) weakSelf = self;
     WXPerformBlockOnBridgeThread(^(){
-        [WXTracingManager startTracingWithInstanceId:instance ref:nil className:nil name:WXTExecJS phase:WXTracingBegin functionName:@"createInstance" options:@{@"threadName":WXTJSBridgeThread}];
         [weakSelf.bridgeCtx createInstance:instance
                                   template:temp
                                    options:options
                                       data:data];
-        [WXTracingManager startTracingWithInstanceId:instance ref:nil className:nil name:WXTExecJS phase:WXTracingEnd functionName:@"createInstance" options:@{@"threadName":WXTJSBridgeThread}];
-        
     });
 }
 
@@ -193,15 +208,12 @@ void WXPerformBlockSyncOnBridgeThread(void (^block) (void))
     }
     __weak typeof(self) weakSelf = self;
     WXPerformBlockOnBridgeThread(^(){
-        [WXTracingManager startTracingWithInstanceId:instance ref:nil className:nil name:WXTExecJS phase:WXTracingBegin functionName:@"createInstance" options:@{@"threadName":WXTJSBridgeThread}];
         [weakSelf.bridgeCtx createInstance:instance
                                   contents:contents
                                    options:options
                                       data:data];
-        [WXTracingManager startTracingWithInstanceId:instance ref:nil className:nil name:WXTExecJS phase:WXTracingEnd functionName:@"createInstance" options:@{@"threadName":WXTJSBridgeThread}];
     });
 }
-
 
 - (WXThreadSafeMutableArray *)instanceIdStack
 {
@@ -286,6 +298,26 @@ void WXPerformBlockSyncOnBridgeThread(void (^block) (void))
         value = [weakSelf.bridgeCtx excuteJSMethodWithResult:method];
     });
     return value;
+}
+
+- (void)DownloadJS:(NSURL *)scriptUrl completion:(void (^)(NSString *script))complection;
+{
+    if (!scriptUrl || ![scriptUrl.absoluteString length]) {
+        complection(nil);
+        return;
+    }
+    WXResourceRequest* request = [WXResourceRequest requestWithURL:scriptUrl];
+    WXResourceLoader* jsLoader = [[WXResourceLoader alloc] initWithRequest:request];
+    jsLoader.onFinished = ^(WXResourceResponse *response, NSData *data) {
+        NSString* jsString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        complection(jsString);
+    };
+    jsLoader.onFailed = ^(NSError *loadError) {
+        WXLogError(@"No js URL found");
+        complection(nil);
+    };
+
+   [jsLoader start];
 }
 
 - (void)registerService:(NSString *)name withServiceUrl:(NSURL *)serviceScriptUrl withOptions:(NSDictionary *)options completion:(void(^)(BOOL result))completion
@@ -383,6 +415,20 @@ void WXPerformBlockSyncOnBridgeThread(void (^block) (void))
 
 - (void)fireEvent:(NSString *)instanceId ref:(NSString *)ref type:(NSString *)type params:(NSDictionary *)params domChanges:(NSDictionary *)domChanges handlerArguments:(NSArray *)handlerArguments
 {
+    WXSDKInstance *instance = [WXSDKManager instanceForID:instanceId];
+    if (instance.dataRender) {
+        id<WXDataRenderHandler> dataRenderHandler = [WXHandlerFactory handlerForProtocol:@protocol(WXDataRenderHandler)];
+        if (dataRenderHandler) {
+            WXPerformBlockOnComponentThread(^{
+                [dataRenderHandler fireEvent:instanceId ref:ref event:type args:params?:@{} domChanges:domChanges?:@{}];
+            });
+        }
+        else {
+            WXLogError(@"No data render handler found!");
+        }
+        return;
+    }
+
     if (!type || !ref) {
         WXLogError(@"Event type and component ref should not be nil");
         return;
@@ -394,7 +440,6 @@ void WXPerformBlockSyncOnBridgeThread(void (^block) (void))
         [newArgs addObject:@{@"params":handlerArguments}];
         args = newArgs;
     }
-    WXSDKInstance *instance = [WXSDKManager instanceForID:instanceId];
     
     if(instance && !instance.isJSCreateFinish)
     {
@@ -439,14 +484,26 @@ void WXPerformBlockSyncOnBridgeThread(void (^block) (void))
     NSArray *args = nil;
     if (keepAlive) {
         args = @[[funcId copy], params? [params copy]:@"\"{}\"", @true];
-    }else {
+    } else {
         args = @[[funcId copy], params? [params copy]:@"\"{}\""];
     }
     WXSDKInstance *instance = [WXSDKManager instanceForID:instanceId];
-
-    WXCallJSMethod *method = [[WXCallJSMethod alloc] initWithModuleName:@"jsBridge" methodName:@"callback" arguments:args instance:instance];
-    [self callJsMethod:method];
-}
+    if (instance.wlasmRender) {
+        id<WXDataRenderHandler> dataRenderHandler = [WXHandlerFactory handlerForProtocol:@protocol(WXDataRenderHandler)];
+        if (dataRenderHandler) {
+            id strongArgs = params ? [params copy]:@"\"{}\"";
+            WXPerformBlockOnComponentThread(^{
+                [dataRenderHandler invokeCallBack:instanceId function:funcId args:strongArgs keepAlive:keepAlive];
+            });
+        }
+        else {
+            WXLogError(@"No data render handler found!");
+        }
+    }
+    else {
+        WXCallJSMethod *method = [[WXCallJSMethod alloc] initWithModuleName:@"jsBridge" methodName:@"callback" arguments:args instance:instance];
+        [self callJsMethod:method];
+    }}
 
 - (void)callBack:(NSString *)instanceId funcId:(NSString *)funcId params:(id)params
 {
@@ -480,6 +537,16 @@ void WXPerformBlockSyncOnBridgeThread(void (^block) (void))
     __weak typeof(self) weakSelf = self;
     WXPerformBlockOnBridgeThread(^(){
         [weakSelf.bridgeCtx resetEnvironment];
+    });
+}
+
+- (void)callJSMethod:(NSString *)method args:(NSArray *)args
+{
+    if (!method) return;
+
+    __weak typeof(self) weakSelf = self;
+    WXPerformBlockOnBridgeThread(^(){
+        [weakSelf.bridgeCtx callJSMethod:method args:args onContext:nil completion:nil];
     });
 }
 

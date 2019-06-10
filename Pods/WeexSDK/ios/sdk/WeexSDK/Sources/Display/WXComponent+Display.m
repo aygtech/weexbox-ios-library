@@ -31,6 +31,15 @@
 
 #pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
 
+typedef NS_ENUM(NSInteger, WXComponentBorderRecord) {
+    WXComponentBorderRecordNone = 0,
+    WXComponentBorderRecordTop = 1,
+    WXComponentBorderRecordRight = 1 << 1,
+    WXComponentBorderRecordBottom = 1 << 2,
+    WXComponentBorderRecordLeft = 1 << 3,
+    WXComponentBorderRecordAll = WXComponentBorderRecordTop | WXComponentBorderRecordRight | WXComponentBorderRecordBottom | WXComponentBorderRecordLeft
+};
+
 @implementation WXComponent (Display)
 
 #pragma mark Public
@@ -61,7 +70,7 @@
         return YES;
     }
     
-    if (![self _needsDrawBorder]) {
+    if (![self _needsDrawBorder] && _lastBorderRecords == WXComponentBorderRecordNone) {
         WXLogDebug(@"No need to draw border for %@", self.ref);
         WXPerformBlockOnMainThread(^{
             [self _resetNativeBorderRadius];
@@ -354,6 +363,9 @@
         CGContextAddLineToPoint(context, topLeft, _borderTopWidth/2);
         CGContextAddArc(context, topLeft, topLeft, topLeft-_borderTopWidth/2, -M_PI_2, -M_PI_2-M_PI_4-(_borderLeftWidth>0?0:M_PI_4), 1);
         CGContextStrokePath(context);
+        _lastBorderRecords |= WXComponentBorderRecordTop;
+    } else {
+        _lastBorderRecords &= ~(WXComponentBorderRecordTop);
     }
     
     // Left
@@ -372,6 +384,9 @@
         CGContextAddLineToPoint(context, _borderLeftWidth/2, size.height-bottomLeft);
         CGContextAddArc(context, bottomLeft, size.height-bottomLeft, bottomLeft-_borderLeftWidth/2, M_PI, M_PI-M_PI_4-(_borderBottomWidth>0?0:M_PI_4), 1);
         CGContextStrokePath(context);
+        _lastBorderRecords |= WXComponentBorderRecordLeft;
+    } else {
+        _lastBorderRecords &= ~WXComponentBorderRecordLeft;
     }
     
     // Bottom
@@ -390,6 +405,9 @@
         CGContextAddLineToPoint(context, size.width-bottomRight, size.height-_borderBottomWidth/2);
         CGContextAddArc(context, size.width-bottomRight, size.height-bottomRight, bottomRight-_borderBottomWidth/2, M_PI_2, M_PI_4-(_borderRightWidth > 0?0:M_PI_4), 1);
         CGContextStrokePath(context);
+        _lastBorderRecords |= WXComponentBorderRecordBottom;
+    } else {
+        _lastBorderRecords &= ~WXComponentBorderRecordBottom;
     }
     
     // Right
@@ -408,8 +426,11 @@
         CGContextAddLineToPoint(context, size.width-_borderRightWidth/2, topRight);
         CGContextAddArc(context, size.width-topRight, topRight, topRight-_borderRightWidth/2, 0, -M_PI_4-(_borderTopWidth > 0?0:M_PI_4), 1);
         CGContextStrokePath(context);
+        _lastBorderRecords |= WXComponentBorderRecordRight;
+    } else {
+        _lastBorderRecords &= ~WXComponentBorderRecordRight;
     }
-    
+
     CGContextStrokePath(context);
     
     //clipRadius is beta feature
@@ -581,7 +602,9 @@ do {\
 - (CAShapeLayer *)drawBorderRadiusMaskLayer:(CGRect)rect
 {
     if ([self hasBorderRadiusMaskLayer]) {
-        UIBezierPath *bezierPath = [UIBezierPath wx_bezierPathWithRoundedRect:rect topLeft:_borderTopLeftRadius topRight:_borderTopRightRadius bottomLeft:_borderBottomLeftRadius bottomRight:_borderBottomRightRadius];
+        WXRoundedRect *borderRect = [[WXRoundedRect alloc] initWithRect:rect topLeft:_borderTopLeftRadius topRight:_borderTopRightRadius bottomLeft:_borderBottomLeftRadius bottomRight:_borderBottomRightRadius];
+        WXRadii *radii = borderRect.radii;
+        UIBezierPath *bezierPath = [UIBezierPath wx_bezierPathWithRoundedRect:rect topLeft:radii.topLeft topRight:radii.topRight bottomLeft:radii.bottomLeft bottomRight:radii.bottomRight];
         CAShapeLayer *maskLayer = [CAShapeLayer layer];
         maskLayer.path = bezierPath.CGPath;
         return maskLayer;

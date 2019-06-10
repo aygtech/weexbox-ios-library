@@ -57,6 +57,8 @@ NSString* const KEY_PAGE_PROPERTIES_RENDER_TYPE = @"wxRenderType";
 NSString* const KEY_PAGE_STAGES_START = @"wxRecordStart";
 NSString* const KEY_PAGE_STAGES_DOWN_BUNDLE_START  = @"wxStartDownLoadBundle";
 NSString* const KEY_PAGE_STAGES_DOWN_BUNDLE_END  = @"wxEndDownLoadBundle";
+NSString* const KEY_PAGE_STAGES_CUSTOM_PREPROCESS_START  = @"wxCustomPreprocessStart";
+NSString* const KEY_PAGE_STAGES_CUSTOM_PREPROCESS_END  = @"wxCustomPreprocessEnd";
 NSString* const KEY_PAGE_STAGES_RENDER_ORGIGIN  = @"wxRenderTimeOrigin";
 NSString* const KEY_PAGE_STAGES_LOAD_BUNDLE_START  = @"wxStartLoadBundle";
 NSString* const KEY_PAGE_STAGES_LOAD_BUNDLE_END  = @"wxEndLoadBundle";
@@ -274,7 +276,7 @@ NSString* const VALUE_ERROR_CODE_DEFAULT = @"0";
     [self updateDiffStats:KEY_PAGE_STATS_IMG_UN_RECYCLE_NUM withDiffValue:0];
 }
 
-- (void) endRecord;
+- (void) endRecord
 {
     if (_isEnd) {
         return;

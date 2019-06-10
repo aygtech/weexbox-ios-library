@@ -6,11 +6,11 @@ PODS:
   - BindingX (1.0.3):
     - WeexPluginLoader
     - WeexSDK
-  - Charts (3.2.2):
-    - Charts/Core (= 3.2.2)
-  - Charts/Core (3.2.2)
-  - HandyJSON (5.0.0-beta.1)
-  - Hue (4.0.0)
+  - Charts (3.3.0):
+    - Charts/Core (= 3.3.0)
+  - Charts/Core (3.3.0)
+  - HandyJSON (5.0.0)
+  - Hue (5.0.0)
   - LBXScan/LBXNative (2.3):
     - LBXScan/Types (~> 2.2)
   - LBXScan/Types (2.3)
@@ -18,27 +18,27 @@ PODS:
     - LBXScan/Types (~> 2.2)
   - lottie-ios (2.5.3)
   - MBProgressHUD (1.1.0)
-  - Realm (3.14.1):
-    - Realm/Headers (= 3.14.1)
-  - Realm/Headers (3.14.1)
-  - RealmSwift (3.14.1):
-    - Realm (= 3.14.1)
+  - Realm (3.16.1):
+    - Realm/Headers (= 3.16.1)
+  - Realm/Headers (3.16.1)
+  - RealmSwift (3.16.1):
+    - Realm (= 3.16.1)
   - RTRootNavigationController_WeexBox (0.7.1):
     - RTRootNavigationController_WeexBox/Core (= 0.7.1)
   - RTRootNavigationController_WeexBox/Core (0.7.1)
-  - SDWebImage (4.4.6):
-    - SDWebImage/Core (= 4.4.6)
-  - SDWebImage/Core (4.4.6)
-  - SnapKit (4.2.0)
+  - SDWebImage (4.4.7):
+    - SDWebImage/Core (= 4.4.7)
+  - SDWebImage/Core (4.4.7)
+  - SnapKit (5.0.0)
   - SocketRocket (0.5.1)
   - SwiftEventBus (5.0.0)
-  - SwiftyJSON (4.3.0)
-  - TZImagePickerController (3.2.0)
-  - VasSonic (3.0.0)
+  - SwiftyJSON (5.0.0)
+  - TZImagePickerController (3.2.1)
+  - VasSonic (3.1.1)
   - WeexPluginLoader (0.0.1.9.1):
     - WeexSDK
-  - WeexSDK (0.20.1)
-  - WXDevtool (0.20.0):
+  - WeexSDK (0.24.0)
+  - WXDevtool (0.24.0):
     - SocketRocket
     - WeexSDK
   - XFAssistiveTouch_WeexBox (1.0.0):
@@ -51,8 +51,8 @@ DEPENDENCIES:
   - AsyncSwift (~> 2.0)
   - BindingX (~> 1.0)
   - Charts (~> 3.0)
-  - HandyJSON (~> 5.0.0-beta.1)
-  - Hue (~> 4.0)
+  - HandyJSON (~> 5.0)
+  - Hue (~> 5.0)
   - LBXScan/LBXNative (~> 2.0)
   - LBXScan/UI (~> 2.0)
   - lottie-ios (~> 2.0)
@@ -60,13 +60,13 @@ DEPENDENCIES:
   - RealmSwift (~> 3.0)
   - RTRootNavigationController_WeexBox (~> 0.7.0)
   - SDWebImage (~> 4.0)
-  - SnapKit (~> 4.0)
+  - SnapKit (~> 5.0)
   - SwiftEventBus (~> 5.0)
-  - SwiftyJSON (~> 4.0)
+  - SwiftyJSON (~> 5.0)
   - TZImagePickerController (~> 3.0)
   - VasSonic (~> 3.0)
-  - WeexSDK (~> 0.20.0)
-  - WXDevtool (~> 0.20.0)
+  - WeexSDK (~> 0.24.0)
+  - WXDevtool (~> 0.24.0)
   - XFAssistiveTouch_WeexBox (~> 1.0)
   - Zip (~> 1.0)
 
@@ -103,28 +103,28 @@ SPEC CHECKSUMS:
   Alamofire-Synchronous: eedf1e6e961c3795a63c74990b3f7d9fbfac7e50
   AsyncSwift: 65775a7b32e740609b24969ece3de58723b9dc3e
   BindingX: b3c6c1c5dcd8e50277cfc5daad09d7010c227524
-  Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
-  HandyJSON: 582477127ab3ab65bd2e471815f1a7b846856978
-  Hue: afe18b4e819e2848e7d2d5b4b33f4d3f88dd921b
+  Charts: ec1f57f9340054155691e84d4544a1d239d382c5
+  HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
+  Hue: c129cb67be7d093a82bbbc30ce8a96757bf6f37a
   LBXScan: e51449f0832d1fe17da632af0d22adeb3cfa3543
   lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
-  Realm: e12c9c2387d05c5bba3a9c394838f5870e85763b
-  RealmSwift: a82eab9b04c3e1616082c7e17aa300740847769c
+  Realm: 601cacc51d8be3b17a377ef787be0f6ee0e76cf1
+  RealmSwift: 486f2e09d5a8ccff63ed66e48d0846b111deb5e5
   RTRootNavigationController_WeexBox: ef63000401bb1e7caa1313f6ece8afb0bb0f9a7f
-  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
-  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
+  SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   SwiftEventBus: b30f617a6aca5a9336464b4d3f5931034762f2d5
-  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
-  TZImagePickerController: 7850b158d025065b162a1a963d445040b828abc9
-  VasSonic: 681ec95418d485d8c501d13549e25dff18754893
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  TZImagePickerController: bf4c57b98d8707fce41ea6be872414a71c7a8c9d
+  VasSonic: 1b0e5d45602627e8f39ac120a892050a10d42bab
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
-  WeexSDK: ced3f2ef2f0cb48d1d76fd2f03c645572c632d21
-  WXDevtool: 833dd3e835df1f5f278fc8865c865d48196bfdab
+  WeexSDK: 5bd35be9c035c67c84d1ba15712360bb0d0ba6b5
+  WXDevtool: 95b70c73c06fc3299d65bd53ba4b3e0b0087f3cb
   XFAssistiveTouch_WeexBox: 50ee133d7e5a1717907f2518b8415d56d39c65fe
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: b14abfa29b2cff8babc9472192b37f4feb0e8372
+PODFILE CHECKSUM: 9ffd50fba5d6dea565bd66b55d3aea9823a6512b
 
 COCOAPODS: 1.6.1
