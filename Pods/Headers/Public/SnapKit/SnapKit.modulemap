@@ -1,6 +1,1 @@
-module SnapKit {
-  umbrella header "SnapKit-umbrella.h"
-
-  export *
-  module * { export * }
-}
+../../../Target Support Files/SnapKit/SnapKit.modulemap

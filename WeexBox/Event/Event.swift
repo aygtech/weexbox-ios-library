@@ -9,25 +9,25 @@
 import Foundation
 import SwiftEventBus
 
-public struct Event {
+@objc public class Event: NSObject {
     
     // 注册事件
-    public static func register(target: AnyObject, name: String, handler: @escaping ((Notification?) -> Void)) {
+    @objc public static func register(target: AnyObject, name: String, handler: @escaping ((Notification?) -> Void)) {
         SwiftEventBus.onMainThread(target, name: name, handler: handler)
     }
     
     // 发送事件
-    public static func emit(name: String, info: Dictionary<String, Any>?) {
+    @objc public static func emit(name: String, info: Dictionary<String, Any>?) {
         SwiftEventBus.post(name, userInfo: info)
     }
     
     // 注销事件
-    public static func unregister(target: AnyObject, name: String) {
+    @objc public static func unregister(target: AnyObject, name: String) {
         SwiftEventBus.unregister(target, name: name)
     }
     
     // 注销所有事件
-    public static func unregisterAll(target: AnyObject) {
+    @objc public static func unregisterAll(target: AnyObject) {
         SwiftEventBus.unregister(target)
     }
 }

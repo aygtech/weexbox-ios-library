@@ -17,21 +17,23 @@ Allows publish-subscribe-style communication between components without requirin
 ### Cocoapods
 
 ```bash
-pod 'SwiftEventBus', :tag => '2.1.2', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
+pod 'SwiftEventBus', :tag => '5.0.0', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
 ```
 
 ### Carthage
 ```bash
-github "cesarferreira/SwiftEventBus" == 2.1.2
+github "cesarferreira/SwiftEventBus" == 5.0.0
 ```
 
 ### Versions
 
+- `5.+` for `swift 5`
+- `3.+` for `swift 4.2`
 - `2.+` for `swift 3`
 - `1.1.0` for `swift 2.2`
 
 ## Usage
-### 1: Prepare subscribers ###
+### 1 - Prepare subscribers ###
 
 Subscribers implement event handling methods that will be called when an event is received.
 
@@ -47,7 +49,7 @@ SwiftEventBus.onBackgroundThread(target, name:"someEventName") { result in
 }
 ```
 
-### 2: Post events ###
+### 2 - Post events ###
 
 Post an event from any part of your code. All subscribers matching the event type will receive it.
 
@@ -103,7 +105,14 @@ Regarding this limitation, [@nunogoncalves](https://github.com/nunogoncalves) im
      SwiftEventBus.onMainThread(self, name: "updateText") { notification in
          self.textField.text = "\(self.count)"
      }
+}
 
+//Perhaps on viewDidDisappear depending on your needs
+override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+
+    SwiftEventBus.unregister(self)
+}
 ```
 --
 

@@ -10,7 +10,7 @@ import Foundation
 import WeexSDK
 import Async
 import VasSonic
-//import XFAssistiveTouch
+
 /// 初始化SDK
 @objcMembers public class WeexBoxEngine: NSObject {
    
@@ -28,14 +28,14 @@ import VasSonic
                 WXDebugTool.setDebug(true)
                 WXLog.setLogLevel(.WXLogLevelLog)
                 Async.main(after: 3) {
-                    let touch = AssistiveTouch.sing;
-                    touch.show();
+                    let touch = AssistiveTouch.sing
+                    touch.show()
                     touch.callBack = {(index)->() in
                         AssistiveTouch.sing.dissShow()
-                        if(index == 0){
+                        if index == 0 {
                             DebugWeex.openScan()
                         }
-                        else{
+                        else {
                             DebugWeex.refresh()
                         }
                     }
@@ -58,10 +58,11 @@ import VasSonic
     
     private static func registerHandler() {
         WXSDKEngine.registerHandler(ImageHander(), with: WXImgLoaderProtocol.self)
+        WXSDKEngine.registerHandler(WebSocketHander(), with: WXWebSocketHandler.self)
     }
     
     private static func registerComponent() {
-        
+        WXSDKEngine.registerComponent("wb-lottie", with: LottieComponent.self)
     }
     
     private static func registerModule() {
@@ -72,6 +73,7 @@ import VasSonic
         WXSDKEngine.registerModule("wb-router", with: RouterModule.self)
         WXSDKEngine.registerModule("wb-event", with: EventModule.self)
         WXSDKEngine.registerModule("wb-location", with: LocationModule.self)
+        WXSDKEngine.registerModule("wb-util", with: UtilModule.self)
     }
     
     private static func registerRouter() {

@@ -1,5 +1,5 @@
 module WeexSDK {
-  umbrella header "WeexSDK-umbrella.h"
+  umbrella header "WeexSDK.h"
 
   export *
   module * { export * }

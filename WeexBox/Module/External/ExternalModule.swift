@@ -8,20 +8,20 @@
 
 import Foundation
 import Async
-
+import AudioToolbox
 class ExternalModule: ExternalModuleOC {
     
     // 打开浏览器
-    @objc func openBrowser(_ url: String) {
+    @objc func openBrowser(_ url: Any) {
         Async.main {
-            External.openBrowser(url)
+            External.openBrowser(WXConvert.nsString(url))
         }
     }
     
     // 打电话
-    @objc func callPhone(_ phone: String) {
+    @objc func callPhone(_ phone: Any) {
         Async.main {
-            External.callPhone(phone)
+            External.callPhone(WXConvert.nsString(phone))
         }
     }
     
@@ -41,6 +41,10 @@ class ExternalModule: ExternalModuleOC {
                 callback?(result.toJsResult(), false)
             })
         }
+    }
+    //震动
+    @objc func vibration(_ options: Dictionary<String, Any>){
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
     }
     
 }

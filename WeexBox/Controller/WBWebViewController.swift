@@ -13,7 +13,7 @@ import VasSonic
 /// web基类
 open class WBWebViewController: WBBaseViewController, SonicSessionDelegate {
 
-    let webView = UIWebView()
+    public let webView = UIWebView()
     
     override open func viewDidLoad() {
         super.viewDidLoad()

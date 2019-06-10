@@ -18,6 +18,7 @@ struct PhotoOption:HandyJSON {
     var isCircle:Bool?//true为圆
     var width:CGFloat?
     var height:CGFloat?
+    var root:Bool?
 }
 class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPickerDelegate, TZImagePickerControllerDelegate {
     
@@ -70,6 +71,9 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
         
         //允许裁剪
         imagePickerVc.allowCrop = option?.enableCrop ?? true
+        imagePickerVc.allowTakeVideo = false
+        imagePickerVc.allowPickingVideo = false
+        
         //把宽度转为半径，不设置尺寸。eg:/2是换算半径。再次/2是px转pt
         if(option?.width != nil){
             imagePickerVc.circleCropRadius = Int(option?.width ?? 60.0)/4
@@ -83,7 +87,11 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
                 
                 for image in photos!{
                     let path = self.saveImageToSandBox(image: image, fileName: self.getFileName())
-                    urls.add(path)
+                    urls.add([
+                        "url":path,
+                        "width":image.size.width ?? 0,
+                        "height":image.size.height ?? 0
+                        ])
                 }
                 result.data = ["urls":urls]
                 callback(result)
@@ -95,7 +103,9 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
                 callback(result)
             }
         }
-        from.present(imagePickerVc, animated: true, completion: nil)
+        let isRoot = option?.root ?? false
+        let currentVc = (isRoot == true) ? (UIApplication.shared.delegate?.window!?.rootViewController ?? from) : from
+        currentVc.present(imagePickerVc, animated: true, completion: nil)
     }
     
     // 选择图片
@@ -107,6 +117,8 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
         imagePickerVc.needCircleCrop = option?.isCircle ?? false
         //允许裁剪
         imagePickerVc.allowCrop = option?.enableCrop ?? true
+        imagePickerVc.allowTakeVideo = false
+        imagePickerVc.allowPickingVideo = false
         //把宽度转为半径，不设置尺寸。eg:/2是换算半径。再次/2是px转pt
         if(option?.width != nil){
             imagePickerVc.circleCropRadius = Int(option?.width ?? 60.0)/4
@@ -120,7 +132,11 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
                 
                 for image in photos!{
                     let path = self.saveImageToSandBox(image: image, fileName: self.getFileName())
-                    urls.add(path)
+                    urls.add([
+                        "url":path,
+                        "width":image.size.width ?? 0,
+                        "height":image.size.height ?? 0
+                        ])
                 }
                 result.data = ["urls":urls]
                 callback(result)
@@ -132,7 +148,9 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
                 callback(result)
             }
         }
-        from.present(imagePickerVc, animated: true, completion: nil)
+        let isRoot = option?.root ?? false
+        let currentVc = (isRoot == true) ? (UIApplication.shared.delegate?.window!?.rootViewController ?? from) : from
+        currentVc.present(imagePickerVc, animated: true, completion: nil)
     }
     func getFileName() -> String {
         let time  = NSDate().timeIntervalSince1970*1000;

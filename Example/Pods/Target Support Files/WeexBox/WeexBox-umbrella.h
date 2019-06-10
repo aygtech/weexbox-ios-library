@@ -10,8 +10,12 @@
 #endif
 #endif
 
+#import "BaseComponent.h"
+#import "LottieComponent.h"
 #import "WBScanComponentOC.h"
 #import "ImageHander.h"
+#import "SRWebSocket+Weex.h"
+#import "WebSocketHander.h"
 #import "BaseModule.h"
 #import "EventModule.h"
 #import "ExternalModule.h"
@@ -20,6 +24,7 @@
 #import "NavigatorModule.h"
 #import "NetworkModule.h"
 #import "RouterModule.h"
+#import "UtilModule.h"
 #import "WXRefreshPlugin.h"
 #import "WeexBox.h"
 

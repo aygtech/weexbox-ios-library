@@ -11,7 +11,7 @@ import HandyJSON
 
 /// js传来的参数
 struct JsOptions: HandyJSON {
-
+    
     // network
     var url: String?
     var method: String?
@@ -29,6 +29,7 @@ struct JsOptions: HandyJSON {
     var cancelTitle: String?
     var placeholder: String?
     var isSecure: Bool?
+    var root:Bool?
     var actions: Array<ActionSheet>?
     var duration: Double?
     

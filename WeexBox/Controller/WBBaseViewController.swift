@@ -13,8 +13,8 @@ import Foundation
     
     // 路由
     public var router = Router()
-    // 导航栏原始高度
-    let navHeight = UIApplication.shared.statusBarFrame.size.height
+    // 状态栏原始高度
+    let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
     
     open override func viewDidLoad() {
         super.viewDidLoad()

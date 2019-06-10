@@ -10,8 +10,8 @@ import Foundation
 
 class EventModule: EventModuleOC {
     
-    @objc func register(_ name: String, callback: WXModuleKeepAliveCallback?) {
-        Event.register(target: getVC(), name: name) { notification in
+    @objc func register(_ name: Any, callback: WXModuleKeepAliveCallback?) {
+        Event.register(target: getVC(), name: WXConvert.nsString(name)) { notification in
             callback?(notification?.userInfo, true)
         }
     }
@@ -21,8 +21,8 @@ class EventModule: EventModuleOC {
         Event.emit(name: options.name!, info: options.params)
     }
     
-    @objc func unregister(_ name: String) {
-        Event.unregister(target: self, name: name)
+    @objc func unregister(_ name: Any) {
+        Event.unregister(target: self, name: WXConvert.nsString(name))
     }
     
     @objc func unregisterAll() {

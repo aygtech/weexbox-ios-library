@@ -1,6 +1,1 @@
-module Alamofire_Synchronous {
-  umbrella header "Alamofire-Synchronous-umbrella.h"
-
-  export *
-  module * { export * }
-}
+../../../Target Support Files/Alamofire-Synchronous/Alamofire-Synchronous.modulemap

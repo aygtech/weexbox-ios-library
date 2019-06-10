@@ -1,0 +1,1 @@
+../../../../../WeexBox/Component/BaseComponent.h
