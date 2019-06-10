@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "WeexBox"
-  s.version      = "1.3.6"
+  s.version      = "1.3.5"
   s.summary      = "WeexBox."
   s.homepage     = "https://github.com/aygtech/weexbox-ios-library"
   s.license      = "MIT"
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.frameworks = 'Foundation', 'UIKit'
   s.libraries = 'sqlite3'
 
-  s.dependency 'WeexSDK', '0.20.0'
+  s.dependency 'WeexSDK', '~> 0.20.0'
   s.dependency 'WXDevtool', '~> 0.20.0'
   s.dependency 'Alamofire', '~> 4.0'
   s.dependency "Alamofire-Synchronous", '~> 4.0'
