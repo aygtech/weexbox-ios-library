@@ -166,14 +166,7 @@
     
     NSArray *handlerArguments = [self _paramsForEvent:eventName];
     NSString *ref = _templateComponent ? _templateComponent.ref  : self.ref;
-    if (self.weexInstance.dataRender) {
-        WXPerformBlockOnComponentThread(^{
-            [WXCoreBridge fireEvent:self.weexInstance.instanceId ref:ref event:eventName args:dict];
-        });
-    }
-    else {
-        [[WXSDKManager bridgeMgr] fireEvent:self.weexInstance.instanceId ref:ref type:eventName params:dict domChanges:domChanges handlerArguments:handlerArguments];
-    }
+    [[WXSDKManager bridgeMgr] fireEvent:self.weexInstance.instanceId ref:ref type:eventName params:dict domChanges:domChanges handlerArguments:handlerArguments];
 }
 
 - (NSString *)recursiveFindTemplateIdWithComponent:(WXComponent *)component
@@ -395,6 +388,7 @@ if ([removeEventName isEqualToString:@#eventName1]||[removeEventName isEqualToSt
     if (!_tapGesture) {
         _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onClick:)];
         _tapGesture.delegate = self;
+        _tapGesture.cancelsTouchesInView = _cancelsTouchesInView;
         [self.view addGestureRecognizer:_tapGesture];
     }
 }
@@ -819,6 +813,10 @@ if ([removeEventName isEqualToString:@#eventName1]||[removeEventName isEqualToSt
             }
             BOOL stopPropagation = [[WXEventManager sharedManager]stopPropagation:self.weexInstance.instanceId ref:ref type:_stopPropagationName params:@{@"changedTouches":resultTouch ? @[resultTouch] : @[],@"action":touchState}];
             touch.wx_stopPropagation = stopPropagation ? @1 : @0;
+            
+            //only custom event on custom component will make not receive touch
+            //you can use custom-event="yes" to enable this feature
+            return _customEvent ? !stopPropagation : YES;
         }
     }
     return YES;
@@ -855,6 +853,16 @@ if ([removeEventName isEqualToString:@#eventName1]||[removeEventName isEqualToSt
     }
     // onclick and textviewInput
     if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass: NSClassFromString(textTap)]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRequireFailureOfGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]] &&
+        [otherGestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
         return YES;
     }
     
@@ -968,11 +976,30 @@ if ([removeEventName isEqualToString:@#eventName1]||[removeEventName isEqualToSt
 
 - (void)fireTouchEvent:(NSString *)eventName withTouches:(NSSet<UITouch *> *)touches
 {
+    if (_component == nil) {
+        return;
+    }
+    
     NSMutableArray *resultTouches = [NSMutableArray new];
+    
+    CGPoint accmOffset = CGPointZero;
+    UIView* rootView = _component.weexInstance.rootView;
+//    UIView* view = self.view;
+//    while (view && view != rootView) {
+//        if ([view isKindOfClass:[UIScrollView class]]) {
+//            CGPoint offset = ((UIScrollView*)view).contentOffset;
+//            accmOffset.x += offset.x;
+//            accmOffset.y += offset.y;
+//        }
+//        view = view.superview;
+//    }
     
     for (UITouch *touch in touches) {
         CGPoint screenLocation = [touch locationInView:touch.window];
-        CGPoint pageLocation = [touch locationInView:_component.weexInstance.rootView];
+        CGPoint pageLocation = [touch locationInView:rootView];
+        pageLocation.x += accmOffset.x;
+        pageLocation.y += accmOffset.y;
+      
         if (!touch.wx_identifier) {
             touch.wx_identifier = @(_touchIdentifier++);
         }
@@ -990,7 +1017,9 @@ if ([removeEventName isEqualToString:@#eventName1]||[removeEventName isEqualToSt
             }
         }
         
-        [resultTouches addObject:mutableResultTouch];
+        if (mutableResultTouch) { // component is nil, mutableResultTouch will be nil
+            [resultTouches addObject:mutableResultTouch];
+        }
     }
     
     [_component fireEvent:eventName params:@{@"changedTouches":resultTouches ?: @[]}];

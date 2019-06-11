@@ -99,6 +99,28 @@
     }
 }
 
+- (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated
+{
+    [super setContentOffset:contentOffset animated:animated];
+    BOOL scrollStartEvent = [[self.wx_component valueForKey:@"_scrollStartEvent"] boolValue];
+    id scrollEventListener = [self.wx_component valueForKey:@"_scrollEventListener"];
+    
+    if (animated && (scrollStartEvent ||scrollEventListener)  && !WXPointEqualToPoint(contentOffset, self.contentOffset)) {
+        CGFloat scaleFactor = self.wx_component.weexInstance.pixelScaleFactor;
+        NSDictionary *contentSizeData = @{@"width":@(self.contentSize.width / scaleFactor),
+                                          @"height":@(self.contentSize.height / scaleFactor)};
+        NSDictionary *contentOffsetData = @{@"x":@(-self.contentOffset.x / scaleFactor),
+                                            @"y":@(-self.contentOffset.y / scaleFactor)};
+        if (scrollStartEvent) {
+            [self.wx_component fireEvent:@"scrollstart" params:@{@"contentSize":contentSizeData, @"contentOffset":contentOffsetData} domChanges:nil];
+        }
+        if (scrollEventListener) {
+            WXScrollerComponent *component = (WXScrollerComponent *)self.wx_component;
+            component.scrollEventListener(component, @"scrollstart", @{@"contentSize":contentSizeData, @"contentOffset":contentOffsetData});
+        }
+    }
+}
+
 @end
 
 // WXText is a non-public is not permitted
@@ -230,6 +252,13 @@
 
 - (void)scrollToComponent:(WXComponent *)component withOffset:(CGFloat)offset animated:(BOOL)animated
 {
+    UIScrollView *scrollView = (UIScrollView *)self.view;
+    // http://dotwe.org/vue/aa1af34e5fc745c0f1520e346904682a
+    // ignore scroll action if contentSize smaller than scroller frame
+    if (scrollView.contentSize.height < scrollView.frame.size.height) {
+        return;
+    }
+    
     CGPoint contentOffset = _tableView.contentOffset;
     CGFloat contentOffsetY = 0;
     
@@ -654,7 +683,7 @@
             // Must invoke synchronously otherwise it will remove the view just added.
             WXCellComponent *cellComponent = (WXCellComponent *)wxCellView.wx_component;
             if (cellComponent.isRecycle) {
-                [wxCellView.wx_component _unloadViewWithReusing:YES];
+                [cellComponent _unloadViewWithReusing:YES];
             }
         }
     }
@@ -994,6 +1023,7 @@
     }];
 }
 
+// Hook _adjustContentOffsetIfNecessary will cause UITableView freezing if bounces is set to NO.
 - (void)fixFlicker
 {
     static dispatch_once_t onceToken;

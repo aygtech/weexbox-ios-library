@@ -52,12 +52,12 @@ protected:
 
     template<class A> static void apply(A& applier, const Changeset& log, util::Logger* logger);
 
+    TableRef table_for_class_name(StringData) const; // Throws
+    REALM_NORETURN void bad_transaction_log(const char*) const;
+
     Group& m_group;
     TableInfoCache& m_table_info_cache;
     LinkViewRef m_selected_link_list;
-private:
-    const Changeset* m_log = nullptr;
-    util::Logger* m_logger = nullptr;
     TableRef m_selected_table;
     TableRef m_selected_array;
     TableRef m_link_target_table;
@@ -70,9 +70,9 @@ private:
         }
     }
 
-    void bad_transaction_log(const char*) const; // Throws
-
-    TableRef table_for_class_name(StringData) const; // Throws
+private:
+    const Changeset* m_log = nullptr;
+    util::Logger* m_logger = nullptr;
 };
 
 

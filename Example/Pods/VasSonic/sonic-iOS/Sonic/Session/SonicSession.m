@@ -266,6 +266,16 @@
     return YES;
 }
 
+- (NSString *)cachedHTMLString
+{
+    if (!self.cacheFileData) {
+        return @"";
+    }
+    
+    return [[[NSString alloc]initWithData:self.cacheFileData encoding:NSUTF8StringEncoding] autorelease];
+}
+
+
 - (void)syncCookies
 {
     NSURL *cUrl = [NSURL URLWithString:self.url];
@@ -277,13 +287,25 @@
     }
 }
 
+- (NSString *)getSonicHeaderETagWithHeaders:(NSDictionary *)headers
+{
+    NSString *keyETag = [headers objectForKey:[SonicHeaderKeyCustomeETag lowercaseString]];
+    if (keyETag && [keyETag isKindOfClass:[NSString class]] && keyETag.length > 0) {
+        // do nothing
+    } else {
+        keyETag = [SonicHeaderKeyETag lowercaseString];
+    }
+    
+    return [headers objectForKey:keyETag];
+}
+
 - (NSDictionary *)buildRequestHeaderFields
 {
     NSDictionary *cacheHeaders = self.cacheConfigHeaders;
     NSMutableDictionary *requestHeaders = [NSMutableDictionary dictionary];
     
     if (cacheHeaders) {
-        NSString *eTag = cacheHeaders[SonicHeaderKeyETag];
+        NSString *eTag = [self getSonicHeaderETagWithHeaders:cacheHeaders];
         if (eTag.length > 0) {
             [requestHeaders setObject:eTag forKey:HTTPHeaderKeyIfNoneMatch];
         }

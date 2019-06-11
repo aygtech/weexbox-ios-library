@@ -30,6 +30,12 @@
 #define REALM_SYNC_HISTORY_HPP
 
 namespace realm {
+namespace _impl {
+    struct ObjectIDHistoryState;
+}
+}
+
+namespace realm {
 namespace sync {
 
 struct VersionInfo {
@@ -100,11 +106,17 @@ public:
     /// identical identifiers for two client files if they are associated with
     /// different server Realms.
     ///
+    /// \param fix_up_object_ids The object ids that depend on client file ident
+    /// will be fixed in both state and history if this parameter is true. If
+    /// it is known that there are no objects to fix, it can be set to false to
+    /// achieve higher performance.
+    ///
     /// The client is required to obtain the file identifier before engaging in
     /// synchronization proper, and it must store the identifier and use it to
     /// reestablish the connection between the client file and the server file
     /// when engaging in future synchronization sessions.
-    virtual void set_client_file_ident(SaltedFileIdent client_file_ident) = 0;
+    virtual void set_client_file_ident(SaltedFileIdent client_file_ident,
+                                       bool fix_up_object_ids) = 0;
 
     /// Stores the SyncProgress progress in the associated Realm file in a way
     /// that makes it available via get_status() during future synchronization
@@ -237,6 +249,7 @@ public:
                                              IntegrationError& integration_error, util::Logger&,
                                              SyncTransactReporter* transact_reporter = nullptr) = 0;
 
+
 protected:
     ClientHistoryBase(const std::string& realm_path);
 };
@@ -307,6 +320,61 @@ public:
     /// specified buffer, which does not have to be empty initially.
     virtual void get_cooked_changeset(std::int_fast64_t index,
                                       util::AppendBuffer<char>&) const = 0;
+
+    /// set_initial_state_realm_history_numbers() sets the history numbers for
+    /// a new state Realm. The function is used when the server creates a new
+    /// State Realm.
+    ///
+    /// The history object must be in a write transaction before the function
+    /// call.
+    virtual void set_initial_state_realm_history_numbers(version_type local_version,
+                                                         sync::SaltedVersion server_version) = 0;
+
+    /// set_initial_collision_tables() copies the collision tables from
+    /// 'src_object_id_history_state' into the object id history state of this history.
+    /// The current object_id_history_state must be empty. This function is used when
+    /// the server creates a state Realm.
+    ///
+    /// The history object must be in a write transaction before the function
+    /// call.
+    virtual void set_initial_collision_tables(version_type local_version,
+                                              const _impl::ObjectIDHistoryState& src_object_id_history_state) = 0;
+
+    // virtual void set_client_file_ident_in_wt() sets the client file ident.
+    // The history must be in a write transaction with version 'current_version'.
+    virtual void set_client_file_ident_in_wt(version_type current_version,
+                                             SaltedFileIdent client_file_ident) = 0;
+
+    /// set_client_file_ident_and_downloaded_bytes() sets the salted client
+    /// file ident and downloaded_bytes. The function is used when a state
+    /// Realm has been downloaded from the server. The function creates a write
+    /// transaction.
+    virtual void set_client_file_ident_and_downloaded_bytes(SaltedFileIdent client_file_ident,
+                                                            uint_fast64_t downloaded_bytes) = 0;
+
+    /// set_client_reset_adjustments() is used by client reset to adjust the
+    /// content of the history compartment. The shared group associated with
+    /// this history object must be in a write transaction when this function
+    /// is called.
+    virtual void set_client_reset_adjustments(version_type current_version,
+                                      SaltedFileIdent client_file_ident,
+                                      sync::SaltedVersion server_version,
+                                      uint_fast64_t downloaded_bytes,
+                                      BinaryData uploadable_changeset) = 0;
+
+    struct LocalChangeset {
+        version_type version;
+        ChunkedBinaryData changeset;
+    };
+
+    // get_next_local_changeset returns the first changeset with version
+    // greater than or equal to 'begin_version'. 'begin_version' must be at
+    // least 1.
+    //
+    // The history must be in a transaction when this function is called.
+    // The return value is none if there are no such local changesets.
+    virtual Optional<LocalChangeset> get_next_local_changeset(version_type current_version,
+                                                              version_type begin_version) const = 0;
 
 protected:
     ClientHistory(const std::string& realm_path);

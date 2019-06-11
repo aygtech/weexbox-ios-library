@@ -49,7 +49,6 @@ import VasSonic
     
     private static func initWeexSDK() {
         WXSDKEngine.initSDKEnvironment()
-        WXTracingManager.switchTracing(false)
         registerHandler()
         registerComponent()
         registerModule()

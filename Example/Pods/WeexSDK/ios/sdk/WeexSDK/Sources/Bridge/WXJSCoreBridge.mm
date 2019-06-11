@@ -30,7 +30,6 @@
 #import "JSValue+Weex.h"
 #import "WXSDKManager.h"
 #import "WXExtendCallNativeManager.h"
-#import "WXTracingManager.h"
 #import "WXExceptionUtils.h"
 #import "WXBridgeContext.h"
 #import "WXMonitor.h"
@@ -154,6 +153,21 @@
     } else {
         return [_jsContext evaluateScript:script];
     }
+}
+
+- (void)registerCallUpdateComponentData:(WXJSCallUpdateComponentData)callUpdateComponentData;
+{
+    id callUpdateComponentDataBlock = ^(JSValue *instanceId, JSValue *cid, JSValue *data, JSValue *ifCallback) {
+        NSString *instanceIdString = [instanceId toString];
+        NSString *componentId = [cid toString];
+        NSDictionary* jsonData = [data toDictionary];
+        NSString* dataString = [WXUtility JSONString:jsonData];
+        WXLogDebug(@"CallUpdateComponentData...%@, %@, %@", instanceIdString, componentId, jsonData);
+
+        return [JSValue valueWithInt32:(int32_t)callUpdateComponentData(instanceIdString, componentId, dataString) inContext:[JSContext currentContext]];
+    };
+
+    _jsContext[@"__updateComponentData"] = callUpdateComponentDataBlock;
 }
 
 - (void)registerCallAddElement:(WXJSCallAddElement)callAddElement
@@ -323,7 +337,6 @@
         
         NSInvocation *invocation = callNativeModuleBlock(instanceIdString, moduleNameString, methodNameString, argsArray, optionsDic);
         JSValue *returnValue = [JSValue wx_valueWithReturnValueFromInvocation:invocation inContext:[JSContext currentContext]];
-        [WXTracingManager startTracingWithInstanceId:instanceIdString ref:nil className:nil name:moduleNameString phase:WXTracingInstant functionName:methodNameString options:nil];
         return returnValue;
     };
 }

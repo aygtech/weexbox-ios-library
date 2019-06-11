@@ -176,11 +176,14 @@ struct Instruction::Payload {
     explicit Payload(int64_t value)   noexcept: type(type_Int) { data.integer = value; }
     explicit Payload(float value)     noexcept: type(type_Float) { data.fnum = value; }
     explicit Payload(double value)    noexcept: type(type_Double) { data.dnum = value; }
-    explicit Payload(Timestamp value) noexcept: type(type_Timestamp) { data.timestamp = value; }
     explicit Payload(Link value)      noexcept: type(type_Link) { data.link = value; }
     explicit Payload(StringBufferRange value) noexcept: type(type_String) { data.str = value; }
     explicit Payload(realm::util::None, bool implicit_null = false) noexcept {
         type = (implicit_null ? -2 : -1);
+    }
+    explicit Payload(Timestamp value) noexcept: type(value.is_null() ? -1 : type_Timestamp)
+    {
+        data.timestamp = value;
     }
 
     Payload(const Payload&) noexcept = default;

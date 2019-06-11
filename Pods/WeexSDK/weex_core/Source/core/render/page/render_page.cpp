@@ -18,15 +18,15 @@
  */
 
 #include <math.h>
-#include "core/render/page/render_page.h"
-#include "base/TimeUtils.h"
-#include "base/ViewUtils.h"
-#include "base/LogDefines.h"
+#include "base/log_defines.h"
+#include "base/time_utils.h"
+#include "core/common/view_utils.h"
 #include "core/config/core_environment.h"
 #include "core/css/constants_value.h"
 #include "core/layout/layout.h"
 #include "core/manager/weex_core_manager.h"
 #include "core/moniter/render_performance.h"
+#include "core/render/page/render_page.h"
 #include "core/render/action/render_action_add_element.h"
 #include "core/render/action/render_action_add_event.h"
 #include "core/render/action/render_action_appendtree_createfinish.h"
@@ -157,9 +157,10 @@ bool RenderPage::AddRenderObject(const std::string &parent_ref,
   if (parent == nullptr || child == nullptr) {
     return false;
   }
-    
-  if (WeexCore::WXCoreEnvironment::getInstance()->isInteractionLogOpen()){
-    LOGD("wxInteractionAnalyzer: [weexcore][addElementStart],%s,%s,%s",this->page_id().c_str(),child->type().c_str(),child->ref().c_str());
+
+  if (WeexCore::WXCoreEnvironment::getInstance()->isInteractionLogOpen()) {
+    LOGD("wxInteractionAnalyzer: [weexcore][addElementStart],%s,%s,%s",
+         this->page_id().c_str(),child->type().c_str(),child->ref().c_str());
   }
 
   // add child to Render Tree
@@ -172,8 +173,9 @@ bool RenderPage::AddRenderObject(const std::string &parent_ref,
   SendAddElementAction(child, parent, insert_posiotn, false);
 
   Batch();
-  if (WeexCore::WXCoreEnvironment::getInstance()->isInteractionLogOpen()){
-    LOGD("wxInteractionAnalyzer: [weexcore][addElementEnd],%s,%s,%s",this->page_id().c_str(),child->type().c_str(),child->ref().c_str());
+  if (WeexCore::WXCoreEnvironment::getInstance()->isInteractionLogOpen()) {
+    LOGD("wxInteractionAnalyzer: [weexcore][addElementEnd],%s,%s,%s",
+         this->page_id().c_str(),child->type().c_str(),child->ref().c_str());
   }
   return true;
 }

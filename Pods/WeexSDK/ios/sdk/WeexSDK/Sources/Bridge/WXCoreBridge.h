@@ -56,7 +56,8 @@ namespace WeexCore
         
         void CallNativeComponent(const char* pageId, const char* ref, const char *method,
                                  const char *arguments, int argumentsLength, const char *options, int optionsLength) override;
-        
+        std::unique_ptr<ValueWithType> RegisterPluginModule(const char *name, const char *class_name, const char *version) override;
+
         void SetTimeout(const char* callbackID, const char* time) override ;
         
         void NativeLog(const char* str_array) override ;
@@ -147,19 +148,15 @@ namespace WeexCore
 
 + (void)install;
 
-+ (void)createDataRenderInstance:(NSString *)pageId template:(NSString *)temp options:(NSDictionary *)options data:(id)data;
-
-+ (void)createDataRenderInstance:(NSString *)pageId contents:(NSData *)contents options:(NSDictionary *)options  data:(id)data;
-
-+ (void)destroyDataRenderInstance:(NSString *)pageId;
-
-+ (void)refreshDataRenderInstance:(NSString *)pageId data:(NSString *)data;
-
 + (void)setDefaultDimensionIntoRoot:(NSString*)pageId width:(CGFloat)width height:(CGFloat)height
                  isWidthWrapContent:(BOOL)isWidthWrapContent
                 isHeightWrapContent:(BOOL)isHeightWrapContent;
 
++ (void)setDeviceSize:(CGSize)size;
+
 + (void)setViewportWidth:(NSString*)pageId width:(CGFloat)width;
+
++ (void)setPageRequired:(NSString *)pageId width:(CGFloat)width height:(CGFloat)height;
 
 + (void)layoutPage:(NSString*)pageId forced:(BOOL)forced;
 
@@ -195,13 +192,10 @@ namespace WeexCore
 
 + (void)callUpdateFinish:(NSString*)pageId;
 
-+ (void)fireEvent:(NSString *)pageId ref:(NSString *)ref event:(NSString *)event args:(NSDictionary *)args;
-
-+ (void)registerModules:(NSDictionary *)modules;
-
 + (void)registerComponentAffineType:(NSString *)type asType:(NSString *)baseType;
 
 + (BOOL)isComponentAffineType:(NSString *)type asType:(NSString *)baseType;
+
 + (void)registerCoreEnv:(NSString*)key withValue:(NSString*)value;
 
 @end

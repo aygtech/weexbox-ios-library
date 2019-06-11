@@ -65,15 +65,10 @@ public:
     using port_type = util::network::Endpoint::port_type;
     using RoundtripTimeHandler = void(milliseconds_type roundtrip_time);
 
-    // FIXME: The default values for `connect_timeout`, `ping_keepalive_period`,
-    // and `pong_keepalive_timeout` ought to be much lower (2 minutes, 1 minute,
-    // and 2 minutes) than they are. Their current values are due to the fact
-    // that the server is single threaded, and that some operations take more
-    // than 5 minutes to complete.
-    static constexpr milliseconds_type default_connect_timeout        = 600000; // 10 minutes
+    static constexpr milliseconds_type default_connect_timeout        = 120000; // 2 minutes
     static constexpr milliseconds_type default_connection_linger_time =  30000; // 30 seconds
-    static constexpr milliseconds_type default_ping_keepalive_period  = 600000; // 10 minutes
-    static constexpr milliseconds_type default_pong_keepalive_timeout = 600000; // 10 minutes
+    static constexpr milliseconds_type default_ping_keepalive_period  =  60000; // 1 minute
+    static constexpr milliseconds_type default_pong_keepalive_timeout = 120000; // 2 minutes
     static constexpr milliseconds_type default_fast_reconnect_limit   =  60000; // 1 minute
 
     struct Config {
@@ -245,6 +240,12 @@ public:
         /// called by the client's event loop thread, i.e., the thread that
         /// calls `Client::run()`. This feature is mainly for testing purposes.
         std::function<RoundtripTimeHandler> roundtrip_time_handler;
+
+        /// Disable sync to disk (fsync(), msync()) for all realm files managed
+        /// by this client.
+        ///
+        /// Testing/debugging feature. Should never be enabled in production.
+        bool disable_sync_to_disk = false;
     };
 
     /// \throw util::EventLoop::Implementation::NotAvailable if no event loop
@@ -555,13 +556,108 @@ public:
 
         /// The encryption key the SharedGroup will be opened with.
         util::Optional<std::array<char, 64>> encryption_key;
+
+        /// ClientReset is used for both async open and client reset. If
+        /// client_reset is not util::none, the sync client will perform
+        /// async open for this session if the local Realm does not exist, and
+        /// client reset if the local Realm exists. If client_reset is
+        /// util::none, an ordinary sync session will take place.
+        ///
+        /// A session will perform async open by downloading a state Realm, and
+        /// some metadata, from the server, patching up the metadata part of
+        /// the Realm and finally move the downloaded Realm into the path of
+        /// the local Realm. After completion of async open, the application
+        /// can open and use the Realm.
+        ///
+        /// A session will perform client reset by downloading a state Realm, and
+        /// some metadata, from the server. After download, the state Realm will
+        /// be integrated into the local Realm in a write transaction. The
+        /// application is free to use the local realm during the entire client
+        /// reset. Like a DOWNLOAD message, the application will not be able
+        /// to perform a write transaction at the same time as the sync client
+        /// performs its own write transaction. Client reset is not more
+        /// disturbing for the application than any DOWNLOAD message. The
+        /// application can listen to change notifications from the client
+        /// reset exactly as in a DOWNLOAD message.
+        ///
+        /// The client reset will recover non-uploaded changes in the local
+        /// Realm if and only if 'recover_local_changes' is true. In case,
+        /// 'recover_local_changes' is false, the local Realm state will hence
+        /// be set to the server's state (server wins).
+        ///
+        /// Async open and client reset require a private directory for
+        /// metadata. This directory must be specified in the option
+        /// 'metadata_dir'. The metadata_dir must not be touched during async
+        /// open or client reset. The metadata_dir can safely be removed at
+        /// times where async open or client reset do not take place. The sync
+        /// client attempts to clean up metadata_dir. The metadata_dir can be
+        /// reused across app restarts to resume an interrupted download. It is
+        /// recommended to leave the metadata_dir unchanged except when it is
+        /// known that async open or client reset is done.
+        ///
+        /// The recommended usage of async open is to use it for the initial
+        /// bootstrap if Realm usage is not needed until after the server state
+        /// has been downloaded.
+        ///
+        /// The recommended usage of client reset is after a previous session
+        /// encountered an error that implies the need for a client reset. It
+        /// is not recommended to persist the need for a client reset. The
+        /// application should just attempt to synchronize in the usual fashion
+        /// and only after hitting an error, start a new session with a client
+        /// reset. In other words, if the application crashes during a client reset,
+        /// the application should attempt to perform ordinary synchronization
+        /// after restart and switch to client reset if needed.
+        ///
+        /// Error codes that imply the need for a client reset are the session
+        /// level error codes:
+        ///
+        /// bad_client_file_ident        = 208, // Bad client file identifier (IDENT)
+        /// bad_server_version           = 209, // Bad server version (IDENT, UPLOAD)
+        /// bad_client_version           = 210, // Bad client version (IDENT, UPLOAD)
+        /// diverging_histories          = 211, // Diverging histories (IDENT)
+        ///
+        /// However, other errors such as bad changeset (UPLOAD) could also be resolved
+        /// with a client reset. Client reset can even be used without any prior error
+        /// if so desired.
+        ///
+        /// After completion of async open and client reset, the sync client
+        /// will continue synchronizing with the server in the usual fashion.
+        ///
+        /// The progress of async open and client reset can be tracked with the
+        /// standard progress handler.
+        ///
+        /// Async open and client reset are done when the progress handler
+        /// arguments satisfy "progress_version > 0". However, if the
+        /// application wants to ensure that it has all data present on the
+        /// server, it should wait for download completion using either
+        /// void async_wait_for_download_completion(WaitOperCompletionHandler)
+        /// or
+        /// bool wait_for_download_complete_or_client_stopped().
+        ///
+        /// The option 'require_recent_state_realm' is used for async open to
+        /// request a recent state Realm. A recent state Realm is never empty
+        /// (unless there is no data), and is recent in the sense that it was
+        /// produced by the current incarnation of the server. Recent does not
+        /// mean the absolutely newest possible state Realm, since that might
+        /// lead to too excessive work on the server. Setting
+        /// 'require_recent_state_realm' to true might lead to more work
+        /// performed by the server but it ensures that more data is downloaded
+        /// using async open instead of ordinary synchronization. It is
+        /// recommended to set 'require_recent_state_realm' to true. Client
+        /// reset always downloads a recent state Realm.
+        struct ClientReset {
+            std::string metadata_dir;
+            bool recover_local_changes = true;
+            bool require_recent_state_realm = true;
+        };
+        util::Optional<ClientReset> client_reset_config;
     };
 
     /// \brief Start a new session for the specified client-side Realm.
     ///
-    /// Note that the session is not fully activated until you call bind(). Also
-    /// note that if you call set_sync_transact_callback(), it must be done
-    /// before calling bind().
+    /// Note that the session is not fully activated until you call bind().
+    /// Also note that if you call set_sync_transact_callback(), it must be
+    /// done before calling bind().
     ///
     /// \param realm_path The file-system path of a local client-side Realm
     /// file.
@@ -639,8 +735,8 @@ public:
     ///          uint_fast64_t progress_version);
     ///
     /// downloaded_bytes is the size in bytes of all downloaded changesets.
-    /// downloadable_bytes is the size in bytes of the part of the server
-    /// history that do not originate from this client.
+    /// downloadable_bytes is equal to downloaded_bytes plus an estimate of
+    /// the size of the remaining server history.
     ///
     /// uploaded_bytes is the size in bytes of all locally produced changesets
     /// that have been received and acknowledged by the server.
@@ -661,11 +757,10 @@ public:
     ///     bool download_complete = (downloaded_bytes == downloadable_bytes);
     ///
     /// However, download completion might never be reached because the server
-    /// can receive new changesets from other clients.
-    /// An alternative strategy is to cache downloadable_bytes from the callback,
-    /// and use the cached value as the threshold.
-    ///
-    ///     bool download_complete = (downloaded_bytes == cached_downloadable_bytes);
+    /// can receive new changesets from other clients. downloadable_bytes can
+    /// decrease for two reasons: server side compaction and changesets of
+    /// local origin. Code using downloadable_bytes must not assume that it
+    /// is increasing.
     ///
     /// Upload progress can be calculated by caching an initial value of
     /// uploaded_bytes from the last, or next, callback. Then
@@ -1034,6 +1129,11 @@ enum class Client::Error {
     bad_file_ident              = 120, ///< Bad file identifier (ALLOC)
     connect_timeout             = 121, ///< Sync connection was not fully established in time
     bad_timestamp               = 122, ///< Bad timestamp (PONG)
+    bad_protocol_from_server    = 123, ///< Bad or missing protocol version information from server
+    client_too_old_for_server   = 124, ///< Protocol version negotiation failed: Client is too old for server
+    client_too_new_for_server   = 125, ///< Protocol version negotiation failed: Client is too new for server
+    protocol_mismatch           = 126, ///< Protocol version negotiation failed: No version supported by both client and server
+    bad_state_message           = 127, ///< Bad values in state message (STATE)
 };
 
 const std::error_category& client_error_category() noexcept;
