@@ -34,11 +34,11 @@ struct DebugWeex {
         if let devtoolUrl = params["_wx_devtool"] {
             // 连服务
             WXDevTool.launchDebug(withUrl: devtoolUrl)
-        } else if let tplUrl = params["_wx_tpl"] {
+        } else {
             // 连页面
             var router = Router()
             router.name = Router.nameWeex
-            router.url = tplUrl
+            router.url = urlString
             router.open(from: from)
         }
     }
