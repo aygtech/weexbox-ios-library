@@ -12,27 +12,24 @@ import Async
 
 class HotReload: NSObject, SRWebSocketDelegate {
     
-    private var hotReloadSocket: SRWebSocket?
-    private var isReconnect = false
+    private static var hotReloadSocket: SRWebSocket?
+    private static var isReconnect = false
+    private static let hotReload = HotReload()
     
-    override init() {
-        super.init()
-        
-        if let hotReloadURL = Bundle.main.object(forInfoDictionaryKey: "WXSocketConnectionURL") as? String {
-            hotReloadSocket = SRWebSocket(url: URL(string: hotReloadURL))
-            hotReloadSocket?.delegate = self
-            hotReloadSocket?.open()
-        }
+    static func open(url: String) {
+        hotReloadSocket = SRWebSocket(url: URL(string: url))
+        hotReloadSocket?.delegate = hotReload
+        hotReloadSocket?.open()
     }
     
-    func reconnect() {
+    static func reconnect() {
         if isReconnect {
             return
         }
         isReconnect = true
-        Async.main(after: 2) { [weak self] in
-            self?.isReconnect = false
-            self?.hotReloadSocket?.open()
+        Async.main(after: 2) {
+            isReconnect = false
+            hotReloadSocket?.open()
         }
     }
     
@@ -48,10 +45,18 @@ class HotReload: NSObject, SRWebSocketDelegate {
     }
     
     func webSocket(_ webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
-        reconnect()
+        HotReload.reconnect()
     }
     
     func webSocket(_ webSocket: SRWebSocket!, didFailWithError error: Error!) {
-        reconnect()
+        HotReload.reconnect()
+    }
+    
+    func webSocketDidOpen(_ webSocket: SRWebSocket!) {
+        HUD.showToast(view: nil, message: "成功开启热重载")
+    }
+    
+    func webSocket(_ webSocket: SRWebSocket!, didReceivePong pongPayload: Data!) {
+        
     }
 }

@@ -14,12 +14,13 @@ import VasSonic
 /// 初始化SDK
 @objcMembers public class WeexBoxEngine: NSObject {
    
-    
     @objc public static func setup() {
         // 初始化WeexSDK
         initWeexSDK()
         isDebug = false
         URLProtocol.registerClass(SonicURLProtocol.self)
+        let hotReload = HotReload()
+        hotReload.open(url: "")
     }
     
     public static var isDebug: Bool! {

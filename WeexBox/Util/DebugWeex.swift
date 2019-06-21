@@ -34,7 +34,11 @@ struct DebugWeex {
         if let devtoolUrl = params["_wx_devtool"] {
             // 连服务
             WXDevTool.launchDebug(withUrl: devtoolUrl)
-        } else {
+        } else if urlString.starts(with: "ws:") {
+            let hotReload = HotReload()
+            hotReload.open(url: urlString)
+        }
+        else {
             // 连页面
             var router = Router()
             router.name = Router.nameWeex
