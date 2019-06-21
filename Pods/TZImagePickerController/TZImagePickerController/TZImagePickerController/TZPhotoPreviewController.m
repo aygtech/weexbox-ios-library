@@ -464,6 +464,7 @@
         TZPhotoPreviewCell *photoPreviewCell = (TZPhotoPreviewCell *)cell;
         photoPreviewCell.cropRect = _tzImagePickerVc.cropRect;
         photoPreviewCell.allowCrop = _tzImagePickerVc.allowCrop;
+        photoPreviewCell.scaleAspectFillCrop = _tzImagePickerVc.scaleAspectFillCrop;
         __weak typeof(_tzImagePickerVc) weakTzImagePickerVc = _tzImagePickerVc;
         __weak typeof(_collectionView) weakCollectionView = _collectionView;
         __weak typeof(photoPreviewCell) weakCell = photoPreviewCell;
@@ -557,6 +558,10 @@
         _originalPhotoButton.hidden = YES;
         _originalPhotoLabel.hidden = YES;
         _doneButton.hidden = YES;
+    }
+    
+    if (_tzImagePickerVc.photoPreviewPageDidRefreshStateBlock) {
+        _tzImagePickerVc.photoPreviewPageDidRefreshStateBlock(_collectionView, _naviBar, _backButton, _selectButton, _indexLabel, _toolBar, _originalPhotoButton, _originalPhotoLabel, _doneButton, _numberImageView, _numberLabel);
     }
 }
 

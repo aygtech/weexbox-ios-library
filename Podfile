@@ -5,11 +5,11 @@ use_modular_headers!
 
 target 'WeexBox' do
 
-pod 'WeexSDK', '~> 0.20.0'
+pod 'WeexSDK', '~> 0.24.0'
 # Apache Weex
 # https://github.com/apache/incubator-weex
 
-pod 'WXDevtool', '~> 0.20.0'
+pod 'WXDevtool', '~> 0.24.0'
 # Remote debug for your native iOS app using Chrome Developer Tools
 # https://github.com/weexteam/weex-devtool-iOS
 
@@ -21,17 +21,13 @@ pod 'Alamofire-Synchronous', '~> 4.0'
 # Synchronous requests for Alamofire
 # https://github.com/Dalodd/Alamofire-Synchronous
 
-pod 'SwiftyJSON', '~> 4.0'
+pod 'SwiftyJSON', '~> 5.0'
 # The better way to deal with JSON data in Swift
 # https://github.com/SwiftyJSON/SwiftyJSON
 
-pod 'HandyJSON', '~> 5.0.0-beta.1'
+pod 'HandyJSON', '~> 5.0'
 # A handy swift json-object serialization/deserialization library
 # https://github.com/alibaba/HandyJSON
-
-#pod 'Moya'
-# Network abstraction layer written in Swift
-# https://github.com/Moya/Moya
 
 pod 'MBProgressHUD', '~> 1.0'
 # MBProgressHUD + Customizations
@@ -53,7 +49,7 @@ pod 'RTRootNavigationController_WeexBox', '~> 0.7.0'
 # Transparently make every view controller has its own navigation bar
 # https://github.com/aygtech/RTRootNavigationController_WeexBox
 
-pod 'SnapKit', '~> 4.0'
+pod 'SnapKit', '~> 5.0'
 # A Swift Autolayout DSL for iOS & OS X
 # https://github.com/SnapKit/SnapKit
 
@@ -69,7 +65,7 @@ pod 'BindingX', '~> 1.0'
 # Bind actions to effects.
 # https://github.com/alibaba/bindingx
 
-pod 'Hue', '~> 4.0'
+pod 'Hue', '~> 5.0'
 # Hue is the all-in-one coloring utility that you'll ever need
 # https://github.com/hyperoslo/Hue
 

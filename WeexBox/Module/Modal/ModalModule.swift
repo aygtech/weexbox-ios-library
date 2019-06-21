@@ -44,7 +44,7 @@ class ModalModule: ModalModuleOC {
     }
     
     // 提示框
-    @objc func alert(_ options: Dictionary<String, String>, callback: WXModuleKeepAliveCallback?) {
+    @objc func alert(_ options: Dictionary<String, Any>, callback: WXModuleKeepAliveCallback?) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             let alertController = self.getAlertController(info, okCallback: callback)
@@ -54,7 +54,7 @@ class ModalModule: ModalModuleOC {
     }
     
     // 确认框
-    @objc func confirm(_ options: Dictionary<String, String>, callback: WXModuleKeepAliveCallback?) {
+    @objc func confirm(_ options: Dictionary<String, Any>, callback: WXModuleKeepAliveCallback?) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             let alertController = self.getAlertController(info, okCallback: callback, cancelCallback: callback)
@@ -123,7 +123,7 @@ class ModalModule: ModalModuleOC {
         let cancelAction = UIAlertAction(title: info.cancelTitle, style: .default) { action in
             var result = Result()
             result.status = Result.error
-            cancelCallback?(result, false)
+            cancelCallback?(result.toJsResult(), false)
         }
         alertController.addAction(cancelAction)
         return alertController

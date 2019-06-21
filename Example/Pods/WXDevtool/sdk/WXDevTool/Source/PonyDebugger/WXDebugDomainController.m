@@ -29,6 +29,7 @@
     WXJSCallCreateFinish _callCreateFinishBlock;
     WXJSCallNativeModule _nativeModuleBlock;
     WXJSCallNativeComponent _nativeComponentBlock;
+    WXJSCallUpdateComponentData _callUpdateComponentDataBlock;
 }
 
 @dynamic domain;
@@ -85,7 +86,7 @@
                                        appName, @"name",
                                        [WXLog logLevelString] ?: @"error",@"logLevel",
                                        [NSNumber numberWithBool:[WXDevToolType isDebug]],@"remoteDebug",
-                                       [WXDebugger isNetwork], @"network",
+                                       [NSNumber numberWithBool:[WXDebugger isNetwork]], @"network",
                                        nil];
     [self _registerDeviceWithParams:parameters];
 }
@@ -93,6 +94,11 @@
 - (void)debugDomainRegisterCallNative:(WXJSCallNative)callNativeBlock {
     [self _initBridgeThread];
     _nativeCallBlock = callNativeBlock;
+}
+
+- (void)debugDomainRegisterCallUpdateComponentData:(WXJSCallUpdateComponentData)callUpdateComponentData;
+{
+    _callUpdateComponentDataBlock = callUpdateComponentData;
 }
 
 - (void)debugDomainRegisterCallAddElement:(WXJSCallAddElement)callAddElement {
@@ -277,6 +283,18 @@
         
         WXLogDebug(@"callAddElement...%@, %@, %@, %ld", instanceId, parentRef, componentData, (long)insertIndex);
         _callAddElementBlock(instanceId, parentRef, componentData, insertIndex);
+        callback(nil);
+    }];
+}
+
+- (void)domain:(WXDynamicDebuggerDomain *)domain callUpdateComponentData:(NSDictionary *)jsModule callBack:(void (^)(id error))callback {
+    [self _executeBridgeThead:^{
+        NSString *instanceId = jsModule[@"instance"] ? : @"";
+        NSDictionary *data = jsModule[@"data"] ? : [NSDictionary dictionary];
+        NSString* dataString = [WXUtility JSONString:data];
+        NSString *componentId = jsModule[@"componentId"] ? : @"";
+        WXLogDebug(@"callUpdateComponentData...%@, %@, %@", instanceId, componentId, dataString);
+        _callUpdateComponentDataBlock(instanceId, componentId, dataString);
         callback(nil);
     }];
 }

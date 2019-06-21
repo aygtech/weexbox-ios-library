@@ -19,9 +19,8 @@
 
 #include "core/bridge/platform/core_side_in_platform.h"
 #include "base/string_util.h"
-#include "base/LogDefines.h"
+#include "base/log_defines.h"
 #include "core/config/core_environment.h"
-#include "core/data_render/vnode/vnode_render_manager.h"
 #include "core/manager/weex_core_manager.h"
 #include "core/render/manager/render_manager.h"
 #include "core/render/node/factory/render_creator.h"
@@ -29,6 +28,8 @@
 #include "core/render/node/render_list.h"
 #include "core/render/node/render_object.h"
 #include "core/render/page/render_page.h"
+#include "core/bridge/eagle_bridge.h"
+#include "third_party/json11/json11.hpp"
 
 namespace WeexCore {
 
@@ -163,10 +164,7 @@ void CoreSideInPlatform::MarkDirty(const std::string &instance_id,
 
 void CoreSideInPlatform::SetViewPortWidth(const std::string &instance_id,
                                           float width) {
-  RenderPage *page = RenderManager::GetInstance()->GetPage(instance_id);
-  if (page == nullptr) return;
-
-  page->set_viewport_width(width);
+    RenderManager::GetInstance()->set_viewport_width(instance_id, width);
 }
 
 void CoreSideInPlatform::SetPageDirty(const std::string &instance_id) {
@@ -314,10 +312,6 @@ void CoreSideInPlatform::AddOption(const std::string &key,
 int CoreSideInPlatform::RefreshInstance(
     const char *instanceId, const char *nameSpace, const char *func,
     std::vector<VALUE_WITH_TYPE *> &params) {
-  auto node_manager =
-      weex::core::data_render::VNodeRenderManager::GetInstance();
-  // First check if page is rendered with data render strategy.
-
   if(params.size() < 2)
     return false;
 
@@ -326,8 +320,8 @@ int CoreSideInPlatform::RefreshInstance(
 
   std::string init_data = weex::base::to_utf8(params[1]->value.string->content,
                                               params[1]->value.string->length);
-
-  if (node_manager->RefreshPage(instanceId, init_data)) {
+  auto handler = EagleBridge::GetInstance()->data_render_handler();
+  if (handler && handler->RefreshPage(instanceId, init_data)) {
     return true;
   }
   return ExecJS(instanceId, nameSpace, func, params);
@@ -425,21 +419,76 @@ int CoreSideInPlatform::CreateInstance(const char *instanceId, const char *func,
                                        const char *script, int script_length,
                                        const char *opts,
                                        const char *initData,
-                                       const char *extendsApi,
+                                       const char *extendsApi, std::vector<INIT_FRAMEWORK_PARAMS*>& params,
                                        const char *render_strategy) {
   // First check about DATA_RENDER mode
   if (render_strategy != nullptr) {
+    std::function<void(const char *)> exec_js =
+        [instanceId = std::string(instanceId), func = std::string(func),
+         opts = std::string(opts), initData = std::string(initData),
+         extendsApi = std::string(extendsApi)](const char *result) {
+          // FIXME Now only support vue, this should be fixed
+          std::string error;
+          auto opts_json = json11::Json::parse(opts, error);
+          std::map<std::string, json11::Json> &opts_map =
+              const_cast<std::map<std::string, json11::Json> &>(
+                  opts_json.object_items());
+          opts_map["bundleType"] = "Vue";
+          std::vector<INIT_FRAMEWORK_PARAMS*> params;
+          WeexCoreManager::Instance()
+              ->script_bridge()
+              ->script_side()
+              ->CreateInstance(instanceId.c_str(), func.c_str(), result,
+                               opts_json.dump().c_str(), initData.c_str(),
+                               extendsApi.c_str(),params);
+        };
     if (strcmp(render_strategy, "DATA_RENDER") == 0) {
-      auto node_manager =
-              weex::core::data_render::VNodeRenderManager::GetInstance();
-      node_manager->CreatePage(script, instanceId, render_strategy, initData);
+        auto handler = EagleBridge::GetInstance()->data_render_handler();
+        if(handler){
+          handler->CreatePage(script, instanceId, render_strategy, initData, exec_js);
+        }
+        else{
+          LOGE("DATA_RENDER mode should not be used if there is no data_render_handler");
+        }
 
       return true;
     } else if (strcmp(render_strategy, "DATA_RENDER_BINARY") == 0) {
-      auto node_manager =
-              weex::core::data_render::VNodeRenderManager::GetInstance();
-      node_manager->CreatePage(script, script_length, instanceId, render_strategy, initData);
+      std::string error;
+      std::string env_str;
+      std::string option = "{}";
+      auto opts_json_value = json11::Json::parse(opts, error);
+      if (error.empty()) {
+        auto env_obj = opts_json_value["env"];
+        auto bundleUrl = opts_json_value["bundleUrl"];
+        env_str = "";
+        if (env_obj.is_object()) {
+          const json11::Json& options = env_obj["options"];
+          const json11::Json::object& options_obj = options.object_items();
+          json11::Json::object new_env{
+              env_obj.object_items()
+          };
+          for(auto &it :options_obj){
+            new_env[it.first] = it.second;
+          }
+          env_str = json11::Json(new_env).dump();
+        }
 
+        json11::Json::object new_option{
+            {"bundleUrl", bundleUrl},
+            {"weex", json11::Json::object{
+                {"config",opts_json_value}
+            }}
+        };
+        option = json11::Json(new_option).dump();
+      }
+      
+      auto handler = EagleBridge::GetInstance()->data_render_handler();
+      if(handler){
+        handler->CreatePage(script, static_cast<size_t>(script_length), instanceId, option, env_str, initData, exec_js);
+      }
+      else{
+        LOGE("DATA_RENDER_BINARY mode should not be used if there is no data_render_handler"); 
+      }
       return true;
     }
   }
@@ -447,7 +496,7 @@ int CoreSideInPlatform::CreateInstance(const char *instanceId, const char *func,
   return WeexCoreManager::Instance()
       ->script_bridge()
       ->script_side()
-      ->CreateInstance(instanceId, func, script, opts, initData, extendsApi);
+      ->CreateInstance(instanceId, func, script, opts, initData, extendsApi, params);
 }
 
 std::unique_ptr<WeexJSResult> CoreSideInPlatform::ExecJSOnInstance(const char *instanceId,
@@ -459,15 +508,11 @@ std::unique_ptr<WeexJSResult> CoreSideInPlatform::ExecJSOnInstance(const char *i
 }
 
 int CoreSideInPlatform::DestroyInstance(const char *instanceId) {
-  auto node_manager =
-      weex::core::data_render::VNodeRenderManager::GetInstance();
-  if (node_manager->ClosePage(instanceId)) {
-    return true;
-  }
-  return WeexCoreManager::Instance()
-      ->script_bridge()
-      ->script_side()
-      ->DestroyInstance(instanceId);
+    auto handler = EagleBridge::GetInstance()->data_render_handler();
+    if(handler!=nullptr){
+      handler->DestroyInstance(instanceId);
+    }
+    return WeexCoreManager::Instance()->script_bridge()->script_side()->DestroyInstance(instanceId);
 }
 
 int CoreSideInPlatform::UpdateGlobalConfig(const char *config) {

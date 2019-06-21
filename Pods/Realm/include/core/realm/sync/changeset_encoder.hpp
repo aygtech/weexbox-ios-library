@@ -29,7 +29,7 @@ namespace realm {
 namespace sync {
 
 struct ChangesetEncoder: InstructionHandler {
-    using Buffer = util::AppendBuffer<char, AllocationMetric>;
+    using Buffer = util::AppendBuffer<char, MeteredAllocator>;
 
     Buffer release() noexcept;
     void reset() noexcept;
@@ -76,7 +76,7 @@ private:
     void append_value(Timestamp);
 
     Buffer m_buffer;
-    util::metered::unordered_map<std::string, uint32_t> m_intern_strings_rev;
+    util::metered::map<std::string, uint32_t> m_intern_strings_rev;
     StringData m_string_range;
 };
 
