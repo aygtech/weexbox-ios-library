@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.dependency 'Zip', '~> 1.0'
   s.dependency 'RTRootNavigationController_WeexBox', '~> 0.7.0'
   s.dependency 'SnapKit', '~> 5.0'
-  s.dependency 'SDWebImage', '~> 4.0'
+  s.dependency 'SDWebImage', '~> 5.0'
   s.dependency 'BindingX', '~> 1.0'
   s.dependency 'Hue', '~> 5.0'
   s.dependency 'SwiftEventBus', '~> 5.0'
