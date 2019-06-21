@@ -57,7 +57,7 @@ pod 'SnapKit', '~> 5.0'
 # AREK is a clean and easy way to request any kind of iOS permission
 # https://github.com/ennioma/arek
 
-pod 'SDWebImage', '~> 4.0'
+pod 'SDWebImage', '~> 5.0'
 # Asynchronous image downloader with cache support as a UIImageView category
 # https://github.com/rs/SDWebImage
 
