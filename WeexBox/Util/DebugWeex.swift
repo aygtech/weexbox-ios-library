@@ -35,8 +35,7 @@ struct DebugWeex {
             // 连服务
             WXDevTool.launchDebug(withUrl: devtoolUrl)
         } else if urlString.starts(with: "ws:") {
-            let hotReload = HotReload()
-            hotReload.open(url: urlString)
+            HotReload.open(url: urlString)
         }
         else {
             // 连页面

@@ -53,10 +53,7 @@ class HotReload: NSObject, SRWebSocketDelegate {
     }
     
     func webSocketDidOpen(_ webSocket: SRWebSocket!) {
-        HUD.showToast(view: nil, message: "成功开启热重载")
+        HUD.showToast(view: nil, message: "热重载开启")
     }
-    
-    func webSocket(_ webSocket: SRWebSocket!, didReceivePong pongPayload: Data!) {
-        
-    }
+
 }

@@ -19,8 +19,6 @@ import VasSonic
         initWeexSDK()
         isDebug = false
         URLProtocol.registerClass(SonicURLProtocol.self)
-        let hotReload = HotReload()
-        hotReload.open(url: "")
     }
     
     public static var isDebug: Bool! {
