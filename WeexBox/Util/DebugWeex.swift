@@ -28,20 +28,20 @@ struct DebugWeex {
         }
     }
     
-    static func openWeex(_ urlString: String, from: UIViewController) {
-        // 处理windows上的dev路径带有"\\"
-        let params = urlString.replacingOccurrences(of: "\\", with: "/").getParameters()
+    static func openWeex(_ url: String, from: UIViewController) {
+        let params = url.getParameters()
         if let devtoolUrl = params["_wx_devtool"] {
             // 连服务
             WXDevTool.launchDebug(withUrl: devtoolUrl)
-        } else if urlString.starts(with: "ws:") {
-            HotReload.open(url: urlString)
+        } else if url.starts(with: "ws:") {
+            // 连热重载
+            HotReload.open(url: url)
         }
         else {
             // 连页面
             var router = Router()
             router.name = Router.nameWeex
-            router.url = urlString
+            router.url = url
             router.open(from: from)
         }
     }
