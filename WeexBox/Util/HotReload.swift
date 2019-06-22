@@ -13,22 +13,24 @@ import Async
 class HotReload: NSObject, SRWebSocketDelegate {
     
     private static var hotReloadSocket: SRWebSocket?
-    private static var isReconnect = false
+    private static var isConnect = false
     private static let hotReload = HotReload()
+    private static var url: String!
     
     static func open(url: String) {
-        hotReloadSocket = SRWebSocket(url: URL(string: url))
-        hotReloadSocket?.delegate = hotReload
-        hotReloadSocket?.open()
+        HotReload.url = url
+        connect()
     }
     
-    static func reconnect() {
-        if isReconnect {
+    static func connect() {
+        if isConnect {
             return
         }
-        isReconnect = true
+        isConnect = true
         Async.main(after: 2) {
-            isReconnect = false
+            isConnect = false
+            hotReloadSocket = SRWebSocket(url: URL(string: url))
+            hotReloadSocket?.delegate = hotReload
             hotReloadSocket?.open()
         }
     }
@@ -45,11 +47,11 @@ class HotReload: NSObject, SRWebSocketDelegate {
     }
     
     func webSocket(_ webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
-        HotReload.reconnect()
+        HotReload.connect()
     }
     
     func webSocket(_ webSocket: SRWebSocket!, didFailWithError error: Error!) {
-        HotReload.reconnect()
+        HotReload.connect()
     }
     
     func webSocketDidOpen(_ webSocket: SRWebSocket!) {
