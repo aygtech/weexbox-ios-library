@@ -14,7 +14,7 @@ class HotReload: NSObject, SRWebSocketDelegate {
     
     private static var isConnect = false
     private static let hotReload = HotReload()
-    private static var url: String!
+    private static var url: String?
     
     static func open(url: String) {
         HotReload.url = url
@@ -28,7 +28,7 @@ class HotReload: NSObject, SRWebSocketDelegate {
         isConnect = true
         Async.main(after: 2) {
             isConnect = false
-            let ws = SRWebSocket(url: URL(string: url))
+            let ws = SRWebSocket(url: URL(string: url!))
             ws?.delegate = hotReload
             ws?.open()
         }
