@@ -62,7 +62,8 @@ import SwiftyJSON
     }
     
     func render() {
-        instance?.render(with: url, options: nil, data: nil)
+        let vueUrl = URL(string: url!.absoluteString + "?bundleType=Vue")
+        instance?.render(with: vueUrl, options: nil, data: nil)
     }
     
     public func refreshWeex() {
