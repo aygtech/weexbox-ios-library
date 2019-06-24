@@ -10,7 +10,7 @@ import Foundation
 import WXDevtool
 
 struct DebugWeex {
-    
+
     static func openScan() {
         let topViewController = UIApplication.topViewController()
         let scannerViewController = WBScannerViewController()
@@ -20,7 +20,7 @@ struct DebugWeex {
             if error != nil {
                 print(error!)
             } else {
-                openWeex(scanResult.strScanned!, from: topViewController!)
+                openWeex(scanResult.strScanned!)
             }
         }
         if(topViewController!.isMember(of: WBScannerViewController.classForCoder()) == false) {
@@ -28,7 +28,7 @@ struct DebugWeex {
         }
     }
     
-    static func openWeex(_ url: String, from: UIViewController) {
+    static func openWeex(_ url: String) {
         let params = url.getParameters()
         if let devtoolUrl = params["_wx_devtool"] {
             // 连服务
@@ -39,13 +39,17 @@ struct DebugWeex {
         }
         else {
             // 连页面
-            var router = Router()
-            router.name = Router.nameWeex
-            router.url = url
-            router.open(from: from)
+            openDebugWeex(url: url)
         }
     }
-    
+
+    static func openDebugWeex(url: String?) {
+        var router = Router()
+        router.name = Router.nameWeex
+        router.url = url
+        router.open(from: UIApplication.topViewController()!)
+    }
+
     static func refresh() {
         let topViewController = UIApplication.topViewController()
         if let weexViewController = topViewController as? WBWeexViewController {
