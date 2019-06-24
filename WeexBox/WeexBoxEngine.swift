@@ -13,15 +13,15 @@ import VasSonic
 
 /// 初始化SDK
 @objcMembers public class WeexBoxEngine: NSObject {
-   
-    
+
+
     @objc public static func setup() {
         // 初始化WeexSDK
         initWeexSDK()
         isDebug = false
         URLProtocol.registerClass(SonicURLProtocol.self)
     }
-    
+
     public static var isDebug: Bool! {
         didSet {
             if isDebug {
@@ -30,13 +30,16 @@ import VasSonic
                 Async.main(after: 3) {
                     let touch = AssistiveTouch.sing
                     touch.show()
-                    touch.callBack = {(index)->() in
+                    touch.callBack = { (index) -> () in
                         AssistiveTouch.sing.dissShow()
                         if index == 0 {
                             DebugWeex.openScan()
                         }
-                        else {
+                        else if index == 1 {
                             DebugWeex.refresh()
+                        }
+                        else {
+                            self.showInPutAlert()
                         }
                     }
                 }
@@ -46,7 +49,26 @@ import VasSonic
             }
         }
     }
-    
+
+    private static func showInPutAlert() {
+        let alertController = UIAlertController(title: "请输入weex路径", message: "", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = "page/home.js"
+        }
+        let okAction = UIAlertAction(title: "确定", style: .default) { action in
+            if alertController.textFields?.count ?? 0 > 0 && UIApplication.topViewController() != nil {
+                let textField = alertController.textFields?[0] as? UITextField;
+                DebugWeex.openDebugWeex(url: textField?.text)
+            }
+        }
+        let cancel = UIAlertAction(title: "取消", style: .cancel) { action in
+        }
+        alertController.addAction(okAction)
+        alertController.addAction(cancel)
+        let topViewController = UIApplication.topViewController()
+        topViewController?.present(alertController, animated: true, completion: nil)
+    }
+
     private static func initWeexSDK() {
         WXSDKEngine.initSDKEnvironment()
         registerHandler()
@@ -54,16 +76,16 @@ import VasSonic
         registerModule()
         registerRouter()
     }
-    
+
     private static func registerHandler() {
         WXSDKEngine.registerHandler(ImageHander(), with: WXImgLoaderProtocol.self)
         WXSDKEngine.registerHandler(WebSocketHander(), with: WXWebSocketHandler.self)
     }
-    
+
     private static func registerComponent() {
         WXSDKEngine.registerComponent("wb-lottie", with: LottieComponent.self)
     }
-    
+
     private static func registerModule() {
         WXSDKEngine.registerModule("wb-external", with: ExternalModule.self)
         WXSDKEngine.registerModule("wb-modal", with: ModalModule.self)
@@ -74,10 +96,10 @@ import VasSonic
         WXSDKEngine.registerModule("wb-location", with: LocationModule.self)
         WXSDKEngine.registerModule("wb-util", with: UtilModule.self)
     }
-    
+
     private static func registerRouter() {
         Router.register(name: Router.nameWeex, controller: WBWeexViewController.self)
         Router.register(name: Router.nameWeb, controller: WBWebViewController.self)
     }
-    
+
 }
