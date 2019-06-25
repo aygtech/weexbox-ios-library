@@ -35,7 +35,7 @@ import SwiftyJSON
         weexHeight = view.frame.size.height - navBarHeight - tabBarHeight
         
         if let urlString = router.url {
-            if let host = HotReload.url {
+            if let host = HotReload.url, urlString.hasPrefix("http") == false {
                 url = URL(string: host.replacingOccurrences(of: "ws", with: "http") + "/www/" + urlString)
             }
             if urlString.hasPrefix("http") {

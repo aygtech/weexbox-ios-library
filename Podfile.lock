@@ -26,9 +26,9 @@ PODS:
   - RTRootNavigationController_WeexBox (0.7.1):
     - RTRootNavigationController_WeexBox/Core (= 0.7.1)
   - RTRootNavigationController_WeexBox/Core (0.7.1)
-  - SDWebImage (4.4.7):
-    - SDWebImage/Core (= 4.4.7)
-  - SDWebImage/Core (4.4.7)
+  - SDWebImage (5.0.6):
+    - SDWebImage/Core (= 5.0.6)
+  - SDWebImage/Core (5.0.6)
   - SnapKit (5.0.0)
   - SocketRocket (0.5.1)
   - SwiftEventBus (5.0.0)
@@ -59,7 +59,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 1.0)
   - RealmSwift (~> 3.0)
   - RTRootNavigationController_WeexBox (~> 0.7.0)
-  - SDWebImage (~> 4.0)
+  - SDWebImage (~> 5.0)
   - SnapKit (~> 5.0)
   - SwiftEventBus (~> 5.0)
   - SwiftyJSON (~> 5.0)
@@ -112,7 +112,7 @@ SPEC CHECKSUMS:
   Realm: 0e73b4edeb5b6a90da3d83206883b2e34e00eb38
   RealmSwift: a81e650171ef0a5f999df1ed8d39ba8d6fce88a4
   RTRootNavigationController_WeexBox: ef63000401bb1e7caa1313f6ece8afb0bb0f9a7f
-  SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
+  SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   SwiftEventBus: b30f617a6aca5a9336464b4d3f5931034762f2d5
@@ -125,6 +125,6 @@ SPEC CHECKSUMS:
   XFAssistiveTouch_WeexBox: 50ee133d7e5a1717907f2518b8415d56d39c65fe
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 9ffd50fba5d6dea565bd66b55d3aea9823a6512b
+PODFILE CHECKSUM: 06886d269ff9ccb111c5510ad7f0bde01f93909d
 
 COCOAPODS: 1.7.2
