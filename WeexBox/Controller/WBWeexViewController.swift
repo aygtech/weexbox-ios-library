@@ -35,6 +35,9 @@ import SwiftyJSON
         weexHeight = view.frame.size.height - navBarHeight - tabBarHeight
         
         if let urlString = router.url {
+            if let host = HotReload.url {
+                url = URL(string: host.replacingOccurrences(of: "ws", with: "http") + "/www/" + urlString)
+            }
             if urlString.hasPrefix("http") {
                 url = URL(string: urlString)
             } else {
@@ -61,8 +64,12 @@ import SwiftyJSON
     }
     
     func render() {
-        let vueUrl = URL(string: url!.absoluteString + "?bundleType=Vue")
-        instance?.render(with: vueUrl, options: nil, data: nil)
+        if url != nil {
+            let vueUrl = URL(string: url!.absoluteString + "?bundleType=Vue")
+            instance?.render(with: vueUrl, options: nil, data: nil)
+        } else {
+            HUD.showToast(view: view, message: "url不能为空")
+        }
     }
     
     public func refreshWeex() {
