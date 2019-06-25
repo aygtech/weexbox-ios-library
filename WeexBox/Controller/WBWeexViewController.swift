@@ -43,6 +43,7 @@ import SwiftyJSON
         }
         createWeexInstance()
         render()
+        registerWXReloadBundle()
     }
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -50,15 +51,13 @@ import SwiftyJSON
         if isFirstSendDidAppear == false {
             sendViewDidAppear()
         }
-        if WeexBoxEngine.isDebug {
-            registerWeexDebugBroadcast()
-        }
+        registerRefreshInstance()
     }
     open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         sendViewDidDisappear()
-        unregisterWeexDebugBroadcast()
+        unregisterRefreshInstance()
     }
     
     func render() {
@@ -115,25 +114,35 @@ import SwiftyJSON
         instance = nil
     }
     
-    func registerWeexDebugBroadcast() {
-        Event.register(target: self, name: "RefreshInstance") { [weak self] _ in
-            self?.refreshWeex()
+    func registerRefreshInstance() {
+        if WeexBoxEngine.isDebug {
+            Event.register(target: self, name: "RefreshInstance") { [weak self] _ in
+                self?.refreshWeex()
+            }
         }
-        Event.register(target: self, name: "WXReloadBundle") { [weak self] (notification) in
-            if let url = self?.url {
-                let paths = url.pathComponents
-                let name = paths[paths.count - 2] + "/" + paths[paths.count - 1]
-                
-                if let params = notification?.userInfo?["params"] as? String, params.hasSuffix(name) {
-                    self?.url = URL(string: params)
-                    self?.refreshWeex()
+    }
+    
+    func registerWXReloadBundle() {
+        if WeexBoxEngine.isDebug {
+            Event.register(target: self, name: "WXReloadBundle") { [weak self] (notification) in
+                if let url = self?.url {
+                    let paths = url.pathComponents
+                    let name = paths[paths.count - 2] + "/" + paths[paths.count - 1]
+                    
+                    if let params = notification?.userInfo?["params"] as? String, params.hasSuffix(name) {
+                        self?.url = URL(string: params)
+                        self?.refreshWeex()
+                    }
                 }
             }
         }
     }
     
-    func unregisterWeexDebugBroadcast() {
+    func unregisterRefreshInstance() {
         Event.unregister(target: self, name: "RefreshInstance")
+    }
+    
+    func unregisterWXReloadBundle() {
         Event.unregister(target: self, name: "WXReloadBundle")
     }
     
@@ -147,6 +156,7 @@ import SwiftyJSON
     }
     
     deinit {
+        unregisterWXReloadBundle()
         destoryWeexInstance()
     }
 }
