@@ -8,14 +8,22 @@
 
 import Foundation
 import MBProgressHUD
+import Lottie
 
+
+
+class WBLOTAnimationView: LOTAnimationView {
+    override var intrinsicContentSize: CGSize{
+        return WeexBoxEngine.hudLotContentSize
+    }
+}
 @objc open class HUD: NSObject {
     
     // view为nil时会加在window上
     @objc public static func showLoading(view: UIView?, message: String?) {
         let hud = getHUD(view: view)
-        hud.mode = (WeexBoxEngine.hudGifName != nil) ? .customView : .indeterminate
-        if WeexBoxEngine.hudGifName != nil {
+        hud.mode = (WeexBoxEngine.hudGifName != nil || WeexBoxEngine.hudAnimationJsonFileName != nil) ? .customView : .indeterminate
+        if WeexBoxEngine.hudGifName != nil || WeexBoxEngine.hudAnimationJsonFileName != nil {
             hud.customView = self.getGifImageView()
         }
         self.setCustomConfig(hud: hud)
@@ -88,6 +96,12 @@ import MBProgressHUD
             else {
                 return UIView()
             }
+        }
+        else if WeexBoxEngine.hudAnimationJsonFileName != nil{
+            let animationView = WBLOTAnimationView.init(name: WeexBoxEngine.hudAnimationJsonFileName!)
+            animationView.loopAnimation = true
+            animationView.play()
+            return animationView
         }
         return UIView()
     }
