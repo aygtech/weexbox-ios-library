@@ -32,9 +32,8 @@ struct DebugWeex {
         let params = url.getParameters()
         if let devtoolUrl = params["_wx_devtool"] {
             // 连服务
-            WXDevTool.launchDebug(withUrl: devtoolUrl)
             WXDevTool.setDebug(true)
-            
+            WXDevTool.launchDebug(withUrl: devtoolUrl)
         } else if url.starts(with: "ws:") {
             // 连热重载
             HotReload.open(url: url)
