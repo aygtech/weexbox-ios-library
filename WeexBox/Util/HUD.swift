@@ -10,8 +10,6 @@ import Foundation
 import MBProgressHUD
 import Lottie
 
-
-
 class WBLOTAnimationView: LOTAnimationView {
     override var intrinsicContentSize: CGSize{
         return WeexBoxEngine.hudLotContentSize
@@ -89,7 +87,7 @@ class WBLOTAnimationView: LOTAnimationView {
         if WeexBoxEngine.hudGifName != nil {
             let imageData = NSData.init(contentsOfFile: Bundle.main.path(forResource: WeexBoxEngine.hudGifName!, ofType: "gif") ?? "")
             if imageData != nil {
-                let gifImage = UIImage.sd_animatedGIF(with: imageData! as! Data)
+                let gifImage = UIImage.sd_image(withGIFData: imageData as Data?)
                 let gifImageView = UIImageView.init(image: gifImage)
                 return gifImageView
             }
