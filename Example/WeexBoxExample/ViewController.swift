@@ -8,11 +8,12 @@
 
 import UIKit
 import WeexBox
-
+import Lottie
 class ViewController: WBWeexViewController {
     override func viewDidLoad() {
-        router.url = "page/about.js"
+//        router.url = "page/about.js"
         super.viewDidLoad()
+        HUD.showLoading(view: nil, message: "111111")
     }
 }
 

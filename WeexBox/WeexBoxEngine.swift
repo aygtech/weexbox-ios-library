@@ -21,6 +21,17 @@ import VasSonic
         isDebug = false
         URLProtocol.registerClass(SonicURLProtocol.self)
     }
+    /// hud gif动图。
+    public static var hudGifName: String?
+    /// 使用LOT动画
+    public static var hudAnimationJsonFileName: String?
+    /// hud LOT动画Size
+    public static var hudLotContentSize:CGSize = CGSize(width: 50, height: 50)
+    
+    /// hud 背景颜色
+    public static var hudBackGroundColor: UIColor?
+    /// hud 文字颜色
+    public static var hudTextColor: UIColor?
 
     public static var isDebug: Bool! {
         didSet {
@@ -95,6 +106,8 @@ import VasSonic
         WXSDKEngine.registerModule("wb-event", with: EventModule.self)
         WXSDKEngine.registerModule("wb-location", with: LocationModule.self)
         WXSDKEngine.registerModule("wb-util", with: UtilModule.self)
+
+
     }
 
     private static func registerRouter() {
