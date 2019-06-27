@@ -10,7 +10,7 @@ import Foundation
 import WXDevtool
 
 struct DebugWeex {
-    
+
     static func openScan() {
         let topViewController = UIApplication.topViewController()
         let scannerViewController = WBScannerViewController()
@@ -20,7 +20,7 @@ struct DebugWeex {
             if error != nil {
                 print(error!)
             } else {
-                openWeex(scanResult.strScanned!, from: topViewController!)
+                openWeex(scanResult.strScanned!)
             }
         }
         if(topViewController!.isMember(of: WBScannerViewController.classForCoder()) == false) {
@@ -28,21 +28,29 @@ struct DebugWeex {
         }
     }
     
-    static func openWeex(_ urlString: String, from: UIViewController) {
-        // 处理windows上的dev路径带有"\\"
-        let params = urlString.replacingOccurrences(of: "\\", with: "/").getParameters()
+    static func openWeex(_ url: String) {
+        let params = url.getParameters()
         if let devtoolUrl = params["_wx_devtool"] {
             // 连服务
+            WXDevTool.setDebug(true)
             WXDevTool.launchDebug(withUrl: devtoolUrl)
-        } else if let tplUrl = params["_wx_tpl"] {
+        } else if url.starts(with: "ws:") {
+            // 连热重载
+            HotReload.open(url: url)
+        }
+        else {
             // 连页面
-            var router = Router()
-            router.name = Router.nameWeex
-            router.url = tplUrl
-            router.open(from: from)
+            openDebugWeex(url: url)
         }
     }
-    
+
+    static func openDebugWeex(url: String?) {
+        var router = Router()
+        router.name = Router.nameWeex
+        router.url = url
+        router.open(from: UIApplication.topViewController()!)
+    }
+
     static func refresh() {
         let topViewController = UIApplication.topViewController()
         if let weexViewController = topViewController as? WBWeexViewController {
@@ -50,3 +58,4 @@ struct DebugWeex {
         }
     }
 }
+

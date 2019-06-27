@@ -9,6 +9,7 @@
 import Foundation
 import Async
 import WeexSDK
+import SwiftyJSON
 
 /// Weex基类
 @objcMembers open class WBWeexViewController: WBBaseViewController {
@@ -17,15 +18,11 @@ import WeexSDK
     public var instance: WXSDKInstance?
     private var weexView: UIView?
     private var isFirstSendDidAppear = true
+    private var url: URL?
+    private var refreshTime = Date().timeIntervalSince1970
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if WeexBoxEngine.isDebug {
-            Event.register(target: self, name: "RefreshInstance") { [weak self] _ in
-                self?.refreshWeex()
-            }
-        }
         
         view.clipsToBounds = true
         edgesForExtendedLayout = .init(rawValue: 0)
@@ -37,23 +34,56 @@ import WeexSDK
         let tabBarHeight: CGFloat = self.hidesBottomBarWhenPushed ? 0 : (tabBarController?.tabBar.frame.size.height ?? 0)
         weexHeight = view.frame.size.height - navBarHeight - tabBarHeight
         
+        if let urlString = router.url {
+            if let host = HotReload.url, urlString.hasPrefix("http") == false {
+                url = URL(string: host.replacingOccurrences(of: "ws", with: "http") + "/www/" + urlString)
+            }
+            if urlString.hasPrefix("http") {
+                url = URL(string: urlString)
+            } else {
+                url = UpdateManager.getFullUrl(file: urlString)
+            }
+        }
+        createWeexInstance()
         render()
+        registerWXReloadBundle()
     }
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if (isFirstSendDidAppear == false) {
+        if isFirstSendDidAppear == false {
             sendViewDidAppear()
         }
+        registerRefreshInstance()
     }
     open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         sendViewDidDisappear()
+        unregisterRefreshInstance()
     }
     
     func render() {
-        instance?.destroy()
+        if url != nil {
+            let vueUrl = URL(string: url!.absoluteString + "?bundleType=Vue")
+            instance?.render(with: vueUrl, options: nil, data: nil)
+        } else {
+            HUD.showToast(view: view, message: "url不能为空")
+        }
+    }
+    
+    public func refreshWeex() {
+        let currentTime = Date().timeIntervalSince1970
+        if WeexBoxEngine.isDebug, currentTime - refreshTime < 1 {
+            return
+        }
+        refreshTime = currentTime
+        createWeexInstance()
+        render()
+    }
+    
+    func createWeexInstance() {
+        destoryWeexInstance()
         instance = WXSDKInstance()
         instance?.viewController = self
         instance?.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: weexHeight)
@@ -84,20 +114,43 @@ import WeexSDK
                 }
             }
         }
-        
-        var url: URL?
-        if let urlString = router.url {
-            if urlString.hasPrefix("http") {
-                url = URL(string: urlString)
-            } else {
-                url = UpdateManager.getFullUrl(file: urlString)
-            }
-        }
-        instance?.render(with: url, options: nil, data: nil)
     }
     
-    public func refreshWeex() {
-        render()
+    func destoryWeexInstance() {
+        instance?.destroy()
+        instance = nil
+    }
+    
+    func registerRefreshInstance() {
+        if WeexBoxEngine.isDebug {
+            Event.register(target: self, name: "RefreshInstance") { [weak self] _ in
+                self?.refreshWeex()
+            }
+        }
+    }
+    
+    func registerWXReloadBundle() {
+        if WeexBoxEngine.isDebug {
+            Event.register(target: self, name: "WXReloadBundle") { [weak self] (notification) in
+                if let url = self?.url {
+                    let paths = url.pathComponents
+                    let name = paths[paths.count - 2] + "/" + paths[paths.count - 1]
+                    
+                    if let params = notification?.userInfo?["params"] as? String, params.hasSuffix(name) {
+                        self?.url = URL(string: params)
+                        self?.refreshWeex()
+                    }
+                }
+            }
+        }
+    }
+    
+    func unregisterRefreshInstance() {
+        Event.unregister(target: self, name: "RefreshInstance")
+    }
+    
+    func unregisterWXReloadBundle() {
+        Event.unregister(target: self, name: "WXReloadBundle")
     }
     
     func sendViewDidAppear() {
@@ -110,7 +163,7 @@ import WeexSDK
     }
     
     deinit {
-        instance?.destroy()
+        unregisterWXReloadBundle()
+        destoryWeexInstance()
     }
-    
 }
