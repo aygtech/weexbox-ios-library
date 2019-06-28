@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         WeexBoxEngine.setup()
+        WeexBoxEngine.hudBackGroundColor = UIColor.black
+        WeexBoxEngine.hudContentColor = UIColor.white
         WeexBoxEngine.isDebug = true
         
         return true

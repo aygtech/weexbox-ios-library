@@ -22,7 +22,7 @@ class WBLOTAnimationView: LOTAnimationView {
         let hud = getHUD(view: view)
         hud.mode = (WeexBoxEngine.hudGifName != nil || WeexBoxEngine.hudAnimationJsonFileName != nil) ? .customView : .indeterminate
         if WeexBoxEngine.hudGifName != nil || WeexBoxEngine.hudAnimationJsonFileName != nil {
-            hud.customView = self.getGifImageView()
+            hud.customView = self.getCustomView()
         }
         self.setCustomConfig(hud: hud)
         hud.label.text = message;
@@ -78,12 +78,13 @@ class WBLOTAnimationView: LOTAnimationView {
             hud.bezelView.style = .solidColor
             hud.bezelView.backgroundColor = WeexBoxEngine.hudBackGroundColor
         }
-        if WeexBoxEngine.hudTextColor != nil {
-            hud.label.textColor = WeexBoxEngine.hudTextColor
+        if WeexBoxEngine.hudContentColor != nil {
+            hud.contentColor = WeexBoxEngine.hudContentColor
+            hud.activityIndicatorColor = UIColor.white;
         }
     }
-    /// 获取gif
-    static func getGifImageView() -> UIView {
+    /// 获取自定义视图
+    static func getCustomView() -> UIView {
         if WeexBoxEngine.hudGifName != nil {
             let imageData = NSData.init(contentsOfFile: Bundle.main.path(forResource: WeexBoxEngine.hudGifName!, ofType: "gif") ?? "")
             if imageData != nil {
