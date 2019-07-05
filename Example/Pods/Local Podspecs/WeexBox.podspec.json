@@ -1,6 +1,6 @@
 {
   "name": "WeexBox",
-  "version": "2.0.5",
+  "version": "2.0.9",
   "summary": "WeexBox.",
   "homepage": "https://github.com/aygtech/weexbox-ios-library",
   "license": "MIT",
@@ -12,10 +12,10 @@
   },
   "source": {
     "git": "https://github.com/aygtech/weexbox-ios-library.git",
-    "tag": "2.0.5"
+    "tag": "2.0.9"
   },
   "source_files": "WeexBox/**/**/*.{swift,h,m}",
-  "swift_version": "5.0",
+  "swift_versions": "5.0",
   "requires_arc": true,
   "frameworks": [
     "Foundation",
@@ -92,5 +92,6 @@
     "lottie-ios": [
       "~> 2.0"
     ]
-  }
+  },
+  "swift_version": "5.0"
 }
