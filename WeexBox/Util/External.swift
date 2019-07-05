@@ -126,10 +126,24 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
         imagePickerVc.didFinishPickingPhotosWithInfosHandle = { photos, assets, isSelectOriginalPhoto, infos in
             var result = Result()
             let urls = NSMutableArray();
-            if(photos != nil && (photos?.count)!>0){
+            if(assets != nil && (assets?.count)!>0){
                 result.status = Result.success
                 result.error = ""
-                
+                for asset in assets! {
+                    PHImageManager.default().requestImageData(for: asset as! PHAsset, options: nil, resultHandler: { (imageData, dataUTI, orientation, info) in
+                        let image = UIImage.init(data: imageData!)
+                        let path = self.saveImageToSandBox(image: image!, fileName: self.getFileName())
+                            urls.add([
+                                "url":path,
+                                "width":image!.size.width ?? 0,
+                                "height":image!.size.height ?? 0
+                                ])
+                        result.data = ["urls":urls]
+                        callback(result)
+                    })
+                }
+            }
+            else if (photos != nil && (photos?.count)!>0) {
                 for image in photos!{
                     let path = self.saveImageToSandBox(image: image, fileName: self.getFileName())
                     urls.add([
