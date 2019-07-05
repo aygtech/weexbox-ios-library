@@ -26,16 +26,16 @@ PODS:
   - RTRootNavigationController_WeexBox (0.7.1):
     - RTRootNavigationController_WeexBox/Core (= 0.7.1)
   - RTRootNavigationController_WeexBox/Core (0.7.1)
-  - SDWebImage (4.4.7):
-    - SDWebImage/Core (= 4.4.7)
-  - SDWebImage/Core (4.4.7)
+  - SDWebImage (5.0.6):
+    - SDWebImage/Core (= 5.0.6)
+  - SDWebImage/Core (5.0.6)
   - SnapKit (5.0.0)
   - SocketRocket (0.5.1)
   - SwiftEventBus (5.0.0)
   - SwiftyJSON (4.3.0)
   - TZImagePickerController (3.2.1)
   - VasSonic (3.1.1)
-  - WeexBox (1.4.0):
+  - WeexBox (2.0.5):
     - Alamofire (~> 4.0)
     - Alamofire-Synchronous (~> 4.0)
     - AsyncSwift (~> 2.0)
@@ -49,7 +49,7 @@ PODS:
     - MBProgressHUD (~> 1.0)
     - RealmSwift (~> 3.0)
     - RTRootNavigationController_WeexBox (~> 0.7.0)
-    - SDWebImage (~> 4.0)
+    - SDWebImage (~> 5.0)
     - SnapKit (~> 5.0)
     - SwiftEventBus (~> 5.0)
     - SwiftyJSON (~> 4.0)
@@ -118,14 +118,14 @@ SPEC CHECKSUMS:
   Realm: 0e73b4edeb5b6a90da3d83206883b2e34e00eb38
   RealmSwift: a81e650171ef0a5f999df1ed8d39ba8d6fce88a4
   RTRootNavigationController_WeexBox: ef63000401bb1e7caa1313f6ece8afb0bb0f9a7f
-  SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
+  SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   SwiftEventBus: b30f617a6aca5a9336464b4d3f5931034762f2d5
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   TZImagePickerController: bf4c57b98d8707fce41ea6be872414a71c7a8c9d
   VasSonic: 1b0e5d45602627e8f39ac120a892050a10d42bab
-  WeexBox: e65a392f3e03ed0dd09bf839212f07fc9b5a7892
+  WeexBox: 076800a72ac0c25f881d771f7e4b5264bb8b2725
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
   WeexSDK: 5bd35be9c035c67c84d1ba15712360bb0d0ba6b5
   WXDevtool: 95b70c73c06fc3299d65bd53ba4b3e0b0087f3cb
@@ -134,4 +134,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 657c944383e8cbbeb76290cbefaeb2c7d2fd6a18
 
-COCOAPODS: 1.7.2
+COCOAPODS: 1.6.1

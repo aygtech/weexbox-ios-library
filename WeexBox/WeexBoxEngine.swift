@@ -30,8 +30,8 @@ import VasSonic
     
     /// hud 背景颜色
     public static var hudBackGroundColor: UIColor?
-    /// hud 文字颜色
-    public static var hudTextColor: UIColor?
+    /// hud 内容颜色
+    public static var hudContentColor: UIColor?
 
     public static var isDebug: Bool! {
         didSet {

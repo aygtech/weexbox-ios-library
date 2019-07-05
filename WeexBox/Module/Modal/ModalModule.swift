@@ -9,12 +9,12 @@
 import Foundation
 import Async
 
-class ModalModule: ModalModuleOC {
+open class ModalModule: ModalModuleOC {
     
     // 显示菊花
     @objc func showLoading(_ message: Any?) {
         Async.main {
-            HUD.showLoading(view: self.getVC().view, message: WXConvert.nsString(message))
+            HUD.showLoading(view: nil, message: WXConvert.nsString(message))
         }
     }
     
@@ -22,14 +22,14 @@ class ModalModule: ModalModuleOC {
     @objc func showProgress(_ options: Dictionary<String, Any>) {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
-            HUD.showProgress(view: self.getVC().view, progress: Float(info.progress!) / 100, message: info.text)
+            HUD.showProgress(view: nil, progress: Float(info.progress!) / 100, message: info.text)
         }
     }
     
     // 关闭菊花
     @objc func dismiss() {
         Async.main {
-            HUD.dismiss(view: self.getVC().view)
+            HUD.dismiss(view: nil)
         }
     }
     
@@ -38,7 +38,7 @@ class ModalModule: ModalModuleOC {
         Async.main {
             let info = JsOptions.deserialize(from: options)!
             if info.text?.isEmpty == false {
-                HUD.showToast(view: self.getVC().view, message: info.text!, duration: info.duration)
+                HUD.showToast(view: nil, message: info.text!, duration: info.duration)
             }
         }
     }
