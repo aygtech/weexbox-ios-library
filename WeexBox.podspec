@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "WeexBox"
-  s.version      = "2.0.6"
+  s.version      = "2.0.8"
   s.summary      = "WeexBox."
   s.homepage     = "https://github.com/aygtech/weexbox-ios-library"
   s.license      = "MIT"
