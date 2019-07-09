@@ -11,9 +11,13 @@ import WeexBox
 import Lottie
 class ViewController: WBWeexViewController {
     override func viewDidLoad() {
-//        router.url = "page/about.js"
         super.viewDidLoad()
-        HUD.showLoading(view: nil, message: "111111")
+    }
+    @IBAction func clickOntheBtn(_ sender: Any) {
+        var route = Router()
+        route.name = "fuck";
+        route.params = ["test":"test"]
+        route.open(from: self)
     }
 }
 

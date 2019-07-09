@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         WeexBoxEngine.hudBackGroundColor = UIColor.black
         WeexBoxEngine.hudContentColor = UIColor.white
         WeexBoxEngine.isDebug = true
+        //OC的类。
+        Router.register(name: "fuck", controller: TwoViewController.self)
         
         return true
     }

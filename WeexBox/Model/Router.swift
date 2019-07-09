@@ -13,10 +13,10 @@ import RTRootNavigationController_WeexBox
 /// 路由
 public struct Router: HandyJSON {
     
-    static var routes = Dictionary<String, WBBaseViewController.Type>()
+    static var routes = Dictionary<String, UIViewController.Type>()
     
     // 注册路由
-    public static func register(name: String, controller: WBBaseViewController.Type) {
+    public static func register(name: String, controller: UIViewController.Type) {
         routes[name] = controller
     }
     
@@ -51,23 +51,44 @@ public struct Router: HandyJSON {
     // 打开页面
     public func open(from: UIViewController) {
         if let pageName = name, let toType = Router.routes[pageName] {
-            let to = toType.init()
-            to.router = self
-            to.hidesBottomBarWhenPushed = true
-            if type == Router.typePresent {
-                from.present(RTRootNavigationController(rootViewController: to), animated: true) {
-                    self.removeViewControllers(from)
+            /// 继承 WBWeexViewController
+            if let to = toType.init() as? WBWeexViewController {
+                to.router = self
+                to.hidesBottomBarWhenPushed = true
+                if type == Router.typePresent {
+                    from.present(RTRootNavigationController(rootViewController: to), animated: true) {
+                        self.removeViewControllers(from)
+                    }
+                } else {
+                    from.rt_navigationController.pushViewController(to, animated: true) { (finished) in
+                        self.removeViewControllers(from)
+                    }
                 }
-            } else {
-                from.rt_navigationController.pushViewController(to, animated: true) { (finished) in
-                    self.removeViewControllers(from)
+            }
+            /// 继承 UIViewController
+            else {
+                if let to = toType.init() as? UIViewController {
+                    to.hidesBottomBarWhenPushed = true
+                    // 原生页面只对params有效，其它参数不生效
+                    to.wbParams = params as? NSDictionary
+                    if type == Router.typePresent {
+                    from.present(RTRootNavigationController(rootViewController: to), animated: true) {
+                            self.removeViewControllers(from)
+                        }
+                    } else {
+                        from.rt_navigationController.pushViewController(to, animated: true) { (finished) in
+                            self.removeViewControllers(from)
+                        }
+                    }
+                }
+                else{
+                    print("视图控制器不存在")
                 }
             }
         } else {
             print("路由未注册")
         }
     }
-    
     func removeViewControllers(_ vc: UIViewController) {
         if let from = closeFrom {
             let count = vc.rt_navigationController.rt_viewControllers.count

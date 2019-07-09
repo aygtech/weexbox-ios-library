@@ -9,6 +9,10 @@
 import Foundation
 import RTRootNavigationController_WeexBox
 
+
+
+
+
 public extension UIApplication {
     
     // 获取最顶层VC, 根视图必须是nav或者tab
@@ -30,3 +34,4 @@ public extension UIApplication {
         return controller
     }
 }
+
