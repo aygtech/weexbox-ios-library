@@ -67,10 +67,10 @@ public struct Router: HandyJSON {
             }
             /// 继承 UIViewController
             else {
-                if let to = toType.init() as? UIViewController {
+                if let to = toType.init() as UIViewController? {
                     to.hidesBottomBarWhenPushed = true
                     // 原生页面只对routerParams有效，无需设置其它参数。
-                    to.routerParams = params as? NSDictionary
+                    to.routerParams = params as NSDictionary?
                     if type == Router.typePresent {
                     from.present(RTRootNavigationController(rootViewController: to), animated: true) {
                             self.removeViewControllers(from)

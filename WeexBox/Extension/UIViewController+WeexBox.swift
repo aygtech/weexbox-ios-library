@@ -1,13 +1,14 @@
 //
-//  UIViewController+Router.swift
-//  Alamofire
+//  UIViewController+WeexBox.swift
+//  WeexBox
 //
 //  Created by Baird-weng on 2019/7/9.
 //
 
 import UIKit
 public var routerParamsKey: String = "routerParams_key"
-public extension UIViewController{
+
+public extension UIViewController {
     /// 路由参数
     @objc var routerParams: NSDictionary? {
         get {
