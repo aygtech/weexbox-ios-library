@@ -24,6 +24,7 @@ public struct Router: HandyJSON {
     public static let typePresent = "present"
     public static let nameWeex = "weex"
     public static let nameWeb = "web"
+    public static let nameFlutter = "flutter"
     
     public init() {}
     
@@ -52,7 +53,7 @@ public struct Router: HandyJSON {
     public func open(from: UIViewController) {
         if let pageName = name, let toType = Router.routes[pageName] {
             /// 继承 WBWeexViewController
-            if let to = toType.init() as? WBWeexViewController {
+            if let to = toType.init() as? WBBaseViewController {
                 to.router = self
                 to.hidesBottomBarWhenPushed = true
                 if type == Router.typePresent {
@@ -70,7 +71,7 @@ public struct Router: HandyJSON {
                 if let to = toType.init() as UIViewController? {
                     to.hidesBottomBarWhenPushed = true
                     // 原生页面只对routerParams有效，无需设置其它参数。
-                    to.routerParams = params as NSDictionary?
+                    to.routerString = toJSONString()
                     if type == Router.typePresent {
                     from.present(RTRootNavigationController(rootViewController: to), animated: true) {
                             self.removeViewControllers(from)

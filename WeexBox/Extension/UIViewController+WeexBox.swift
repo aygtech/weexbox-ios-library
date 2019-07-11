@@ -6,16 +6,16 @@
 //
 
 import UIKit
-public var routerParamsKey: String = "routerParams_key"
+public var routerStringKey: String = "routerString_key"
 
 public extension UIViewController {
     /// 路由参数
-    @objc var routerParams: NSDictionary? {
+    @objc var routerString: String? {
         get {
-            return objc_getAssociatedObject(self, &routerParamsKey) as? NSDictionary
+            return objc_getAssociatedObject(self, &routerStringKey) as? String
         }
         set(newValue) {
-            objc_setAssociatedObject(self, &routerParamsKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &routerStringKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 }
