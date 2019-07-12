@@ -52,44 +52,36 @@ public struct Router: HandyJSON {
     // 打开页面
     public func open(from: UIViewController) {
         if let pageName = name, let toType = Router.routes[pageName] {
-            /// 继承 WBWeexViewController
-            if let to = toType.init() as? WBBaseViewController {
+            if toType is WBBaseViewController.Type {
+                /// 继承 WBWeexViewController
+                let to = toType.init() as! WBBaseViewController
                 to.router = self
-                to.hidesBottomBarWhenPushed = true
-                if type == Router.typePresent {
-                    from.present(RTRootNavigationController(rootViewController: to), animated: true) {
-                        self.removeViewControllers(from)
-                    }
-                } else {
-                    from.rt_navigationController.pushViewController(to, animated: true) { (finished) in
-                        self.removeViewControllers(from)
-                    }
-                }
-            }
-            /// 继承 UIViewController
-            else {
-                if let to = toType.init() as UIViewController? {
-                    to.hidesBottomBarWhenPushed = true
-                    // 原生页面只对routerParams有效，无需设置其它参数。
-                    to.routerString = toJSONString()
-                    if type == Router.typePresent {
-                    from.present(RTRootNavigationController(rootViewController: to), animated: true) {
-                            self.removeViewControllers(from)
-                        }
-                    } else {
-                        from.rt_navigationController.pushViewController(to, animated: true) { (finished) in
-                            self.removeViewControllers(from)
-                        }
-                    }
-                }
-                else{
-                    print("视图控制器不存在")
-                }
+                push(to: to, from: from)
+            } else {
+                /// 继承 UIViewController
+                let to = toType.init()
+                // 原生页面只对routerParams有效，无需设置其它参数。
+                to.routerString = toJSONString()
+                push(to: to, from: from)
             }
         } else {
             print("路由未注册")
         }
     }
+    
+    func push(to: UIViewController, from: UIViewController) {
+        to.hidesBottomBarWhenPushed = true
+        if type == Router.typePresent {
+            from.present(RTRootNavigationController(rootViewController: to), animated: true) {
+                self.removeViewControllers(from)
+            }
+        } else {
+            from.rt_navigationController.pushViewController(to, animated: true) { (finished) in
+                self.removeViewControllers(from)
+            }
+        }
+    }
+    
     func removeViewControllers(_ vc: UIViewController) {
         if let from = closeFrom {
             let count = vc.rt_navigationController.rt_viewControllers.count
