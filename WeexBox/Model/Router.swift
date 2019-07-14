@@ -61,7 +61,7 @@ public struct Router: HandyJSON {
                 /// 继承 UIViewController
                 let to = toType.init()
                 // 原生页面只对routerParams有效，无需设置其它参数。
-                to.routerString = toJSONString()
+                to.routerJson = toJSONString()
                 push(to: to, from: from)
             }
         } else {

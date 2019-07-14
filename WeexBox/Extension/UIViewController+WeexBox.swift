@@ -6,16 +6,16 @@
 //
 
 import UIKit
-public var routerStringKey: String = "routerString_key"
+public var routerJsonKey: String = "routerJson_key"
 
 public extension UIViewController {
     /// 路由参数
-    @objc var routerString: String? {
+    @objc var routerJson: String? {
         get {
-            return objc_getAssociatedObject(self, &routerStringKey) as? String
+            return objc_getAssociatedObject(self, &routerJsonKey) as? String
         }
         set(newValue) {
-            objc_setAssociatedObject(self, &routerStringKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &routerJsonKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 }
