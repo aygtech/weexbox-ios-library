@@ -22,6 +22,7 @@ public struct Router: HandyJSON {
     
     public static let typePush = "push"
     public static let typePresent = "present"
+    public static let typeModalMask = "modalMask"
     public static let nameWeex = "weex"
     public static let nameWeb = "web"
     public static let nameFlutter = "flutter"
@@ -48,6 +49,8 @@ public struct Router: HandyJSON {
     public var closeFromBottomToTop = true
     // 关闭页面的个数
     public var closeCount: Int?
+    // 透明遮罩的背景颜色
+    public var modalMakeBackgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
     
     // 打开页面
     public func open(from: UIViewController) {
@@ -75,7 +78,17 @@ public struct Router: HandyJSON {
             from.present(RTRootNavigationController(rootViewController: to), animated: true) {
                 self.removeViewControllers(from)
             }
-        } else {
+        }
+            // 遮罩。
+        else if type == Router.typeModalMask {
+            from.modalPresentationStyle = .currentContext
+            to.modalPresentationStyle = .custom
+            to.view.backgroundColor = modalMakeBackgroundColor;
+            from.present(to, animated: false) {
+                self.removeViewControllers(from)
+            }
+        }
+        else {
             from.rt_navigationController.pushViewController(to, animated: true) { (finished) in
                 self.removeViewControllers(from)
             }
@@ -104,7 +117,11 @@ public struct Router: HandyJSON {
     public func close(from: WBBaseViewController, levels: Int? = nil) {
         if type == Router.typePresent {
             from.dismiss(animated: true, completion: nil)
-        } else {
+        }
+        else if type == Router.typeModalMask{
+            from.dismiss(animated: false, completion: nil)
+        }
+        else {
             let nav = from.navigationController!
             if let l = levels, l > 1 {
                 let index = nav.viewControllers.count - 1 - l
