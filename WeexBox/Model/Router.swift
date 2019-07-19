@@ -49,8 +49,7 @@ public struct Router: HandyJSON {
     public var closeFromBottomToTop = true
     // 关闭页面的个数
     public var closeCount: Int?
-    // 透明遮罩的背景颜色
-    public var modalMakeBackgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+    
     
     // 打开页面
     public func open(from: UIViewController) {
@@ -83,7 +82,7 @@ public struct Router: HandyJSON {
         else if type == Router.typeModalMask {
             from.modalPresentationStyle = .currentContext
             to.modalPresentationStyle = .custom
-            to.view.backgroundColor = modalMakeBackgroundColor;
+            to.view.backgroundColor = UIColor.clear;
             from.present(to, animated: false) {
                 self.removeViewControllers(from)
             }
@@ -96,20 +95,26 @@ public struct Router: HandyJSON {
     }
     
     func removeViewControllers(_ vc: UIViewController) {
-        if let from = closeFrom {
-            let count = vc.rt_navigationController.rt_viewControllers.count
-            var left: Int!
-            var right: Int!
-            if closeFromBottomToTop {
-                left = from
-                right = (closeCount != nil) ? (closeCount! + left - 1) : (count - 2)
-            } else {
-                right = count - 2 - from
-                left = (closeCount != nil) ? (right - closeCount! + 1) : 1
-                
+        if (closeCount != nil){
+            if let from = closeFrom {
+                let count = vc.rt_navigationController.rt_viewControllers.count
+                var left: Int!
+                var right: Int!
+                if closeFromBottomToTop {
+                    left = from
+                    right = (closeCount != nil) ? (closeCount! + left - 1) : (count - 2)
+                } else {
+                    right = count - 2 - from
+                    left = (closeCount != nil) ? (right - closeCount! + 1) : 1
+                }
+                if left < right && left < count && right < count {
+                    let controllers = Array(vc.rt_navigationController.rt_viewControllers[left...right])
+                    vc.rt_navigationController.removeViewControllers(controllers, animated: false)
+                }
+                else {
+                    HUD.showToast(view: nil, message: "路由参数不正常请检查closeCount,closeFromBottomToTop,closeFrom")
+                }
             }
-            let controllers = Array(vc.rt_navigationController.rt_viewControllers[left...right])
-            vc.rt_navigationController.removeViewControllers(controllers, animated: false)
         }
     }
     
