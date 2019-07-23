@@ -18,11 +18,11 @@ PODS:
     - LBXScan/Types (~> 2.2)
   - lottie-ios (2.5.3)
   - MBProgressHUD (1.1.0)
-  - Realm (3.16.2):
-    - Realm/Headers (= 3.16.2)
-  - Realm/Headers (3.16.2)
-  - RealmSwift (3.16.2):
-    - Realm (= 3.16.2)
+  - Realm (3.17.1):
+    - Realm/Headers (= 3.17.1)
+  - Realm/Headers (3.17.1)
+  - RealmSwift (3.17.1):
+    - Realm (= 3.17.1)
   - RTRootNavigationController_WeexBox (0.7.1):
     - RTRootNavigationController_WeexBox/Core (= 0.7.1)
   - RTRootNavigationController_WeexBox/Core (0.7.1)
@@ -37,7 +37,7 @@ PODS:
   - VasSonic (3.1.1)
   - WeexPluginLoader (0.0.1.9.1):
     - WeexSDK
-  - WeexSDK (0.24.0)
+  - WeexSDK (0.26.0)
   - WXDevtool (0.24.0):
     - SocketRocket
     - WeexSDK
@@ -65,7 +65,7 @@ DEPENDENCIES:
   - SwiftyJSON (~> 5.0)
   - TZImagePickerController (~> 3.0)
   - VasSonic (~> 3.0)
-  - WeexSDK (~> 0.24.0)
+  - WeexSDK (~> 0.26.0)
   - WXDevtool (~> 0.24.0)
   - XFAssistiveTouch_WeexBox (~> 1.0)
   - Zip (~> 1.0)
@@ -109,8 +109,8 @@ SPEC CHECKSUMS:
   LBXScan: e51449f0832d1fe17da632af0d22adeb3cfa3543
   lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
-  Realm: 0e73b4edeb5b6a90da3d83206883b2e34e00eb38
-  RealmSwift: a81e650171ef0a5f999df1ed8d39ba8d6fce88a4
+  Realm: c204f1a890f07dea43b14132a6aad118c054b8f2
+  RealmSwift: 4d3c9233544b9cd08a8913e0872b9038eb99b054
   RTRootNavigationController_WeexBox: ef63000401bb1e7caa1313f6ece8afb0bb0f9a7f
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
@@ -120,11 +120,11 @@ SPEC CHECKSUMS:
   TZImagePickerController: bf4c57b98d8707fce41ea6be872414a71c7a8c9d
   VasSonic: 1b0e5d45602627e8f39ac120a892050a10d42bab
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
-  WeexSDK: 5bd35be9c035c67c84d1ba15712360bb0d0ba6b5
+  WeexSDK: 55b67d1c411eb28ec1e356f763a335d0ddcc5324
   WXDevtool: 95b70c73c06fc3299d65bd53ba4b3e0b0087f3cb
   XFAssistiveTouch_WeexBox: 50ee133d7e5a1717907f2518b8415d56d39c65fe
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 06886d269ff9ccb111c5510ad7f0bde01f93909d
+PODFILE CHECKSUM: 02a5655159c0bf85a5899ac18ee39c83d6e9f263
 
-COCOAPODS: 1.7.2
+COCOAPODS: 1.7.4

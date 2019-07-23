@@ -16,6 +16,7 @@ WX_EXPORT_METHOD(@selector(setLeftItems:callback:))
 WX_EXPORT_METHOD(@selector(setCenterItem:callback:))
 WX_EXPORT_METHOD(@selector(onBackPressed:))
 WX_EXPORT_METHOD(@selector(setNavColor:))
+WX_EXPORT_METHOD_SYNC(@selector(getHeight))
 
 @end
 #pragma clang diagnostic pop

@@ -13,17 +13,19 @@ import RTRootNavigationController_WeexBox
 /// 路由
 public struct Router: HandyJSON {
     
-    static var routes = Dictionary<String, WBBaseViewController.Type>()
+    static var routes = Dictionary<String, UIViewController.Type>()
     
     // 注册路由
-    public static func register(name: String, controller: WBBaseViewController.Type) {
+    public static func register(name: String, controller: UIViewController.Type) {
         routes[name] = controller
     }
     
     public static let typePush = "push"
     public static let typePresent = "present"
+    public static let typeModalMask = "modalMask"
     public static let nameWeex = "weex"
     public static let nameWeb = "web"
+    public static let nameFlutter = "flutter"
     
     public init() {}
     
@@ -48,41 +50,71 @@ public struct Router: HandyJSON {
     // 关闭页面的个数
     public var closeCount: Int?
     
+    
     // 打开页面
     public func open(from: UIViewController) {
         if let pageName = name, let toType = Router.routes[pageName] {
-            let to = toType.init()
-            to.router = self
-            to.hidesBottomBarWhenPushed = true
-            if type == Router.typePresent {
-                from.present(RTRootNavigationController(rootViewController: to), animated: true) {
-                    self.removeViewControllers(from)
-                }
+            if toType is WBBaseViewController.Type {
+                /// 继承 WBWeexViewController
+                let to = toType.init() as! WBBaseViewController
+                to.router = self
+                push(to: to, from: from)
             } else {
-                from.rt_navigationController.pushViewController(to, animated: true) { (finished) in
-                    self.removeViewControllers(from)
-                }
+                /// 继承 UIViewController
+                let to = toType.init()
+                // 原生页面只对routerParams有效，无需设置其它参数。
+                to.routerJson = toJSONString()
+                push(to: to, from: from)
             }
         } else {
             print("路由未注册")
         }
     }
     
-    func removeViewControllers(_ vc: UIViewController) {
-        if let from = closeFrom {
-            let count = vc.rt_navigationController.rt_viewControllers.count
-            var left: Int!
-            var right: Int!
-            if closeFromBottomToTop {
-                left = from
-                right = (closeCount != nil) ? (closeCount! + left - 1) : (count - 2)
-            } else {
-                right = count - 2 - from
-                left = (closeCount != nil) ? (right - closeCount! + 1) : 1
-                
+    func push(to: UIViewController, from: UIViewController) {
+        to.hidesBottomBarWhenPushed = true
+        if type == Router.typePresent {
+            from.present(RTRootNavigationController(rootViewController: to), animated: true) {
+                self.removeViewControllers(from)
             }
-            let controllers = Array(vc.rt_navigationController.rt_viewControllers[left...right])
-            vc.rt_navigationController.removeViewControllers(controllers, animated: false)
+        }
+            // 遮罩。
+        else if type == Router.typeModalMask {
+            from.modalPresentationStyle = .currentContext
+            to.modalPresentationStyle = .custom
+            to.view.backgroundColor = UIColor.clear;
+            from.present(to, animated: false) {
+                self.removeViewControllers(from)
+            }
+        }
+        else {
+            from.rt_navigationController.pushViewController(to, animated: true) { (finished) in
+                self.removeViewControllers(from)
+            }
+        }
+    }
+    
+    func removeViewControllers(_ vc: UIViewController) {
+        if (closeCount != nil){
+            if let from = closeFrom {
+                let count = vc.rt_navigationController.rt_viewControllers.count
+                var left: Int!
+                var right: Int!
+                if closeFromBottomToTop {
+                    left = from
+                    right = (closeCount != nil) ? (closeCount! + left - 1) : (count - 2)
+                } else {
+                    right = count - 2 - from
+                    left = (closeCount != nil) ? (right - closeCount! + 1) : 1
+                }
+                if left < right && left < count && right < count {
+                    let controllers = Array(vc.rt_navigationController.rt_viewControllers[left...right])
+                    vc.rt_navigationController.removeViewControllers(controllers, animated: false)
+                }
+                else {
+                    HUD.showToast(view: nil, message: "路由参数不正常请检查closeCount,closeFromBottomToTop,closeFrom")
+                }
+            }
         }
     }
     
@@ -90,7 +122,11 @@ public struct Router: HandyJSON {
     public func close(from: WBBaseViewController, levels: Int? = nil) {
         if type == Router.typePresent {
             from.dismiss(animated: true, completion: nil)
-        } else {
+        }
+        else if type == Router.typeModalMask{
+            from.dismiss(animated: false, completion: nil)
+        }
+        else {
             let nav = from.navigationController!
             if let l = levels, l > 1 {
                 let index = nav.viewControllers.count - 1 - l

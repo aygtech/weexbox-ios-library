@@ -75,6 +75,7 @@
 		ACC0E26022560493007D077E /* UtilModule.h in Headers */ = {isa = PBXBuildFile; fileRef = ACC0E25D22560493007D077E /* UtilModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ACC0E26122560493007D077E /* UtilModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC0E25E22560493007D077E /* UtilModule.swift */; };
 		ACC0E26222560493007D077E /* UtilModule.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC0E25F22560493007D077E /* UtilModule.m */; };
+		ACD4EFD322D5C10A0073A467 /* UIViewController+WeexBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4EFD222D5C10A0073A467 /* UIViewController+WeexBox.swift */; };
 		ACE49D9721A658B100340A41 /* PieChartComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE49D9621A658B100340A41 /* PieChartComponent.swift */; };
 /* End PBXBuildFile section */
 
@@ -151,6 +152,7 @@
 		ACC0E25D22560493007D077E /* UtilModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilModule.h; sourceTree = "<group>"; };
 		ACC0E25E22560493007D077E /* UtilModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilModule.swift; sourceTree = "<group>"; };
 		ACC0E25F22560493007D077E /* UtilModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilModule.m; sourceTree = "<group>"; };
+		ACD4EFD222D5C10A0073A467 /* UIViewController+WeexBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+WeexBox.swift"; sourceTree = "<group>"; };
 		ACE49D9621A658B100340A41 /* PieChartComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -398,6 +400,7 @@
 				AC9CE8992134F91E007EF7F2 /* String+WeexBox.swift */,
 				AC070F9721354D8900D4E314 /* UIApplication+WeexBox.swift */,
 				AC439499217EDA59007419E8 /* UIImage+WeexBox.swift */,
+				ACD4EFD222D5C10A0073A467 /* UIViewController+WeexBox.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				AC070F9C21354E2F00D4E314 /* WXRefreshPlugin.m in Sources */,
 				AC5CBC2F212FF49500A4FBCD /* EventModule.swift in Sources */,
 				AC5CBBF6212A932B00A4FBCD /* UploadFile.swift in Sources */,
+				ACD4EFD322D5C10A0073A467 /* UIViewController+WeexBox.swift in Sources */,
 				AC54343D2111D2DD005B7056 /* WBWeexViewController.swift in Sources */,
 				AC05975B21ED8EA300DF69AC /* BaseComponent.m in Sources */,
 				AC05976621ED930100DF69AC /* LottieComponent.swift in Sources */,

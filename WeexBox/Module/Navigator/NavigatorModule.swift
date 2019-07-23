@@ -126,4 +126,9 @@ class NavigatorModule: NavigatorModuleOC {
     @objc func setNavColor(_ color: String) {
         getVC().navigationController?.navigationBar.barTintColor = UIColor(hex: color)
     }
+    
+    // 获取状态栏高度
+    @objc func getHeight() -> CGFloat {
+        return getVC().statusBarHeight
+    }
 }

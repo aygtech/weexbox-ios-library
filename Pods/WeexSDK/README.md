@@ -12,6 +12,8 @@ A framework for building Mobile cross-platform UI.
 
 Support Android 4.1 (API 16), iOS 8.0+ and WebKit 534.30+.
 
+**Note: Please note the above download distribution is only for users' users' convenience. Weex Release is always in the format of [source code](https://weex.apache.org/download/download.html).**
+
 ## For Windows
 
 Please ***INSTALL [Git for Windows](https://git-scm.com/download/win)*** and run all the following commands in git-bash.
@@ -37,7 +39,7 @@ Please ***INSTALL [Git for Windows](https://git-scm.com/download/win)*** and run
     * `npm install`, install project
     * `./start`
     * Install [Android Environment](http://developer.android.com/training/basics/firstapp/index.html)
-    * Install [NDK](https://developer.android.com/ndk/) r16
+    * Install [NDK](https://developer.android.com/ndk/) r18
     * Install [Cmake](https://cmake.org/download/) 3.9.0+
 * Run playground, In Android Studio
     * Open `android/playground`
