@@ -139,7 +139,7 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
                                 "height":image!.size.height ?? 0
                                 ])
                         result.data = ["urls":urls]
-                        callback(result)
+                        if (urls.count == assets?.count) {callback(result)}
                     })
                 }
             }
