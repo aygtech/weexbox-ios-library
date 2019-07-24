@@ -88,32 +88,72 @@ public struct Router: HandyJSON {
             }
         }
         else {
-            from.rt_navigationController.pushViewController(to, animated: true) { (finished) in
-                self.removeViewControllers(from)
+            // 如果from是透明模态，需要关闭后再打开。
+            if from.modalPresentationStyle == .custom{
+                let lastCustomModalVc = self.getlastCustomModalVc(vc:from)
+                lastCustomModalVc.dismiss(animated: false) {
+                    self.push(to: to, from: self.getFormNavigation(vc: lastCustomModalVc))
+                }
+            }
+            else{
+                if let rt = from.rt_navigationController{
+                    from.rt_navigationController.pushViewController(to, animated: true) { (finished) in
+                        self.removeViewControllers(from)
+                    }
+                }
             }
         }
     }
+    func getlastCustomModalVc(vc :UIViewController) ->UIViewController{
+        let lastPresent = vc.presentingViewController
+        //上面已经没有模态。
+        if lastPresent == nil{
+            return vc
+        }
+            //上面的模态不是自定义
+        else if (lastPresent?.modalPresentationStyle != .custom &&
+            lastPresent?.modalPresentationStyle != .currentContext){
+            return lastPresent!
+        }
+        else{
+            return self.getlastCustomModalVc(vc: vc.presentingViewController!)
+        }
+    }
+    // 确保frome有导航控制器
+    func getFormNavigation(vc:UIViewController)->UIViewController {
+        if let r_vc =  vc.rt_navigationController{
+            return vc
+        }
+        else if(vc as? UITabBarController != nil) {
+            let tabbar = vc as! UITabBarController
+            return tabbar.selectedViewController ?? vc
+        }
+        return vc;
+    }
+    
     
     func removeViewControllers(_ vc: UIViewController) {
-        if (closeCount != nil){
-            if let from = closeFrom {
-                let count = vc.rt_navigationController.rt_viewControllers.count
-                var left: Int!
-                var right: Int!
-                if closeFromBottomToTop {
-                    left = from
-                    right = (closeCount != nil) ? (closeCount! + left - 1) : (count - 2)
-                } else {
-                    right = count - 2 - from
-                    left = (closeCount != nil) ? (right - closeCount! + 1) : 1
-                }
-                if left < right && left < count && right < count {
-                    let controllers = Array(vc.rt_navigationController.rt_viewControllers[left...right])
-                    vc.rt_navigationController.removeViewControllers(controllers, animated: false)
-                }
-                else {
-                    HUD.showToast(view: nil, message: "路由参数不正常请检查closeCount,closeFromBottomToTop,closeFrom")
-                }
+        if closeCount == nil {
+            return
+        }
+        if let from = closeFrom {
+            let count = vc.rt_navigationController.rt_viewControllers.count
+            var left: Int!
+            var right: Int!
+            if closeFromBottomToTop {
+                left = from
+                right = (closeCount != nil) ? (closeCount! + left - 1) : (count - 2)
+            } else {
+                right = count - 2 - from
+                left = (closeCount != nil) ? (right - closeCount! + 1) : 1
+            }
+            
+            if left < right && left < count && right < count {
+                let controllers = Array(vc.rt_navigationController.rt_viewControllers[left...right])
+                vc.rt_navigationController.removeViewControllers(controllers, animated: false)
+            }
+            else {
+                HUD.showToast(view: nil, message: "路由参数不正常请检查closeCount,closeFromBottomToTop,closeFrom")
             }
         }
     }
