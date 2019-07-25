@@ -48,9 +48,9 @@ public struct Router: HandyJSON {
     // 关闭页面的方向，默认和堆栈方向一致
     public var closeFromBottomToTop = true
     // 关闭页面的个数
-    public var closeCount: Int?
+    public var closeCount = 1
     
-    
+    static var flutterVc:UIViewController?
     // 打开页面
     public func open(from: UIViewController) {
         if let pageName = name, let toType = Router.routes[pageName] {
@@ -59,7 +59,15 @@ public struct Router: HandyJSON {
                 let to = toType.init() as! WBBaseViewController
                 to.router = self
                 push(to: to, from: from)
-            } else {
+            }
+//            else if (pageName ==  Router.nameFlutter){
+//                if (Router.flutterVc == nil){
+//                    Router.flutterVc = toType.init()
+//                }
+//                Router.flutterVc!.routerJson = toJSONString()
+//                push(to: Router.flutterVc!, from: from)
+//            }
+            else {
                 /// 继承 UIViewController
                 let to = toType.init()
                 // 原生页面只对routerParams有效，无需设置其它参数。
@@ -119,7 +127,7 @@ public struct Router: HandyJSON {
             return self.getlastCustomModalVc(vc: vc.presentingViewController!)
         }
     }
-    // 确保frome有导航控制器
+    // 确保form有导航控制器
     func getFormNavigation(vc:UIViewController)->UIViewController {
         if let r_vc =  vc.rt_navigationController{
             return vc
@@ -133,7 +141,7 @@ public struct Router: HandyJSON {
     
     
     func removeViewControllers(_ vc: UIViewController) {
-        if closeCount == nil {
+        if closeFrom == nil {
             return
         }
         if let from = closeFrom {
@@ -142,13 +150,13 @@ public struct Router: HandyJSON {
             var right: Int!
             if closeFromBottomToTop {
                 left = from
-                right = (closeCount != nil) ? (closeCount! + left - 1) : (count - 2)
+                right = left + (closeCount - 1)
             } else {
-                right = count - 2 - from
-                left = (closeCount != nil) ? (right - closeCount! + 1) : 1
+                right = (count - 1) - from
+                left = (right - closeCount + 1) < 1 ? 1 : (right - closeCount + 1);
             }
-            
-            if left < right && left < count && right < count {
+            // 确保根视图和最后一个视图不被删除。
+            if left != 0 && left <= right  && right < count - 1 {
                 let controllers = Array(vc.rt_navigationController.rt_viewControllers[left...right])
                 vc.rt_navigationController.removeViewControllers(controllers, animated: false)
             }
