@@ -60,13 +60,6 @@ public struct Router: HandyJSON {
                 to.router = self
                 push(to: to, from: from)
             }
-//            else if (pageName ==  Router.nameFlutter){
-//                if (Router.flutterVc == nil){
-//                    Router.flutterVc = toType.init()
-//                }
-//                Router.flutterVc!.routerJson = toJSONString()
-//                push(to: Router.flutterVc!, from: from)
-//            }
             else {
                 /// 继承 UIViewController
                 let to = toType.init()
@@ -149,10 +142,10 @@ public struct Router: HandyJSON {
             var left: Int!
             var right: Int!
             if closeFromBottomToTop {
-                left = from
+                left = from + 1
                 right = left + (closeCount - 1)
             } else {
-                right = (count - 1) - from
+                right = (count - 1) - from - 1
                 left = (right - closeCount + 1) < 1 ? 1 : (right - closeCount + 1);
             }
             // 确保根视图和最后一个视图不被删除。
