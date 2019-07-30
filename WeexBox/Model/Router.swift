@@ -49,6 +49,7 @@ public struct Router: HandyJSON {
     public var closeFromBottomToTop = true
     // 关闭页面的个数
     public var closeCount = 1
+    
     // 打开页面
     public func open(from: UIViewController) {
         if let pageName = name, let toType = Router.routes[pageName] {
