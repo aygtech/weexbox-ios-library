@@ -12,23 +12,23 @@ import RTRootNavigationController_WeexBox
 
 /// 路由
 public struct Router: HandyJSON {
-    
+
     static var routes = Dictionary<String, UIViewController.Type>()
-    
+
     // 注册路由
     public static func register(name: String, controller: UIViewController.Type) {
         routes[name] = controller
     }
-    
+
     public static let typePush = "push"
     public static let typePresent = "present"
     public static let typeModalMask = "modalMask"
     public static let nameWeex = "weex"
     public static let nameWeb = "web"
     public static let nameFlutter = "flutter"
-    
-    public init() {}
-    
+
+    public init() { }
+
     // 页面名称
     public var name: String?
     // 下一个weex/web的路径
@@ -49,8 +49,6 @@ public struct Router: HandyJSON {
     public var closeFromBottomToTop = true
     // 关闭页面的个数
     public var closeCount = 1
-    
-    static var flutterVc:UIViewController?
     // 打开页面
     public func open(from: UIViewController) {
         if let pageName = name, let toType = Router.routes[pageName] {
@@ -71,7 +69,7 @@ public struct Router: HandyJSON {
             print("路由未注册")
         }
     }
-    
+
     func push(to: UIViewController, from: UIViewController) {
         to.hidesBottomBarWhenPushed = true
         if type == Router.typePresent {
@@ -79,51 +77,51 @@ public struct Router: HandyJSON {
                 self.removeViewControllers(from)
             }
         }
-            // 遮罩。
-        else if type == Router.typeModalMask {
-            from.modalPresentationStyle = .currentContext
-            to.modalPresentationStyle = .custom
-            to.view.backgroundColor = UIColor.clear;
-            from.present(to, animated: false) {
-                self.removeViewControllers(from)
-            }
+        // 遮罩。
+            else if type == Router.typeModalMask {
+                from.modalPresentationStyle = .currentContext
+                to.modalPresentationStyle = .custom
+                to.view.backgroundColor = UIColor.clear;
+                from.present(to, animated: false) {
+                    self.removeViewControllers(from)
+                }
         }
         else {
             // 如果from是透明模态，需要关闭后再打开。
-            if from.modalPresentationStyle == .custom{
-                let lastCustomModalVc = self.getlastCustomModalVc(vc:from)
+            if from.modalPresentationStyle == .custom {
+                let lastCustomModalVc = self.getlastCustomModalVc(vc: from)
                 lastCustomModalVc.dismiss(animated: false) {
-                    self.push(to: to, from: self.getFormNavigation(vc: lastCustomModalVc))
+                    self.push(to: to, from: self.getFromNavigation(vc: lastCustomModalVc))
                 }
             }
-            else{
-                if let rt = from.rt_navigationController{
-                    from.rt_navigationController.pushViewController(to, animated: true) { (finished) in
+            else {
+                if let rt = from.rt_navigationController {
+                    rt.pushViewController(to, animated: true) { (finished) in
                         self.removeViewControllers(from)
                     }
                 }
             }
         }
     }
-    func getlastCustomModalVc(vc :UIViewController) ->UIViewController{
+    func getlastCustomModalVc(vc: UIViewController) -> UIViewController {
         let lastPresent = vc.presentingViewController
         //上面已经没有模态。
-        if lastPresent == nil{
+        if lastPresent == nil {
             return vc
         }
-            //上面的模态不是自定义
-        else if (lastPresent?.modalPresentationStyle != .custom &&
-            lastPresent?.modalPresentationStyle != .currentContext){
-            return lastPresent!
+        //上面的模态不是自定义
+            else if (lastPresent?.modalPresentationStyle != .custom &&
+                    lastPresent?.modalPresentationStyle != .currentContext) {
+                return lastPresent!
         }
-        else{
+        else {
             return self.getlastCustomModalVc(vc: vc.presentingViewController!)
         }
     }
-    // 确保form有导航控制器
-    func getFormNavigation(vc:UIViewController)->UIViewController {
-        if let r_vc =  vc.rt_navigationController{
-            return vc
+    // 确保from有导航控制器
+    func getFromNavigation(vc: UIViewController) -> UIViewController {
+        if let r_vc = vc.rt_navigationController {
+            return r_vc
         }
         else if(vc as? UITabBarController != nil) {
             let tabbar = vc as! UITabBarController
@@ -131,8 +129,8 @@ public struct Router: HandyJSON {
         }
         return vc;
     }
-    
-    
+
+
     func removeViewControllers(_ vc: UIViewController) {
         if closeFrom == nil {
             return
@@ -149,7 +147,7 @@ public struct Router: HandyJSON {
                 left = (right - closeCount + 1) < 1 ? 1 : (right - closeCount + 1);
             }
             // 确保根视图和最后一个视图不被删除。
-            if left != 0 && left <= right  && right < count - 1 {
+            if left != 0 && left <= right && right < count - 1 {
                 let controllers = Array(vc.rt_navigationController.rt_viewControllers[left...right])
                 vc.rt_navigationController.removeViewControllers(controllers, animated: false)
             }
@@ -158,13 +156,13 @@ public struct Router: HandyJSON {
             }
         }
     }
-    
+
     // 关闭页面
     public func close(from: WBBaseViewController, levels: Int? = nil) {
         if type == Router.typePresent {
             from.dismiss(animated: true, completion: nil)
         }
-        else if type == Router.typeModalMask{
+        else if type == Router.typeModalMask {
             from.dismiss(animated: false, completion: nil)
         }
         else {
