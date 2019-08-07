@@ -11,14 +11,15 @@ import SnapKit
 import VasSonic
 
 /// web基类
-open class WBWebViewController: WBBaseViewController, SonicSessionDelegate {
-
+open class WBWebViewController: WBBaseViewController, SonicSessionDelegate, UIWebViewDelegate {
+    
     public let webView = UIWebView()
     
     override open func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(webView)
+        webView.delegate = self
         webView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -38,6 +39,12 @@ open class WBWebViewController: WBBaseViewController, SonicSessionDelegate {
     
     deinit {
         SonicEngine.shared().removeSession(withWebDelegate: self)
+    }
+    
+    public func webViewDidFinishLoad(_ webView: UIWebView) {
+        if title == nil {
+            title = webView.stringByEvaluatingJavaScript(from: "document.title")
+        }
     }
     
     // MARK: - SonicSessionDelegate
