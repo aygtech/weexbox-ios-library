@@ -159,7 +159,7 @@ public struct Router: HandyJSON {
     }
 
     // 关闭页面
-    public func close(from: WBBaseViewController, levels: Int? = nil) {
+    public func close(from: UIViewController, levels: Int? = nil) {
         if type == Router.typePresent {
             from.dismiss(animated: true, completion: nil)
         }
