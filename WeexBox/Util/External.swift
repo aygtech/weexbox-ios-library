@@ -126,7 +126,7 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
         imagePickerVc.didFinishPickingPhotosWithInfosHandle = { photos, assets, isSelectOriginalPhoto, infos in
             var result = Result()
             let urls = NSMutableArray();
-            if(assets != nil && (assets?.count)!>0){
+            if(assets != nil && (assets?.count)!>0 && isSelectOriginalPhoto == true){
                 result.status = Result.success
                 result.error = ""
                 for asset in assets! {
