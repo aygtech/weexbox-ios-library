@@ -66,7 +66,11 @@ import SwiftyJSON
     
     func render() {
         if url != nil {
-            let vueUrl = URL(string: url!.absoluteString + "?bundleType=Vue")
+            var urlString = url!.absoluteString
+            if let tpl = urlString.getParameters()["_wx_tpl"] {
+                urlString = tpl
+            }
+            let vueUrl = URL(string: urlString + "?bundleType=Vue")
             instance?.render(with: vueUrl, options: nil, data: nil)
         } else {
             HUD.showToast(view: view, message: "url不能为空")

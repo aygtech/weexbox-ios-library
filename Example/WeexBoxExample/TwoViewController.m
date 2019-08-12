@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.purpleColor;
-    NSLog(@"接收weex页面的参数===============%@",self.routerParams);
+    NSLog(@"接收weex页面的参数===============%@",self.routerJson);
     // Do any additional setup after loading the view.
 }
 

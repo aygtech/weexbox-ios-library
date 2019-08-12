@@ -11,7 +11,7 @@ import Hue
 import SDWebImage
 import Async
 
-class NavigatorModule: NavigatorModuleOC {
+class NavigatorModule: NavigatorModuleOC, WXNavigationProtocol {
     
     enum ItemPosition {
         case Right
@@ -25,6 +25,9 @@ class NavigatorModule: NavigatorModuleOC {
     var leftItemsCallback: WXModuleKeepAliveCallback?
     // 中间按钮点击回调
     var centerItemCallback: WXModuleKeepAliveCallback?
+    
+    let wxNavigationDefaultImpl = WXNavigationDefaultImpl()
+    
     
     // 设置导航栏右边按钮
     @objc func setRightItems(_ items: Array<Dictionary<String, String>>, callback: WXModuleKeepAliveCallback?) {
@@ -130,5 +133,40 @@ class NavigatorModule: NavigatorModuleOC {
     // 获取状态栏高度
     @objc func getHeight() -> CGFloat {
         return getVC().statusBarHeight
+    }
+    
+    // MARK - WXNavigationProtocol
+    @objc func navigationController(ofContainer container: UIViewController!) -> Any! {
+        return wxNavigationDefaultImpl.navigationController(ofContainer: container)
+    }
+    
+    @objc func setNavigationBarHidden(_ hidden: Bool, animated: Bool, withContainer container: UIViewController!) {
+        wxNavigationDefaultImpl.setNavigationBarHidden(hidden, animated: animated, withContainer: container)
+    }
+    
+    @objc func setNavigationBackgroundColor(_ backgroundColor: UIColor!, withContainer container: UIViewController!) {
+        wxNavigationDefaultImpl.setNavigationBackgroundColor(backgroundColor, withContainer: container)
+    }
+    
+    @objc func setNavigationItemWithParam(_ param: [AnyHashable : Any]!, position: WXNavigationItemPosition, completion block: WXNavigationResultBlock!, withContainer container: UIViewController!) {
+        wxNavigationDefaultImpl.setNavigationItemWithParam(param, position: position, completion: block, withContainer: container)
+    }
+    
+    @objc func clearNavigationItem(withParam param: [AnyHashable : Any]!, position: WXNavigationItemPosition, completion block: WXNavigationResultBlock!, withContainer container: UIViewController!) {
+        wxNavigationDefaultImpl.clearNavigationItem(withParam: param, position: position, completion: block, withContainer: container)
+    }
+    
+    @objc func pushViewController(withParam param: [AnyHashable : Any]!, completion block: WXNavigationResultBlock!, withContainer container: UIViewController!) {
+        let url = param["url"] as? String;
+        var router = Router()
+        router.url = url
+        router.name = Router.nameWeex
+        router.open(from: container)
+        
+        block?("WX_SUCCESS", nil)
+    }
+    
+    @objc func popViewController(withParam param: [AnyHashable : Any]!, completion block: WXNavigationResultBlock!, withContainer container: UIViewController!) {
+        wxNavigationDefaultImpl.popViewController(withParam: param, completion: block, withContainer: container)
     }
 }
