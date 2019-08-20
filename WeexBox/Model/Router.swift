@@ -159,7 +159,7 @@ public struct Router: HandyJSON {
     }
 
     // 关闭页面
-    public func close(from: UIViewController, levels: Int? = nil) {
+    public func close(from: UIViewController, count: Int = 1) {
         if type == Router.typePresent {
             from.dismiss(animated: true, completion: nil)
         }
@@ -168,8 +168,8 @@ public struct Router: HandyJSON {
         }
         else {
             let nav = from.navigationController!
-            if let l = levels, l > 1 {
-                let index = nav.viewControllers.count - 1 - l
+            if count > 1 {
+                let index = nav.viewControllers.count - 1 - count
                 if index <= 0 {
                     nav.popToRootViewController(animated: true)
                 } else {

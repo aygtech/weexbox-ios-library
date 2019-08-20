@@ -27,7 +27,7 @@ class RouterModule: RouterModuleOC {
     // 关闭
     @objc func close(_ levels: Any?) {
         Async.main {
-            self.getVC().router.close(from: self.getVC(), levels: WXConvert.nsInteger(levels))
+            self.getVC().router.close(from: self.getVC(), count: WXConvert.nsInteger(levels))
         }
     }
     
