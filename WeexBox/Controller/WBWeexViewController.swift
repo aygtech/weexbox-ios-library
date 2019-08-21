@@ -77,12 +77,16 @@ import SwiftyJSON
         }
     }
     
-    public func refreshWeex() {
+    func refreshWeexForDebug() {
         let currentTime = Date().timeIntervalSince1970
         if WeexBoxEngine.isDebug, currentTime - refreshTime < 1 {
             return
         }
         refreshTime = currentTime
+        refreshWeex()
+    }
+    
+    public func refreshWeex() {
         createWeexInstance()
         render()
     }
@@ -129,7 +133,7 @@ import SwiftyJSON
     func registerRefreshInstance() {
         if WeexBoxEngine.isDebug {
             Event.register(target: self, name: "RefreshInstance") { [weak self] _ in
-                self?.refreshWeex()
+                self?.refreshWeexForDebug()
             }
         }
     }
@@ -143,7 +147,7 @@ import SwiftyJSON
                     
                     if let params = notification?.userInfo?["params"] as? String, params.hasSuffix(name) {
                         self?.url = URL(string: params)
-                        self?.refreshWeex()
+                        self?.refreshWeexForDebug()
                     }
                 }
             }
