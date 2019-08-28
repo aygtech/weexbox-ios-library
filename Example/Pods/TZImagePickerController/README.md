@@ -37,7 +37,7 @@
     
     // You can get the photos by block, the same as by delegate.
     // 你可以通过block或者代理，来得到用户选择的照片.
-    [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets) {
+    [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
     
     }];
     [self presentViewController:imagePickerVc animated:YES completion:nil];
@@ -63,7 +63,7 @@
 
   If you find a bug, please create a issue.  
   Welcome to pull requests.  
-  More infomation please view code.  
+  More information please view code.  
   如果你发现了bug，请提一个issue。 
   欢迎给我提pull requests。  
   更多信息详见代码，也可查看我的博客: [我的博客](http://www.jianshu.com/p/1975411a31bb "半尺尘 - 简书")
@@ -125,6 +125,7 @@ A：不要去拿PHImageFileURLKey，没用的，只有通过Photos框架才能�
 
 ## 六. Release Notes 最近更新     
 
+3.2.2 适配iOS13，若干问题修复                 
 3.2.1 新增裁剪用scaleAspectFillCrop属性，设置为YES后，照片尺寸小于裁剪框时会自动放大撑满                
 3.2.0 加入用NSOperationQueue控制获取原图并发数降低内存的示例          
 3.1.8 批量获取图片时加入队列控制，尝试优化大批量选择图片时CPU和内存占用过高的问题（仍然危险，maxImagesCount谨慎设置过大...）             
