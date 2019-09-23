@@ -23,6 +23,7 @@ open class WBWebViewController: WBBaseViewController, SonicSessionDelegate, UIWe
         webView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        webView.allowsInlineMediaPlayback = true
         SonicEngine.shared().createSession(withUrl: router.url, withWebDelegate: self)
         let request = URLRequest(url: URL(string: router.url!)!)
         let session = SonicEngine.shared().session(withWebDelegate: self)
