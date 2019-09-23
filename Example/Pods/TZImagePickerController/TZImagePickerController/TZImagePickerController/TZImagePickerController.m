@@ -4,7 +4,7 @@
 //
 //  Created by 谭真 on 15/12/24.
 //  Copyright © 2015年 谭真. All rights reserved.
-//  version 3.2.1 - 2019.05.29
+//  version 3.2.2 - 2019.08.27
 //  更多信息，请前往项目的github地址：https://github.com/banchichen/TZImagePickerController
 
 #import "TZImagePickerController.h"
@@ -727,8 +727,8 @@
         [imagePickerVc showProgressHUD];
     }
 
+    TZImagePickerController *imagePickerVc = (TZImagePickerController *)self.navigationController;
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        TZImagePickerController *imagePickerVc = (TZImagePickerController *)self.navigationController;
         [[TZImageManager manager] getAllAlbums:imagePickerVc.allowPickingVideo allowPickingImage:imagePickerVc.allowPickingImage needFetchAssets:!self.isFirstAppear completion:^(NSArray<TZAlbumModel *> *models) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 self->_albumArr = [NSMutableArray arrayWithArray:models];
