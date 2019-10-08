@@ -68,7 +68,8 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
         let imagePickerVc = TZImagePickerController(maxImagesCount: 1, columnNumber: 4, delegate: self)!
         //圆形裁剪
         imagePickerVc.needCircleCrop = option?.isCircle ?? false
-        
+        imagePickerVc.modalPresentationStyle = .fullScreen
+
         //允许裁剪
         imagePickerVc.allowCrop = option?.enableCrop ?? true
         imagePickerVc.allowTakeVideo = false
@@ -113,6 +114,8 @@ class External: NSObject, MFMessageComposeViewControllerDelegate, CNContactPicke
         openPhotoCallback = callback
         let option = PhotoOption.deserialize(from: options)
         let imagePickerVc = TZImagePickerController(maxImagesCount: option?.count ?? 1, columnNumber: 4, delegate: self)!
+        imagePickerVc.modalPresentationStyle = .fullScreen
+
         //圆形裁剪
         imagePickerVc.needCircleCrop = option?.isCircle ?? false
         //允许裁剪
