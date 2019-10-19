@@ -82,7 +82,9 @@ static CGFloat itemMargin = 5;
     _shouldScrollToBottom = YES;
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = _model.name;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:tzImagePickerVc.cancelBtnTitleStr style:UIBarButtonItemStylePlain target:tzImagePickerVc action:@selector(cancelButtonClick)];
+    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:tzImagePickerVc.cancelBtnTitleStr style:UIBarButtonItemStylePlain target:tzImagePickerVc action:@selector(cancelButtonClick)];
+    [TZCommonTools configBarButtonItem:cancelItem tzImagePickerVc:tzImagePickerVc];
+    self.navigationItem.rightBarButtonItem = cancelItem;
     if (tzImagePickerVc.navLeftBarButtonSettingBlock) {
         UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
         leftButton.frame = CGRectMake(0, 0, 44, 44);
@@ -90,7 +92,9 @@ static CGFloat itemMargin = 5;
         tzImagePickerVc.navLeftBarButtonSettingBlock(leftButton);
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
     } else if (tzImagePickerVc.childViewControllers.count) {
-        [tzImagePickerVc.childViewControllers firstObject].navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle tz_localizedStringForKey:@"Back"] style:UIBarButtonItemStylePlain target:nil action:nil];
+        UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle tz_localizedStringForKey:@"Back"] style:UIBarButtonItemStylePlain target:nil action:nil];
+        [TZCommonTools configBarButtonItem:backItem tzImagePickerVc:tzImagePickerVc];
+        [tzImagePickerVc.childViewControllers firstObject].navigationItem.backBarButtonItem = backItem;
     }
     _showTakePhotoBtn = _model.isCameraRoll && ((tzImagePickerVc.allowTakePicture && tzImagePickerVc.allowPickingImage) || (tzImagePickerVc.allowTakeVideo && tzImagePickerVc.allowPickingVideo));
     // [self resetCachedAssets];
@@ -263,6 +267,7 @@ static CGFloat itemMargin = 5;
     
     _numberLabel = [[UILabel alloc] init];
     _numberLabel.font = [UIFont systemFontOfSize:15];
+    _numberLabel.adjustsFontSizeToFitWidth = YES;
     _numberLabel.textColor = [UIColor whiteColor];
     _numberLabel.textAlignment = NSTextAlignmentCenter;
     _numberLabel.text = [NSString stringWithFormat:@"%zd",tzImagePickerVc.selectedModels.count];
@@ -298,10 +303,11 @@ static CGFloat itemMargin = 5;
     CGFloat collectionViewHeight = 0;
     CGFloat naviBarHeight = self.navigationController.navigationBar.tz_height;
     BOOL isStatusBarHidden = [UIApplication sharedApplication].isStatusBarHidden;
+    BOOL isFullScreen = self.view.tz_height == [UIScreen mainScreen].bounds.size.height;
     CGFloat toolBarHeight = [TZCommonTools tz_isIPhoneX] ? 50 + (83 - 49) : 50;
     if (self.navigationController.navigationBar.isTranslucent) {
         top = naviBarHeight;
-        if (!isStatusBarHidden) top += [TZCommonTools tz_statusBarHeight];
+        if (!isStatusBarHidden && isFullScreen) top += [TZCommonTools tz_statusBarHeight];
         collectionViewHeight = tzImagePickerVc.showSelectBtn ? self.view.tz_height - toolBarHeight - top : self.view.tz_height - top;;
     } else {
         collectionViewHeight = tzImagePickerVc.showSelectBtn ? self.view.tz_height - toolBarHeight : self.view.tz_height;
@@ -640,7 +646,8 @@ static CGFloat itemMargin = 5;
         // 无权限 做一个友好的提示
         NSString *appName = [infoDict valueForKey:@"CFBundleDisplayName"];
         if (!appName) appName = [infoDict valueForKey:@"CFBundleName"];
-        
+        if (!appName) appName = [infoDict valueForKey:@"CFBundleExecutable"];
+
         NSString *message = [NSString stringWithFormat:[NSBundle tz_localizedStringForKey:@"Please allow %@ to access your camera in \"Settings -> Privacy -> Camera\""],appName];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSBundle tz_localizedStringForKey:@"Can not use camera"] message:message delegate:self cancelButtonTitle:[NSBundle tz_localizedStringForKey:@"Cancel"] otherButtonTitles:[NSBundle tz_localizedStringForKey:@"Setting"], nil];
         [alert show];
@@ -804,8 +811,9 @@ static CGFloat itemMargin = 5;
         TZImagePickerController *imagePickerVc = (TZImagePickerController *)self.navigationController;
         [imagePickerVc showProgressHUD];
         UIImage *photo = [info objectForKey:UIImagePickerControllerOriginalImage];
+        NSDictionary *meta = [info objectForKey:UIImagePickerControllerMediaMetadata];
         if (photo) {
-            [[TZImageManager manager] savePhotoWithImage:photo location:self.location completion:^(PHAsset *asset, NSError *error){
+            [[TZImageManager manager] savePhotoWithImage:photo meta:meta location:self.location completion:^(PHAsset *asset, NSError *error){
                 if (!error) {
                     [self addPHAsset:asset];
                 }
@@ -875,6 +883,7 @@ static CGFloat itemMargin = 5;
 }
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     // NSLog(@"%@ dealloc",NSStringFromClass(self.class));
 }
 

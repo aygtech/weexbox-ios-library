@@ -86,11 +86,11 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
     TZImagePickerController *tzImagePickerVc = (TZImagePickerController *)self.navigationController;
     if (tzImagePickerVc.needShowStatusBar) {
         [UIApplication sharedApplication].statusBarHidden = NO;
     }
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     [TZImageManager manager].shouldFixOrientation = NO;
 }
 
@@ -247,8 +247,9 @@
     [super viewDidLayoutSubviews];
     TZImagePickerController *_tzImagePickerVc = (TZImagePickerController *)self.navigationController;
     
-    CGFloat statusBarHeight = [TZCommonTools tz_statusBarHeight];
-    CGFloat statusBarHeightInterval = statusBarHeight - 20;
+    BOOL isFullScreen = self.view.tz_height == [UIScreen mainScreen].bounds.size.height;
+    CGFloat statusBarHeight = isFullScreen ? [TZCommonTools tz_statusBarHeight] : 0;
+    CGFloat statusBarHeightInterval = isFullScreen ? (statusBarHeight - 20) : 0;
     CGFloat naviBarHeight = statusBarHeight + _tzImagePickerVc.navigationBar.tz_height;
     _naviBar.frame = CGRectMake(0, 0, self.view.tz_width, naviBarHeight);
     _backButton.frame = CGRectMake(10, 10 + statusBarHeightInterval, 44, 44);

@@ -1,6 +1,6 @@
 {
   "name": "WeexBox",
-  "version": "2.1.10",
+  "version": "2.2.0",
   "summary": "WeexBox.",
   "homepage": "https://github.com/aygtech/weexbox-ios-library",
   "license": "MIT",
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/aygtech/weexbox-ios-library.git",
-    "tag": "2.1.10"
+    "tag": "2.2.0"
   },
   "source_files": "WeexBox/**/**/*.{swift,h,m}",
   "swift_versions": "5.0",
